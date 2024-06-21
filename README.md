@@ -16,7 +16,7 @@ sc.bin - pure shell code as is
 sc.asm - described on asm for build
 sc-x64.exe - sc.bin wrapped to exe file (no import, relocs, dynamic base) for easy test sc.bin
 
-sc.bin - download to binary files (x86 and x64)
+sc.bin - download 2 binary files (x86 and x64)
 
 https://the.earth.li/~sgtatham/putty/latest/w32/putty.exe
 https://the.earth.li/~sgtatham/putty/latest/w64/putty.exe
