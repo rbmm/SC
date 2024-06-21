@@ -5,11 +5,17 @@ else one example how write complex shell code on c/c++
 
 note on:
 
+
 #define DECLSPEC_IMPORT
+
 /cbstring
+
 #pragma code_seg(".text$mn$cpp")
+
 prepare.cpp ( util file, for build shell code from initial exe)
+
 nobase64.inc ( for implement import )
+
 
 result: 
 sc.bin - pure shell code as is
