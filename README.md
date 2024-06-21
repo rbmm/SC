@@ -28,4 +28,4 @@ https://the.earth.li/~sgtatham/putty/latest/w32/putty.exe
 
 https://the.earth.li/~sgtatham/putty/latest/w64/putty.exe
 
-and exec it from memory (without save any data to disk
+and exec it from memory, without save any data to disk
