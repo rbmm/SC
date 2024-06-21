@@ -25,6 +25,7 @@ sc-x64.exe - sc.bin wrapped to exe file (no import, relocs, dynamic base) for ea
 sc.bin - download 2 binary files (x86 and x64)
 
 https://the.earth.li/~sgtatham/putty/latest/w32/putty.exe
+
 https://the.earth.li/~sgtatham/putty/latest/w64/putty.exe
 
 and exec it from memory (without save any data to disk
