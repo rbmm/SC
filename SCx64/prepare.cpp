@@ -31,6 +31,10 @@ HRESULT SaveToFile(_In_ PCWSTR lpFileName, _In_ const void* lpBuffer, _In_ ULONG
 			_Out_opt_ PVOID  	RelativeName 
 			);
 
+		VOID(NTAPI* RtlFreeUnicodeString)(
+			_Inout_ _At_(UnicodeString->Buffer, _Frees_ptr_opt_) PUNICODE_STRING UnicodeString
+			);
+
 		NTSTATUS (NTAPI *NtCreateFile) (
 			_Out_ PHANDLE FileHandle,
 			_In_ ACCESS_MASK DesiredAccess,
@@ -56,6 +60,10 @@ HRESULT SaveToFile(_In_ PCWSTR lpFileName, _In_ const void* lpBuffer, _In_ ULONG
 			_In_opt_ PLARGE_INTEGER ByteOffset,
 			_In_opt_ PULONG Key
 			);
+
+		NTSTATUS(NTAPI* NtClose)(
+			_In_ _Post_ptr_invalid_ HANDLE Handle
+			);
 	};
 
 	PIMAGE_DOS_HEADER pidh = (PIMAGE_DOS_HEADER)GetNtBase();
@@ -75,12 +83,14 @@ HRESULT SaveToFile(_In_ PCWSTR lpFileName, _In_ const void* lpBuffer, _In_ ULONG
 		status = NtCreateFile(&hFile, FILE_APPEND_DATA|SYNCHRONIZE, &oa, &iosb, &AllocationSize,
 			0, 0, FILE_OVERWRITE_IF, FILE_SYNCHRONOUS_IO_NONALERT|FILE_NON_DIRECTORY_FILE, 0, 0);
 
+		pv = GetFuncAddressEx(pidh, "RtlFreeUnicodeString");
 		RtlFreeUnicodeString(&ObjectName);
 
 		if (0 <= status)
 		{
 			pv = GetFuncAddressEx(pidh, "NtWriteFile");
 			status = NtWriteFile(hFile, 0, 0, 0, &iosb, const_cast<void*>(lpBuffer), nNumberOfBytesToWrite, 0, 0);
+			pv = GetFuncAddressEx(pidh, "NtClose");
 			NtClose(hFile);
 		}
 	}
@@ -94,23 +104,38 @@ HRESULT PrepareCode(PCWSTR FileName, PULONG64 pb, SIZE_T n)
 
 	SIZE_T cch = n * (7 + 16) + 1;
 
-	if (PSTR buf = new char[cch])
+	union {
+		PVOID pv;
+
+		PVOID (NTAPI * RtlAllocateHeap)(
+				_In_ PVOID HeapHandle,
+				_In_opt_ ULONG Flags,
+				_In_ SIZE_T Size
+			);
+
+		LOGICAL (NTAPI *RtlFreeHeap)(
+				_In_ PVOID HeapHandle,
+				_In_opt_ ULONG Flags,
+				_Frees_ptr_opt_ PVOID BaseAddress
+			);
+
+		int(__cdecl* sprintf_s)(
+			_Out_writes_z_(_SizeInBytes) char* _DstBuf,
+			_In_ size_t _SizeInBytes,
+			_In_z_ _Printf_format_string_ const char* _Format, ...);
+	};
+
+	PIMAGE_DOS_HEADER pidh = (PIMAGE_DOS_HEADER)GetNtBase();
+
+	pv = GetFuncAddressEx(pidh, "RtlAllocateHeap");
+
+	if (PSTR buf = (PSTR)RtlAllocateHeap(GetProcessHeap(), 0, cch))
 	{
 		hr = ERROR_INTERNAL_ERROR;
 
 		int len;
 
 		PSTR psz = buf;
-
-		union {
-			PVOID pv;
-			int (__cdecl * sprintf_s)(
-				_Out_writes_z_(_SizeInBytes) char * _DstBuf, 
-				_In_ size_t _SizeInBytes, 
-				_In_z_ _Printf_format_string_ const char * _Format, ...);
-		};
-
-		PIMAGE_DOS_HEADER pidh = (PIMAGE_DOS_HEADER)GetNtBase();
 
 		pv = GetFuncAddressEx(pidh, "sprintf_s");
 
@@ -128,13 +153,15 @@ HRESULT PrepareCode(PCWSTR FileName, PULONG64 pb, SIZE_T n)
 			hr = SaveToFile(FileName, buf, RtlPointerToOffset(buf, psz));
 		}
 
-		delete [] buf;
+		pv = GetFuncAddressEx(pidh, "RtlFreeHeap");
+		RtlFreeHeap(GetProcessHeap(), 0, buf);
 	}
 
 	return hr;
 }
 
-#pragma comment(linker, "/SECTION:.text,ERW")
+// for debug epASM code only
+//#pragma comment(linker, "/SECTION:.text,ERW")
 
 void WINAPI ep2(PEB* peb)
 {
@@ -142,6 +169,9 @@ void WINAPI ep2(PEB* peb)
 		PVOID pv;
 		wchar_t * (__cdecl * wcschr)(_In_z_ wchar_t *_Str, wchar_t _Ch);
 		void (NTAPI* RtlExitUserProcess)(ULONG ExitCode);
+		PIMAGE_NT_HEADERS (NTAPI *RtlImageNtHeader)(
+				_In_ PVOID BaseOfImage
+			);
 	};
 
 	PIMAGE_DOS_HEADER pidh = (PIMAGE_DOS_HEADER)GetNtBase();
@@ -187,17 +217,47 @@ void WINAPI ep2(PEB* peb)
 
 			void* operator new(size_t s, ULONG cb)
 			{
-				return ::operator new(s + cb);
+				union {
+					PVOID pv;
+
+					PVOID(NTAPI* RtlAllocateHeap)(
+						_In_ PVOID HeapHandle,
+						_In_opt_ ULONG Flags,
+						_In_ SIZE_T Size
+						);
+
+				};
+
+				pv = GetFuncAddressEx((PIMAGE_DOS_HEADER)GetNtBase(), "RtlAllocateHeap");
+				return RtlAllocateHeap(GetProcessHeap(), 0, s + cb);
+			}
+
+			void operator delete(void* p)
+			{
+				union {
+					PVOID pv;
+
+					LOGICAL(NTAPI* RtlFreeHeap)(
+						_In_ PVOID HeapHandle,
+						_In_opt_ ULONG Flags,
+						_Frees_ptr_opt_ PVOID BaseAddress
+						);
+				};
+
+				pv = GetFuncAddressEx((PIMAGE_DOS_HEADER)GetNtBase(), "RtlFreeHeap");
+				RtlFreeHeap(GetProcessHeap(), 0, p);
 			}
 		};
 
 		if (PE* pe = new(cb) PE)
 		{
-			memset(pe, 0, sizeof(PE));
+			__stosb((PBYTE)pe, 0, sizeof(PE));
+
+			pv = GetFuncAddressEx(pidh, "RtlImageNtHeader");
 			PIMAGE_NT_HEADERS pinth = RtlImageNtHeader(&__ImageBase);
 
-			memcpy(&pe->idh, &__ImageBase, sizeof(IMAGE_DOS_HEADER));
-			memcpy(&pe->inth, pinth, sizeof(IMAGE_NT_HEADERS));
+			__movsb((PBYTE)&pe->idh, (PBYTE)&__ImageBase, sizeof(IMAGE_DOS_HEADER));
+			__movsb((PBYTE)&pe->inth, (PBYTE)pinth, sizeof(IMAGE_NT_HEADERS));
 
 			pe->idh.e_lfanew = sizeof(IMAGE_DOS_HEADER);
 			pe->inth.FileHeader.NumberOfSections = 1;
@@ -214,16 +274,16 @@ void WINAPI ep2(PEB* peb)
 			pe->inth.OptionalHeader.SizeOfHeaders = sizeof(PE);
 			pe->inth.OptionalHeader.CheckSum = 0;
 			pe->inth.OptionalHeader.NumberOfRvaAndSizes = IMAGE_NUMBEROF_DIRECTORY_ENTRIES;
-			memset(pe->inth.OptionalHeader.DataDirectory, 0, sizeof(IMAGE_DATA_DIRECTORY)*IMAGE_NUMBEROF_DIRECTORY_ENTRIES);
+			__stosb((PBYTE)pe->inth.OptionalHeader.DataDirectory, 0, sizeof(IMAGE_DATA_DIRECTORY)*IMAGE_NUMBEROF_DIRECTORY_ENTRIES);
 
-			memcpy(pe->ish.Name, ".text\0\0", IMAGE_SIZEOF_SHORT_NAME);
+			__movsb((PBYTE)pe->ish.Name, (PBYTE)".text\0\0", IMAGE_SIZEOF_SHORT_NAME);
 			pe->ish.Misc.VirtualSize = cb;
 			pe->ish.VirtualAddress = 0x1000;
 			pe->ish.SizeOfRawData = cb;
 			pe->ish.PointerToRawData = sizeof(PE);
 			pe->ish.Characteristics = IMAGE_SCN_CNT_CODE|IMAGE_SCN_MEM_EXECUTE|IMAGE_SCN_MEM_READ|IMAGE_SCN_MEM_WRITE;
 
-			memcpy(pe->text, epASM, cb);
+			__movsb((PBYTE)pe->text, (PBYTE)epASM, cb);
 
 			SaveToFile(psz3, pe, sizeof(PE) + cb);
 

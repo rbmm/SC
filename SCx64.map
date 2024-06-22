@@ -1,24 +1,23 @@
  SCx64
 
- Timestamp is 6676ae40 (Sat Jun 22 13:58:08 2024)
+ Timestamp is 66774258 (Sun Jun 23 00:30:00 2024)
 
  Preferred load address is 0000000140000000
 
  Start         Length     Name                   Class
- 0001:00000000 00000a48H .text$mn                CODE
- 0001:00000a48 00000dd8H .text$mn$cpp            CODE
- 0001:00001820 0000014cH .text$mn$cpp$s          CODE
- 0001:0000196c 00000008H .text$nm                CODE
- 0001:00001974 000004ccH .text$zz                CODE
- 0001:00001e40 00000077H .text$zz$s              CODE
+ 0001:00000000 00000a20H .text$mn                CODE
+ 0001:00000a20 00000dd0H .text$mn$cpp            CODE
+ 0001:000017f0 0000014cH .text$mn$cpp$s          CODE
+ 0001:0000193c 00000008H .text$nm                CODE
+ 0001:00001944 0000054cH .text$zz                CODE
+ 0001:00001e90 00000113H .text$zz$s              CODE
  0002:00000000 00000038H .rdata                  DATA
- 0002:00000038 00000030H .rdata$voltmd           DATA
- 0002:00000068 00000068H .rdata$zzzdbg           DATA
- 0002:000000d0 000000dcH .xdata                  DATA
- 0002:000001ac 00000000H .edata                  DATA
+ 0002:00000038 00000068H .rdata$zzzdbg           DATA
+ 0002:000000a0 000000f0H .xdata                  DATA
+ 0002:00000190 00000000H .edata                  DATA
  0003:00000000 00000000H .data                   DATA
  0003:00000000 00000004H .bss                    DATA
- 0004:00000000 000000a8H .pdata                  DATA
+ 0004:00000000 00000090H .pdata                  DATA
 
   Address         Publics by Value              Rva+Base               Lib:Object
 
@@ -46,10 +45,11 @@
  0000:00000000       __hybrid_auxiliary_iat_copy 0000000000000000     <absolute>
  0000:00000000       __hybrid_code_map          0000000000000000     <absolute>
  0000:00000000       __hybrid_code_map_count    0000000000000000     <absolute>
+ 0000:00000000       __volatile_metadata        0000000000000000     <absolute>
  0000:00000000       __x64_code_ranges_to_entry_points 0000000000000000     <absolute>
  0000:00000000       __x64_code_ranges_to_entry_points_count 0000000000000000     <absolute>
  0000:00000000       __ImageBase                0000000140000000     <linker-defined>
- 0001:00000000       epASM                      0000000140001000 f   x64.obj
+ 0001:00000000       ?epASM@@YAXPEAU_PEB@@@Z    0000000140001000 f   x64.obj
  0001:000000b8       DbgPrint                   00000001400010b8 f   x64.obj
  0001:000000e1       wcstoul                    00000001400010e1 f   x64.obj
  0001:00000108       memset                     0000000140001108 f   x64.obj
@@ -89,52 +89,55 @@
  0001:0000075b       RtlImageNtHeader           000000014000175b f   x64.obj
  0001:00000789       RtlImageDirectoryEntryToData 0000000140001789 f   x64.obj
  0001:000007c5       ExitProcess                00000001400017c5 f   x64.obj
- 0001:000007ec       GetProcessHeap             00000001400017ec f   x64.obj
- 0001:00000817       GetSystemWow64DirectoryW   0000000140001817 f   x64.obj
- 0001:00000849       GetSystemWindowsDirectoryW 0000000140001849 f   x64.obj
- 0001:00000883       TerminateProcess           0000000140001883 f   x64.obj
- 0001:000008b1       CreateProcessW             00000001400018b1 f   x64.obj
- 0001:000008df       WinHttpCloseHandle         00000001400018df f   x64.obj
- 0001:0000090b       WinHttpOpen                000000014000190b f   x64.obj
- 0001:00000934       WinHttpConnect             0000000140001934 f   x64.obj
- 0001:0000095f       WinHttpOpenRequest         000000014000195f f   x64.obj
- 0001:0000098b       WinHttpSendRequest         000000014000198b f   x64.obj
- 0001:000009bb       WinHttpQueryHeaders        00000001400019bb f   x64.obj
- 0001:000009ec       WinHttpReceiveResponse     00000001400019ec f   x64.obj
- 0001:00000a1f       WinHttpReadData            0000000140001a1f f   x64.obj
- 0001:00000a48       ?Download@@YAHPEB_W0PEAPEAXPEAK@Z 0000000140001a48 f   ep.obj
- 0001:00000c40       ?DownloadAndExec@@YAXPEB_W0@Z 0000000140001c40 f   ep.obj
- 0001:00000ca8       ?ep@@YAXPEAU_PEB@@@Z       0000000140001ca8 f   ep.obj
- 0001:00000ccc       ?ProtectImage@@YAJPEAX0PEAU_IMAGE_NT_HEADERS64@@@Z 0000000140001ccc f   Exec.obj
- 0001:00000dc0       ?GetWowContext@@YAJPEAXPEAU_CONTEXT@@@Z 0000000140001dc0 f   Exec.obj
- 0001:00000de4       ?SetWowContext@@YAJPEAXPEAU_CONTEXT@@@Z 0000000140001de4 f   Exec.obj
- 0001:00000df8       ?Exec@@YAHPEAXPEAU_IMAGE_NT_HEADERS64@@PEB_W@Z 0000000140001df8 f   Exec.obj
- 0001:000012f0       ?GetNtBase@@YAPEAXXZ       00000001400022f0 f   GetFuncAddr.obj
- 0001:0000130c       ?get_hmod@@YAPEAXPEB_W@Z   000000014000230c f   GetFuncAddr.obj
- 0001:00001368       ?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z 0000000140002368 f   GetFuncAddr.obj
- 0001:000014b8       ?FindNoCfgDll@@YAJKKKPEAPEAX@Z 00000001400024b8 f   NoCfg.obj
- 0001:00001800       ??3@YAXPEAX_K@Z            0000000140002800 f   stdafx.obj
- 0001:00001820       ??_C@_1EM@FHFNBODF@?$AA?1?$AA?$HO?$AAs?$AAg?$AAt?$AAa?$AAt?$AAh?$AAa?$AAm?$AA?1?$AAp?$AAu?$AAt?$AAt@FNODOBFM@ 0000000140002820     ep.obj
- 0001:00001870       ??_C@_1BK@DEAAAFKK@?$AAt?$AAh?$AAe?$AA?4?$AAe?$AAa?$AAr?$AAt?$AAh?$AA?4?$AAl?$AAi@FNODOBFM@ 0000000140002870     ep.obj
- 0001:00001890       ??_C@_1EM@CKOJHMCM@?$AA?1?$AA?$HO?$AAs?$AAg?$AAt?$AAa?$AAt?$AAh?$AAa?$AAm?$AA?1?$AAp?$AAu?$AAt?$AAt@FNODOBFM@ 0000000140002890     ep.obj
- 0001:000018e0       ??_C@_1BM@ENECIFHC@?$AA?2?$AAe?$AAx?$AAp?$AAl?$AAo?$AAr?$AAe?$AAr?$AA?4?$AAe?$AAx?$AAe@FNODOBFM@ 00000001400028e0     Exec.obj
- 0001:00001900       ??_C@_1CK@JEHFHMMG@?$AA?2?$AAs?$AAy?$AAs?$AAt?$AAe?$AAm?$AAr?$AAo?$AAo?$AAt?$AA?2?$AAs?$AAy?$AAs@FNODOBFM@ 0000000140002900     NoCfg.obj
- 0001:00001930       ??_C@_1CK@GMBENNHD@?$AA?2?$AAs?$AAy?$AAs?$AAt?$AAe?$AAm?$AAr?$AAo?$AAo?$AAt?$AA?2?$AAs?$AAy?$AAs@FNODOBFM@ 0000000140002930     NoCfg.obj
- 0001:00001960       ??_C@_1M@HNNPBALB@?$AA?$CK?$AA?4?$AAd?$AAl?$AAl@FNODOBFM@ 0000000140002960     NoCfg.obj
- 0001:0000196c       ?sc_end@@YAPEAXXZ          000000014000296c f   prepare.obj
- 0001:00001974       ?SaveToFile@@YAJPEB_WPEBXK@Z 0000000140002974 f   prepare.obj
- 0001:00001ad0       ?PrepareCode@@YAJPEB_WPEA_K_K@Z 0000000140002ad0 f   prepare.obj
- 0001:00001bcc       ?ep2@@YAXPEAU_PEB@@@Z      0000000140002bcc f   prepare.obj
- 0001:00001e40       ??_C@_0CI@LIOAJGPI@RtlDosPathNameToNtPathName_U_Wi@FNODOBFM@ 0000000140002e40     prepare.obj
- 0001:00001e70       ??_C@_0N@KPMLACHP@NtCreateFile@FNODOBFM@ 0000000140002e70     prepare.obj
- 0001:00001e80       ??_C@_0M@NBHOGDOK@NtWriteFile@FNODOBFM@ 0000000140002e80     prepare.obj
- 0001:00001e90       ??_C@_09ECOADGFO@sprintf_s@FNODOBFM@ 0000000140002e90     prepare.obj
- 0001:00001ea0       ??_C@_0BA@MBBLBAHO@DQ?50?$CF016I64xh?$AN?6@FNODOBFM@ 0000000140002ea0     prepare.obj
- 0001:00001eb0       ??_C@_06JBAPAMO@wcschr@FNODOBFM@ 0000000140002eb0     prepare.obj
- 0002:00000038       __volatile_metadata        0000000140003038     <linker-defined>
+ 0001:000007ec       GetSystemWow64DirectoryW   00000001400017ec f   x64.obj
+ 0001:00000821       GetSystemWindowsDirectoryW 0000000140001821 f   x64.obj
+ 0001:0000085b       TerminateProcess           000000014000185b f   x64.obj
+ 0001:00000889       CreateProcessW             0000000140001889 f   x64.obj
+ 0001:000008b7       WinHttpCloseHandle         00000001400018b7 f   x64.obj
+ 0001:000008e3       WinHttpOpen                00000001400018e3 f   x64.obj
+ 0001:0000090c       WinHttpConnect             000000014000190c f   x64.obj
+ 0001:00000937       WinHttpOpenRequest         0000000140001937 f   x64.obj
+ 0001:00000963       WinHttpSendRequest         0000000140001963 f   x64.obj
+ 0001:00000993       WinHttpQueryHeaders        0000000140001993 f   x64.obj
+ 0001:000009c4       WinHttpReceiveResponse     00000001400019c4 f   x64.obj
+ 0001:000009f7       WinHttpReadData            00000001400019f7 f   x64.obj
+ 0001:00000a20       ?Download@@YAHPEB_W0PEAPEAXPEAK@Z 0000000140001a20 f   ep.obj
+ 0001:00000c2c       ?DownloadAndExec@@YAXPEB_W0@Z 0000000140001c2c f   ep.obj
+ 0001:00000c9c       ?ep@@YAXPEAU_PEB@@@Z       0000000140001c9c f   ep.obj
+ 0001:00000cc0       ?ProtectImage@@YAJPEAX0PEAU_IMAGE_NT_HEADERS64@@@Z 0000000140001cc0 f   Exec.obj
+ 0001:00000db4       ?GetWowContext@@YAJPEAXPEAU_CONTEXT@@@Z 0000000140001db4 f   Exec.obj
+ 0001:00000dd8       ?SetWowContext@@YAJPEAXPEAU_CONTEXT@@@Z 0000000140001dd8 f   Exec.obj
+ 0001:00000dec       ?Exec@@YAHPEAXPEAU_IMAGE_NT_HEADERS64@@PEB_W@Z 0000000140001dec f   Exec.obj
+ 0001:000012e4       ?get_hmod@@YAPEAXPEB_W@Z   00000001400022e4 f   GetFuncAddr.obj
+ 0001:00001340       ?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z 0000000140002340 f   GetFuncAddr.obj
+ 0001:00001490       ?FindNoCfgDll@@YAJKKKPEAPEAX@Z 0000000140002490 f   NoCfg.obj
+ 0001:000017f0       ??_C@_1EM@FHFNBODF@?$AA?1?$AA?$HO?$AAs?$AAg?$AAt?$AAa?$AAt?$AAh?$AAa?$AAm?$AA?1?$AAp?$AAu?$AAt?$AAt@FNODOBFM@ 00000001400027f0     ep.obj
+ 0001:00001840       ??_C@_1BK@DEAAAFKK@?$AAt?$AAh?$AAe?$AA?4?$AAe?$AAa?$AAr?$AAt?$AAh?$AA?4?$AAl?$AAi@FNODOBFM@ 0000000140002840     ep.obj
+ 0001:00001860       ??_C@_1EM@CKOJHMCM@?$AA?1?$AA?$HO?$AAs?$AAg?$AAt?$AAa?$AAt?$AAh?$AAa?$AAm?$AA?1?$AAp?$AAu?$AAt?$AAt@FNODOBFM@ 0000000140002860     ep.obj
+ 0001:000018b0       ??_C@_1BM@ENECIFHC@?$AA?2?$AAe?$AAx?$AAp?$AAl?$AAo?$AAr?$AAe?$AAr?$AA?4?$AAe?$AAx?$AAe@FNODOBFM@ 00000001400028b0     Exec.obj
+ 0001:000018d0       ??_C@_1CK@JEHFHMMG@?$AA?2?$AAs?$AAy?$AAs?$AAt?$AAe?$AAm?$AAr?$AAo?$AAo?$AAt?$AA?2?$AAs?$AAy?$AAs@FNODOBFM@ 00000001400028d0     NoCfg.obj
+ 0001:00001900       ??_C@_1CK@GMBENNHD@?$AA?2?$AAs?$AAy?$AAs?$AAt?$AAe?$AAm?$AAr?$AAo?$AAo?$AAt?$AA?2?$AAs?$AAy?$AAs@FNODOBFM@ 0000000140002900     NoCfg.obj
+ 0001:00001930       ??_C@_1M@HNNPBALB@?$AA?$CK?$AA?4?$AAd?$AAl?$AAl@FNODOBFM@ 0000000140002930     NoCfg.obj
+ 0001:0000193c       ?sc_end@@YAPEAXXZ          000000014000293c f   prepare.obj
+ 0001:00001944       ?SaveToFile@@YAJPEB_WPEBXK@Z 0000000140002944 f   prepare.obj
+ 0001:00001ab8       ?PrepareCode@@YAJPEB_WPEA_K_K@Z 0000000140002ab8 f   prepare.obj
+ 0001:00001be4       ?ep2@@YAXPEAU_PEB@@@Z      0000000140002be4 f   prepare.obj
+ 0001:00001e90       ??_C@_0CI@LIOAJGPI@RtlDosPathNameToNtPathName_U_Wi@FNODOBFM@ 0000000140002e90     prepare.obj
+ 0001:00001ec0       ??_C@_0N@KPMLACHP@NtCreateFile@FNODOBFM@ 0000000140002ec0     prepare.obj
+ 0001:00001ed0       ??_C@_0BF@GENHDPCD@RtlFreeUnicodeString@FNODOBFM@ 0000000140002ed0     prepare.obj
+ 0001:00001ef0       ??_C@_0M@NBHOGDOK@NtWriteFile@FNODOBFM@ 0000000140002ef0     prepare.obj
+ 0001:00001f00       ??_C@_07EGJLEIEB@NtClose@FNODOBFM@ 0000000140002f00     prepare.obj
+ 0001:00001f10       ??_C@_0BA@HKDEHBAO@RtlAllocateHeap@FNODOBFM@ 0000000140002f10     prepare.obj
+ 0001:00001f20       ??_C@_09ECOADGFO@sprintf_s@FNODOBFM@ 0000000140002f20     prepare.obj
+ 0001:00001f30       ??_C@_0BA@MBBLBAHO@DQ?50?$CF016I64xh?$AN?6@FNODOBFM@ 0000000140002f30     prepare.obj
+ 0001:00001f40       ??_C@_0M@BBFBOFBP@RtlFreeHeap@FNODOBFM@ 0000000140002f40     prepare.obj
+ 0001:00001f50       ??_C@_06JBAPAMO@wcschr@FNODOBFM@ 0000000140002f50     prepare.obj
+ 0001:00001f60       ??_C@_0BB@KNNFGBPC@RtlImageNtHeader@FNODOBFM@ 0000000140002f60     prepare.obj
+ 0001:00001f80       ??_C@_07BLMAKGOG@?4text?$AA?$AA@FNODOBFM@ 0000000140002f80     prepare.obj
+ 0001:00001f90       ??_C@_0BD@JDDPIELM@RtlExitUserProcess@FNODOBFM@ 0000000140002f90     prepare.obj
  0003:00000000       __@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUcGEUivovzhvUhxcGEUhgwzucOlyq@4B2008FD98C1DD4 0000000140004000     stdafx.obj
 
- entry point at        0001:00001bcc
+ entry point at        0001:00001be4
 
  Static symbols
 
@@ -142,18 +145,15 @@
  0001:00000058       ntdll                      0000000140001058 f   x64.obj
  0001:0000006a       kernel32                   000000014000106a f   x64.obj
  0001:00000092       WinHttp                    0000000140001092 f   x64.obj
- 0001:00001e1c       ??2PE@?BA@??ep2@@YAXPEAU_PEB@@@Z@SAPEAX_KK@Z 0000000140002e1c f   prepare.obj
- 0002:000000d0       $unwind$?Download@@YAHPEB_W0PEAPEAXPEAK@Z 00000001400030d0     ep.obj
- 0002:000000f0       $unwind$?DownloadAndExec@@YAXPEB_W0@Z 00000001400030f0     ep.obj
- 0002:000000f8       $unwind$?ep@@YAXPEAU_PEB@@@Z 00000001400030f8     ep.obj
- 0002:00000100       $unwind$?ProtectImage@@YAJPEAX0PEAU_IMAGE_NT_HEADERS64@@@Z 0000000140003100     Exec.obj
- 0002:00000110       $unwind$?GetWowContext@@YAJPEAXPEAU_CONTEXT@@@Z 0000000140003110     Exec.obj
- 0002:00000118       $unwind$?Exec@@YAHPEAXPEAU_IMAGE_NT_HEADERS64@@PEB_W@Z 0000000140003118     Exec.obj
- 0002:00000130       $unwind$?get_hmod@@YAPEAXPEB_W@Z 0000000140003130     GetFuncAddr.obj
- 0002:00000138       $unwind$?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z 0000000140003138     GetFuncAddr.obj
- 0002:00000154       $unwind$?FindNoCfgDll@@YAJKKKPEAPEAX@Z 0000000140003154     NoCfg.obj
- 0002:00000170       $unwind$?SaveToFile@@YAJPEB_WPEBXK@Z 0000000140003170     prepare.obj
- 0002:00000188       $unwind$?PrepareCode@@YAJPEB_WPEA_K_K@Z 0000000140003188     prepare.obj
- 0002:00000188       $unwind$?ep2@@YAXPEAU_PEB@@@Z 0000000140003188     prepare.obj
- 0002:000001a4       $unwind$??2PE@?BA@??ep2@@YAXPEAU_PEB@@@Z@SAPEAX_KK@Z 00000001400031a4     prepare.obj
- 0002:000001a4       $unwind$??3@YAXPEAX_K@Z    00000001400031a4     stdafx.obj
+ 0002:000000a0       $unwind$?Download@@YAHPEB_W0PEAPEAXPEAK@Z 00000001400030a0     ep.obj
+ 0002:000000c0       $unwind$?DownloadAndExec@@YAXPEB_W0@Z 00000001400030c0     ep.obj
+ 0002:000000c8       $unwind$?ep@@YAXPEAU_PEB@@@Z 00000001400030c8     ep.obj
+ 0002:000000d0       $unwind$?ProtectImage@@YAJPEAX0PEAU_IMAGE_NT_HEADERS64@@@Z 00000001400030d0     Exec.obj
+ 0002:000000e0       $unwind$?GetWowContext@@YAJPEAXPEAU_CONTEXT@@@Z 00000001400030e0     Exec.obj
+ 0002:000000e8       $unwind$?Exec@@YAHPEAXPEAU_IMAGE_NT_HEADERS64@@PEB_W@Z 00000001400030e8     Exec.obj
+ 0002:00000100       $unwind$?get_hmod@@YAPEAXPEB_W@Z 0000000140003100     GetFuncAddr.obj
+ 0002:00000108       $unwind$?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z 0000000140003108     GetFuncAddr.obj
+ 0002:00000124       $unwind$?FindNoCfgDll@@YAJKKKPEAPEAX@Z 0000000140003124     NoCfg.obj
+ 0002:00000140       $unwind$?SaveToFile@@YAJPEB_WPEBXK@Z 0000000140003140     prepare.obj
+ 0002:00000158       $unwind$?PrepareCode@@YAJPEB_WPEA_K_K@Z 0000000140003158     prepare.obj
+ 0002:00000174       $unwind$?ep2@@YAXPEAU_PEB@@@Z 0000000140003174     prepare.obj

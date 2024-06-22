@@ -34,6 +34,9 @@
   <PropertyGroup>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <PostBuildEventUseInBuild>true</PostBuildEventUseInBuild>
+  </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
@@ -55,7 +58,8 @@
       <GenerateMapFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateMapFile>
     </Link>
     <PostBuildEvent>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(TargetPath)" *sc.bin*sc.asm*sc-x64.exe</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">cd "$(SolutionDir)
+"$(TargetPath)" *sc-x64.bin*sc-x64.asm*sc-x64.exe</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
