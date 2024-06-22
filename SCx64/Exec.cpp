@@ -184,7 +184,10 @@ BOOL Exec(PVOID BaseOfImage, PIMAGE_NT_HEADERS pinth, PCWSTR lpCmdLine)
 			&BaseAddress, 0, 0, 0, &ViewSize, ViewUnmap, 0, PAGE_NOACCESS))
 		{
 			ULONG op;
-			if (VirtualProtect(BaseAddress, SizeOfImage, PAGE_READWRITE, &op))
+			PVOID pv = BaseAddress;
+			SIZE_T RegionSize = SizeOfImage;
+
+			if (0 <= ZwProtectVirtualMemory(NtCurrentProcess(), &pv, &RegionSize, PAGE_READWRITE, &op))
 			{
 				RtlZeroMemory(BaseAddress, SizeOfImage);
 
@@ -226,12 +229,10 @@ BOOL Exec(PVOID BaseOfImage, PIMAGE_NT_HEADERS pinth, PCWSTR lpCmdLine)
 							ctx.Rcx = AddressOfEntryPoint;
 						}
 
-						fOk = VirtualProtectEx(pi.hProcess, RemoteBase, SizeOfImage, PAGE_READWRITE, &op) &&
+						fOk = 0 <= ZwProtectVirtualMemory(pi.hProcess, &(pv = RemoteBase), &(RegionSize = SizeOfImage), PAGE_READWRITE, &op) &&
 							0 <= ZwWriteVirtualMemory(pi.hProcess, RemoteBase, BaseAddress, SizeOfImage, 0) &&
 							0 <= ProtectImage(pi.hProcess, RemoteBase, pinth) &&
-							0 <= ZwWriteVirtualMemory(pi.hProcess, 
-							&reinterpret_cast<PEB*>(pbi.PebBaseAddress)->ImageBaseAddress,
-							&RemoteBase, sizeof(RemoteBase), 0) &&
+							0 <= ZwWriteVirtualMemory(pi.hProcess, &reinterpret_cast<PEB*>(pbi.PebBaseAddress)->ImageBaseAddress, &RemoteBase, sizeof(RemoteBase), 0) &&
 							0 <= (wow ? ZwWriteVirtualMemory(pi.hProcess, &wow->ImageBaseAddress, &RemoteBase, sizeof(ULONG), 0) : 0) &&
 							0 <= SetCtx(pi.hThread, &ctx) &&
 							0 <= ZwResumeThread(pi.hThread, 0);

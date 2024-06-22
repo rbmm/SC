@@ -64,8 +64,6 @@ createFunc kernel32, ExitProcess
 createFunc kernel32, GetProcessHeap
 createFunc kernel32, GetSystemWow64DirectoryW
 createFunc kernel32, GetSystemWindowsDirectoryW
-createFunc kernel32, VirtualProtect
-createFunc kernel32, VirtualProtectEx
 createFunc kernel32, TerminateProcess
 createFunc kernel32, CreateProcessW
 
