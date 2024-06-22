@@ -134,7 +134,6 @@ BOOL Exec(PVOID BaseOfImage, PIMAGE_NT_HEADERS pinth, PCWSTR lpCmdLine)
 {
 	ULONG SizeOfImage = 0;
 	ULONG SizeOfHeaders = 0;
-	PVOID pvImageBase = 0;
 	BOOL b32;
 	union {
 		CONTEXT ctx {};
@@ -150,7 +149,6 @@ BOOL Exec(PVOID BaseOfImage, PIMAGE_NT_HEADERS pinth, PCWSTR lpCmdLine)
 	case IMAGE_NT_OPTIONAL_HDR32_MAGIC:
 		SizeOfImage = reinterpret_cast<PIMAGE_NT_HEADERS32>(pinth)->OptionalHeader.SizeOfImage;
 		SizeOfHeaders = reinterpret_cast<PIMAGE_NT_HEADERS32>(pinth)->OptionalHeader.SizeOfHeaders;
-		pvImageBase = &reinterpret_cast<PIMAGE_NT_HEADERS32>(pinth)->OptionalHeader.ImageBase;
 		GetSystemDirectory = GetSystemWow64DirectoryW;
 		wctx.ContextFlags = (CONTEXT_INTEGER & ~CONTEXT_AMD64)|CONTEXT_i386;
 		GetCtx = GetWowContext;
@@ -161,7 +159,6 @@ BOOL Exec(PVOID BaseOfImage, PIMAGE_NT_HEADERS pinth, PCWSTR lpCmdLine)
 	case IMAGE_NT_OPTIONAL_HDR64_MAGIC:
 		SizeOfImage = reinterpret_cast<PIMAGE_NT_HEADERS64>(pinth)->OptionalHeader.SizeOfImage;
 		SizeOfHeaders = reinterpret_cast<PIMAGE_NT_HEADERS64>(pinth)->OptionalHeader.SizeOfHeaders;
-		pvImageBase = &reinterpret_cast<PIMAGE_NT_HEADERS64>(pinth)->OptionalHeader.ImageBase;
 		GetSystemDirectory = GetSystemWindowsDirectoryW;
 		ctx.ContextFlags = CONTEXT_INTEGER;
 		GetCtx = ZwGetContextThread;

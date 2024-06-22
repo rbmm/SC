@@ -1,11 +1,12 @@
 .code
 
-; void __cdecl ep(struct _PEB *)
+; void __stdcall ep(struct _PEB *)
 extern ?ep@@YAXPEAU_PEB@@@Z : PROC
 
-epASM proc
+; void __cdecl epASM(struct _PEB *)
+?epASM@@YAXPEAU_PEB@@@Z proc
 	jmp ?ep@@YAXPEAU_PEB@@@Z
-epASM endp
+?epASM@@YAXPEAU_PEB@@@Z endp
 
 include <nobase64.inc>
 
@@ -61,7 +62,6 @@ createFunc ntdll, RtlImageNtHeader
 createFunc ntdll, RtlImageDirectoryEntryToData
 
 createFunc kernel32, ExitProcess
-createFunc kernel32, GetProcessHeap
 createFunc kernel32, GetSystemWow64DirectoryW
 createFunc kernel32, GetSystemWindowsDirectoryW
 createFunc kernel32, TerminateProcess

@@ -13,6 +13,11 @@ __inline _TEB* NtCurrentTeb2(){ return ( _TEB *)__readgsqword(FIELD_OFFSET(NT_TI
 //#define _PRINT_CPP_NAMES_
 #include "asmfunc.h"
 
+HANDLE GetProcessHeap()
+{
+	return NtCurrentTeb2()->ProcessEnvironmentBlock->ProcessHeap;
+}
+
 PVOID GetNtBase()
 {
 	return CONTAINING_RECORD(NtCurrentTeb2()->ProcessEnvironmentBlock->Ldr->InInitializationOrderModuleList.Flink,

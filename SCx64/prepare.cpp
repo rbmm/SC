@@ -1,6 +1,9 @@
 #include "stdafx.h"
 
-EXTERN_C void WINAPI epASM(_PEB* );
+//#define _PRINT_CPP_NAMES_
+#include "asmfunc.h"
+
+void WINAPI epASM(PEB*)ASM_FUNCTION;
 
 #pragma code_seg(".text$nm")
 
@@ -131,11 +134,14 @@ HRESULT PrepareCode(PCWSTR FileName, PULONG64 pb, SIZE_T n)
 	return hr;
 }
 
-void WINAPI ep2(_PEB* peb)
+#pragma comment(linker, "/SECTION:.text,ERW")
+
+void WINAPI ep2(PEB* peb)
 {
 	union {
 		PVOID pv;
 		wchar_t * (__cdecl * wcschr)(_In_z_ wchar_t *_Str, wchar_t _Ch);
+		void (NTAPI* RtlExitUserProcess)(ULONG ExitCode);
 	};
 
 	PIMAGE_DOS_HEADER pidh = (PIMAGE_DOS_HEADER)GetNtBase();
@@ -225,5 +231,6 @@ void WINAPI ep2(_PEB* peb)
 		}
 	}
 
-	ExitProcess(0);
+	pv = GetFuncAddressEx(pidh, "RtlExitUserProcess");
+	RtlExitUserProcess(0);
 }
