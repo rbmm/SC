@@ -1,26 +1,18 @@
 #include "stdafx.h"
 
-#pragma code_seg(".text$mn$cpp")
-
 #pragma intrinsic(strcmp, strlen)
-
-#if defined(_X86_)
-__inline _TEB* NtCurrentTeb2() { return ( _TEB *) (ULONG_PTR) __readfsdword (PcTeb); }
-#elif defined (_AMD64_)
-__inline _TEB* NtCurrentTeb2(){ return ( _TEB *)__readgsqword(FIELD_OFFSET(NT_TIB, Self));}
-#endif
 
 //#define _PRINT_CPP_NAMES_
 #include "asmfunc.h"
 
 HANDLE GetProcessHeap()
 {
-	return NtCurrentTeb2()->ProcessEnvironmentBlock->ProcessHeap;
+	return NtCurrentTeb()->ProcessEnvironmentBlock->ProcessHeap;
 }
 
 PVOID GetNtBase()
 {
-	return CONTAINING_RECORD(NtCurrentTeb2()->ProcessEnvironmentBlock->Ldr->InInitializationOrderModuleList.Flink,
+	return CONTAINING_RECORD(NtCurrentTeb()->ProcessEnvironmentBlock->Ldr->InInitializationOrderModuleList.Flink,
 		_LDR_DATA_TABLE_ENTRY, InInitializationOrderLinks)->DllBase;
 }
 

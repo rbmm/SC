@@ -1,7 +1,5 @@
 #include "stdafx.h"
 
-#pragma code_seg(".text$mn$cpp")
-
 NTSTATUS FindNoCfgDll(_In_ PVOID bWow, _In_ ULONG Machine, _In_ ULONG Magic, _In_ ULONG SizeOfImage, _Out_ PHANDLE SectionHandle);
 
 void CopyImage(PVOID BaseAddress, PVOID BaseOfImage, PIMAGE_NT_HEADERS pinth, ULONG SizeOfHeaders)

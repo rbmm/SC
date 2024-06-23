@@ -1,7 +1,5 @@
 #include "stdafx.h"
 
-#pragma code_seg(".text$mn$cpp")
-
 BOOL Download(_In_ PCWSTR lpszServerName, _In_ PCWSTR lpszObjectName, _Out_ void** ppv, _Out_ ULONG* pcb)
 {
 	BOOL fOk = FALSE;

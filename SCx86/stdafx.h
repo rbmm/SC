@@ -1,3 +1,5 @@
+#pragma code_seg(".text$mn$cpp")
+
 #define DECLSPEC_IMPORT
 
 #define DECLSPEC_DEPRECATED_DDK

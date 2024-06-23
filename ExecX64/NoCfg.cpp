@@ -1,7 +1,5 @@
 #include "stdafx.h"
 
-#pragma code_seg(".text$mn$cpp")
-
 BOOLEAN IsImageOk(_In_ ULONG SizeOfImage, _In_ HANDLE hSection, _In_ ULONG Machine, _In_ ULONG Magic)
 {
 	BOOLEAN fOk = FALSE;
