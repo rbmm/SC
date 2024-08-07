@@ -38,6 +38,9 @@
     <ClInclude Include="stdafx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="x64.asm">
@@ -48,5 +51,17 @@
     <None Include="nobase64.inc">
       <Filter>Source Files</Filter>
     </None>
+    <None Include=".map">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\x64\Release\SCx64.map" />
+    <None Include="imp.asm">
+      <Filter>Source Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SCx64.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

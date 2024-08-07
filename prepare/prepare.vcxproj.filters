@@ -21,47 +21,15 @@
     <ClCompile Include="ep.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GetFuncAddr.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Exec.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="NoCfg.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="prepare.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="nobase32.inc">
+    <None Include="Source.def">
       <Filter>Source Files</Filter>
     </None>
-    <None Include=".map">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="imp.asm">
-      <Filter>Source Files</Filter>
-    </None>
-    <None Include="..\Release\SCx86.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <CustomBuild Include="x86.asm">
-      <Filter>Source Files</Filter>
-    </CustomBuild>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="SCx86.rc">
-      <Filter>Resource Files</Filter>
-    </ResourceCompile>
   </ItemGroup>
 </Project>

@@ -27,7 +27,7 @@ name proc
 name endp
 endm
 
-_HMOD macro name, str
+HMOD macro name, str
   ALIGN 4
   nop
   nop
@@ -41,10 +41,6 @@ name proc private
 
   ret
 name endp
-endm
-
-HMOD macro name
-_HMOD name, name
 endm
 
 _createFunc2 macro hmod, name, string
@@ -102,7 +98,6 @@ common_imp_call proc private
   jmp eax
 common_imp_call endp
 
-_HMOD ntdll,<>
 
 
 

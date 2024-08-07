@@ -1,0 +1,6 @@
+.vs
+*.pdb
+tmp
+*.obj
+*.lib
+*.exp

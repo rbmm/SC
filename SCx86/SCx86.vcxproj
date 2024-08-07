@@ -34,7 +34,9 @@
   <PropertyGroup>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <PostBuildEventUseInBuild>true</PostBuildEventUseInBuild>
+  </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
@@ -47,12 +49,13 @@
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
       <EntryPointSymbol>ep2</EntryPointSymbol>
       <AdditionalOptions>/EMITPOGOPHASEINFO /EMITVOLATILEMETADATA:NO %(AdditionalOptions)</AdditionalOptions>
       <GenerateMapFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</GenerateMapFile>
-      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">echo /* ++++++++++
@@ -62,6 +65,7 @@ echo ----------- */</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
@@ -75,12 +79,18 @@ echo ----------- */</Command>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\Release\SCx86.map" />
+    <None Include=".map" />
+    <None Include="imp.asm" />
     <None Include="nobase32.inc" />
     <CustomBuild Include="x86.asm">
       <FileType>Document</FileType>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">ml /c /Cp %(Identity)</Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename).obj</Outputs>
     </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SCx86.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

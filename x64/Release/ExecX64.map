@@ -1,0 +1,109 @@
+ ExecX64
+
+ Timestamp is 66b3fb5e (Thu Aug  8 01:55:26 2024)
+
+ Preferred load address is 0000000140000000
+
+ Start         Length     Name                   Class
+ 0001:00000000 000004e4H .text$mn                CODE
+ 0001:000004e4 00000a7cH .text$mn$cpp            CODE
+ 0001:00000f60 0000006cH .text$mn$cpp$s          CODE
+ 0001:00000fcc 00000008H .text$nm                CODE
+ 0001:00000fd4 0000011cH .text$zz                CODE
+ 0001:000010f0 00000093H .text$zz$s              CODE
+ 0002:00000000 00000084H .xdata                  DATA
+ 0002:00000084 00000000H .edata                  DATA
+ 0003:00000000 00000000H .data                   DATA
+ 0003:00000000 00000004H .bss                    DATA
+ 0004:00000000 00000054H .pdata                  DATA
+ 0005:00000000 00000060H .rsrc$01                DATA
+ 0005:00000060 000008a0H .rsrc$02                DATA
+
+  Address         Publics by Value              Rva+Base               Lib:Object
+
+ 0000:00000000       __AbsoluteZero             0000000000000000     <absolute>
+ 0000:00000000       __arm64x_extra_rfe_table   0000000000000000     <absolute>
+ 0000:00000000       __arm64x_extra_rfe_table_size 0000000000000000     <absolute>
+ 0000:00000000       __arm64x_native_entrypoint 0000000000000000     <absolute>
+ 0000:00000000       __arm64x_redirection_metadata 0000000000000000     <absolute>
+ 0000:00000000       __arm64x_redirection_metadata_count 0000000000000000     <absolute>
+ 0000:00000000       __dynamic_value_reloc_table 0000000000000000     <absolute>
+ 0000:00000000       __enclave_config           0000000000000000     <absolute>
+ 0000:00000000       __guard_check_icall_a64n_fptr 0000000000000000     <absolute>
+ 0000:00000000       __guard_eh_cont_count      0000000000000000     <absolute>
+ 0000:00000000       __guard_eh_cont_table      0000000000000000     <absolute>
+ 0000:00000000       __guard_fids_count         0000000000000000     <absolute>
+ 0000:00000000       __guard_fids_table         0000000000000000     <absolute>
+ 0000:00000000       __guard_flags              0000000000000000     <absolute>
+ 0000:00000000       __guard_iat_count          0000000000000000     <absolute>
+ 0000:00000000       __guard_iat_table          0000000000000000     <absolute>
+ 0000:00000000       __guard_longjmp_count      0000000000000000     <absolute>
+ 0000:00000000       __guard_longjmp_table      0000000000000000     <absolute>
+ 0000:00000000       __hybrid_auxiliary_delayload_iat 0000000000000000     <absolute>
+ 0000:00000000       __hybrid_auxiliary_delayload_iat_copy 0000000000000000     <absolute>
+ 0000:00000000       __hybrid_auxiliary_iat     0000000000000000     <absolute>
+ 0000:00000000       __hybrid_auxiliary_iat_copy 0000000000000000     <absolute>
+ 0000:00000000       __hybrid_code_map          0000000000000000     <absolute>
+ 0000:00000000       __hybrid_code_map_count    0000000000000000     <absolute>
+ 0000:00000000       __volatile_metadata        0000000000000000     <absolute>
+ 0000:00000000       __x64_code_ranges_to_entry_points 0000000000000000     <absolute>
+ 0000:00000000       __x64_code_ranges_to_entry_points_count 0000000000000000     <absolute>
+ 0001:00000000       ?epASM@@YAXPEAU_PEB@@@Z    0000000140001000 f   x64.obj
+ 0001:00000078       RtlImageNtHeader           0000000140001078 f   x64.obj
+ 0001:000000a1       RtlImageDirectoryEntryToData 00000001400010a1 f   x64.obj
+ 0001:000000dd       LdrProcessRelocationBlock  00000001400010dd f   x64.obj
+ 0001:00000112       ZwProtectVirtualMemory     0000000140001112 f   x64.obj
+ 0001:00000147       ZwQueryInformationThread   0000000140001147 f   x64.obj
+ 0001:00000179       ZwSetInformationThread     0000000140001179 f   x64.obj
+ 0001:000001af       ZwGetContextThread         00000001400011af f   x64.obj
+ 0001:000001db       ZwSetContextThread         00000001400011db f   x64.obj
+ 0001:0000020b       ZwMapViewOfSection         000000014000120b f   x64.obj
+ 0001:0000023b       NtQueryInformationProcess  000000014000123b f   x64.obj
+ 0001:00000272       ZwWriteVirtualMemory       0000000140001272 f   x64.obj
+ 0001:000002a5       ZwResumeThread             00000001400012a5 f   x64.obj
+ 0001:000002cf       ZwUnmapViewOfSection       00000001400012cf f   x64.obj
+ 0001:000002fd       NtClose                    00000001400012fd f   x64.obj
+ 0001:00000320       RtlInitUnicodeString       0000000140001320 f   x64.obj
+ 0001:00000355       LdrLoadDll                 0000000140001355 f   x64.obj
+ 0001:0000037b       LdrGetProcedureAddress     000000014000137b f   x64.obj
+ 0001:000003af       NtOpenFile                 00000001400013af f   x64.obj
+ 0001:000003d3       NtQueryDirectoryFile       00000001400013d3 f   x64.obj
+ 0001:00000405       NtCreateSection            0000000140001405 f   x64.obj
+ 0001:00000430       RtlAllocateHeap            0000000140001430 f   x64.obj
+ 0001:00000460       RtlFreeHeap                0000000140001460 f   x64.obj
+ 0001:0000048c       memcpy                     000000014000148c f   x64.obj
+ 0001:000004af       memset                     00000001400014af f   x64.obj
+ 0001:000004e4       ?ProtectImage@@YAJPEAX0PEAU_IMAGE_NT_HEADERS64@@@Z 00000001400014e4 f   Exec.obj
+ 0001:000005d8       ?GetWowContext@@YAJPEAXPEAU_CONTEXT@@@Z 00000001400015d8 f   Exec.obj
+ 0001:000005fc       ?SetWowContext@@YAJPEAXPEAU_CONTEXT@@@Z 00000001400015fc f   Exec.obj
+ 0001:00000610       ?Exec@@YAHPEAX00@Z         0000000140001610 f   Exec.obj
+ 0001:00000a50       ?get_hmod@@YAPEAXPEB_W@Z   0000000140001a50 f   GetFuncAddr.obj
+ 0001:00000aac       ?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z 0000000140001aac f   GetFuncAddr.obj
+ 0001:00000bfc       ?FindNoCfgDll@@YAJKKKPEAPEAX@Z 0000000140001bfc f   NoCfg.obj
+ 0001:00000f60       ??_C@_1CK@GMBENNHD@?$AA?2?$AAs?$AAy?$AAs?$AAt?$AAe?$AAm?$AAr?$AAo?$AAo?$AAt?$AA?2?$AAs?$AAy?$AAs@FNODOBFM@ 0000000140001f60     NoCfg.obj
+ 0001:00000f90       ??_C@_1CK@JEHFHMMG@?$AA?2?$AAs?$AAy?$AAs?$AAt?$AAe?$AAm?$AAr?$AAo?$AAo?$AAt?$AA?2?$AAs?$AAy?$AAs@FNODOBFM@ 0000000140001f90     NoCfg.obj
+ 0001:00000fc0       ??_C@_1M@HNNPBALB@?$AA?$CK?$AA?4?$AAd?$AAl?$AAl@FNODOBFM@ 0000000140001fc0     NoCfg.obj
+ 0001:00000fcc       ?sc_end@@YAPEAXXZ          0000000140001fcc f   prepare.obj
+ 0001:00000fd4       ?ep2@@YAXPEAU_PEB@@@Z      0000000140001fd4 f   prepare.obj
+ 0001:000010f0       ??_C@_0BF@EKFKPNAI@RtlInitUnicodeString@FNODOBFM@ 00000001400020f0     prepare.obj
+ 0001:00001110       ??_C@_1BI@NEOFKCPM@?$AAp?$AAr?$AAe?$AAp?$AAa?$AAr?$AAe?$AA?4?$AAd?$AAl?$AAl@FNODOBFM@ 0000000140002110     prepare.obj
+ 0001:00001130       ??_C@_0L@HOFGLFDL@LdrLoadDll@FNODOBFM@ 0000000140002130     prepare.obj
+ 0001:00001140       ??_C@_0BH@GKPJJDBO@LdrGetProcedureAddress@FNODOBFM@ 0000000140002140     prepare.obj
+ 0001:00001160       ??_C@_0N@FIGJGHFN@LdrUnloadDll@FNODOBFM@ 0000000140002160     prepare.obj
+ 0001:00001170       ??_C@_0BD@JDDPIELM@RtlExitUserProcess@FNODOBFM@ 0000000140002170     prepare.obj
+ 0003:00000000       __@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUcGEUivovzhvUvcvxcGEUhgwzucOlyq@4B2008FD98C1DD4 0000000140004000     stdafx.obj
+
+ entry point at        0001:00000fd4
+
+ Static symbols
+
+ 0001:00000025       common_imp_call            0000000140001025 f   x64.obj
+ 0001:000004cf       ntdllp                     00000001400014cf f   x64.obj
+ 0002:00000000       $unwind$?ProtectImage@@YAJPEAX0PEAU_IMAGE_NT_HEADERS64@@@Z 0000000140003000     Exec.obj
+ 0002:00000010       $unwind$?GetWowContext@@YAJPEAXPEAU_CONTEXT@@@Z 0000000140003010     Exec.obj
+ 0002:00000018       $unwind$?Exec@@YAHPEAX00@Z 0000000140003018     Exec.obj
+ 0002:00000034       $unwind$?get_hmod@@YAPEAXPEB_W@Z 0000000140003034     GetFuncAddr.obj
+ 0002:0000003c       $unwind$?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z 000000014000303c     GetFuncAddr.obj
+ 0002:00000058       $unwind$?FindNoCfgDll@@YAJKKKPEAPEAX@Z 0000000140003058     NoCfg.obj
+ 0002:00000074       $unwind$?ep2@@YAXPEAU_PEB@@@Z 0000000140003074     prepare.obj
+ 0005:00000060       $R000000                   0000000140006060     ExecX64.res

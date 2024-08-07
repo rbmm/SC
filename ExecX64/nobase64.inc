@@ -24,7 +24,7 @@ name proc
 name endp
 endm
 
-_HMOD macro name, str
+HMOD macro name, str
 name proc private
 	lea r11,@@1
 	ret
@@ -33,10 +33,6 @@ name proc private
 	DQ 0
 	WSTRING str
 name endp
-endm
-
-HMOD macro name
-_HMOD name, name
 endm
 
 _createFunc2 macro hmod, name, string
@@ -92,5 +88,3 @@ common_imp_call proc private
 @@1:
   jmp rax
 common_imp_call endp
-
-_HMOD ntdll,<>

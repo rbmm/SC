@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Release|x64">
       <Configuration>Release</Configuration>
       <Platform>x64</Platform>
@@ -9,14 +13,14 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{A606FC23-d443-01B1-B8F8-88311C68C821}</ProjectGuid>
-    <RootNamespace>SCx64</RootNamespace>
+    <ProjectGuid>{48578B25-f1ce-1033-484C-76884D05DA77}</ProjectGuid>
+    <RootNamespace>prepare</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <UserRootDir>$(SolutionDir)..\MSBuild\v4.0</UserRootDir>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -34,17 +38,13 @@
   <PropertyGroup>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <PostBuildEventUseInBuild>true</PostBuildEventUseInBuild>
-  </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <Optimization>MaxSpeed</Optimization>
-      <BufferSecurityCheck Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</BufferSecurityCheck>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">/cbstring %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\pnth</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\pnth</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -52,48 +52,31 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <EntryPointSymbol>ep2</EntryPointSymbol>
+      <EntryPointSymbol>
+      </EntryPointSymbol>
       <AdditionalOptions>/EMITPOGOPHASEINFO /EMITVOLATILEMETADATA:NO %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-      </AdditionalDependencies>
-      <GenerateMapFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateMapFile>
+      <NoEntryPoint Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</NoEntryPoint>
+      <NoEntryPoint Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</NoEntryPoint>
+      <ImportLibrary Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
+      <ImportLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </ImportLibrary>
+      <ModuleDefinitionFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Source.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Source.def</ModuleDefinitionFile>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'">BufferOverflow.lib;ucrt.lib;ntdllp.lib;kernel32.lib</AdditionalDependencies>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">BufferOverflow.lib;ucrt.lib;ntdllp.lib;kernel32.lib</AdditionalDependencies>
     </Link>
-    <PostBuildEvent>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">echo /* ++++++++++
-cd "$(SolutionDir)
-"$(TargetPath)" *sc-x64.bin*sc-x64.asm*sc-x64.exe
-echo ----------- */</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ep.cpp" />
-    <ClCompile Include="Exec.cpp" />
-    <ClCompile Include="GetFuncAddr.cpp" />
-    <ClCompile Include="NoCfg.cpp" />
-    <ClCompile Include="prepare.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="x64.asm">
-      <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ml64 /c /Cp %(Identity)</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).obj</Outputs>
-    </CustomBuild>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\x64\Release\SCx64.map" />
-    <None Include=".map" />
-    <None Include="imp.asm" />
-    <None Include="nobase64.inc" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="SCx64.rc" />
+    <None Include="Source.def" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

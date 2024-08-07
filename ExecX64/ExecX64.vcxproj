@@ -34,6 +34,9 @@
   <PropertyGroup>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <PostBuildEventUseInBuild>true</PostBuildEventUseInBuild>
+  </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
@@ -47,18 +50,20 @@
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
       <EntryPointSymbol>ep2</EntryPointSymbol>
       <AdditionalOptions>/EMITPOGOPHASEINFO /EMITVOLATILEMETADATA:NO %(AdditionalOptions)</AdditionalOptions>
       <GenerateMapFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateMapFile>
-      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(TargetPath)" *ExecX64.asm</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(TargetPath)" **ExecX64.asm</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
@@ -71,12 +76,18 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\x64\Release\ExecX64.map" />
+    <None Include=".map" />
+    <None Include="imp.asm" />
     <None Include="nobase64.inc" />
     <CustomBuild Include="x64.asm">
       <FileType>Document</FileType>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ml64 /c /Cp %(Identity)</Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).obj</Outputs>
     </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ExecX64.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
