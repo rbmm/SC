@@ -40,6 +40,69 @@ void PrintUTF8_v(PCSTR format, ...)
 
 #define DbgPrint PrintUTF8_v
 
+NTSTATUS ReadFromFile(_In_ PCWSTR lpFileName,
+	_Out_ PBYTE* ppb,
+	_Out_ ULONG* pcb,
+	_In_opt_ ULONG cbBefore = 0,
+	_In_opt_ ULONG cbAfter = 0)
+{
+	UNICODE_STRING ObjectName;
+	NTSTATUS status = RtlDosPathNameToNtPathName_U_WithStatus(lpFileName, &ObjectName, 0, 0);
+
+	DbgPrint("DosPathNameToNt(\"%ws\") = %x\r\n", lpFileName, status);
+
+	if (0 <= status)
+	{
+		HANDLE hFile;
+		OBJECT_ATTRIBUTES oa = { sizeof(oa), 0, &ObjectName, OBJ_CASE_INSENSITIVE };
+		IO_STATUS_BLOCK iosb;
+		status = NtOpenFile(&hFile, FILE_GENERIC_READ, &oa, &iosb, FILE_SHARE_READ, FILE_SYNCHRONOUS_IO_NONALERT);
+
+		DbgPrint("NtOpenFile(\"%wZ\") = %x\r\n", &ObjectName, status);
+
+		RtlFreeUnicodeString(&ObjectName);
+
+		if (0 <= status)
+		{
+			FILE_STANDARD_INFORMATION fsi;
+			if (0 <= (status = NtQueryInformationFile(hFile, &iosb, &fsi, sizeof(fsi), FileStandardInformation)))
+			{
+				DbgPrint("FileSize=%I64u\r\n", fsi.EndOfFile.QuadPart);
+
+				if (fsi.EndOfFile.QuadPart < 0x1000000)
+				{
+					if (PBYTE pb = new BYTE[cbBefore + fsi.EndOfFile.LowPart + cbAfter])
+					{
+						if (0 > (status = NtReadFile(hFile, 0, 0, 0, &iosb, pb + cbBefore, fsi.EndOfFile.LowPart, 0, 0)))
+						{
+							delete[] pb;
+						}
+						else
+						{
+							*ppb = pb;
+							*pcb = (ULONG)iosb.Information;
+						}
+
+						DbgPrint("NtReadFile=%x\r\n", status);
+					}
+					else
+					{
+						status = STATUS_NO_MEMORY;
+					}
+				}
+				else
+				{
+					status = STATUS_FILE_TOO_LARGE;
+				}
+			}
+
+			NtClose(hFile);
+		}
+	}
+
+	return status;
+}
+
 NTSTATUS SaveToFile(_In_ PCWSTR lpFileName, _In_ const void* lpBuffer, _In_ ULONG nNumberOfBytesToWrite)
 {
 	UNICODE_STRING ObjectName;
@@ -72,11 +135,6 @@ NTSTATUS SaveToFile(_In_ PCWSTR lpFileName, _In_ const void* lpBuffer, _In_ ULON
 	}
 
 	return status;
-}
-
-NTSTATUS IsDataEndCorrect(PCSTR pcsz, ULONG s)
-{
-	return 0 < s && ':' == pcsz[s - 1] ? STATUS_SUCCESS : STATUS_BAD_DATA;
 }
 
 NTSTATUS ProcessName(PCSTR name, PCSTR* ppcsz, PULONG plen, PINT pn)
@@ -115,217 +173,384 @@ NTSTATUS ProcessName(PCSTR name, PCSTR* ppcsz, PULONG plen, PINT pn)
 	}
 }
 
-NTSTATUS MakeImport(PCWSTR pwzFileName, PSTR buf, ULONG s, PCSTR pcsz)
+PCSTR SkipSpace(PCSTR pcsz)
 {
-	PSTR psz = buf;
+	while (' ' == *pcsz) ++pcsz;
 
-	ULONG n = 0, m = 0, i;
-	ULONG_PTR v = 0;
+	return pcsz;
+}
+
+NTSTATUS ProcessMAP(PCWSTR pszImp, PCSTR pcsz, ULONG iSection, ULONG ofs, ULONG_PTR Va, ULONG s)
+{
+	PSTR buf = const_cast<PSTR>(pcsz), psz = buf;
+
 	ULONG64 u;
+	BOOL f = FALSE;
+	ULONG_PTR ImageBase = 0;
+__0:
 
-	PCSTR pcszEnd = pcsz + s - 1;
+	PCSTR pcszLine = pcsz;
+
+	static const char plai[] = " Preferred load address is ";
+
+	if (!f && !memcmp(pcsz, plai, _countof(plai) - 1))
+	{
+		if (ImageBase)
+		{
+			return STATUS_BAD_DATA;
+		}
+
+		u = _strtoui64(pcsz + _countof(plai) - 1, const_cast<char**>(&pcsz), 16);
+
+		if (!u || '\r' != *pcsz++ || '\n' != *pcsz++)
+		{
+			return STATUS_BAD_DATA;
+		}
+
+		ImageBase = (ULONG_PTR)u;
+		Va += ImageBase;
+
+		DbgPrint("ImageBase = %p, Va = %p\r\n", ImageBase, Va);
+
+		goto __0;
+	}
+
+	ULONG i = strtoul(pcsz, const_cast<char**>(&pcsz), 16);
+
+	if (':' != *pcsz)
+	{
+	__1:
+		if (!(pcsz = strchr(pcsz, '\r')) || '\n' != *++pcsz)
+		{
+			return STATUS_BAD_DATA;
+		}
+
+		++pcsz;
+		goto __0;
+	}
+
+	if (i != iSection)
+	{
+		goto __1;
+	}
+
+	i = strtoul(pcsz + 1, const_cast<char**>(&pcsz), 16);
+
+	if (' ' != *pcsz)
+	{
+		return STATUS_BAD_DATA;
+	}
+
+	if (i != ofs)
+	{
+		goto __1;
+	}
+
+	if (f)
+	{
+		pcsz = pcszLine;
+	}
+	else
+	{
+		i = strtoul(pcsz + 1, const_cast<char**>(&pcsz), 16);
+
+		if ('H' != *pcsz || s != i)
+		{
+			return STATUS_BAD_DATA;
+		}
+
+		f = TRUE;
+		goto __1;
+	}
+
+	//////////////////////////////////////////////////////////////////////////
 
 	NTSTATUS status;
 
-	while (pcsz < pcszEnd)
+__loop:
+
+	i = strtoul(pcsz, const_cast<char**>(&pcsz), 16);
+
+	if (':' != *pcsz || iSection != i)
 	{
-		i = strtoul(pcsz, const_cast<char**>(&pcsz), 16);
+		return STATUS_BAD_DATA;
+	}
 
-		if (*pcsz != ':')
+	i = strtoul(pcsz + 1, const_cast<char**>(&pcsz), 16);
+
+	if (' ' != *pcsz || ofs != i)
+	{
+		return STATUS_BAD_DATA;
+	}
+
+	ofs += sizeof(PVOID);
+	BOOL __imp_ = FALSE;
+
+__space:
+	switch (*pcsz++)
+	{
+	case ' ':
+		goto __space;
+
+	default:
+		return STATUS_BAD_DATA;
+
+	case '_':
+		if (memcmp(pcsz, "_imp_", 5))
 		{
 			return STATUS_BAD_DATA;
 		}
 
-		if (!n)
+		pcsz += 5;
+		__imp_ = TRUE;
+
+	case '\\':
+		INT k = -1;
+		PCSTR name;
+		ULONG cch, cchDLL, cchLib;
+		char a;
+		PCSTR fmt;
+
+		if (0 > (status = ProcessName(name = pcsz, &pcsz, &cch,
+#ifndef _WIN64
+			__imp_ ? &k :
+#endif // !_WIN64
+			0)))
 		{
-			n = i;
+			return status;
 		}
-		else if (n != i)
+
+		if (0 > k)
+		{
+			a =
+#ifndef _WIN64
+				'C';
+#else
+				' ';
+#endif // !_WIN64
+			fmt = "createFunc%c %.*s, %.*s\r\n";
+		}
+		else
+		{
+			a = ' ';
+			fmt = "createFunc%c %.*s, %.*s, %u\r\n";
+		}
+
+		u = _strtoui64(pcsz, const_cast<char**>(&pcsz), 16);
+
+		if (Va != u)
 		{
 			return STATUS_BAD_DATA;
 		}
 
-		i = strtoul(pcsz + 1, const_cast<char**>(&pcsz), 16);
+		Va += sizeof(PVOID);
 
-		if (*pcsz != ' ' || m != i)
+		PCSTR pszLib = 0;
+
+	__00:
+		switch (*pcsz)
 		{
+		case 0:
 			return STATUS_BAD_DATA;
+		case ':':
+			goto __01;
+		default:
+			if (!pszLib)
+			{
+				pszLib = pcsz;
+			}
+		case ' ':
+			pcsz++;
+			goto __00;
 		}
+	__01:
 
-		m += sizeof(PVOID);
-		BOOL __imp_ = FALSE;
+		cchLib = RtlPointerToOffset(pszLib, pcsz);
 
-	__space:
+		PCSTR pszDLL = ++pcsz;
+
+	__02:
 		switch (*pcsz++)
 		{
-		case ' ':
-			goto __space;
-
-		default:
+		case 0:
+		case ':':
 			return STATUS_BAD_DATA;
+		default:
+			goto __02;
+		case '\r':
+			cchDLL = RtlPointerToOffset(pszDLL, pcsz - 1);
+			break;
+		}
 
-		case '_':
-			if (memcmp(pcsz, "_imp_", 5))
-			{
-				return STATUS_BAD_DATA;
-			}
+		if ('\n' != *pcsz++)
+		{
+			return STATUS_BAD_DATA;
+		}
 
-			pcsz += 5;
-			__imp_ = TRUE;
+		ULONG cb = RtlPointerToOffset(psz, name);
 
-		case '\\':
-
-			INT k = -1;
-			PCSTR name, pszDLL;
-			ULONG cch, cchDLL, cchLib;
-			char a;
-			PCSTR fmt;
-
-			if (0 > (status = ProcessName(name = pcsz, &pcsz, &cch, 
-#ifndef _WIN64
-				__imp_ ? &k : 
-#endif // !_WIN64
-				0)))
-			{
-				return status;
-			}
-
-			if (0 > k)
-			{
-				a =
-#ifndef _WIN64
-					'C';
-#else
-					' ';
-#endif // !_WIN64
-				fmt = "createFunc%c %.*s, %.*s\r\n";
-			}
-			else
-			{
-				a = ' ';
-				fmt = "createFunc%c %.*s, %.*s, %u\r\n";
-			}
-
-			u = _strtoui64(pcsz, const_cast<char**>(&pcsz), 16);
-
-			if (!v)
-			{
-				v = (ULONG_PTR)u;
-			}
-			else if (v != u)
-			{
-				return STATUS_BAD_DATA;
-			}
-
-			v += sizeof(PVOID);
-
-			PCSTR pszLib = 0;
-
-		__0:
-			switch (*pcsz)
-			{
-			case ':':
-				goto __1;
-			default:
-				if (!pszLib)
-				{
-					pszLib = pcsz;
-				}
-			case ' ':
-				pcsz++;
-				goto __0;
-			}
-		__1:
-
-			if (pcsz >= pcszEnd)
-			{
-				return STATUS_BAD_DATA;
-			}
-
-			cchLib = RtlPointerToOffset(pszLib, pcsz);
-
-			pszDLL = ++pcsz;
-
-		__2:
-			switch (*pcsz++)
-			{
-			case ':':
-				return STATUS_BAD_DATA;
-			default:
-				goto __2;
-			case '\r':
-				cchDLL = RtlPointerToOffset(pszDLL, pcsz - 1);
-				break;
-			}
-
-			if ('\n' != *pcsz++)
-			{
-				return STATUS_BAD_DATA;
-			}
-
-			if (__imp_)
-			{
-				__imp_ = FALSE;
+		if (__imp_)
+		{
+			__imp_ = FALSE;
 
 #ifndef _WIN64
-				// assume only __cdecl/__stdcall import. no __fastcall, begin with @
-				if ('_' != *name++) return STATUS_BAD_DATA;
-				--cch;
+			// assume only __cdecl/__stdcall import. no __fastcall, begin with @
+			if ('_' != *name++) return STATUS_BAD_DATA;
+			--cch;
 #endif // !_WIN64
 
-				k = sprintf_s(psz, s, fmt, a, cchLib, pszLib, cch, name, k);
-			}
-			else
+			k = sprintf_s(psz, cb, fmt, a, cchLib, pszLib, cch, name, k);
+		}
+		else
+		{
+			if (9 == cchDLL && !_strnicmp(pszDLL, "ntdll.dll", 9))
 			{
-				if (9 == cchDLL && !_strnicmp(pszDLL, "ntdll.dll", 9))
-				{
-					cchDLL = 0;
-				}
-
-				k = sprintf_s(psz, s, "\r\nHMOD %.*s, <%.*s>\r\n\r\n", cchLib, pszLib, cchDLL, pszDLL);
+				cchDLL = 0;
 			}
 
-			if (0 > k)
+			k = sprintf_s(psz, cb, "\r\nHMOD %.*s, <%.*s>\r\n\r\n", cchLib, pszLib, cchDLL, pszDLL);
+		}
+
+		if (0 > k)
+		{
+			return STATUS_INTERNAL_ERROR;
+		}
+
+		psz += k;
+
+		if (s -= sizeof(PVOID))
+		{
+			goto __loop;
+		}
+
+		status = SaveToFile(pszImp, buf, RtlPointerToOffset(buf, psz));
+		return 0 > status ? status : STATUS_MORE_PROCESSING_REQUIRED;
+	}
+}
+
+NTSTATUS ProcessMAP(PCWSTR pszImp, PCWSTR pszMap, ULONG iSection, ULONG ofs, ULONG_PTR Va, ULONG s)
+{
+	PBYTE pb;
+	ULONG cb;
+
+	DbgPrint("ProcessMAP(%04x:%08x %p [%x])...\r\n", iSection, ofs, Va, s);
+
+	NTSTATUS status = ReadFromFile(pszMap, &pb, &cb, 0, 1);
+
+	if (0 <= status)
+	{
+		pb[cb] = 0;
+		status = ProcessMAP(pszImp, (PCSTR)pb, iSection, ofs, Va, s);
+		delete[] pb;
+	}
+
+	return status;
+}
+
+NTSTATUS ProcessIAT(PCWSTR pszImp, PCWSTR pszMap, ULONG_PTR pvShellEnd)
+{
+	if (HMODULE hmod = GetModuleHandleW(0))
+	{
+		ULONG s;
+
+		union {
+			PVOID pv;
+			PBYTE pb;
+			PIMAGE_BASE_RELOCATION pibr;
+		};
+
+		if (pv = RtlImageDirectoryEntryToData(hmod, TRUE, IMAGE_DIRECTORY_ENTRY_IAT, &s))
+		{
+			DbgPrint("IAT: %p [%x]\r\n", pv, s);
+
+			if (!s || (s & (sizeof(PVOID) - 1)))
 			{
 				return STATUS_INTERNAL_ERROR;
 			}
 
-			psz += k, s -= k;
+			if (PIMAGE_NT_HEADERS pinth = RtlImageNtHeader(hmod))
+			{
+				if (ULONG NumberOfSections = pinth->FileHeader.NumberOfSections)
+				{
+					ULONG_PTR Rva = (ULONG_PTR)pv - (ULONG_PTR)hmod;
 
-			break;
+					ULONG iSection = 0;
+					PIMAGE_SECTION_HEADER pish = IMAGE_FIRST_SECTION(pinth);
+					do
+					{
+						++iSection;
+
+						ULONG_PTR Ofs = Rva - pish->VirtualAddress;
+
+						if (Ofs < pish->Misc.VirtualSize)
+						{
+							if (Ofs + s <= pish->Misc.VirtualSize)
+							{
+								return ProcessMAP(pszImp, pszMap, iSection, (ULONG)Ofs, Rva, s);
+							}
+
+							break;
+						}
+					} while (pish++, --NumberOfSections);
+				}
+			}
+
+			return STATUS_INTERNAL_ERROR;
 		}
+
+		if (pv = RtlImageDirectoryEntryToData(hmod, TRUE, IMAGE_DIRECTORY_ENTRY_BASERELOC, &s))
+		{
+			pvShellEnd -= (ULONG_PTR)hmod;
+
+			do
+			{
+				ULONG SizeOfBlock = pibr->SizeOfBlock;
+
+				if (SizeOfBlock < sizeof(IMAGE_BASE_RELOCATION))
+				{
+					return STATUS_INVALID_IMAGE_FORMAT;
+				}
+
+				ULONG VirtualAddress = pibr->VirtualAddress;
+
+				struct TYPE_OFFSET
+				{
+					WORD ofs : 12;
+					WORD type : 4;
+				}*pu = (TYPE_OFFSET*)(pibr + 1);
+
+				pb += SizeOfBlock, s -= SizeOfBlock, SizeOfBlock -= sizeof(IMAGE_BASE_RELOCATION);
+
+				if (SizeOfBlock & (sizeof(WORD) - 1))
+				{
+					return STATUS_INVALID_IMAGE_FORMAT;
+				}
+
+				SizeOfBlock >>= 1;
+				do
+				{
+					if (pu->type)
+					{
+						//DbgPrint("\t## %x %08x\r\n", pu->type, VirtualAddress + pu->ofs);
+
+						if (VirtualAddress + pu->ofs < pvShellEnd)
+						{
+							DbgPrint("######## !! Exist Relocs (%08x) !! ########\r\n", VirtualAddress + pu->ofs);
+
+							return STATUS_ILLEGAL_DLL_RELOCATION;
+						}
+					}
+				} while (pu++, --SizeOfBlock);
+
+			} while (s);
+		}
+
+		DbgPrint("!! NO IMPORT, NO RELOCS. OK !!\r\n");
+
+		return STATUS_SUCCESS;
 	}
 
-	return SaveToFile(pwzFileName, buf, RtlPointerToOffset(buf, psz));
-}
-
-NTSTATUS MakeImport(PCWSTR pwzFileName, PVOID ImageBase = GetModuleHandle(0))
-{
-	PCWSTR arr[] = { RT_RCDATA, MAKEINTRESOURCEW(1), 0 };
-	PIMAGE_RESOURCE_DATA_ENTRY pirde;
-	PCSTR pcsz = 0;
-	ULONG s;
-
-	NTSTATUS status;
-
-	if (0 > (status = LdrFindResource_U(ImageBase, arr, _countof(arr), &pirde)) ||
-		0 > (status = LdrAccessResource(ImageBase, pirde, (void**)&pcsz, &s)) ||
-		0 > (status = IsDataEndCorrect(pcsz, s)))
-	{
-		return status;
-	}
-
-	if (PSTR buf = new char[s])
-	{
-		status = MakeImport(pwzFileName, buf, s, pcsz);
-
-		delete[] buf;
-
-		DbgPrint("MakeImport(%ws)=%x\r\n", pwzFileName, status);
-		return status;
-	}
-
-	return STATUS_NO_MEMORY;
+	return STATUS_INTERNAL_ERROR;
 }
 
 NTSTATUS CreateAsmSC(PCWSTR pwzFileName, PULONG64 pb, SIZE_T n)
@@ -440,44 +665,66 @@ NTSTATUS CreateExeSC(PCWSTR pwzFileName, PVOID Base, ULONG cb)
 
 NTSTATUS NTAPI PrepareSC(PVOID Base, ULONG cb)
 {
-	PCWSTR lpCommandLine = GetCommandLineW();
+	DbgPrint("PrepareSC(%p, %x, <%ws>)\r\n", Base, cb, GetCommandLineW());
 
-	DbgPrint("PrepareSC(%p, %x, <%ws>)\r\n", Base, cb, lpCommandLine);
+	//*map*imp[*bin*asm*exe]
 
-	PWSTR psz = wcschr(lpCommandLine, '*'), psz2, psz3 = 0;
-
-	if (!psz)
+	if (PWSTR psz = wcschr(GetCommandLineW(), '*'))
 	{
-		if (psz = wcschr(lpCommandLine, '?'))
-		{
-			return MakeImport(psz + 1);
-		}
+		PWSTR pczMap = ++psz;
 
-		return DBG_CONTINUE;
+		if (psz = wcschr(psz, '*'))
+		{
+			*psz++ = 0;
+			PWSTR pczImp = psz, pczBin = 0, pczAsm = 0, pczExe = 0;
+
+			if (psz = wcschr(psz, '*'))
+			{
+				*psz++ = 0;
+				pczBin = psz;
+
+				if (psz = wcschr(psz, '*'))
+				{
+					*psz++ = 0;
+					pczAsm = psz;
+
+					if (psz = wcschr(psz, '*'))
+					{
+						*psz++ = 0;
+						pczExe = psz;
+					}
+				}
+			}
+
+			NTSTATUS status = ProcessIAT(pczImp, pczMap, (ULONG_PTR)Base + cb);
+
+			if (0 <= status)
+			{
+				if (pczBin && *pczBin)
+				{
+					status = SaveToFile(pczBin, Base, cb);
+				}
+
+				if (0 <= status)
+				{
+					if (pczAsm && *pczAsm)
+					{
+						status = CreateAsmSC(pczAsm, (PULONG64)Base, (cb + 7) >> 3);
+					}
+
+					if (0 <= status)
+					{
+						if (pczExe && *pczExe)
+						{
+							status = CreateExeSC(pczExe, Base, cb);
+						}
+					}
+				}
+			}
+
+			return status;
+		}
 	}
 
-	// *bin*asm*exe
-	if (psz2 = wcschr(++psz, '*'))
-	{
-		*psz2++ = 0;
-
-		if (psz3 = wcschr(psz2, '*'))
-		{
-			*psz3++ = 0;
-		}
-	}
-
-	NTSTATUS status = *psz ? SaveToFile(psz, Base, cb) : STATUS_SUCCESS;
-
-	if (0 <= status)
-	{
-		if (psz2) status = *psz2 ? CreateAsmSC(psz2, (PULONG64)Base, (cb + 7) >> 3) : STATUS_SUCCESS;
-
-		if (0 <= status)
-		{
-			if (psz3) status = *psz3 ? CreateExeSC(psz3, Base, cb) : STATUS_SUCCESS;
-		}
-	}
-
-	return status;
+	return STATUS_INVALID_PARAMETER;
 }

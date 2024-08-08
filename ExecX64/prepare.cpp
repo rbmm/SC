@@ -17,9 +17,9 @@ void* sc_end()
 PVOID GetNtBase();
 PVOID __fastcall GetFuncAddressEx(PIMAGE_DOS_HEADER pidh, PCSTR ProcedureName);
 
-// for debug epASM code only 
+// for debug epASM code only uncomment
 //#pragma comment(linker, "/SECTION:.text,ERW")
-// ntdllp.lib
+// 
 
 void WINAPI ep2(PEB* peb)
 {
@@ -77,7 +77,7 @@ void WINAPI ep2(PEB* peb)
 		RAC(LdrUnloadDll, hmod);
 	}
 
-	if (DBG_CONTINUE == status)
+	if (peb->BeingDebugged)
 	{
 		epASM(peb);
 	}

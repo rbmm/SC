@@ -43,9 +43,6 @@
     <None Include="nobase64.inc">
       <Filter>Source Files</Filter>
     </None>
-    <None Include=".map">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="..\x64\Release\ExecX64.map" />
     <None Include="imp.asm">
       <Filter>Source Files</Filter>
@@ -55,10 +52,5 @@
     <CustomBuild Include="x64.asm">
       <Filter>Source Files</Filter>
     </CustomBuild>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="ExecX64.rc">
-      <Filter>Resource Files</Filter>
-    </ResourceCompile>
   </ItemGroup>
 </Project>

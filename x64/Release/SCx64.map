@@ -1,6 +1,6 @@
  SCx64
 
- Timestamp is 66b3fb6c (Thu Aug  8 01:55:40 2024)
+ Timestamp is 66b4f7ef (Thu Aug  8 19:53:03 2024)
 
  Preferred load address is 0000000140000000
 
@@ -16,8 +16,6 @@
  0003:00000000 00000000H .data                   DATA
  0003:00000000 00000004H .bss                    DATA
  0004:00000000 00000078H .pdata                  DATA
- 0005:00000000 00000060H .rsrc$01                DATA
- 0005:00000060 00000eb0H .rsrc$02                DATA
 
   Address         Publics by Value              Rva+Base               Lib:Object
 
@@ -133,4 +131,3 @@
  0002:00000068       $unwind$?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z 0000000140003068     GetFuncAddr.obj
  0002:00000084       $unwind$?FindNoCfgDll@@YAJKKKPEAPEAX@Z 0000000140003084     NoCfg.obj
  0002:000000a0       $unwind$?ep2@@YAXPEAU_PEB@@@Z 00000001400030a0     prepare.obj
- 0005:00000060       $R000000                   0000000140006060     SCx64.res

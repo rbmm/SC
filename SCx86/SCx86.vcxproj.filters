@@ -46,9 +46,6 @@
     <None Include="nobase32.inc">
       <Filter>Source Files</Filter>
     </None>
-    <None Include=".map">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="imp.asm">
       <Filter>Source Files</Filter>
     </None>
@@ -58,10 +55,5 @@
     <CustomBuild Include="x86.asm">
       <Filter>Source Files</Filter>
     </CustomBuild>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="SCx86.rc">
-      <Filter>Resource Files</Filter>
-    </ResourceCompile>
   </ItemGroup>
 </Project>

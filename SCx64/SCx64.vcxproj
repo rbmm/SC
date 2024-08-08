@@ -54,14 +54,12 @@
       <EnableUAC>false</EnableUAC>
       <EntryPointSymbol>ep2</EntryPointSymbol>
       <AdditionalOptions>/EMITPOGOPHASEINFO /EMITVOLATILEMETADATA:NO %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-      </AdditionalDependencies>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ntdllp.lib;KERNEL32.lib;WINHTTP.lib</AdditionalDependencies>
       <GenerateMapFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateMapFile>
     </Link>
     <PostBuildEvent>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">echo /* ++++++++++
-cd "$(SolutionDir)
-"$(TargetPath)" *sc-x64.bin*sc-x64.asm*sc-x64.exe
+"$(TargetPath)" *$(OutDir)$(ProjectName).map*imp.asm*..\$(ProjectName).bin*..\$(ProjectName).asm*..\$(ProjectName).exe
 echo ----------- */</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -88,12 +86,8 @@ echo ----------- */</Command>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\x64\Release\SCx64.map" />
-    <None Include=".map" />
     <None Include="imp.asm" />
     <None Include="nobase64.inc" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="SCx64.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

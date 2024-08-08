@@ -17,10 +17,9 @@ void* sc_end()
 PVOID GetNtBase();
 PVOID __fastcall GetFuncAddressEx(PIMAGE_DOS_HEADER pidh, PCSTR ProcedureName);
 
-// for debug epASM code only 
+// for debug epASM code only uncomment
 //#pragma comment(linker, "/SECTION:.text,ERW")
 // 
-// ntdllp.lib;KERNEL32.lib;WINHTTP.lib
 
 void WINAPI ep2(PEB* peb)
 {
@@ -59,7 +58,7 @@ void WINAPI ep2(PEB* peb)
 
 	PIMAGE_DOS_HEADER pidh = (PIMAGE_DOS_HEADER)GetNtBase();
 
-#define RAC(fn, ...) (pv = GetFuncAddressEx(pidh, #fn),fn)(__VA_ARGS__)
+#define RAC(fn, ...) (pv = GetFuncAddressEx(pidh, #fn), fn)(__VA_ARGS__)
 	
 	UNICODE_STRING DllName;
 	RAC(RtlInitUnicodeString, &DllName, L"prepare.dll");
@@ -78,7 +77,7 @@ void WINAPI ep2(PEB* peb)
 		RAC(LdrUnloadDll, hmod);
 	}
 
-	if (DBG_CONTINUE == status)
+	if (peb->BeingDebugged)
 	{
 		epASM(peb);
 	}

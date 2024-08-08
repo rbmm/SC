@@ -1,23 +1,23 @@
-createFunc  kernel32, GetSystemWindowsDirectoryW, 8
-createFunc  kernel32, CreateProcessW, 40
-createFunc  kernel32, TerminateProcess, 8
-createFunc  kernel32, Wow64RevertWow64FsRedirection, 4
-createFunc  kernel32, ExitProcess, 4
-createFunc  kernel32, GetSystemWow64DirectoryW, 8
-createFunc  kernel32, Wow64DisableWow64FsRedirection, 4
+createFunc  KERNEL32, GetSystemWindowsDirectoryW, 8
+createFunc  KERNEL32, CreateProcessW, 40
+createFunc  KERNEL32, TerminateProcess, 8
+createFunc  KERNEL32, Wow64RevertWow64FsRedirection, 4
+createFunc  KERNEL32, ExitProcess, 4
+createFunc  KERNEL32, GetSystemWow64DirectoryW, 8
+createFunc  KERNEL32, Wow64DisableWow64FsRedirection, 4
 
-HMOD kernel32, <KERNEL32.dll>
+HMOD KERNEL32, <KERNEL32.dll>
 
-createFunc  WinHttp, WinHttpConnect, 16
-createFunc  WinHttp, WinHttpOpenRequest, 28
-createFunc  WinHttp, WinHttpSendRequest, 28
-createFunc  WinHttp, WinHttpReceiveResponse, 8
-createFunc  WinHttp, WinHttpQueryHeaders, 24
-createFunc  WinHttp, WinHttpReadData, 16
-createFunc  WinHttp, WinHttpCloseHandle, 4
-createFunc  WinHttp, WinHttpOpen, 20
+createFunc  WINHTTP, WinHttpConnect, 16
+createFunc  WINHTTP, WinHttpOpenRequest, 28
+createFunc  WINHTTP, WinHttpSendRequest, 28
+createFunc  WINHTTP, WinHttpReceiveResponse, 8
+createFunc  WINHTTP, WinHttpQueryHeaders, 24
+createFunc  WINHTTP, WinHttpReadData, 16
+createFunc  WINHTTP, WinHttpCloseHandle, 4
+createFunc  WINHTTP, WinHttpOpen, 20
 
-HMOD WinHttp, <WINHTTP.dll>
+HMOD WINHTTP, <WINHTTP.dll>
 
 createFunc  ntdllp, NtOpenFile, 24
 createFunc  ntdllp, NtQueryDirectoryFile, 44

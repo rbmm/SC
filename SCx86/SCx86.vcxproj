@@ -54,13 +54,11 @@
       <EntryPointSymbol>ep2</EntryPointSymbol>
       <AdditionalOptions>/EMITPOGOPHASEINFO /EMITVOLATILEMETADATA:NO %(AdditionalOptions)</AdditionalOptions>
       <GenerateMapFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</GenerateMapFile>
-      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-      </AdditionalDependencies>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">ntdllp.lib;KERNEL32.lib;WINHTTP.lib</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">echo /* ++++++++++
-cd "$(SolutionDir)"
-"$(TargetPath)" *sc-x86.bin*sc-x86.asm*sc-x86.exe
+"$(TargetPath)" *$(OutDir)$(ProjectName).map*imp.asm*..\$(ProjectName).bin*..\$(ProjectName).asm*..\$(ProjectName).exe
 echo ----------- */</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -80,7 +78,6 @@ echo ----------- */</Command>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Release\SCx86.map" />
-    <None Include=".map" />
     <None Include="imp.asm" />
     <None Include="nobase32.inc" />
     <CustomBuild Include="x86.asm">
@@ -88,9 +85,6 @@ echo ----------- */</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">ml /c /Cp %(Identity)</Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename).obj</Outputs>
     </CustomBuild>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="SCx86.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,6 +1,6 @@
  ExecX64
 
- Timestamp is 66b3fb5e (Thu Aug  8 01:55:26 2024)
+ Timestamp is 66b4f7e8 (Thu Aug  8 19:52:56 2024)
 
  Preferred load address is 0000000140000000
 
@@ -16,8 +16,6 @@
  0003:00000000 00000000H .data                   DATA
  0003:00000000 00000004H .bss                    DATA
  0004:00000000 00000054H .pdata                  DATA
- 0005:00000000 00000060H .rsrc$01                DATA
- 0005:00000060 000008a0H .rsrc$02                DATA
 
   Address         Publics by Value              Rva+Base               Lib:Object
 
@@ -106,4 +104,3 @@
  0002:0000003c       $unwind$?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z 000000014000303c     GetFuncAddr.obj
  0002:00000058       $unwind$?FindNoCfgDll@@YAJKKKPEAPEAX@Z 0000000140003058     NoCfg.obj
  0002:00000074       $unwind$?ep2@@YAXPEAU_PEB@@@Z 0000000140003074     prepare.obj
- 0005:00000060       $R000000                   0000000140006060     ExecX64.res

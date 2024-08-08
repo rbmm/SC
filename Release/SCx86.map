@@ -1,6 +1,6 @@
  SCx86
 
- Timestamp is 66b3fb71 (Thu Aug  8 01:55:45 2024)
+ Timestamp is 66b4f7f5 (Thu Aug  8 19:53:09 2024)
 
  Preferred load address is 00400000
 
@@ -8,13 +8,11 @@
  0001:00000000 00001871H .text$mn                CODE
  0001:00001871 00000b75H .text$mn$cpp            CODE
  0001:000023e6 00000006H .text$nm                CODE
- 0001:000023ec 000000d7H .text$zz                CODE
+ 0001:000023ec 000000d6H .text$zz                CODE
  0002:00000000 00000077H .rdata                  DATA
  0002:00000077 00000000H .edata                  DATA
  0003:00000000 00000000H .data                   DATA
  0003:00000000 00000004H .bss                    DATA
- 0004:00000000 00000060H .rsrc$01                DATA
- 0004:00000060 00000db8H .rsrc$02                DATA
 
   Address         Publics by Value              Rva+Base       Lib:Object
 
@@ -121,7 +119,6 @@
  Static symbols
 
  0001:00000005       common_imp_call            00401005 f   x86.obj
- 0001:0000016f       kernel32                   0040116f f   x86.obj
- 0001:000002eb       WinHttp                    004012eb f   x86.obj
+ 0001:0000016f       KERNEL32                   0040116f f   x86.obj
+ 0001:000002eb       WINHTTP                    004012eb f   x86.obj
  0001:000006f3       ntdllp                     004016f3 f   x86.obj
- 0004:00000060       $R000000                   00406060     SCx86.res
