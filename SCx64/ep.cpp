@@ -62,7 +62,7 @@ BOOL Download(_In_ PCWSTR lpszServerName, _In_ PCWSTR lpszObjectName, _Out_ void
 BOOL Exec(PVOID BaseOfImage, PIMAGE_NT_HEADERS pinth, PCWSTR lpCmdLine = 0);
 
 //#define _PRINT_CPP_NAMES_
-#include "asmfunc.h"
+#include "..\common\asmfunc.h"
 
 void DownloadAndExec(_In_ PCWSTR lpszServerName, _In_ PCWSTR lpszObjectName)
 {

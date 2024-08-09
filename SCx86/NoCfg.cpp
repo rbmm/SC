@@ -60,7 +60,7 @@ BOOLEAN IsImageOk(_In_ ULONG SizeOfImage, _In_ HANDLE hSection, _In_ ULONG Machi
 }
 
 //#define _PRINT_CPP_NAMES_
-#include "asmfunc.h"
+#include "../ScEntry/asmfunc.h"
 
 PCWSTR System32()ASM_FUNCTION;
 PCWSTR Syswow64()ASM_FUNCTION;

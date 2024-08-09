@@ -52,9 +52,9 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <EntryPointSymbol>ep2</EntryPointSymbol>
+      <EntryPointSymbol>?ScEntry@@YAXPEAU_PEB@@@Z</EntryPointSymbol>
       <AdditionalOptions>/EMITPOGOPHASEINFO /EMITVOLATILEMETADATA:NO %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ntdllp.lib;KERNEL32.lib;WINHTTP.lib</AdditionalDependencies>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ntdllp.lib;ScEntry.lib;KERNEL32.lib;WINHTTP.lib</AdditionalDependencies>
       <GenerateMapFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateMapFile>
     </Link>
     <PostBuildEvent>
@@ -64,15 +64,12 @@ echo ----------- */</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ep.cpp" />
     <ClCompile Include="Exec.cpp" />
-    <ClCompile Include="GetFuncAddr.cpp" />
     <ClCompile Include="NoCfg.cpp" />
-    <ClCompile Include="prepare.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
@@ -87,7 +84,6 @@ echo ----------- */</Command>
   <ItemGroup>
     <None Include="..\x64\Release\SCx64.map" />
     <None Include="imp.asm" />
-    <None Include="nobase64.inc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

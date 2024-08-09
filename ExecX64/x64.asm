@@ -23,7 +23,7 @@ extern ?Exec@@YAHPEAX00@Z : PROC
   ret
 ?epASM@@YAXPEAU_PEB@@@Z endp
 
-include <nobase64.inc>
+include <..\scentry\nobase64.inc>
 
 include <imp.asm>
 

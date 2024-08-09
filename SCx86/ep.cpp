@@ -60,7 +60,7 @@ BOOL Download(_In_ PCWSTR lpszServerName, _In_ PCWSTR lpszObjectName, _Out_ void
 }
 
 //#define _PRINT_CPP_NAMES_
-#include "asmfunc.h"
+#include "../ScEntry/asmfunc.h"
 
 BOOL __fastcall Exec64(PVOID BaseOfImage, HANDLE hProcess, HANDLE hThread)ASM_FUNCTION;
 BOOL Exec(_In_ PVOID bWow, PVOID BaseOfImage, PIMAGE_NT_HEADERS pinth, PCWSTR lpCmdLine = 0);

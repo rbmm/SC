@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SCx86", "SCx86\SCx86.vcxpro
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "prepare", "prepare\prepare.vcxproj", "{48578B25-F1CE-1033-484C-76884D05DA77}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ScEntry", "ScEntry\ScEntry.vcxproj", "{E91A4892-8E4C-D8B7-599C-3358FFF20CB6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Release|x64 = Release|x64
@@ -32,6 +34,10 @@ Global
 		{48578B25-F1CE-1033-484C-76884D05DA77}.Release|x64.ActiveCfg = Release|x64
 		{48578B25-F1CE-1033-484C-76884D05DA77}.Release|x64.Build.0 = Release|x64
 		{48578B25-F1CE-1033-484C-76884D05DA77}.Release|x86.ActiveCfg = Release|x64
+		{E91A4892-8E4C-D8B7-599C-3358FFF20CB6}.Release|x64.ActiveCfg = Release|x64
+		{E91A4892-8E4C-D8B7-599C-3358FFF20CB6}.Release|x64.Build.0 = Release|x64
+		{E91A4892-8E4C-D8B7-599C-3358FFF20CB6}.Release|x86.ActiveCfg = Release|Win32
+		{E91A4892-8E4C-D8B7-599C-3358FFF20CB6}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

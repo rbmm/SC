@@ -59,19 +59,6 @@ BOOLEAN IsImageOk(_In_ ULONG SizeOfImage, _In_ HANDLE hSection, _In_ ULONG Machi
 	return fOk;
 }
 
-//#define _PRINT_CPP_NAMES_
-#include "asmfunc.h"
-
-#ifdef _X86_
-
-PCWSTR System32()ASM_FUNCTION;
-
-PCWSTR Syswow64()ASM_FUNCTION;
-
-PCWSTR DLLMask()ASM_FUNCTION;
-
-#else
-
 PCWSTR System32()
 {
 	return L"\\systemroot\\system32";
@@ -86,8 +73,6 @@ PCWSTR DLLMask()
 {
 	return L"*.dll";
 }
-
-#endif
 
 NTSTATUS FindNoCfgDll(_In_ ULONG Machine, _In_ ULONG Magic, _In_ ULONG SizeOfImage, _Out_ PHANDLE SectionHandle)
 {

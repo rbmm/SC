@@ -1,5 +1,4 @@
 #pragma code_seg(".text$mn$cpp")
-
 #define DECLSPEC_IMPORT
 
 #define DECLSPEC_DEPRECATED_DDK
@@ -63,9 +62,6 @@ EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 typedef GUID* PGUID;
 
 #define PHNT_NO_INLINE_INIT_STRING
-#define PHNT_INLINE_SEPERATOR_STRINGS
 #include "phnt.h"
 
 #pragma warning(default : 4392)
-
-#include <winhttp.h>

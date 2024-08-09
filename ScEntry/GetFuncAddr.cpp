@@ -5,11 +5,6 @@
 //#define _PRINT_CPP_NAMES_
 #include "asmfunc.h"
 
-HANDLE GetProcessHeap()
-{
-	return NtCurrentTeb()->ProcessEnvironmentBlock->ProcessHeap;
-}
-
 PVOID GetNtBase()
 {
 	return CONTAINING_RECORD(NtCurrentTeb()->ProcessEnvironmentBlock->Ldr->InInitializationOrderModuleList.Flink,

@@ -1,6 +1,6 @@
  SCx86
 
- Timestamp is 66b4f7f5 (Thu Aug  8 19:53:09 2024)
+ Timestamp is 66b5e731 (Fri Aug  9 12:53:53 2024)
 
  Preferred load address is 00400000
 
@@ -12,7 +12,7 @@
  0002:00000000 00000077H .rdata                  DATA
  0002:00000077 00000000H .edata                  DATA
  0003:00000000 00000000H .data                   DATA
- 0003:00000000 00000004H .bss                    DATA
+ 0003:00000000 00000008H .bss                    DATA
 
   Address         Publics by Value              Rva+Base       Lib:Object
 
@@ -99,20 +99,21 @@
  0001:00001be4       ?Relocate@@YGXPAXJ@Z       00402be4 f   Exec.obj
  0001:00001c31       ?ProtectImage@@YGJPAX0PAU_IMAGE_NT_HEADERS@@@Z 00402c31 f   Exec.obj
  0001:00001cef       ?Exec@@YGHPAX0PAU_IMAGE_NT_HEADERS@@PB_W@Z 00402cef f   Exec.obj
- 0001:00001fc3       ?get_hmod@@YIPAXPB_W@Z     00402fc3 f   GetFuncAddr.obj
- 0001:0000200d       ?GetFuncAddressEx@@YIPAXPAU_IMAGE_DOS_HEADER@@PBD@Z 0040300d f   GetFuncAddr.obj
- 0001:0000214b       ?IsImageOk@@YGEKPAXKK@Z    0040314b f   NoCfg.obj
- 0001:000021e7       ?FindNoCfgDll@@YGJPAXKKKPAPAX@Z 004031e7 f   NoCfg.obj
- 0001:000023d1       ??_V@YAXPAX@Z              004033d1 f   stdafx.obj
- 0001:000023e6       ?sc_end@@YGPAXXZ           004033e6 f   prepare.obj
- 0001:000023ec       ?ep2@@YGXPAU_PEB@@@Z       004033ec f   prepare.obj
- 0002:00000000       ??_C@_0BF@EKFKPNAI@RtlInitUnicodeString@ 00404000     prepare.obj
- 0002:00000018       ??_C@_1BI@NEOFKCPM@?$AAp?$AAr?$AAe?$AAp?$AAa?$AAr?$AAe?$AA?4?$AAd?$AAl?$AAl@ 00404018     prepare.obj
- 0002:00000030       ??_C@_0L@HOFGLFDL@LdrLoadDll@ 00404030     prepare.obj
- 0002:0000003c       ??_C@_0BH@GKPJJDBO@LdrGetProcedureAddress@ 0040403c     prepare.obj
- 0002:00000054       ??_C@_0N@FIGJGHFN@LdrUnloadDll@ 00404054     prepare.obj
- 0002:00000064       ??_C@_0BD@JDDPIELM@RtlExitUserProcess@ 00404064     prepare.obj
+ 0001:00001fc3       ?IsImageOk@@YGEKPAXKK@Z    00402fc3 f   NoCfg.obj
+ 0001:0000205f       ?FindNoCfgDll@@YGJPAXKKKPAPAX@Z 0040305f f   NoCfg.obj
+ 0001:00002249       ?get_hmod@@YIPAXPB_W@Z     00403249 f   ScEntry:GetFuncAddr.obj
+ 0001:00002293       ?GetFuncAddressEx@@YIPAXPAU_IMAGE_DOS_HEADER@@PBD@Z 00403293 f   ScEntry:GetFuncAddr.obj
+ 0001:000023d1       ??_V@YAXPAX@Z              004033d1 f   ScEntry:stdafx.obj
+ 0001:000023e6       ?sc_end@@YGPAXXZ           004033e6 f   ScEntry:prepare.obj
+ 0001:000023ec       ?ScEntry@@YGXPAU_PEB@@@Z   004033ec f   ScEntry:prepare.obj
+ 0002:00000000       ??_C@_0BF@EKFKPNAI@RtlInitUnicodeString@ 00404000     ScEntry:prepare.obj
+ 0002:00000018       ??_C@_1BI@NEOFKCPM@?$AAp?$AAr?$AAe?$AAp?$AAa?$AAr?$AAe?$AA?4?$AAd?$AAl?$AAl@ 00404018     ScEntry:prepare.obj
+ 0002:00000030       ??_C@_0L@HOFGLFDL@LdrLoadDll@ 00404030     ScEntry:prepare.obj
+ 0002:0000003c       ??_C@_0BH@GKPJJDBO@LdrGetProcedureAddress@ 0040403c     ScEntry:prepare.obj
+ 0002:00000054       ??_C@_0N@FIGJGHFN@LdrUnloadDll@ 00404054     ScEntry:prepare.obj
+ 0002:00000064       ??_C@_0BD@JDDPIELM@RtlExitUserProcess@ 00404064     ScEntry:prepare.obj
  0003:00000000       ___@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUdrmDCUivovzhvUhxcIGUhgwzucOlyq@4B2008FD98C1DD4 00405000     stdafx.obj
+ 0003:00000004       ___@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUdrmDCUivovzhvUhxvmgibUhgwzucOlyq@4B2008FD98C1DD4 00405004     ScEntry:stdafx.obj
 
  entry point at        0001:000023ec
 

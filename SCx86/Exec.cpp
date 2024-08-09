@@ -102,7 +102,7 @@ NTSTATUS ProtectImage(HANDLE hProcess, PVOID RemoteBase, PIMAGE_NT_HEADERS pinth
 }
 
 //#define _PRINT_CPP_NAMES_
-#include "asmfunc.h"
+#include "../ScEntry/asmfunc.h"
 
 PCWSTR explorer()ASM_FUNCTION;
 

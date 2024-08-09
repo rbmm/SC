@@ -18,10 +18,10 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="NoCfg.cpp">
+    <ClCompile Include="GetFuncAddr.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Exec.cpp">
+    <ClCompile Include="prepare.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -29,16 +29,5 @@
     <ClInclude Include="stdafx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\x64\Release\ExecX64.map" />
-    <None Include="imp.asm">
-      <Filter>Source Files</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <CustomBuild Include="x64.asm">
-      <Filter>Source Files</Filter>
-    </CustomBuild>
   </ItemGroup>
 </Project>

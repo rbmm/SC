@@ -19,10 +19,14 @@ PVOID __fastcall GetFuncAddressEx(PIMAGE_DOS_HEADER pidh, PCSTR ProcedureName);
 
 // for debug epASM code only uncomment
 //#pragma comment(linker, "/SECTION:.text,ERW")
-// 
 
-void WINAPI ep2(PEB* peb)
+// 64: ?ScEntry@@YAXPEAU_PEB@@@Z
+// 32: ?ScEntry@@YGXPAU_PEB@@@Z
+
+void WINAPI ScEntry(PEB* peb)
 {
+	CPP_FUNCTION;
+
 	union {
 		PVOID pv;
 
@@ -58,7 +62,7 @@ void WINAPI ep2(PEB* peb)
 
 	PIMAGE_DOS_HEADER pidh = (PIMAGE_DOS_HEADER)GetNtBase();
 
-#define RAC(fn, ...) (pv = GetFuncAddressEx(pidh, #fn),fn)(__VA_ARGS__)
+#define RAC(fn, ...) (pv = GetFuncAddressEx(pidh, #fn), fn)(__VA_ARGS__)
 	
 	UNICODE_STRING DllName;
 	RAC(RtlInitUnicodeString, &DllName, L"prepare.dll");
