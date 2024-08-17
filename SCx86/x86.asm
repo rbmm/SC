@@ -12,7 +12,7 @@ extern ?ep@@YGXPAU_PEB@@@Z : PROC
 	jmp ?ep@@YGXPAU_PEB@@@Z
 ?epASM@@YGXPAU_PEB@@@Z endp
 
-include <nobase32.inc>
+include <../scentry/nobase32.inc>
 
 include <imp.asm>
 

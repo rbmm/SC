@@ -9,8 +9,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{A606FC23-d443-01B1-B8F8-88311C68C821}</ProjectGuid>
-    <RootNamespace>SCx64</RootNamespace>
+    <ProjectGuid>{EA9FD4A8-564c-E3E1-A170-FB2A3C663F86}</ProjectGuid>
+    <RootNamespace>dcom</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <UserRootDir>$(SolutionDir)..\MSBuild\v4.0</UserRootDir>
   </PropertyGroup>
@@ -34,15 +34,14 @@
   <PropertyGroup>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
   <ItemDefinitionGroup>
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <Optimization>MaxSpeed</Optimization>
-      <BufferSecurityCheck Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</BufferSecurityCheck>
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">/cbstring %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\pnth</AdditionalIncludeDirectories>
+      <BufferSecurityCheck Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</BufferSecurityCheck>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -52,7 +51,7 @@
       <EnableUAC>false</EnableUAC>
       <EntryPointSymbol>?ScEntry@@YAXPEAU_PEB@@@Z</EntryPointSymbol>
       <AdditionalOptions>/EMITPOGOPHASEINFO /EMITVOLATILEMETADATA:NO %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ntdllp.lib;ScEntry.lib;KERNEL32.lib;WINHTTP.lib</AdditionalDependencies>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ntdllp.lib;ScEntry.lib;KERNEL32.lib;advapi32.lib</AdditionalDependencies>
       <GenerateMapFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateMapFile>
     </Link>
     <PostBuildEvent>
@@ -66,22 +65,18 @@ echo ----------- */</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ep.cpp" />
-    <ClCompile Include="Exec.cpp" />
-    <ClCompile Include="NoCfg.cpp" />
+    <ClCompile Include="import.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="imp.asm" />
     <CustomBuild Include="x64.asm">
       <FileType>Document</FileType>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ml64 /c /Cp %(Identity)</Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).obj</Outputs>
     </CustomBuild>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\x64\Release\SCx64.map" />
-    <None Include="imp.asm" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
