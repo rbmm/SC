@@ -1,6 +1,8 @@
 framework for build shellcode
 
 **prepare**
+
+
 this is util dll project. it process map file for PE, from which we want create shellcode, and create ,based on it, special asm file ( x64/x86 ) for implement import
 (assume that we use only extern "C" imported functions with __stdcall/__cdecl calling conventions)
 it save shellcode in 3 possible formats: 
@@ -17,6 +19,8 @@ after this we need recompile our asm file (which include generated import) and b
 if no errors - on second post build we got ready shellcode
 
 **ScEntry**
+
+
 static lib. this is mini "crt" for shellcode project. we need add `ScEntry.lib` to linker input, and set entry point of our project to
 `?ScEntry@@YAXPEAU_PEB@@@Z` (x64) or `?ScEntry@@YGXPAU_PEB@@@Z` (x86)
 the our "user" entry point will be `?epASM@@YGXPAU_PEB@@@Z` (x86) or `?epASM@@YAXPEAU_PEB@@@Z` (x64)
@@ -75,7 +79,7 @@ end
 strings:
 
 use `/cbstring` option for compiler (CL.exe (more known as msvc)) in x64 mode.
-this put strings to ".text$mn$cpp$s" section - more general if your code in "X" section use some strings - it will be put to "X$s" section.
+this put strings to `".text$mn$cpp$s"` section - more general if your code in `"X"` section use some strings - it will be put to `"X$s"` section.
 the reference to strings to create relocs in x64 mode. so only what we need here `/cbstring` option
 
 in case x86, use strings generate relocations, so we can not use it direct from c/c++ ( even with /cbstring )
