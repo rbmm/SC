@@ -8,7 +8,7 @@ extern ?ep@@YAXPEAU_PEB@@@Z : PROC
 	jmp ?ep@@YAXPEAU_PEB@@@Z
 ?epASM@@YAXPEAU_PEB@@@Z endp
 
-include <..\common\nobase64.inc>
+include <..\scentry\nobase64.inc>
 
 include <imp.asm>
 
