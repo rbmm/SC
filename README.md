@@ -4,9 +4,11 @@ framework for build shellcode
 this is util dll project. it process map file for PE, from which we want create shellcode, and create ,based on it, special asm file ( x64/x86 ) for implement import
 (assume that we use only extern "C" imported functions with __stdcall/__cdecl calling conventions)
 it save shellcode in 3 possible formats: 
-as raw binary, 
-as asm file for masm[64] input  (DQ instructions)
-as exe (without imports and relosc, for easy demo/test)
+
+- as raw binary, 
+- as asm file for masm[64] input  (DQ instructions)
+- as exe (without imports and relosc, for easy demo/test)
+
 also it check that shellcode containing no relocs, otherwise return error (`STATUS_ILLEGAL_DLL_RELOCATION`)
 
 we use prepare on post build event and usually we need run it 2 time:
@@ -25,8 +27,8 @@ this is like `wWinMainCRTStartup` (real exe entry point in crt code) and `wWinMa
 
 sense of exist separate asm entry - in case shellcode entry point must be at very begin - at 0 offset of shellcode body and with asm we can implement this condition
 
-**ScEntry** wil be statically link to our exe shellcode project. part of it code ( from [*GetFuncAddr.cpp*](ScEntry\GetFuncAddr.cpp) - `GetFuncAddressEx`, `get_hmod`, `GetNtBase` ) will be in final shellcode and
-used for transparent resolve import (in most case for this not need be write any "user" code). and part ( [*prepare.cpp*](ScEntry\prepare.cpp) ) will be used for convert PE to shellcode and will be not part of final shellcode
+**ScEntry** wil be statically link to our exe shellcode project. part of it code ( from [*GetFuncAddr.cpp*](ScEntry/GetFuncAddr.cpp) - `GetFuncAddressEx`, `get_hmod`, `GetNtBase` ) will be in final shellcode and
+used for transparent resolve import (in most case for this not need be write any "user" code). and part ( [*prepare.cpp*](ScEntry/prepare.cpp) ) will be used for convert PE to shellcode and will be not part of final shellcode
 
 
 now, after this 2 util projects, we can start our custom project, for create shellcode from it
@@ -72,14 +74,14 @@ end
 ```
 strings:
 
-use /cbstring option for compiler (CL.exe (more known as msvc)) in x64 mode.
+use `/cbstring` option for compiler (CL.exe (more known as msvc)) in x64 mode.
 this put strings to ".text$mn$cpp$s" section - more general if your code in "X" section use some strings - it will be put to "X$s" section.
-the reference to strings to create relocs in x64 mode. so only what we need here /cbstring option
+the reference to strings to create relocs in x64 mode. so only what we need here `/cbstring` option
 
 in case x86, use strings generate relocations, so we can not use it direct from c/c++ ( even with /cbstring )
 so we need put it in asm as functions, which return string. use createWstring, createAstring macros, for use strings
 
-look for example in [*SCx86\x86.asm*](SCx86\x86.asm)
+look for example in [*SCx86\x86.asm*](SCx86/x86.asm)
 
 say
 ```
