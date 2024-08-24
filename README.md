@@ -103,7 +103,7 @@ L"the.earth.li"
 string
 
 restrictions - we can not use global variables and virtual functions ( vtable is global array with pointers to functions, which always generate relocations, even in x64 mode)
-despite if we very want use it, possible do something with asm support ( look for demo in dcom\x64.asm and dcom\import.cpp )
+despite if we very want use it, possible do something with asm support ( look for demo in [dcom\x64.asm](dcom/x64.asm) and [dcom\import.cpp](dcom/import.cpp) )
 
 mandatory set option for linker generate map file ( `/MAP` )
 
@@ -118,7 +118,14 @@ something like
 ```
 "$(TargetPath)" *$(OutDir)$(ProjectName).map*imp.asm*..\$(ProjectName).bin*..\$(ProjectName).asm*..\$(ProjectName).exe
 ```
-(yes, we exec own exe file (2 time) at post-build, for generate shellcode)
+(yes, we exec own exe file (`"$(TargetPath)"`) (2 time) at post-build, for generate shellcode.
+the parameters:
+- `$(OutDir)$(ProjectName).map` input map file
+- `imp.asm` - output code for import
+- `..\$(ProjectName).bin` strore here shellcode as raw binary data (optional)
+- `..\$(ProjectName).asm` strore here shellcode as DQ asm instructions (for include to another project ) (optional)
+- `..\$(ProjectName).exe` wrap shellcode (as in `$(ProjectName).bin` ) to exe file (no relocs, import) for easy demo (optional)
+)
 
-and main - you mast very deep understand compiler, linker, windows and all what you doing.
+and main - you must very deep understand compiler, linker, windows and all what you doing.
 
