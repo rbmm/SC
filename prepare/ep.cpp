@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "compressapi.h"
 
 void PrintUTF8(PCSTR pcsz, ULONG len)
 {
@@ -553,34 +554,71 @@ NTSTATUS ProcessIAT(PCWSTR pszImp, PCWSTR pszMap, ULONG_PTR pvShellEnd)
 	return STATUS_INTERNAL_ERROR;
 }
 
-NTSTATUS CreateAsmSC(PCWSTR pwzFileName, PULONG64 pb, SIZE_T n)
+NTSTATUS CreateAsmSC(PCWSTR pwzFileName, const void* pcv, SIZE_T cb)
 {
 	NTSTATUS status;
 
-	SIZE_T cch = n * (7 + 16) + 1;
+	union {
+		const void* pv;
+		PULONG64 pu64;
+		PULONG pu;
+		PUSHORT ps;
+		PUCHAR pb;
+	};
+
+	pv = pcv;
+
+	SIZE_T n = cb >> 3;
+	SIZE_T cch = n * (7 + 16) + 36;
+	// DD 0ABCDEF78h.. ; 7+8
+	// DW 0ABCDh..     ; 7+4
+	// DB 0ABh..       ; 7+2
 
 	if (PSTR buf = new char [cch])
 	{
 		status = STATUS_INTERNAL_ERROR;
 
 		int len;
+		ULONG s = 4;
 
 		PSTR psz = buf;
 
-		do
+		if (n)
 		{
-			if (0 >= (len = sprintf_s(psz, cch, "DQ 0%016I64xh\r\n", *pb++)))
+			cb -= n << 3;
+
+			do
 			{
-				break;
-			}
+				if (0 >= (len = sprintf_s(psz, cch, "DQ 0%016I64xh\r\n", *pu64++)))
+				{
+					goto __exit;
+				}
 
-		} while (psz += len, cch -= len, --n);
-
-		if (!n)
-		{
-			status = SaveToFile(pwzFileName, buf, RtlPointerToOffset(buf, psz));
+			} while (psz += len, cch -= len, --n);
 		}
 
+		static const PCSTR fmt[] = { "DB 0%02xh\r\n", "DW 0%04xh\r\n", "DD 0%08xh\r\n" };
+		n = _countof(fmt) - 1;
+
+		do
+		{
+			if (s <= cb)
+			{
+				cb -= s;
+
+				if (0 >= (len = sprintf_s(psz, cch, fmt[n], *pu & ((1ULL << (s << 3)) - 1))))
+				{
+					goto __exit;
+				}
+
+				psz += len, cch -= len, pb += s;
+			}
+
+		} while (s >>= 1, n--);
+
+		status = SaveToFile(pwzFileName, buf, RtlPointerToOffset(buf, psz));
+
+__exit:
 		delete[] buf;
 
 		DbgPrint("CreateAsmSC(%ws)=%x\r\n", pwzFileName, status);
@@ -589,6 +627,49 @@ NTSTATUS CreateAsmSC(PCWSTR pwzFileName, PULONG64 pb, SIZE_T n)
 	}
 
 	return STATUS_NO_MEMORY;
+}
+
+inline ULONG BOOL_TO_ERROR(BOOL f)
+{
+	return f ? NOERROR : GetLastError();
+}
+
+NTSTATUS CreateZipAsmSC(PCWSTR to, PVOID pv, ULONG cb)
+{
+	COMPRESSOR_HANDLE CompressorHandle;
+	if (CreateCompressor(COMPRESS_ALGORITHM_MSZIP, 0, &CompressorHandle))
+	{
+		ULONG dwError;
+		SIZE_T CompressedDataSize;
+
+		switch (dwError = BOOL_TO_ERROR(Compress(CompressorHandle, 0, cb, 0, 0, &CompressedDataSize)))
+		{
+		case NOERROR:
+		case ERROR_INSUFFICIENT_BUFFER:
+			if (PBYTE pb = new BYTE[CompressedDataSize])
+			{
+				if (Compress(CompressorHandle, pv, cb, pb, CompressedDataSize, &CompressedDataSize))
+				{
+					DbgPrint("Compress:%x >> %x [%u%%]\r\n", cb, CompressedDataSize, (CompressedDataSize * 100) / cb);
+					dwError = CreateAsmSC(to, pb, CompressedDataSize);
+				}
+				else
+				{
+					dwError = GetLastError();
+				}
+
+				delete[] pb;
+			}
+
+			break;
+		}
+
+		CloseCompressor(CompressorHandle);
+
+		return HRESULT_FROM_WIN32(dwError);
+	}
+
+	return GetLastError();
 }
 
 NTSTATUS CreateExeSC(PCWSTR pwzFileName, PVOID Base, ULONG cb)
@@ -655,7 +736,7 @@ NTSTATUS CreateExeSC(PCWSTR pwzFileName, PVOID Base, ULONG cb)
 
 		delete pe;
 
-		DbgPrint("CreateAsmSC(%ws)=%x\r\n", pwzFileName, status);
+		DbgPrint("CreateExeSC(%ws)=%x\r\n", pwzFileName, status);
 
 		return status;
 	}
@@ -667,7 +748,7 @@ NTSTATUS NTAPI PrepareSC(PVOID Base, ULONG cb)
 {
 	DbgPrint("PrepareSC(%p, %x, <%ws>)\r\n", Base, cb, GetCommandLineW());
 
-	//*map*imp[*bin*asm*exe]
+	//*map*imp[*bin*[?]asm*exe]
 
 	if (PWSTR psz = wcschr(GetCommandLineW(), '*'))
 	{
@@ -709,7 +790,7 @@ NTSTATUS NTAPI PrepareSC(PVOID Base, ULONG cb)
 				{
 					if (pczAsm && *pczAsm)
 					{
-						status = CreateAsmSC(pczAsm, (PULONG64)Base, (cb + 7) >> 3);
+						status = '?' == *pczAsm ? CreateZipAsmSC(pczAsm + 1, Base, cb) : CreateAsmSC(pczAsm, Base, cb);
 					}
 
 					if (0 <= status)

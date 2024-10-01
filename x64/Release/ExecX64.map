@@ -1,6 +1,6 @@
  ExecX64
 
- Timestamp is 66b5e71f (Fri Aug  9 12:53:35 2024)
+ Timestamp is 66fbb045 (Tue Oct  1 11:18:13 2024)
 
  Preferred load address is 0000000140000000
 
@@ -43,6 +43,7 @@
  0000:00000000       __hybrid_auxiliary_iat_copy 0000000000000000     <absolute>
  0000:00000000       __hybrid_code_map          0000000000000000     <absolute>
  0000:00000000       __hybrid_code_map_count    0000000000000000     <absolute>
+ 0000:00000000       __hybrid_image_info_bitfield 0000000000000000     <absolute>
  0000:00000000       __volatile_metadata        0000000000000000     <absolute>
  0000:00000000       __x64_code_ranges_to_entry_points 0000000000000000     <absolute>
  0000:00000000       __x64_code_ranges_to_entry_points_count 0000000000000000     <absolute>
