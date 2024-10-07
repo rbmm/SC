@@ -15,12 +15,10 @@ extern ?LoadLibraryFromMem@@YGXPAX00@Z : PROC
 include <../scentry/nobase32.inc>
 
 ; const wchar_t *__stdcall getSystem32()
-; const wchar_t *__stdcall getSyswow64()
 ; const wchar_t *__stdcall getDll()
 
 createWstring ?getDll@@YGPB_WXZ, <*.dll>
 createWstring ?getSystem32@@YGPB_WXZ, <\system32\\\ >
-createWstring ?getSyswow64@@YGPB_WXZ, <\syswow64\\\ >
 
 ; const char *__stdcall GetMapViewOfSection()
 
