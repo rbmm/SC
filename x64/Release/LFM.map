@@ -1,15 +1,15 @@
  LFM
 
- Timestamp is 66fc4d05 (Tue Oct  1 22:27:01 2024)
+ Timestamp is 6703c3b0 (Mon Oct  7 14:19:12 2024)
 
  Preferred load address is 0000000140000000
 
  Start         Length     Name                   Class
- 0001:00000000 0000063cH .text$mn                CODE
- 0001:0000063c 00000a64H .text$mn$cpp            CODE
- 0001:000010a0 00000044H .text$mn$cpp$s          CODE
- 0001:000010e4 00000008H .text$nm                CODE
- 0001:000010ec 0000010eH .text$zz                CODE
+ 0001:00000000 00000674H .text$mn                CODE
+ 0001:00000674 00000aecH .text$mn$cpp            CODE
+ 0001:00001160 00000044H .text$mn$cpp$s          CODE
+ 0001:000011a4 00000008H .text$nm                CODE
+ 0001:000011ac 0000010eH .text$zz                CODE
  0002:00000000 0000007cH .rdata                  DATA
  0002:0000007c 000000bcH .xdata                  DATA
  0002:00000138 00000000H .edata                  DATA
@@ -76,24 +76,25 @@
  0001:000004b3       LdrUnloadDll               00000001400014b3 f   x64.obj
  0001:000004dd       RtlRemoveVectoredExceptionHandler 00000001400014dd f   x64.obj
  0001:0000051a       RtlImageNtHeader           000000014000151a f   x64.obj
- 0001:00000549       RtlAppendUnicodeToString   0000000140001549 f   x64.obj
- 0001:00000581       RtlGetNtSystemRoot         0000000140001581 f   x64.obj
- 0001:000005b3       memcpy                     00000001400015b3 f   x64.obj
- 0001:000005d7       LdrGetProcedureAddress     00000001400015d7 f   x64.obj
- 0001:00000607       memset                     0000000140001607 f   x64.obj
- 0001:0000063c       ?FindNoCfgDll@@YAJKPEAU_UNICODE_STRING@@@Z 000000014000163c f   ep.obj
- 0001:00000924       ?OverwriteSection@@YAJPEAX0PEAU_IMAGE_NT_HEADERS64@@@Z 0000000140001924 f   ep.obj
- 0001:00000adc       ?retFromMapViewOfSection@@YAJJ@Z 0000000140001adc f   ep.obj
- 0001:00000b98       ?MyVexHandler@@YAJPEAU_EXCEPTION_POINTERS@@@Z 0000000140001b98 f   ep.obj
- 0001:00000c78       ?LoadLibraryFromMem@@YAJPEAPEAXPEAXPEAU_IMAGE_NT_HEADERS64@@PEBU_UNICODE_STRING@@@Z 0000000140001c78 f   ep.obj
- 0001:00000e58       ?LoadLibraryFromMem@@YAXPEAX00@Z 0000000140001e58 f   ep.obj
- 0001:00000ef4       ?get_hmod@@YAPEAXPEB_W@Z   0000000140001ef4 f   ScEntry:GetFuncAddr.obj
- 0001:00000f50       ?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z 0000000140001f50 f   ScEntry:GetFuncAddr.obj
- 0001:000010a0       ??_C@_1BG@NCCDOFIB@?$AA?2?$AAs?$AAy?$AAs?$AAt?$AAe?$AAm?$AA3?$AA2?$AA?2@FNODOBFM@ 00000001400020a0     ep.obj
- 0001:000010c0       ??_C@_1M@HNNPBALB@?$AA?$CK?$AA?4?$AAd?$AAl?$AAl@FNODOBFM@ 00000001400020c0     ep.obj
- 0001:000010d0       ??_C@_0BD@PPCCBCGB@ZwMapViewOfSection@FNODOBFM@ 00000001400020d0     ep.obj
- 0001:000010e4       ?sc_end@@YAPEAXXZ          00000001400020e4 f   ScEntry:prepare.obj
- 0001:000010ec       ?ScEntry@@YAXPEAU_PEB@@@Z  00000001400020ec f   ScEntry:prepare.obj
+ 0001:00000549       RtlWow64EnableFsRedirection 0000000140001549 f   x64.obj
+ 0001:00000584       RtlAppendUnicodeToString   0000000140001584 f   x64.obj
+ 0001:000005b9       RtlGetNtSystemRoot         00000001400015b9 f   x64.obj
+ 0001:000005eb       memcpy                     00000001400015eb f   x64.obj
+ 0001:0000060f       LdrGetProcedureAddress     000000014000160f f   x64.obj
+ 0001:0000063f       memset                     000000014000163f f   x64.obj
+ 0001:00000674       ?FindNoCfgDll@@YAJKPEAU_UNICODE_STRING@@@Z 0000000140001674 f   ep.obj
+ 0001:000009d4       ?OverwriteSection@@YAJPEAX0PEAU_IMAGE_NT_HEADERS64@@@Z 00000001400019d4 f   ep.obj
+ 0001:00000b8c       ?retFromMapViewOfSection@@YAJJ@Z 0000000140001b8c f   ep.obj
+ 0001:00000c48       ?MyVexHandler@@YAJPEAU_EXCEPTION_POINTERS@@@Z 0000000140001c48 f   ep.obj
+ 0001:00000d28       ?LoadLibraryFromMem@@YAJPEAPEAXPEAXPEAU_IMAGE_NT_HEADERS64@@PEBU_UNICODE_STRING@@@Z 0000000140001d28 f   ep.obj
+ 0001:00000f08       ?LoadLibraryFromMem@@YAXPEAX00@Z 0000000140001f08 f   ep.obj
+ 0001:00000fac       ?get_hmod@@YAPEAXPEB_W@Z   0000000140001fac f   ScEntry:GetFuncAddr.obj
+ 0001:00001008       ?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z 0000000140002008 f   ScEntry:GetFuncAddr.obj
+ 0001:00001160       ??_C@_1BG@NCCDOFIB@?$AA?2?$AAs?$AAy?$AAs?$AAt?$AAe?$AAm?$AA3?$AA2?$AA?2@FNODOBFM@ 0000000140002160     ep.obj
+ 0001:00001180       ??_C@_1M@HNNPBALB@?$AA?$CK?$AA?4?$AAd?$AAl?$AAl@FNODOBFM@ 0000000140002180     ep.obj
+ 0001:00001190       ??_C@_0BD@PPCCBCGB@ZwMapViewOfSection@FNODOBFM@ 0000000140002190     ep.obj
+ 0001:000011a4       ?sc_end@@YAPEAXXZ          00000001400021a4 f   ScEntry:prepare.obj
+ 0001:000011ac       ?ScEntry@@YAXPEAU_PEB@@@Z  00000001400021ac f   ScEntry:prepare.obj
  0002:00000000       ??_C@_0BF@EKFKPNAI@RtlInitUnicodeString@ 0000000140003000     ScEntry:prepare.obj
  0002:00000018       ??_C@_1BI@NEOFKCPM@?$AAp?$AAr?$AAe?$AAp?$AAa?$AAr?$AAe?$AA?4?$AAd?$AAl?$AAl@ 0000000140003018     ScEntry:prepare.obj
  0002:00000030       ??_C@_0L@HOFGLFDL@LdrLoadDll@ 0000000140003030     ScEntry:prepare.obj
@@ -103,12 +104,12 @@
  0003:00000000       __@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUcGEUivovzhvUounUhgwzucOlyq@4B2008FD98C1DD4 0000000140004000     stdafx.obj
  0003:00000004       __@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUcGEUivovzhvUhxvmgibUhgwzucOlyq@4B2008FD98C1DD4 0000000140004004     ScEntry:stdafx.obj
 
- entry point at        0001:000010ec
+ entry point at        0001:000011ac
 
  Static symbols
 
  0001:00000021       common_imp_call            0000000140001021 f   x64.obj
- 0001:00000627       ntdllp                     0000000140001627 f   x64.obj
+ 0001:0000065f       ntdllp                     000000014000165f f   x64.obj
  0002:0000007c       $unwind$?FindNoCfgDll@@YAJKPEAU_UNICODE_STRING@@@Z 000000014000307c     ep.obj
  0002:00000098       $unwind$?OverwriteSection@@YAJPEAX0PEAU_IMAGE_NT_HEADERS64@@@Z 0000000140003098     ep.obj
  0002:000000b0       $unwind$?retFromMapViewOfSection@@YAJJ@Z 00000001400030b0     ep.obj

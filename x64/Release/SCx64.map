@@ -1,18 +1,18 @@
  SCx64
 
- Timestamp is 66b5e728 (Fri Aug  9 12:53:44 2024)
+ Timestamp is 6703acbc (Mon Oct  7 12:41:16 2024)
 
  Preferred load address is 0000000140000000
 
  Start         Length     Name                   Class
  0001:00000000 000007dcH .text$mn                CODE
- 0001:000007dc 00000dd4H .text$mn$cpp            CODE
- 0001:000015b0 0000014cH .text$mn$cpp$s          CODE
- 0001:000016fc 00000008H .text$nm                CODE
- 0001:00001704 0000010eH .text$zz                CODE
+ 0001:000007dc 00000e84H .text$mn$cpp            CODE
+ 0001:00001660 0000014cH .text$mn$cpp$s          CODE
+ 0001:000017ac 00000008H .text$nm                CODE
+ 0001:000017b4 0000010eH .text$zz                CODE
  0002:00000000 0000007cH .rdata                  DATA
- 0002:0000007c 000000b0H .xdata                  DATA
- 0002:0000012c 00000000H .edata                  DATA
+ 0002:0000007c 000000acH .xdata                  DATA
+ 0002:00000128 00000000H .edata                  DATA
  0003:00000000 00000000H .data                   DATA
  0003:00000000 00000008H .bss                    DATA
  0004:00000000 00000078H .pdata                  DATA
@@ -43,6 +43,7 @@
  0000:00000000       __hybrid_auxiliary_iat_copy 0000000000000000     <absolute>
  0000:00000000       __hybrid_code_map          0000000000000000     <absolute>
  0000:00000000       __hybrid_code_map_count    0000000000000000     <absolute>
+ 0000:00000000       __hybrid_image_info_bitfield 0000000000000000     <absolute>
  0000:00000000       __volatile_metadata        0000000000000000     <absolute>
  0000:00000000       __x64_code_ranges_to_entry_points 0000000000000000     <absolute>
  0000:00000000       __x64_code_ranges_to_entry_points_count 0000000000000000     <absolute>
@@ -94,17 +95,17 @@
  0001:00000b94       ?SetWowContext@@YAJPEAXPEAU_CONTEXT@@@Z 0000000140001b94 f   Exec.obj
  0001:00000ba8       ?Exec@@YAHPEAXPEAU_IMAGE_NT_HEADERS64@@PEB_W@Z 0000000140001ba8 f   Exec.obj
  0001:000010a0       ?FindNoCfgDll@@YAJKKKPEAPEAX@Z 00000001400020a0 f   NoCfg.obj
- 0001:000013fc       ?get_hmod@@YAPEAXPEB_W@Z   00000001400023fc f   ScEntry:GetFuncAddr.obj
- 0001:00001458       ?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z 0000000140002458 f   ScEntry:GetFuncAddr.obj
- 0001:000015b0       ??_C@_1EM@FHFNBODF@?$AA?1?$AA?$HO?$AAs?$AAg?$AAt?$AAa?$AAt?$AAh?$AAa?$AAm?$AA?1?$AAp?$AAu?$AAt?$AAt@FNODOBFM@ 00000001400025b0     ep.obj
- 0001:00001600       ??_C@_1BK@DEAAAFKK@?$AAt?$AAh?$AAe?$AA?4?$AAe?$AAa?$AAr?$AAt?$AAh?$AA?4?$AAl?$AAi@FNODOBFM@ 0000000140002600     ep.obj
- 0001:00001620       ??_C@_1EM@CKOJHMCM@?$AA?1?$AA?$HO?$AAs?$AAg?$AAt?$AAa?$AAt?$AAh?$AAa?$AAm?$AA?1?$AAp?$AAu?$AAt?$AAt@FNODOBFM@ 0000000140002620     ep.obj
- 0001:00001670       ??_C@_1BM@ENECIFHC@?$AA?2?$AAe?$AAx?$AAp?$AAl?$AAo?$AAr?$AAe?$AAr?$AA?4?$AAe?$AAx?$AAe@FNODOBFM@ 0000000140002670     Exec.obj
- 0001:00001690       ??_C@_1CK@JEHFHMMG@?$AA?2?$AAs?$AAy?$AAs?$AAt?$AAe?$AAm?$AAr?$AAo?$AAo?$AAt?$AA?2?$AAs?$AAy?$AAs@FNODOBFM@ 0000000140002690     NoCfg.obj
- 0001:000016c0       ??_C@_1CK@GMBENNHD@?$AA?2?$AAs?$AAy?$AAs?$AAt?$AAe?$AAm?$AAr?$AAo?$AAo?$AAt?$AA?2?$AAs?$AAy?$AAs@FNODOBFM@ 00000001400026c0     NoCfg.obj
- 0001:000016f0       ??_C@_1M@HNNPBALB@?$AA?$CK?$AA?4?$AAd?$AAl?$AAl@FNODOBFM@ 00000001400026f0     NoCfg.obj
- 0001:000016fc       ?sc_end@@YAPEAXXZ          00000001400026fc f   ScEntry:prepare.obj
- 0001:00001704       ?ScEntry@@YAXPEAU_PEB@@@Z  0000000140002704 f   ScEntry:prepare.obj
+ 0001:000014a8       ?get_hmod@@YAPEAXPEB_W@Z   00000001400024a8 f   ScEntry:GetFuncAddr.obj
+ 0001:00001504       ?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z 0000000140002504 f   ScEntry:GetFuncAddr.obj
+ 0001:00001660       ??_C@_1EM@FHFNBODF@?$AA?1?$AA?$HO?$AAs?$AAg?$AAt?$AAa?$AAt?$AAh?$AAa?$AAm?$AA?1?$AAp?$AAu?$AAt?$AAt@FNODOBFM@ 0000000140002660     ep.obj
+ 0001:000016b0       ??_C@_1BK@DEAAAFKK@?$AAt?$AAh?$AAe?$AA?4?$AAe?$AAa?$AAr?$AAt?$AAh?$AA?4?$AAl?$AAi@FNODOBFM@ 00000001400026b0     ep.obj
+ 0001:000016d0       ??_C@_1EM@CKOJHMCM@?$AA?1?$AA?$HO?$AAs?$AAg?$AAt?$AAa?$AAt?$AAh?$AAa?$AAm?$AA?1?$AAp?$AAu?$AAt?$AAt@FNODOBFM@ 00000001400026d0     ep.obj
+ 0001:00001720       ??_C@_1BM@ENECIFHC@?$AA?2?$AAe?$AAx?$AAp?$AAl?$AAo?$AAr?$AAe?$AAr?$AA?4?$AAe?$AAx?$AAe@FNODOBFM@ 0000000140002720     Exec.obj
+ 0001:00001740       ??_C@_1CK@JEHFHMMG@?$AA?2?$AAs?$AAy?$AAs?$AAt?$AAe?$AAm?$AAr?$AAo?$AAo?$AAt?$AA?2?$AAs?$AAy?$AAs@FNODOBFM@ 0000000140002740     NoCfg.obj
+ 0001:00001770       ??_C@_1CK@GMBENNHD@?$AA?2?$AAs?$AAy?$AAs?$AAt?$AAe?$AAm?$AAr?$AAo?$AAo?$AAt?$AA?2?$AAs?$AAy?$AAs@FNODOBFM@ 0000000140002770     NoCfg.obj
+ 0001:000017a0       ??_C@_1M@HNNPBALB@?$AA?$CK?$AA?4?$AAd?$AAl?$AAl@FNODOBFM@ 00000001400027a0     NoCfg.obj
+ 0001:000017ac       ?sc_end@@YAPEAXXZ          00000001400027ac f   ScEntry:prepare.obj
+ 0001:000017b4       ?ScEntry@@YAXPEAU_PEB@@@Z  00000001400027b4 f   ScEntry:prepare.obj
  0002:00000000       ??_C@_0BF@EKFKPNAI@RtlInitUnicodeString@ 0000000140003000     ScEntry:prepare.obj
  0002:00000018       ??_C@_1BI@NEOFKCPM@?$AAp?$AAr?$AAe?$AAp?$AAa?$AAr?$AAe?$AA?4?$AAd?$AAl?$AAl@ 0000000140003018     ScEntry:prepare.obj
  0002:00000030       ??_C@_0L@HOFGLFDL@LdrLoadDll@ 0000000140003030     ScEntry:prepare.obj
@@ -114,7 +115,7 @@
  0003:00000000       __@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUcGEUivovzhvUhxcGEUhgwzucOlyq@4B2008FD98C1DD4 0000000140004000     stdafx.obj
  0003:00000004       __@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUcGEUivovzhvUhxvmgibUhgwzucOlyq@4B2008FD98C1DD4 0000000140004004     ScEntry:stdafx.obj
 
- entry point at        0001:00001704
+ entry point at        0001:000017b4
 
  Static symbols
 
@@ -129,6 +130,6 @@
  0002:000000bc       $unwind$?GetWowContext@@YAJPEAXPEAU_CONTEXT@@@Z 00000001400030bc     Exec.obj
  0002:000000c4       $unwind$?Exec@@YAHPEAXPEAU_IMAGE_NT_HEADERS64@@PEB_W@Z 00000001400030c4     Exec.obj
  0002:000000dc       $unwind$?FindNoCfgDll@@YAJKKKPEAPEAX@Z 00000001400030dc     NoCfg.obj
- 0002:000000f8       $unwind$?ScEntry@@YAXPEAU_PEB@@@Z 00000001400030f8     ScEntry:prepare.obj
- 0002:00000108       $unwind$?get_hmod@@YAPEAXPEB_W@Z 0000000140003108     ScEntry:GetFuncAddr.obj
- 0002:00000110       $unwind$?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z 0000000140003110     ScEntry:GetFuncAddr.obj
+ 0002:000000f4       $unwind$?ScEntry@@YAXPEAU_PEB@@@Z 00000001400030f4     ScEntry:prepare.obj
+ 0002:00000104       $unwind$?get_hmod@@YAPEAXPEB_W@Z 0000000140003104     ScEntry:GetFuncAddr.obj
+ 0002:0000010c       $unwind$?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z 000000014000310c     ScEntry:GetFuncAddr.obj

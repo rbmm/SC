@@ -1,14 +1,14 @@
  SCx86
 
- Timestamp is 66fbb045 (Tue Oct  1 11:18:13 2024)
+ Timestamp is 6703ac93 (Mon Oct  7 12:40:35 2024)
 
  Preferred load address is 00400000
 
  Start         Length     Name                   Class
- 0001:00000000 00001871H .text$mn                CODE
- 0001:00001871 00000b7bH .text$mn$cpp            CODE
- 0001:000023ec 00000006H .text$nm                CODE
- 0001:000023f2 000000d6H .text$zz                CODE
+ 0001:00000000 0000191dH .text$mn                CODE
+ 0001:0000191d 00000be2H .text$mn$cpp            CODE
+ 0001:000024ff 00000006H .text$nm                CODE
+ 0001:00002505 000000d6H .text$zz                CODE
  0002:00000000 00000077H .rdata                  DATA
  0002:00000077 00000000H .edata                  DATA
  0003:00000000 00000000H .data                   DATA
@@ -92,21 +92,21 @@
  0001:00000813       ?Syswow64@@YGPB_WXZ        00401813 f   x86.obj
  0001:00000847       ?explorer@@YGPB_WXZ        00401847 f   x86.obj
  0001:0000086a       ?Exec64@@YIHPAX00@Z        0040186a f   x86.obj
- 0001:00001871       ?Download@@YGHPB_W0PAPAXPAK@Z 00402871 f   ep.obj
- 0001:000019d2       ?Exec64@@YIHPAXPB_W@Z      004029d2 f   ep.obj
- 0001:00001aaf       ?DownloadAndExec@@YGXPB_W0PAXH@Z 00402aaf f   ep.obj
- 0001:00001b2d       ?ep@@YGXPAU_PEB@@@Z        00402b2d f   ep.obj
- 0001:00001b88       ?CopyImage@@YGXPAX0PAU_IMAGE_NT_HEADERS@@K@Z 00402b88 f   Exec.obj
- 0001:00001be4       ?Relocate@@YGXPAXJ@Z       00402be4 f   Exec.obj
- 0001:00001c37       ?ProtectImage@@YGJPAX0PAU_IMAGE_NT_HEADERS@@@Z 00402c37 f   Exec.obj
- 0001:00001cf5       ?Exec@@YGHPAX0PAU_IMAGE_NT_HEADERS@@PB_W@Z 00402cf5 f   Exec.obj
- 0001:00001fc9       ?IsImageOk@@YGEKPAXKK@Z    00402fc9 f   NoCfg.obj
- 0001:00002065       ?FindNoCfgDll@@YGJPAXKKKPAPAX@Z 00403065 f   NoCfg.obj
- 0001:0000224f       ?get_hmod@@YIPAXPB_W@Z     0040324f f   ScEntry:GetFuncAddr.obj
- 0001:00002299       ?GetFuncAddressEx@@YIPAXPAU_IMAGE_DOS_HEADER@@PBD@Z 00403299 f   ScEntry:GetFuncAddr.obj
- 0001:000023d7       ??_V@YAXPAX@Z              004033d7 f   ScEntry:stdafx.obj
- 0001:000023ec       ?sc_end@@YGPAXXZ           004033ec f   ScEntry:prepare.obj
- 0001:000023f2       ?ScEntry@@YGXPAU_PEB@@@Z   004033f2 f   ScEntry:prepare.obj
+ 0001:0000191d       ?Download@@YGHPB_W0PAPAXPAK@Z 0040291d f   ep.obj
+ 0001:00001a7e       ?Exec64@@YIHPAXPB_W@Z      00402a7e f   ep.obj
+ 0001:00001b5b       ?DownloadAndExec@@YGXPB_W0PAXH@Z 00402b5b f   ep.obj
+ 0001:00001bd9       ?ep@@YGXPAU_PEB@@@Z        00402bd9 f   ep.obj
+ 0001:00001c34       ?CopyImage@@YGXPAX0PAU_IMAGE_NT_HEADERS@@K@Z 00402c34 f   Exec.obj
+ 0001:00001c90       ?Relocate@@YGXPAXJ@Z       00402c90 f   Exec.obj
+ 0001:00001ce3       ?ProtectImage@@YGJPAX0PAU_IMAGE_NT_HEADERS@@@Z 00402ce3 f   Exec.obj
+ 0001:00001da1       ?Exec@@YGHPAX0PAU_IMAGE_NT_HEADERS@@PB_W@Z 00402da1 f   Exec.obj
+ 0001:00002075       ?IsImageOk@@YGEKPAXKK@Z    00403075 f   NoCfg.obj
+ 0001:00002178       ?FindNoCfgDll@@YGJPAXKKKPAPAX@Z 00403178 f   NoCfg.obj
+ 0001:00002362       ?get_hmod@@YIPAXPB_W@Z     00403362 f   ScEntry:GetFuncAddr.obj
+ 0001:000023ac       ?GetFuncAddressEx@@YIPAXPAU_IMAGE_DOS_HEADER@@PBD@Z 004033ac f   ScEntry:GetFuncAddr.obj
+ 0001:000024ea       ??_V@YAXPAX@Z              004034ea f   ScEntry:stdafx.obj
+ 0001:000024ff       ?sc_end@@YGPAXXZ           004034ff f   ScEntry:prepare.obj
+ 0001:00002505       ?ScEntry@@YGXPAU_PEB@@@Z   00403505 f   ScEntry:prepare.obj
  0002:00000000       ??_C@_0BF@EKFKPNAI@RtlInitUnicodeString@ 00404000     ScEntry:prepare.obj
  0002:00000018       ??_C@_1BI@NEOFKCPM@?$AAp?$AAr?$AAe?$AAp?$AAa?$AAr?$AAe?$AA?4?$AAd?$AAl?$AAl@ 00404018     ScEntry:prepare.obj
  0002:00000030       ??_C@_0L@HOFGLFDL@LdrLoadDll@ 00404030     ScEntry:prepare.obj
@@ -116,7 +116,7 @@
  0003:00000000       ___@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUdrmDCUivovzhvUhxcIGUhgwzucOlyq@4B2008FD98C1DD4 00405000     stdafx.obj
  0003:00000004       ___@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUdrmDCUivovzhvUhxvmgibUhgwzucOlyq@4B2008FD98C1DD4 00405004     ScEntry:stdafx.obj
 
- entry point at        0001:000023f2
+ entry point at        0001:00002505
 
  Static symbols
 

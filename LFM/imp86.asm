@@ -24,6 +24,7 @@ createFunc  ntdllp, LdrLoadDll, 16
 createFunc  ntdllp, LdrUnloadDll, 4
 createFunc  ntdllp, RtlRemoveVectoredExceptionHandler, 4
 createFunc  ntdllp, RtlImageNtHeader, 4
+createFunc  ntdllp, RtlWow64EnableFsRedirection, 4
 createFunc  ntdllp, RtlAppendUnicodeToString, 8
 createFunc  ntdllp, RtlGetNtSystemRoot, 0
 createFuncC ntdllp, memcpy
