@@ -1,14 +1,14 @@
  SCx86
 
- Timestamp is 6703ac93 (Mon Oct  7 12:40:35 2024)
+ Timestamp is 671040f6 (Thu Oct 17 01:40:54 2024)
 
  Preferred load address is 00400000
 
  Start         Length     Name                   Class
- 0001:00000000 0000191dH .text$mn                CODE
- 0001:0000191d 00000be2H .text$mn$cpp            CODE
- 0001:000024ff 00000006H .text$nm                CODE
- 0001:00002505 000000d6H .text$zz                CODE
+ 0001:00000000 0000195dH .text$mn                CODE
+ 0001:0000195d 00000be7H .text$mn$cpp            CODE
+ 0001:00002544 00000006H .text$nm                CODE
+ 0001:0000254a 000000dbH .text$zz                CODE
  0002:00000000 00000077H .rdata                  DATA
  0002:00000077 00000000H .edata                  DATA
  0003:00000000 00000000H .data                   DATA
@@ -44,69 +44,72 @@
  0000:00000000       ___volatile_metadata       00000000     <absolute>
  0000:00000000       ___x64_code_ranges_to_entry_points 00000000     <absolute>
  0000:00000000       ___x64_code_ranges_to_entry_points_count 00000000     <absolute>
+ 0000:00000000       ___ImageBase               00400000     <linker-defined>
  0001:00000000       ?epASM@@YGXPAU_PEB@@@Z     00401000 f   x86.obj
- 0001:00000032       _GetSystemWindowsDirectoryW@8 00401032 f   x86.obj
- 0001:00000062       _CreateProcessW@40         00401062 f   x86.obj
- 0001:00000086       _TerminateProcess@8        00401086 f   x86.obj
- 0001:000000ae       _Wow64RevertWow64FsRedirection@4 004010ae f   x86.obj
- 0001:000000e2       _ExitProcess@4             004010e2 f   x86.obj
- 0001:00000106       _GetSystemWow64DirectoryW@8 00401106 f   x86.obj
- 0001:00000136       _Wow64DisableWow64FsRedirection@4 00401136 f   x86.obj
- 0001:00000196       _WinHttpConnect@16         00401196 f   x86.obj
- 0001:000001be       _WinHttpOpenRequest@28     004011be f   x86.obj
- 0001:000001ea       _WinHttpSendRequest@28     004011ea f   x86.obj
- 0001:00000216       _WinHttpReceiveResponse@8  00401216 f   x86.obj
- 0001:00000246       _WinHttpQueryHeaders@24    00401246 f   x86.obj
- 0001:00000272       _WinHttpReadData@16        00401272 f   x86.obj
- 0001:0000029a       _WinHttpCloseHandle@4      0040129a f   x86.obj
- 0001:000002c6       _WinHttpOpen@20            004012c6 f   x86.obj
- 0001:00000312       _NtOpenFile@24             00401312 f   x86.obj
- 0001:00000336       _NtQueryDirectoryFile@44   00401336 f   x86.obj
- 0001:00000362       _LdrGetProcedureAddress@16 00401362 f   x86.obj
- 0001:00000392       _RtlAllocateHeap@12        00401392 f   x86.obj
- 0001:000003ba       _RtlFreeHeap@12            004013ba f   x86.obj
- 0001:000003de       _memcpy                    004013de f   x86.obj
- 0001:000003fe       _LdrLoadDll@16             004013fe f   x86.obj
- 0001:00000422       _RtlInitUnicodeString@8    00401422 f   x86.obj
- 0001:0000044e       _ZwUnmapViewOfSection@8    0040144e f   x86.obj
- 0001:0000047a       _ZwResumeThread@8          0040147a f   x86.obj
- 0001:000004a2       _ZwSetContextThread@8      004014a2 f   x86.obj
- 0001:000004ce       _ZwWriteVirtualMemory@20   004014ce f   x86.obj
- 0001:000004fa       _ZwGetContextThread@8      004014fa f   x86.obj
- 0001:00000526       _ZwMapViewOfSection@40     00401526 f   x86.obj
- 0001:00000552       _ZwProtectVirtualMemory@20 00401552 f   x86.obj
- 0001:00000582       _LdrProcessRelocationBlock@16 00401582 f   x86.obj
- 0001:000005b2       _RtlImageDirectoryEntryToData@16 004015b2 f   x86.obj
- 0001:000005e6       _RtlImageNtHeader@4        004015e6 f   x86.obj
- 0001:0000060e       _NtQueryInformationProcess@20 0040160e f   x86.obj
- 0001:0000063e       _RtlImageNtHeaderEx@20     0040163e f   x86.obj
- 0001:0000066a       _NtClose@4                 0040166a f   x86.obj
- 0001:0000068a       _NtCreateSection@28        0040168a f   x86.obj
- 0001:000006b2       _wcstoul                   004016b2 f   x86.obj
- 0001:000006d2       _memset                    004016d2 f   x86.obj
- 0001:00000701       ?host@@YGPB_WXZ            00401701 f   x86.obj
- 0001:00000723       ?URL32@@YGPB_WXZ           00401723 f   x86.obj
- 0001:00000777       ?URL64@@YGPB_WXZ           00401777 f   x86.obj
- 0001:000007cb       ?DLLMask@@YGPB_WXZ         004017cb f   x86.obj
- 0001:000007df       ?System32@@YGPB_WXZ        004017df f   x86.obj
- 0001:00000813       ?Syswow64@@YGPB_WXZ        00401813 f   x86.obj
- 0001:00000847       ?explorer@@YGPB_WXZ        00401847 f   x86.obj
- 0001:0000086a       ?Exec64@@YIHPAX00@Z        0040186a f   x86.obj
- 0001:0000191d       ?Download@@YGHPB_W0PAPAXPAK@Z 0040291d f   ep.obj
- 0001:00001a7e       ?Exec64@@YIHPAXPB_W@Z      00402a7e f   ep.obj
- 0001:00001b5b       ?DownloadAndExec@@YGXPB_W0PAXH@Z 00402b5b f   ep.obj
- 0001:00001bd9       ?ep@@YGXPAU_PEB@@@Z        00402bd9 f   ep.obj
- 0001:00001c34       ?CopyImage@@YGXPAX0PAU_IMAGE_NT_HEADERS@@K@Z 00402c34 f   Exec.obj
- 0001:00001c90       ?Relocate@@YGXPAXJ@Z       00402c90 f   Exec.obj
- 0001:00001ce3       ?ProtectImage@@YGJPAX0PAU_IMAGE_NT_HEADERS@@@Z 00402ce3 f   Exec.obj
- 0001:00001da1       ?Exec@@YGHPAX0PAU_IMAGE_NT_HEADERS@@PB_W@Z 00402da1 f   Exec.obj
- 0001:00002075       ?IsImageOk@@YGEKPAXKK@Z    00403075 f   NoCfg.obj
- 0001:00002178       ?FindNoCfgDll@@YGJPAXKKKPAPAX@Z 00403178 f   NoCfg.obj
- 0001:00002362       ?get_hmod@@YIPAXPB_W@Z     00403362 f   ScEntry:GetFuncAddr.obj
- 0001:000023ac       ?GetFuncAddressEx@@YIPAXPAU_IMAGE_DOS_HEADER@@PBD@Z 004033ac f   ScEntry:GetFuncAddr.obj
- 0001:000024ea       ??_V@YAXPAX@Z              004034ea f   ScEntry:stdafx.obj
- 0001:000024ff       ?sc_end@@YGPAXXZ           004034ff f   ScEntry:prepare.obj
- 0001:00002505       ?ScEntry@@YGXPAU_PEB@@@Z   00403505 f   ScEntry:prepare.obj
+ 0001:00000030       _alloca_probe              00401030 f   x86.obj
+ 0001:00000030       _chkstk                    00401030 f   x86.obj
+ 0001:0000005e       _GetSystemWindowsDirectoryW@8 0040105e f   x86.obj
+ 0001:00000092       _CreateProcessW@40         00401092 f   x86.obj
+ 0001:000000ba       _TerminateProcess@8        004010ba f   x86.obj
+ 0001:000000e2       _Wow64RevertWow64FsRedirection@4 004010e2 f   x86.obj
+ 0001:00000116       _ExitProcess@4             00401116 f   x86.obj
+ 0001:0000013a       _GetSystemWow64DirectoryW@8 0040113a f   x86.obj
+ 0001:0000016a       _Wow64DisableWow64FsRedirection@4 0040116a f   x86.obj
+ 0001:000001ca       _WinHttpConnect@16         004011ca f   x86.obj
+ 0001:000001f2       _WinHttpOpenRequest@28     004011f2 f   x86.obj
+ 0001:0000021e       _WinHttpSendRequest@28     0040121e f   x86.obj
+ 0001:0000024a       _WinHttpReceiveResponse@8  0040124a f   x86.obj
+ 0001:0000027a       _WinHttpQueryHeaders@24    0040127a f   x86.obj
+ 0001:000002a6       _WinHttpReadData@16        004012a6 f   x86.obj
+ 0001:000002ce       _WinHttpCloseHandle@4      004012ce f   x86.obj
+ 0001:000002fa       _WinHttpOpen@20            004012fa f   x86.obj
+ 0001:00000346       _NtOpenFile@24             00401346 f   x86.obj
+ 0001:0000036a       _NtQueryDirectoryFile@44   0040136a f   x86.obj
+ 0001:00000396       _LdrGetProcedureAddress@16 00401396 f   x86.obj
+ 0001:000003c6       _RtlAllocateHeap@12        004013c6 f   x86.obj
+ 0001:000003ee       _RtlFreeHeap@12            004013ee f   x86.obj
+ 0001:00000412       _memcpy                    00401412 f   x86.obj
+ 0001:00000432       _LdrLoadDll@16             00401432 f   x86.obj
+ 0001:00000456       _RtlInitUnicodeString@8    00401456 f   x86.obj
+ 0001:00000482       _ZwUnmapViewOfSection@8    00401482 f   x86.obj
+ 0001:000004ae       _ZwResumeThread@8          004014ae f   x86.obj
+ 0001:000004d6       _ZwSetContextThread@8      004014d6 f   x86.obj
+ 0001:00000502       _ZwWriteVirtualMemory@20   00401502 f   x86.obj
+ 0001:0000052e       _ZwGetContextThread@8      0040152e f   x86.obj
+ 0001:0000055a       _ZwMapViewOfSection@40     0040155a f   x86.obj
+ 0001:00000586       _ZwProtectVirtualMemory@20 00401586 f   x86.obj
+ 0001:000005b6       _LdrProcessRelocationBlock@16 004015b6 f   x86.obj
+ 0001:000005e6       _RtlImageDirectoryEntryToData@16 004015e6 f   x86.obj
+ 0001:0000061a       _RtlImageNtHeader@4        0040161a f   x86.obj
+ 0001:00000642       _NtQueryInformationProcess@20 00401642 f   x86.obj
+ 0001:00000672       _RtlImageNtHeaderEx@20     00401672 f   x86.obj
+ 0001:0000069e       _NtClose@4                 0040169e f   x86.obj
+ 0001:000006be       _NtCreateSection@28        004016be f   x86.obj
+ 0001:000006e6       _wcstoul                   004016e6 f   x86.obj
+ 0001:00000706       _memset                    00401706 f   x86.obj
+ 0001:00000735       ?host@@YGPB_WXZ            00401735 f   x86.obj
+ 0001:00000757       ?URL32@@YGPB_WXZ           00401757 f   x86.obj
+ 0001:000007ab       ?URL64@@YGPB_WXZ           004017ab f   x86.obj
+ 0001:000007ff       ?DLLMask@@YGPB_WXZ         004017ff f   x86.obj
+ 0001:00000813       ?System32@@YGPB_WXZ        00401813 f   x86.obj
+ 0001:00000847       ?Syswow64@@YGPB_WXZ        00401847 f   x86.obj
+ 0001:0000087b       ?explorer@@YGPB_WXZ        0040187b f   x86.obj
+ 0001:0000089e       ?Exec64@@YIHPAX00@Z        0040189e f   x86.obj
+ 0001:0000195d       ?Download@@YGHPB_W0PAPAXPAK@Z 0040295d f   ep.obj
+ 0001:00001abe       ?Exec64@@YIHPAXPB_W@Z      00402abe f   ep.obj
+ 0001:00001b9b       ?DownloadAndExec@@YGXPB_W0PAXH@Z 00402b9b f   ep.obj
+ 0001:00001c19       ?ep@@YGXPAU_PEB@@@Z        00402c19 f   ep.obj
+ 0001:00001c74       ?CopyImage@@YGXPAX0PAU_IMAGE_NT_HEADERS@@K@Z 00402c74 f   Exec.obj
+ 0001:00001cd0       ?Relocate@@YGXPAXJ@Z       00402cd0 f   Exec.obj
+ 0001:00001d23       ?ProtectImage@@YGJPAX0PAU_IMAGE_NT_HEADERS@@@Z 00402d23 f   Exec.obj
+ 0001:00001de1       ?Exec@@YGHPAX0PAU_IMAGE_NT_HEADERS@@PB_W@Z 00402de1 f   Exec.obj
+ 0001:000020b5       ?IsImageOk@@YGEKPAXKK@Z    004030b5 f   NoCfg.obj
+ 0001:000021bd       ?FindNoCfgDll@@YGJPAXKKKPAPAX@Z 004031bd f   NoCfg.obj
+ 0001:000023a7       ?get_hmod@@YIPAXPB_W@Z     004033a7 f   ScEntry:GetFuncAddr.obj
+ 0001:000023f1       ?GetFuncAddressEx@@YIPAXPAU_IMAGE_DOS_HEADER@@PBD@Z 004033f1 f   ScEntry:GetFuncAddr.obj
+ 0001:0000252f       ??_V@YAXPAX@Z              0040352f f   ScEntry:stdafx.obj
+ 0001:00002544       ?sc_end@@YGPAXXZ           00403544 f   ScEntry:prepare.obj
+ 0001:0000254a       ?ScEntry@@YGXPAU_PEB@@@Z   0040354a f   ScEntry:prepare.obj
  0002:00000000       ??_C@_0BF@EKFKPNAI@RtlInitUnicodeString@ 00404000     ScEntry:prepare.obj
  0002:00000018       ??_C@_1BI@NEOFKCPM@?$AAp?$AAr?$AAe?$AAp?$AAa?$AAr?$AAe?$AA?4?$AAd?$AAl?$AAl@ 00404018     ScEntry:prepare.obj
  0002:00000030       ??_C@_0L@HOFGLFDL@LdrLoadDll@ 00404030     ScEntry:prepare.obj
@@ -116,11 +119,11 @@
  0003:00000000       ___@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUdrmDCUivovzhvUhxcIGUhgwzucOlyq@4B2008FD98C1DD4 00405000     stdafx.obj
  0003:00000004       ___@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUdrmDCUivovzhvUhxvmgibUhgwzucOlyq@4B2008FD98C1DD4 00405004     ScEntry:stdafx.obj
 
- entry point at        0001:00002505
+ entry point at        0001:0000254a
 
  Static symbols
 
  0001:00000005       common_imp_call            00401005 f   x86.obj
- 0001:0000016f       KERNEL32                   0040116f f   x86.obj
- 0001:000002eb       WINHTTP                    004012eb f   x86.obj
- 0001:000006f3       ntdllp                     004016f3 f   x86.obj
+ 0001:000001a3       KERNEL32                   004011a3 f   x86.obj
+ 0001:0000031f       WINHTTP                    0040131f f   x86.obj
+ 0001:00000727       ntdllp                     00401727 f   x86.obj

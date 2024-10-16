@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{7458FDDC-3886-433a-BA0D-E82F9C9167E4}</ProjectGuid>
+    <RootNamespace>Tools</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <UserRootDir>$(SolutionDir)..\MSBuild\v4.0</UserRootDir>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>..\..\pnth</AdditionalIncludeDirectories>
+      <AdditionalOptions>/cbstring %(AdditionalOptions)</AdditionalOptions>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <EntryPointSymbol Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">?ScEntry@@YGXPAU_PEB@@@Z</EntryPointSymbol>
+      <EntryPointSymbol Condition="'$(Configuration)|$(Platform)'=='Release|x64'">?ScEntry@@YAXPEAU_PEB@@@Z</EntryPointSymbol>
+      <AdditionalOptions>/EMITPOGOPHASEINFO /EMITVOLATILEMETADATA:NO %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>ntdllp.lib;ScEntry.lib;kernel32.lib;advapi32.lib;ole32.lib;Secur32.lib;Oleaut32.lib</AdditionalDependencies>
+      <GenerateMapFile>true</GenerateMapFile>
+    </Link>
+    <PostBuildEvent>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(TargetPath)" *$(OutDir)$(ProjectName).map*imp.asm**ToolsX64.asm*Tx64.exe</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(TargetPath)" *$(OutDir)$(ProjectName).map*imp86.asm**ToolsX86.asm*Tx86.exe</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="print.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="wow.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="cfg.cpp" />
+    <ClCompile Include="ep.cpp" />
+    <ClCompile Include="folder.cpp" />
+    <ClCompile Include="modules.cpp" />
+    <ClCompile Include="print.cpp" />
+    <ClCompile Include="PT.cpp" />
+    <ClCompile Include="srv.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="task.cpp" />
+    <ClCompile Include="Users.cpp" />
+    <ClCompile Include="wow.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imp.asm" />
+    <CustomBuild Include="x64.asm">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ml64 /c /Cp %(Identity)</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).obj</Outputs>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="x86.asm">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">ml /c /Cp %(Identity)</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename).obj</Outputs>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <None Include="imp86.asm" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="task.xml">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"../cta.exe" *tsk.asm*%(FullPath)*toasm*nowait
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">tsk.asm</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,6 +1,6 @@
  dcom
 
- Timestamp is 66fbb045 (Tue Oct  1 11:18:13 2024)
+ Timestamp is 6710413b (Thu Oct 17 01:42:03 2024)
 
  Preferred load address is 0000000140000000
 
@@ -9,7 +9,7 @@
  0001:000005ac 000007d4H .text$mn$cpp            CODE
  0001:00000d80 00000158H .text$mn$cpp$s          CODE
  0001:00000ed8 00000008H .text$nm                CODE
- 0001:00000ee0 0000010eH .text$zz                CODE
+ 0001:00000ee0 00000115H .text$zz                CODE
  0002:00000000 00000000H .idata$5                DATA
  0002:00000000 0000007cH .rdata                  DATA
  0002:0000007c 0000009cH .xdata                  DATA
@@ -52,6 +52,7 @@
  0000:00000000       __volatile_metadata        0000000000000000     <absolute>
  0000:00000000       __x64_code_ranges_to_entry_points 0000000000000000     <absolute>
  0000:00000000       __x64_code_ranges_to_entry_points_count 0000000000000000     <absolute>
+ 0000:00000000       __ImageBase                0000000140000000     <linker-defined>
  0001:00000000       ?epASM@@YAXPEAU_PEB@@@Z    0000000140001000 f   x64.obj
  0001:00000010       ?GetToken@@YAPEAXXZ        0000000140001010 f   x64.obj
  0001:00000018       ?SetToken@@YAXPEAX@Z       0000000140001018 f   x64.obj

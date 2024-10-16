@@ -98,6 +98,33 @@ common_imp_call proc private
   jmp eax
 common_imp_call endp
 
+_chkstk proc
+_alloca_probe proc
+   push        ecx
+   lea         ecx,[esp+4]
+   sub         ecx,eax
+   sbb         eax,eax
+   not         eax
+   and         ecx,eax
+   mov         eax,esp
+   and         eax,0FFFFF000h
+@@1:
+   cmp         ecx,eax
+   jb          @@2
+   mov         eax,ecx
+   pop         ecx
+   xchg        eax,esp
+   mov         eax,dword ptr [eax]
+   mov         dword ptr [esp],eax
+   ret
+@@2:
+   sub         eax,1000h
+   test        dword ptr [eax],eax
+   jmp         @@1
+_alloca_probe endp
+_chkstk endp
+
+
 
 
 

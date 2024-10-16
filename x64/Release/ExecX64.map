@@ -1,15 +1,15 @@
  ExecX64
 
- Timestamp is 6703abe0 (Mon Oct  7 12:37:36 2024)
+ Timestamp is 67103f59 (Thu Oct 17 01:34:01 2024)
 
  Preferred load address is 0000000140000000
 
  Start         Length     Name                   Class
  0001:00000000 000004e4H .text$mn                CODE
- 0001:000004e4 00000b2cH .text$mn$cpp            CODE
- 0001:00001010 0000006cH .text$mn$cpp$s          CODE
- 0001:0000107c 00000008H .text$nm                CODE
- 0001:00001084 0000010eH .text$zz                CODE
+ 0001:000004e4 00000b3cH .text$mn$cpp            CODE
+ 0001:00001020 0000006cH .text$mn$cpp$s          CODE
+ 0001:0000108c 00000008H .text$nm                CODE
+ 0001:00001094 00000115H .text$zz                CODE
  0002:00000000 0000007cH .rdata                  DATA
  0002:0000007c 00000080H .xdata                  DATA
  0002:000000fc 00000000H .edata                  DATA
@@ -47,6 +47,7 @@
  0000:00000000       __volatile_metadata        0000000000000000     <absolute>
  0000:00000000       __x64_code_ranges_to_entry_points 0000000000000000     <absolute>
  0000:00000000       __x64_code_ranges_to_entry_points_count 0000000000000000     <absolute>
+ 0000:00000000       __ImageBase                0000000140000000     <linker-defined>
  0001:00000000       ?epASM@@YAXPEAU_PEB@@@Z    0000000140001000 f   x64.obj
  0001:00000078       RtlImageNtHeader           0000000140001078 f   x64.obj
  0001:000000a1       RtlImageDirectoryEntryToData 00000001400010a1 f   x64.obj
@@ -77,13 +78,13 @@
  0001:000005fc       ?SetWowContext@@YAJPEAXPEAU_CONTEXT@@@Z 00000001400015fc f   Exec.obj
  0001:00000610       ?Exec@@YAHPEAX00@Z         0000000140001610 f   Exec.obj
  0001:00000a50       ?FindNoCfgDll@@YAJKKKPEAPEAX@Z 0000000140001a50 f   NoCfg.obj
- 0001:00000e58       ?get_hmod@@YAPEAXPEB_W@Z   0000000140001e58 f   ScEntry:GetFuncAddr.obj
- 0001:00000eb4       ?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z 0000000140001eb4 f   ScEntry:GetFuncAddr.obj
- 0001:00001010       ??_C@_1CK@GMBENNHD@?$AA?2?$AAs?$AAy?$AAs?$AAt?$AAe?$AAm?$AAr?$AAo?$AAo?$AAt?$AA?2?$AAs?$AAy?$AAs@FNODOBFM@ 0000000140002010     NoCfg.obj
- 0001:00001040       ??_C@_1CK@JEHFHMMG@?$AA?2?$AAs?$AAy?$AAs?$AAt?$AAe?$AAm?$AAr?$AAo?$AAo?$AAt?$AA?2?$AAs?$AAy?$AAs@FNODOBFM@ 0000000140002040     NoCfg.obj
- 0001:00001070       ??_C@_1M@HNNPBALB@?$AA?$CK?$AA?4?$AAd?$AAl?$AAl@FNODOBFM@ 0000000140002070     NoCfg.obj
- 0001:0000107c       ?sc_end@@YAPEAXXZ          000000014000207c f   ScEntry:prepare.obj
- 0001:00001084       ?ScEntry@@YAXPEAU_PEB@@@Z  0000000140002084 f   ScEntry:prepare.obj
+ 0001:00000e6c       ?get_hmod@@YAPEAXPEB_W@Z   0000000140001e6c f   ScEntry:GetFuncAddr.obj
+ 0001:00000ec8       ?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z 0000000140001ec8 f   ScEntry:GetFuncAddr.obj
+ 0001:00001020       ??_C@_1CK@GMBENNHD@?$AA?2?$AAs?$AAy?$AAs?$AAt?$AAe?$AAm?$AAr?$AAo?$AAo?$AAt?$AA?2?$AAs?$AAy?$AAs@FNODOBFM@ 0000000140002020     NoCfg.obj
+ 0001:00001050       ??_C@_1CK@JEHFHMMG@?$AA?2?$AAs?$AAy?$AAs?$AAt?$AAe?$AAm?$AAr?$AAo?$AAo?$AAt?$AA?2?$AAs?$AAy?$AAs@FNODOBFM@ 0000000140002050     NoCfg.obj
+ 0001:00001080       ??_C@_1M@HNNPBALB@?$AA?$CK?$AA?4?$AAd?$AAl?$AAl@FNODOBFM@ 0000000140002080     NoCfg.obj
+ 0001:0000108c       ?sc_end@@YAPEAXXZ          000000014000208c f   ScEntry:prepare.obj
+ 0001:00001094       ?ScEntry@@YAXPEAU_PEB@@@Z  0000000140002094 f   ScEntry:prepare.obj
  0002:00000000       ??_C@_0BF@EKFKPNAI@RtlInitUnicodeString@ 0000000140003000     ScEntry:prepare.obj
  0002:00000018       ??_C@_1BI@NEOFKCPM@?$AAp?$AAr?$AAe?$AAp?$AAa?$AAr?$AAe?$AA?4?$AAd?$AAl?$AAl@ 0000000140003018     ScEntry:prepare.obj
  0002:00000030       ??_C@_0L@HOFGLFDL@LdrLoadDll@ 0000000140003030     ScEntry:prepare.obj
@@ -93,7 +94,7 @@
  0003:00000000       __@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUcGEUivovzhvUvcvxcGEUhgwzucOlyq@4B2008FD98C1DD4 0000000140004000     stdafx.obj
  0003:00000004       __@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUcGEUivovzhvUhxvmgibUhgwzucOlyq@4B2008FD98C1DD4 0000000140004004     ScEntry:stdafx.obj
 
- entry point at        0001:00001084
+ entry point at        0001:00001094
 
  Static symbols
 

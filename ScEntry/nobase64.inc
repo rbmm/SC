@@ -55,6 +55,7 @@ extern ?get_hmod@@YAPEAXPEB_W@Z : PROC ; void *__cdecl get_hmod(const wchar_t *)
 extern ?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z : PROC ; void *__cdecl GetFuncAddressEx(struct _IMAGE_DOS_HEADER *,const char *)
 
 common_imp_call proc private
+  push rax
   mov rax,[r10]
   test rax,rax
   jnz @@1
@@ -64,20 +65,20 @@ common_imp_call proc private
   push rcx
   push r10
   push r11
-  sub rsp,28h
+  sub rsp,20h
   mov rax,[r11]; *phmod
   test rax,rax
   jnz @@2
   lea rcx,[r11 + 8]
   call ?get_hmod@@YAPEAXPEB_W@Z
-  mov r11,[rsp + 28h]
-  mov r10,[rsp + 30h]
+  mov r11,[rsp + 20h]
+  mov r10,[rsp + 28h]
   mov [r11],rax
 @@2:
   lea rdx,[r10 + 8]
   mov rcx,rax
   call ?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z
-  add rsp,28h
+  add rsp,20h
   pop r11
   pop r10
   pop rcx
@@ -86,5 +87,6 @@ common_imp_call proc private
   pop r9
   mov [r10],rax
 @@1:
-  jmp rax
+  xchg [rsp],rax
+  ret
 common_imp_call endp

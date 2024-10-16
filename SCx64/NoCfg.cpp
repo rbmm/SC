@@ -31,6 +31,8 @@ BOOLEAN IsImageOk(_In_ ULONG SizeOfImage, _In_ HANDLE hSection, _In_ ULONG Machi
 				PIMAGE_SECTION_HEADER pish = 0;
 				DWORD NumberOfSections = 0;
 
+				VirtualAddress = (pinth->OptionalHeader.SizeOfHeaders + PAGE_SIZE - 1) & ~(PAGE_SIZE - 1);
+
 				if (pinth->FileHeader.Machine == Machine &&
 					pinth->OptionalHeader.Magic == Magic &&
 					pinth->OptionalHeader.SizeOfImage >= SizeOfImage)
@@ -60,7 +62,6 @@ BOOLEAN IsImageOk(_In_ ULONG SizeOfImage, _In_ HANDLE hSection, _In_ ULONG Machi
 						{
 							if (pish)
 							{
-								VirtualAddress = (pinth->OptionalHeader.SizeOfHeaders + PAGE_SIZE - 1) & ~(PAGE_SIZE - 1);
 								do
 								{
 									DWORD VirtualSize = pish->Misc.VirtualSize;

@@ -56,7 +56,7 @@ void WINAPI ScEntry(PEB* peb)
 			);
 
 		NTSTATUS (NTAPI* PrepareSC)(
-			_In_ PVOID Base, _In_ ULONG cb
+			_In_ PVOID Base, _In_ ULONG cb, _In_ PVOID ImageBase
 			);
 	};
 
@@ -74,7 +74,7 @@ void WINAPI ScEntry(PEB* peb)
 	{
 		if (0 <= (status = RAC(LdrGetProcedureAddress, hmod, 0, 1, &pv)))
 		{
-			status = PrepareSC(epASM, RtlPointerToOffset(epASM, sc_end()));
+			status = PrepareSC(epASM, RtlPointerToOffset(epASM, sc_end()), &__ImageBase);
 		}
 
 		pv = GetFuncAddressEx(pidh, "LdrUnloadDll");

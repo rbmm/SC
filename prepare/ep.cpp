@@ -672,7 +672,7 @@ NTSTATUS CreateZipAsmSC(PCWSTR to, PVOID pv, ULONG cb)
 	return GetLastError();
 }
 
-NTSTATUS CreateExeSC(PCWSTR pwzFileName, PVOID Base, ULONG cb)
+NTSTATUS CreateExeSC(PCWSTR pwzFileName, PVOID Base, ULONG cb, PVOID ImageBase)
 {
 	struct PE
 	{
@@ -700,9 +700,9 @@ NTSTATUS CreateExeSC(PCWSTR pwzFileName, PVOID Base, ULONG cb)
 
 	if (PE* pe = new(cb) PE)
 	{
-		PIMAGE_NT_HEADERS pinth = RtlImageNtHeader(&__ImageBase);
+		PIMAGE_NT_HEADERS pinth = RtlImageNtHeader(ImageBase);
 
-		memcpy(&pe->idh, &__ImageBase, sizeof(IMAGE_DOS_HEADER));
+		memcpy(&pe->idh, ImageBase, sizeof(IMAGE_DOS_HEADER));
 		memcpy(&pe->inth, pinth, sizeof(IMAGE_NT_HEADERS));
 
 		pe->idh.e_lfanew = sizeof(IMAGE_DOS_HEADER);
@@ -744,7 +744,7 @@ NTSTATUS CreateExeSC(PCWSTR pwzFileName, PVOID Base, ULONG cb)
 	return STATUS_NO_MEMORY;
 }
 
-NTSTATUS NTAPI PrepareSC(PVOID Base, ULONG cb)
+NTSTATUS NTAPI PrepareSC(PVOID Base, ULONG cb, PVOID ImageBase)
 {
 	DbgPrint("PrepareSC(%p, %x, <%ws>)\r\n", Base, cb, GetCommandLineW());
 
@@ -797,7 +797,7 @@ NTSTATUS NTAPI PrepareSC(PVOID Base, ULONG cb)
 					{
 						if (pczExe && *pczExe)
 						{
-							status = CreateExeSC(pczExe, Base, cb);
+							status = CreateExeSC(pczExe, Base, cb, ImageBase);
 						}
 					}
 				}
