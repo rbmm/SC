@@ -554,7 +554,7 @@ NTSTATUS ProcessIAT(PCWSTR pszImp, PCWSTR pszMap, ULONG_PTR pvShellEnd)
 	return STATUS_INTERNAL_ERROR;
 }
 
-NTSTATUS CreateAsmSC(PCWSTR pwzFileName, const void* pcv, SIZE_T cb)
+NTSTATUS I_CreateAsmSC(PCWSTR pwzFileName, const void* pcv, SIZE_T cb)
 {
 	NTSTATUS status;
 
@@ -634,6 +634,115 @@ inline ULONG BOOL_TO_ERROR(BOOL f)
 	return f ? NOERROR : GetLastError();
 }
 
+//## -> #
+//#. -> *
+//#! -> ?
+//#: -> %
+
+BOOL UnEscape(_Inout_ PWSTR str)
+{
+	PWSTR buf = str;
+	WCHAR c;
+	do
+	{
+		if ('#' == (c = *str++))
+		{
+			switch (c = *str++)
+			{
+			case '.':
+				c = '*';
+				break;
+			case '!':
+				c = '?';
+				break;
+			case ':':
+				c = '%';
+				break;
+			case '#':
+				break;
+			default:
+				return FALSE;
+			}
+		}
+
+		*buf++ = c;
+
+	} while (c);
+
+	return TRUE;
+}
+
+NTSTATUS CreateAesKey(_Out_ BCRYPT_KEY_HANDLE* phKey, _In_ PBYTE secret, _In_ ULONG cb)
+{
+	NTSTATUS status;
+	BCRYPT_ALG_HANDLE hAlgorithm;
+	if (0 <= (status = BCryptOpenAlgorithmProvider(&hAlgorithm, BCRYPT_AES_ALGORITHM, 0, 0)))
+	{
+		status = BCryptGenerateSymmetricKey(hAlgorithm, phKey, 0, 0, secret, cb, 0);
+
+		BCryptCloseAlgorithmProvider(hAlgorithm, 0);
+	}
+
+	return status;
+}
+
+NTSTATUS CreateAsmSC(PCWSTR to, PVOID pv, ULONG cb)
+{
+	if (PWSTR psz = wcschr(to, '?'))
+	{
+		*psz++ = 0;
+
+		//while (!IsDebuggerPresent()) Sleep(100); __debugbreak();
+		if (!UnEscape(const_cast<PWSTR>(to)))
+		{
+			return STATUS_BAD_DATA;
+		}
+		DbgPrint("password: \"%ws\"\r\n", to);
+
+		BCRYPT_KEY_HANDLE hKey;
+		UCHAR secret[32];
+		ULONG s = sizeof(secret);
+		if (CryptHashCertificate2(BCRYPT_SHA256_ALGORITHM, 0, 0, (PBYTE)to, RtlPointerToOffset(to, psz), secret, &s))
+		{
+			NTSTATUS status = CreateAesKey(&hKey, secret, s);
+
+			if (0 <= status)
+			{
+				PBYTE pb = 0;
+				s = 0;
+				while (0 <= (status = BCryptEncrypt(hKey, (PBYTE)pv, cb, 0, 0, 0, pb, s, &s, BCRYPT_BLOCK_PADDING)))
+				{
+					if (pb)
+					{
+						DbgPrint("Encrypt: %x -> %x\r\n", cb, s);
+						status = I_CreateAsmSC(psz, pb, s);
+						break;
+					}
+
+					if (!(pb = new UCHAR[s]))
+					{
+						status = STATUS_NO_MEMORY;
+						break;
+					}
+				}
+
+				if (pb)
+				{
+					delete[] pb;
+				}
+
+				BCryptDestroyKey(hKey);
+			}
+
+			return status;
+		}
+
+		return GetLastError();
+	}
+
+	return I_CreateAsmSC(to, pv, cb);
+}
+
 NTSTATUS CreateZipAsmSC(PCWSTR to, PVOID pv, ULONG cb)
 {
 	COMPRESSOR_HANDLE CompressorHandle;
@@ -651,7 +760,7 @@ NTSTATUS CreateZipAsmSC(PCWSTR to, PVOID pv, ULONG cb)
 				if (Compress(CompressorHandle, pv, cb, pb, CompressedDataSize, &CompressedDataSize))
 				{
 					DbgPrint("Compress:%x >> %x [%u%%]\r\n", cb, CompressedDataSize, (CompressedDataSize * 100) / cb);
-					dwError = CreateAsmSC(to, pb, CompressedDataSize);
+					dwError = CreateAsmSC(to, pb, (ULONG)CompressedDataSize);
 				}
 				else
 				{
@@ -748,7 +857,7 @@ NTSTATUS NTAPI PrepareSC(PVOID Base, ULONG cb, PVOID ImageBase)
 {
 	DbgPrint("PrepareSC(%p, %x, <%ws>)\r\n", Base, cb, GetCommandLineW());
 
-	//*map*imp[*bin*[?]asm*exe]
+	//*map*imp[*bin*[?[password?]]asm*exe]
 
 	if (PWSTR psz = wcschr(GetCommandLineW(), '*'))
 	{

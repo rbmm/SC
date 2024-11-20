@@ -13,14 +13,14 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{48578B25-f1ce-1033-484C-76884D05DA77}</ProjectGuid>
-    <RootNamespace>prepare</RootNamespace>
+    <ProjectGuid>{BDC6BB36-8d33-78DA-2051-7A40214FB845}</ProjectGuid>
+    <RootNamespace>CertLogon</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <UserRootDir>$(SolutionDir)..\MSBuild\v4.0</UserRootDir>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -44,27 +44,23 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <Optimization>MaxSpeed</Optimization>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\pnth</AdditionalIncludeDirectories>
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\pnth</AdditionalIncludeDirectories>
+      <BufferSecurityCheck Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</BufferSecurityCheck>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">/cbstring %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <EntryPointSymbol>
-      </EntryPointSymbol>
+      <EntryPointSymbol>?ScEntry@@YAXPEAU_PEB@@@Z</EntryPointSymbol>
       <AdditionalOptions>/EMITPOGOPHASEINFO /EMITVOLATILEMETADATA:NO %(AdditionalOptions)</AdditionalOptions>
-      <NoEntryPoint Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</NoEntryPoint>
-      <NoEntryPoint Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</NoEntryPoint>
-      <ImportLibrary Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
-      <ImportLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-      </ImportLibrary>
-      <ModuleDefinitionFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Source.def</ModuleDefinitionFile>
-      <ModuleDefinitionFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Source.def</ModuleDefinitionFile>
-      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'">BufferOverflow.lib;ucrt.lib;ntdllp.lib;kernel32.lib;cabinet.lib;bcrypt.lib;crypt32.lib</AdditionalDependencies>
-      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">BufferOverflow.lib;ucrt.lib;ntdllp.lib;kernel32.lib;cabinet.lib</AdditionalDependencies>
+      <GenerateMapFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateMapFile>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ntdllp.lib;ScEntry.lib;kernel32.lib;advapi32.lib;crypt32.lib;ncrypt.lib;user32.lib</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(TargetPath)" *$(OutDir)$(ProjectName).map*imp.asm**?!###.#!#:!?cl.asm*$(ProjectName).exe</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -76,7 +72,16 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Source.def" />
+    <None Include="imp.asm">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ml64 /c /Cp %(Identity)</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).obj</Outputs>
+    </None>
+    <CustomBuild Include="x64.asm">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ml64 /c /Cp %(Identity)</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).obj</Outputs>
+    </CustomBuild>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
