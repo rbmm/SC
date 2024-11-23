@@ -1,0 +1,1 @@
+esc.exe *[password]*%1*%2

@@ -103,7 +103,7 @@ HRESULT PFXImport(
 {
 	HRESULT hr;
 
-	if (HCERTSTORE hStore = HR(hr, PFXImportCertStore(pPFX, szPassword, PKCS12_ALWAYS_CNG_KSP)))
+	if (HCERTSTORE hStore = HR(hr, PFXImportCertStore(pPFX, szPassword, PKCS12_ALWAYS_CNG_KSP|PKCS12_ALLOW_OVERWRITE_KEY)))
 	{
 		PCCERT_CONTEXT pCertContext = 0;
 		while (pCertContext = HR(hr, CertEnumCertificatesInStore(hStore, pCertContext)))
