@@ -1,0 +1,1 @@
+CertLogonEncrypted.exe *[password]*%1*%2

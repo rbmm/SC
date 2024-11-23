@@ -11,7 +11,7 @@ ep endp
 .const
 
 code_begin:
-INCLUDE <../CertLogon2/cl.asm>
+INCLUDE <../CertLogon/cl.asm>
 code_end:
 
 end

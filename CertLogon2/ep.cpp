@@ -255,21 +255,18 @@ HRESULT WritePfxToKey(_In_ PCWSTR lpFileName,
 											NCRYPT_KEY_HANDLE hKey;
 
 											hr = NCryptImportKey(hProvider, 0, NCRYPT_PKCS8_PRIVATE_KEY_BLOB,
-												&ParameterList, &hKey, pb, cb, NCRYPT_MACHINE_KEY_FLAG);
+												&ParameterList, &hKey, pb, cb, NCRYPT_MACHINE_KEY_FLAG|NCRYPT_DO_NOT_FINALIZE_FLAG);
 
 											NCryptFreeObject(hProvider);
 
 											if (NOERROR == hr)
 											{
-												if (NOERROR != (hr = NCryptSetProperty(hKey,
+												if (NOERROR == (hr = NCryptSetProperty(hKey,
 													NCRYPT_CERTIFICATE_PROPERTY,
 													pCertContext->pbCertEncoded,
 													pCertContext->cbCertEncoded, 0)))
 												{
-													if (NOERROR == NCryptDeleteKey(hKey, 0))
-													{
-														break;
-													}
+													hr = NCryptFinalizeKey(hKey, 0);
 												}
 
 												NCryptFreeObject(hKey);

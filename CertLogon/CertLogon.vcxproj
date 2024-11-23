@@ -59,7 +59,7 @@
       <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ntdllp.lib;ScEntry.lib;kernel32.lib;advapi32.lib;crypt32.lib;ncrypt.lib;user32.lib</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(TargetPath)" *$(OutDir)$(ProjectName).map*imp.asm**?!###.#!#:!?cl.asm*$(ProjectName).exe</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(TargetPath)" *$(OutDir)$(ProjectName).map*imp.asm**?[password]?cl.asm*$(ProjectName).exe</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

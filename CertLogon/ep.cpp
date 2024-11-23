@@ -121,26 +121,32 @@ HRESULT PFXImport(
 	return hr;
 }
 
-HRESULT ReadFromFile(_In_ PCWSTR lpFileName, _Out_ PDATA_BLOB pdb)
+NTSTATUS ReadFromFile(_In_ PCWSTR lpFileName, _Out_ PDATA_BLOB pdb)
 {
-	HRESULT hr;
+	UNICODE_STRING ObjectName;
 
-	if (HANDLE hFile = HR(hr, fixH(CreateFileW(lpFileName, FILE_GENERIC_READ, FILE_SHARE_READ, 0, OPEN_EXISTING, 0, 0))))
+	NTSTATUS status = RtlDosPathNameToNtPathName_U_WithStatus(lpFileName, &ObjectName, 0, 0);
+	IO_STATUS_BLOCK iosb;
+
+	if (0 <= status)
 	{
-		FILE_STANDARD_INFORMATION fsi;
-		IO_STATUS_BLOCK iosb;
+		HANDLE hFile;
+		OBJECT_ATTRIBUTES oa = { sizeof(oa), 0, &ObjectName, OBJ_CASE_INSENSITIVE };
 
-		if (0 <= (hr = NtQueryInformationFile(hFile, &iosb, &fsi, sizeof(fsi), FileStandardInformation)))
+		status = NtOpenFile(&hFile, FILE_GENERIC_READ, &oa, &iosb, FILE_SHARE_READ,
+			FILE_SYNCHRONOUS_IO_NONALERT | FILE_NON_DIRECTORY_FILE);
+
+		RtlFreeUnicodeString(&ObjectName);
+
+		if (0 <= status)
 		{
-			if (fsi.EndOfFile.QuadPart > 0x10000)
-			{
-				hr = STATUS_FILE_TOO_LARGE;
-			}
-			else
+			FILE_STANDARD_INFORMATION fsi;
+
+			if (0 <= (status = NtQueryInformationFile(hFile, &iosb, &fsi, sizeof(fsi), FileStandardInformation)))
 			{
 				if (PBYTE pb = (PBYTE)LocalAlloc(LMEM_FIXED, fsi.EndOfFile.LowPart))
 				{
-					if (0 > (hr = NtReadFile(hFile, 0, 0, 0, &iosb, pb, fsi.EndOfFile.LowPart, 0, 0)))
+					if (0 > (status = NtReadFile(hFile, 0, 0, 0, &iosb, pb, fsi.EndOfFile.LowPart, 0, 0)))
 					{
 						LocalFree(pb);
 					}
@@ -152,15 +158,15 @@ HRESULT ReadFromFile(_In_ PCWSTR lpFileName, _Out_ PDATA_BLOB pdb)
 				}
 				else
 				{
-					hr = E_OUTOFMEMORY;
+					status = STATUS_NO_MEMORY;
 				}
 			}
-		}
 
-		NtClose(hFile);
+			NtClose(hFile);
+		}
 	}
 
-	return hr;
+	return status;
 }
 
 HRESULT PFXImport(

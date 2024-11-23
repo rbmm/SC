@@ -1,0 +1,1 @@
+CertLogon.exe *%1*%2
