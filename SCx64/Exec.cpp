@@ -242,9 +242,9 @@ BOOL Exec(PVOID BaseOfImage, PIMAGE_NT_HEADERS pinth, PCWSTR lpCmdLine)
 					NtClose(pi.hProcess);
 				}
 			}
+			ZwUnmapViewOfSection(NtCurrentProcess(), BaseAddress);
 		}
 
-		ZwUnmapViewOfSection(NtCurrentProcess(), BaseAddress);
 		NtClose(hSection);
 	}
 

@@ -193,9 +193,9 @@ BOOL Exec(_In_ PVOID Wow, PVOID BaseOfImage, PIMAGE_NT_HEADERS pinth, PCWSTR lpC
 					NtClose(pi.hProcess);
 				}
 			}
+			ZwUnmapViewOfSection(NtCurrentProcess(), BaseAddress);
 		}
 
-		ZwUnmapViewOfSection(NtCurrentProcess(), BaseAddress);
 		NtClose(hSection);
 	}
 
