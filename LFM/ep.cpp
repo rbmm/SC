@@ -36,19 +36,6 @@ PCSTR GetMapViewOfSection()
 
 #endif // _X86_
 
-//int __cdecl strcmp(const char* src, const char* dst)
-//{
-//	for (;;++src, ++dst)
-//	{
-//		ULONG a = *(unsigned char*)src, b = *(unsigned char*)dst;
-//		if (int ret = a - b)
-//		{
-//			return ret;
-//		}
-//		if (!a) return 0;
-//	}
-//}
-
 BOOLEAN IsImageOk(_In_ ULONG SizeOfImage, _In_ HANDLE hSection)
 {
 	BOOLEAN fOk = FALSE;
@@ -486,22 +473,30 @@ NTSTATUS LoadLibraryFromMem(
 	return status;
 }
 
-void NTAPI LoadLibraryFromMem(_In_ PVOID pvImage, _In_ PVOID, _In_ PVOID)
+NTSTATUS NTAPI LoadLibraryFromMem(_In_ PVOID pvImage, _In_opt_ ULONG_PTR Size, _Out_opt_ void** ppv)
 {
 	CPP_FUNCTION;
 
-	if (PIMAGE_NT_HEADERS pinth = RtlImageNtHeader(pvImage))
+	NTSTATUS status;
+
+	PIMAGE_NT_HEADERS pinth;
+
+	if (0 <= (status = RtlImageNtHeaderEx(Size ? 0 : RTL_IMAGE_NT_HEADER_EX_FLAG_NO_RANGE_CHECK, pvImage, Size, &pinth)))
 	{
+#ifdef _X86_
 		RtlWow64EnableFsRedirection(TRUE);
+#endif
 		WCHAR FileName[0x180];
 		UNICODE_STRING ObjectName = { 0, sizeof(FileName), FileName };
 
-		if (0 <= (RtlAppendUnicodeToString(&ObjectName, RtlGetNtSystemRoot())) &&
-			0 <= (RtlAppendUnicodeToString(&ObjectName, getSystem32())) &&
-			0 <= (FindNoCfgDll(pinth->OptionalHeader.SizeOfImage, &ObjectName)))
+		if (0 <= (status = RtlAppendUnicodeToString(&ObjectName, RtlGetNtSystemRoot())) &&
+			0 <= (status = RtlAppendUnicodeToString(&ObjectName, getSystem32())) &&
+			0 <= (status = FindNoCfgDll(pinth->OptionalHeader.SizeOfImage, &ObjectName)))
 		{
-			LoadLibraryFromMem(&pvImage, pvImage, pinth, &ObjectName);
+			status = LoadLibraryFromMem(ppv ? ppv : &pvImage, pvImage, pinth, &ObjectName);
 		}
 	}
+
+	return status;
 }
 

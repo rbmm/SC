@@ -60,10 +60,12 @@
       <GenerateMapFile>true</GenerateMapFile>
     </Link>
     <PostBuildEvent>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(TargetPath)" *$(OutDir)$(ProjectName).map*imp.asm**?LFMX64.asm</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(TargetPath)" *$(OutDir)$(ProjectName).map*imp.asm**?LFMX64.asm
+"$(TargetPath)" *$(OutDir)$(ProjectName).map*imp.asm**LFMpX64.asm</Command>
     </PostBuildEvent>
     <PostBuildEvent>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(TargetPath)" *$(OutDir)$(ProjectName).map*imp86.asm**?LFMX86.asm</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(TargetPath)" *$(OutDir)$(ProjectName).map*imp86.asm**?LFMX86.asm
+"$(TargetPath)" *$(OutDir)$(ProjectName).map*imp86.asm**LFMpX86.asm</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

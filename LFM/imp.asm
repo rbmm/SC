@@ -23,8 +23,7 @@ createFunc  ntdllp, ZwSetContextThread
 createFunc  ntdllp, LdrLoadDll
 createFunc  ntdllp, LdrUnloadDll
 createFunc  ntdllp, RtlRemoveVectoredExceptionHandler
-createFunc  ntdllp, RtlImageNtHeader
-createFunc  ntdllp, RtlWow64EnableFsRedirection
+createFunc  ntdllp, RtlImageNtHeaderEx
 createFunc  ntdllp, RtlAppendUnicodeToString
 createFunc  ntdllp, RtlGetNtSystemRoot
 createFunc  ntdllp, memcpy

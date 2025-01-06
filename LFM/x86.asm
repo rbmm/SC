@@ -4,12 +4,13 @@
 
 .code
 
-; void __stdcall LoadLibraryFromMem(void *,void *,void *)
-extern ?LoadLibraryFromMem@@YGXPAX00@Z : PROC
+; long __stdcall LoadLibraryFromMem(void *,unsigned long,void **)
+extern ?LoadLibraryFromMem@@YGJPAXKPAPAX@Z : PROC
+
 
 ; void __stdcall epASM(struct _PEB *)
 ?epASM@@YGXPAU_PEB@@@Z proc
-	jmp ?LoadLibraryFromMem@@YGXPAX00@Z
+	jmp ?LoadLibraryFromMem@@YGJPAXKPAPAX@Z
 ?epASM@@YGXPAU_PEB@@@Z endp
 
 include <../scentry/nobase32.inc>

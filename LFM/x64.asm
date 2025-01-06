@@ -1,11 +1,12 @@
 .code
 
-; void __cdecl LoadLibraryFromMem(void *,void *,void *)
-extern ?LoadLibraryFromMem@@YAXPEAX00@Z : PROC
+; long __cdecl LoadLibraryFromMem(void *,unsigned __int64,void **)
+extern ?LoadLibraryFromMem@@YAJPEAX_KPEAPEAX@Z : PROC
+
 
 ; void __cdecl epASM(struct _PEB *)
 ?epASM@@YAXPEAU_PEB@@@Z proc
-	jmp ?LoadLibraryFromMem@@YAXPEAX00@Z
+	jmp ?LoadLibraryFromMem@@YAJPEAX_KPEAPEAX@Z
 ?epASM@@YAXPEAU_PEB@@@Z endp
 
 ; long __cdecl retFromMapViewOfSection(long)
