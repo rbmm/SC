@@ -43,27 +43,17 @@
       <WarningLevel>Level4</WarningLevel>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <Optimization>MaxSpeed</Optimization>
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\pnth</AdditionalIncludeDirectories>
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\pnth</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories >$(SolutionDir)..\pnth</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <EntryPointSymbol>
-      </EntryPointSymbol>
       <AdditionalOptions>/EMITPOGOPHASEINFO /EMITVOLATILEMETADATA:NO %(AdditionalOptions)</AdditionalOptions>
-      <NoEntryPoint Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</NoEntryPoint>
-      <NoEntryPoint Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</NoEntryPoint>
-      <ImportLibrary Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
-      <ImportLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-      </ImportLibrary>
-      <ModuleDefinitionFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Source.def</ModuleDefinitionFile>
-      <ModuleDefinitionFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Source.def</ModuleDefinitionFile>
-      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'">BufferOverflow.lib;ucrt.lib;ntdllp.lib;kernel32.lib;cabinet.lib;bcrypt.lib;crypt32.lib</AdditionalDependencies>
-      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">BufferOverflow.lib;ucrt.lib;ntdllp.lib;kernel32.lib;cabinet.lib</AdditionalDependencies>
+      <NoEntryPoint >true</NoEntryPoint>
+      <ModuleDefinitionFile >Source.def</ModuleDefinitionFile>
+      <AdditionalDependencies >BufferOverflow.lib;ucrt.lib;ntdllp.lib;kernel32.lib;cabinet.lib;bcrypt.lib;crypt32.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

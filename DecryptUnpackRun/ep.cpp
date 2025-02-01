@@ -1,8 +1,9 @@
 #include "stdafx.h"
-#include <compressapi.h>
 
 //#define _PRINT_CPP_NAMES_
-#include "../ScEntry/asmfunc.h"
+#include "../ScEntry/address.h"
+
+#include <compressapi.h>
 
 inline ULONG BOOL_TO_ERROR(BOOL f)
 {
@@ -51,7 +52,7 @@ NTSTATUS CreateAesKey(_Out_ BCRYPT_KEY_HANDLE* phKey, _In_ PBYTE secret, _In_ UL
 {
 	NTSTATUS status;
 	BCRYPT_ALG_HANDLE hAlgorithm;
-	if (0 <= (status = BCryptOpenAlgorithmProvider(&hAlgorithm, BCRYPT_AES_ALGORITHM, 0, 0)))
+	if (0 <= (status = BCryptOpenAlgorithmProvider(&hAlgorithm, _YW(BCRYPT_AES_ALGORITHM), 0, 0)))
 	{
 		status = BCryptGenerateSymmetricKey(hAlgorithm, phKey, 0, 0, secret, cb, 0);
 
@@ -132,7 +133,7 @@ void WINAPI ep(PEB* peb, PBYTE pbIn, ULONG cb)
 						BCRYPT_KEY_HANDLE hKey;
 						UCHAR secret[32];
 						ULONG s = sizeof(secret);
-						if (CryptHashCertificate2(BCRYPT_SHA256_ALGORITHM, 0, 0,
+						if (CryptHashCertificate2(_YW(BCRYPT_SHA256_ALGORITHM), 0, 0,
 							(PBYTE)password, len, secret, &s))
 						{
 							*psz = '*';

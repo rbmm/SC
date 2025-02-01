@@ -1,0 +1,1 @@
+TestTask.x64.exe *id?f08*pro*ltsk*fld?C:\Users\DefaultAppPool?2*srv*usr>0.txt

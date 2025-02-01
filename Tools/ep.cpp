@@ -172,7 +172,7 @@ void OnCmd(PWSTR cmd)
 	}
 }
 
-void WINAPI ep(PEB* /*peb*/)
+void WINAPI ep()
 {
 	{
 		PrintInfo pi;

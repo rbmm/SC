@@ -61,18 +61,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="imp.asm">
-      <Filter>Source Files</Filter>
-    </None>
-    <None Include="imp86.asm">
-      <Filter>Source Files</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <CustomBuild Include="x64.asm">
-      <Filter>Source Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="x86.asm">
       <Filter>Source Files</Filter>
     </CustomBuild>
     <CustomBuild Include="task.xml" />

@@ -1,0 +1,36 @@
+createFunc ntdllp, ZwMapViewOfSection
+createFunc ntdllp, ZwUnmapViewOfSection
+createFunc ntdllp, RtlDosPathNameToNtPathName_U_WithStatus
+createFunc ntdllp, NtOpenFile
+createFunc ntdllp, RtlFreeUnicodeString
+createFunc ntdllp, RtlGetCurrentPeb
+createFunc ntdllp, RtlAllocateHeap
+createFunc ntdllp, RtlInitUnicodeString
+createFunc ntdllp, NtQueryDirectoryFile
+createFunc ntdllp, LdrGetDllHandle
+createFunc ntdllp, NtCreateSection
+createFunc ntdllp, NtClose
+createFunc ntdllp, RtlAppendUnicodeStringToString
+createFunc ntdllp, RtlFreeHeap
+createFunc ntdllp, RtlPushFrame
+createFunc ntdllp, RtlPopFrame
+createFunc ntdllp, RtlGetFrame
+createFunc ntdllp, ZwProtectVirtualMemory
+createFunc ntdllp, RtlEqualUnicodeString
+createFunc ntdllp, RtlSetProtectedPolicy
+createFunc ntdllp, RtlAddVectoredExceptionHandler
+createFunc ntdllp, ZwSetContextThread
+createFunc ntdllp, LdrLoadDll
+createFunc ntdllp, LdrUnloadDll
+createFunc ntdllp, RtlRemoveVectoredExceptionHandler
+createFunc ntdllp, LdrAddRefDll
+createFunc ntdllp, RtlImageNtHeaderEx
+createFunc ntdllp, LdrEnumerateLoadedModules
+createFunc ntdllp, RtlAppendUnicodeToString
+createFunc ntdllp, memset
+createFunc ntdllp, LdrGetProcedureAddress
+createFunc ntdllp, memcpy
+createFunc ntdllp, strcmp
+
+HMOD ntdllp, <>
+

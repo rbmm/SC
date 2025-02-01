@@ -1,0 +1,24 @@
+.code
+
+; void ep()
+extern ?ep@@YAXXZ : PROC
+
+; void epASM()
+?epASM@@YAXXZ proc
+	jmp ?ep@@YAXXZ
+?epASM@@YAXXZ endp
+
+include <..\scentry\nobase.x64.inc>
+
+include <imp.x64.asm>
+
+public ?xml_begin@@3QBDB, ?xml_end@@3QBDB
+
+_TEXT$dat SEGMENT
+
+?xml_begin@@3QBDB:
+include <tsk.asm>
+?xml_end@@3QBDB:
+
+_TEXT$dat ends
+end

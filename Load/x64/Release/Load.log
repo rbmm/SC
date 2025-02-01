@@ -1,0 +1,42 @@
+﻿  msgbox.cpp
+LibLfm.lib(stdafx.obj) : error LNK2005: "void __cdecl operator delete[](void *,unsigned __int64)" (??_V@YAXPEAX_K@Z) already defined in stdafx.obj
+LibLfm.lib(stdafx.obj) : error LNK2005: "void __cdecl operator delete[](void *)" (??_V@YAXPEAX@Z) already defined in stdafx.obj
+LibLfm.lib(stdafx.obj) : error LNK2005: "void __cdecl operator delete(void *,unsigned __int64)" (??3@YAXPEAX_K@Z) already defined in stdafx.obj
+LibLfm.lib(stdafx.obj) : error LNK2005: "void __cdecl operator delete(void *)" (??3@YAXPEAX@Z) already defined in stdafx.obj
+LibLfm.lib(stdafx.obj) : error LNK2005: "void * __cdecl operator new(unsigned __int64)" (??2@YAPEAX_K@Z) already defined in stdafx.obj
+LibLfm.lib(stdafx.obj) : error LNK2005: "void * __cdecl operator new[](unsigned __int64)" (??_U@YAPEAX_K@Z) already defined in stdafx.obj
+lu.obj : error LNK2001: unresolved external symbol __imp_ZwUnmapViewOfSection
+lu.obj : error LNK2001: unresolved external symbol __imp_NtCreateSection
+lu.obj : error LNK2001: unresolved external symbol __imp_LdrUnloadDll
+lu.obj : error LNK2001: unresolved external symbol __imp_RtlInitUnicodeString
+lu.obj : error LNK2001: unresolved external symbol __imp_NtClose
+lu.obj : error LNK2001: unresolved external symbol __imp_ZwMapViewOfSection
+lu.obj : error LNK2001: unresolved external symbol swprintf_s
+lu.obj : error LNK2001: unresolved external symbol __imp_LdrFindEntryForAddress
+lu.obj : error LNK2001: unresolved external symbol __imp_NtOpenFile
+msgbox.obj : error LNK2001: unresolved external symbol __CxxFrameHandler4
+msgbox.obj : error LNK2001: unresolved external symbol __imp_RtlNtStatusToDosErrorNoTeb
+msgbox.obj : error LNK2001: unresolved external symbol __imp_RtlGetFrame
+msgbox.obj : error LNK2001: unresolved external symbol __imp_RtlPopFrame
+msgbox.obj : error LNK2001: unresolved external symbol __imp_RtlGetLastNtStatus
+msgbox.obj : error LNK2001: unresolved external symbol __std_terminate
+msgbox.obj : error LNK2001: unresolved external symbol __imp_RtlPushFrame
+LibLfm.lib(ep.obj) : error LNK2001: unresolved external symbol __imp_RtlDosPathNameToNtPathName_U_WithStatus
+LibLfm.lib(ep.obj) : error LNK2001: unresolved external symbol __imp_RtlFreeUnicodeString
+LibLfm.lib(ep.obj) : error LNK2001: unresolved external symbol __imp_RtlGetCurrentPeb
+LibLfm.lib(ep.obj) : error LNK2001: unresolved external symbol __imp_RtlAllocateHeap
+LibLfm.lib(ep.obj) : error LNK2001: unresolved external symbol __imp_NtQueryDirectoryFile
+LibLfm.lib(ep.obj) : error LNK2001: unresolved external symbol __imp_LdrGetDllHandle
+LibLfm.lib(ep.obj) : error LNK2001: unresolved external symbol __imp_RtlAppendUnicodeStringToString
+LibLfm.lib(ep.obj) : error LNK2001: unresolved external symbol __imp_RtlFreeHeap
+LibLfm.lib(ep.obj) : error LNK2001: unresolved external symbol __imp_ZwProtectVirtualMemory
+LibLfm.lib(ep.obj) : error LNK2001: unresolved external symbol __imp_RtlEqualUnicodeString
+LibLfm.lib(ep.obj) : error LNK2001: unresolved external symbol "void * __cdecl aretFromMapViewOfSection(void)" (?aretFromMapViewOfSection@@YAPEAXXZ)
+LibLfm.lib(ep.obj) : error LNK2001: unresolved external symbol __imp_RtlSetProtectedPolicy
+LibLfm.lib(ep.obj) : error LNK2001: unresolved external symbol __imp_RtlAddVectoredExceptionHandler
+LibLfm.lib(ep.obj) : error LNK2001: unresolved external symbol __imp_ZwSetContextThread
+LibLfm.lib(ep.obj) : error LNK2001: unresolved external symbol __imp_LdrLoadDll
+LibLfm.lib(ep.obj) : error LNK2001: unresolved external symbol __imp_RtlRemoveVectoredExceptionHandler
+LibLfm.lib(ep.obj) : error LNK2001: unresolved external symbol __imp_RtlImageNtHeaderEx
+LibLfm.lib(ep.obj) : error LNK2001: unresolved external symbol __imp_RtlAppendUnicodeToString
+C:\Users\Harry\Documents\GitHub\SC\x64\Release\Load.exe : fatal error LNK1120: 34 unresolved externals

@@ -3,7 +3,7 @@
 //#define _PRINT_CPP_NAMES_
 #include "asmfunc.h"
 
-void WINAPI epASM(PEB*)ASM_FUNCTION;
+void WINAPI epASM()ASM_FUNCTION;
 
 #pragma code_seg(".text$nm")
 
@@ -16,9 +16,6 @@ void* sc_end()
 
 PVOID GetNtBase();
 PVOID __fastcall GetFuncAddressEx(PIMAGE_DOS_HEADER pidh, PCSTR ProcedureName);
-
-// for debug epASM code only uncomment
-//#pragma comment(linker, "/SECTION:.text,ERW")
 
 // 64: ?ScEntry@@YAXPEAU_PEB@@@Z
 // 32: ?ScEntry@@YGXPAU_PEB@@@Z
@@ -83,7 +80,7 @@ void WINAPI ScEntry(PEB* peb)
 
 	if (peb->BeingDebugged)
 	{
-		epASM(peb);
+		epASM();
 	}
 
 	RAC(RtlExitUserProcess, status);

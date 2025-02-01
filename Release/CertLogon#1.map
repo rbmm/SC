@@ -1,0 +1,132 @@
+ CertLogon#1
+
+ Timestamp is 679d4c45 (Sat Feb  1 00:18:45 2025)
+
+ Preferred load address is 00400000
+
+ Start         Length     Name                   Class
+ 0001:00000000 000006fcH .text$mn                CODE
+ 0001:000006fc 00000664H .text$mn$cpp            CODE
+ 0001:00000d60 00000044H .text$mn$cpp$s          CODE
+ 0001:00000da4 00000006H .text$nm                CODE
+ 0001:00000daa 000000daH .text$zz                CODE
+ 0002:00000000 00000000H .idata$5                DATA
+ 0002:00000000 00000078H .rdata                  DATA
+ 0002:00000077 00000000H .edata                  DATA
+ 0002:00000078 00000000H .idata$2                DATA
+ 0002:00000078 00000000H .idata$3                DATA
+ 0002:00000078 00000000H .idata$4                DATA
+ 0002:00000078 00000000H .idata$6                DATA
+ 0003:00000000 00000000H .data                   DATA
+ 0003:00000000 00000008H .bss                    DATA
+
+  Address         Publics by Value              Rva+Base       Lib:Object
+
+ 0000:00000000       ___AbsoluteZero            00000000     <absolute>
+ 0000:00000000       ___arm64x_extra_rfe_table  00000000     <absolute>
+ 0000:00000000       ___arm64x_extra_rfe_table_size 00000000     <absolute>
+ 0000:00000000       ___arm64x_native_entrypoint 00000000     <absolute>
+ 0000:00000000       ___arm64x_redirection_metadata 00000000     <absolute>
+ 0000:00000000       ___arm64x_redirection_metadata_count 00000000     <absolute>
+ 0000:00000000       ___dynamic_value_reloc_table 00000000     <absolute>
+ 0000:00000000       ___enclave_config          00000000     <absolute>
+ 0000:00000000       ___guard_check_icall_a64n_fptr 00000000     <absolute>
+ 0000:00000000       ___guard_eh_cont_count     00000000     <absolute>
+ 0000:00000000       ___guard_eh_cont_table     00000000     <absolute>
+ 0000:00000000       ___guard_fids_count        00000000     <absolute>
+ 0000:00000000       ___guard_fids_table        00000000     <absolute>
+ 0000:00000000       ___guard_flags             00000000     <absolute>
+ 0000:00000000       ___guard_iat_count         00000000     <absolute>
+ 0000:00000000       ___guard_iat_table         00000000     <absolute>
+ 0000:00000000       ___guard_longjmp_count     00000000     <absolute>
+ 0000:00000000       ___guard_longjmp_table     00000000     <absolute>
+ 0000:00000000       ___hybrid_auxiliary_delayload_iat 00000000     <absolute>
+ 0000:00000000       ___hybrid_auxiliary_delayload_iat_copy 00000000     <absolute>
+ 0000:00000000       ___hybrid_auxiliary_iat    00000000     <absolute>
+ 0000:00000000       ___hybrid_auxiliary_iat_copy 00000000     <absolute>
+ 0000:00000000       ___hybrid_code_map         00000000     <absolute>
+ 0000:00000000       ___hybrid_code_map_count   00000000     <absolute>
+ 0000:00000000       ___hybrid_image_info_bitfield 00000000     <absolute>
+ 0000:00000000       ___volatile_metadata       00000000     <absolute>
+ 0000:00000000       ___x64_code_ranges_to_entry_points 00000000     <absolute>
+ 0000:00000000       ___x64_code_ranges_to_entry_points_count 00000000     <absolute>
+ 0000:00000000       ___ImageBase               00400000     <linker-defined>
+ 0001:00000000       ?epASM@@YGXXZ              00401000 f   x86.obj
+ 0001:00000030       ?__Address@@YIPAXPBX@Z     00401030 f   x86.obj
+ 0001:00000043       __alloca_probe             00401043 f   x86.obj
+ 0001:00000043       __chkstk                   00401043 f   x86.obj
+ 0001:00000072       _LogonUserW@24             00401072 f   x86.obj
+ 0001:00000096       _CredFree@4                00401096 f   x86.obj
+ 0001:000000b6       _ImpersonateLoggedOnUser@4 004010b6 f   x86.obj
+ 0001:000000e6       _CredMarshalCredentialW@12 004010e6 f   x86.obj
+ 0001:0000013e       _CryptHashCertificate2@28  0040113e f   x86.obj
+ 0001:0000016a       _PFXImportCertStore@12     0040116a f   x86.obj
+ 0001:00000196       _CertAddCertificateContextToStore@16 00401196 f   x86.obj
+ 0001:000001ce       _CertGetCertificateContextProperty@16 004011ce f   x86.obj
+ 0001:00000206       _CertEnumCertificatesInStore@8 00401206 f   x86.obj
+ 0001:0000023a       _CertOpenStore@20          0040123a f   x86.obj
+ 0001:0000025e       _CertFreeCertificateContext@4 0040125e f   x86.obj
+ 0001:00000292       _CertCloseStore@8          00401292 f   x86.obj
+ 0001:000002e2       _GetLastError@0            004012e2 f   x86.obj
+ 0001:00000306       _LocalAlloc@8              00401306 f   x86.obj
+ 0001:0000032a       _GetCommandLineW@0         0040132a f   x86.obj
+ 0001:00000352       _FormatMessageW@28         00401352 f   x86.obj
+ 0001:0000037a       _GetModuleHandleW@4        0040137a f   x86.obj
+ 0001:000003a2       _LocalFree@4               004013a2 f   x86.obj
+ 0001:000003c2       _ExitProcess@4             004013c2 f   x86.obj
+ 0001:0000040e       _MessageBoxW@16            0040140e f   x86.obj
+ 0001:00000456       _NCryptDeleteKey@8         00401456 f   x86.obj
+ 0001:0000047e       _NCryptFreeObject@4        0040147e f   x86.obj
+ 0001:000004a6       _NCryptOpenKey@20          004014a6 f   x86.obj
+ 0001:000004ca       _NCryptOpenStorageProvider@12 004014ca f   x86.obj
+ 0001:0000051e       _NtClose@4                 0040151e f   x86.obj
+ 0001:0000053e       _RtlFreeUnicodeString@4    0040153e f   x86.obj
+ 0001:0000056a       _NtQueryInformationFile@20 0040156a f   x86.obj
+ 0001:0000059a       _wcschr                    0040159a f   x86.obj
+ 0001:000005ba       _NtOpenFile@24             004015ba f   x86.obj
+ 0001:000005de       _RtlDosPathNameToNtPathName_U_WithStatus@16 004015de f   x86.obj
+ 0001:0000061e       _NtReadFile@36             0040161e f   x86.obj
+ 0001:00000642       _RtlInitUnicodeString@8    00401642 f   x86.obj
+ 0001:0000066e       _LdrLoadDll@16             0040166e f   x86.obj
+ 0001:00000692       _LdrGetProcedureAddress@16 00401692 f   x86.obj
+ 0001:000006d0       __alloca_probe_16          004016d0 f   ntdllp:alloca16.obj
+ 0001:000006e6       __alloca_probe_8           004016e6     ntdllp:alloca16.obj
+ 0001:000006fc       ?AddToMyStore@@YGJPBU_CERT_CONTEXT@@@Z 004016fc f   ep.obj
+ 0001:00000754       ?NameFromCert@@YGJPBU_CERT_CONTEXT@@PAPA_W@Z 00401754 f   ep.obj
+ 0001:000007c8       ?NameFromCert@@YGJPBU_CERT_CONTEXT@@PAPA_WPAK@Z 004017c8 f   ep.obj
+ 0001:0000087c       ?PFXImport@@YGJPAU_CRYPTOAPI_BLOB@@PB_WPAPA_WPAK@Z 0040187c f   ep.obj
+ 0001:000008de       ?ReadFromFile@@YGJPB_WPAU_CRYPTOAPI_BLOB@@@Z 004018de f   ep.obj
+ 0001:000009c6       ?DemoLogon@@YGJPA_W0@Z     004019c6 f   ep.obj
+ 0001:00000a70       ?ShowErrorBox@@YGHPAUHWND__@@JPB_W@Z 00401a70 f   ep.obj
+ 0001:00000afa       ?ep@@YGXXZ                 00401afa f   ep.obj
+ 0001:00000b62       ??$HR@H@@YGHAAJH@Z         00401b62 f i ep.obj
+ 0001:00000b7c       ?get_hmod@@YIPAXPB_W@Z     00401b7c f   ScEntry:GetFuncAddr.obj
+ 0001:00000bc6       ?GetFuncAddressEx@@YIPAXPAU_IMAGE_DOS_HEADER@@PBD@Z 00401bc6 f   ScEntry:GetFuncAddr.obj
+ 0001:00000d60       ??_C@_15ELPOAHMG@?$AAM?$AAY@FNODOBFM@ 00401d60     ep.obj
+ 0001:00000d70       ??_C@_19DILNDFJH@?$AAS?$AAH?$AAA?$AA1@FNODOBFM@ 00401d70     ep.obj
+ 0001:00000d80       ??_C@_1M@OAIMIKLP@?$AAn?$AAt?$AAd?$AAl?$AAl@FNODOBFM@ 00401d80     ep.obj
+ 0001:00000d90       ??_C@_1BE@KDLLNMG@?$AAP?$AAF?$AAX?$AA?5?$AAL?$AAo?$AAg?$AAo?$AAn@FNODOBFM@ 00401d90     ep.obj
+ 0001:00000da4       ?sc_end@@YGPAXXZ           00401da4 f   ScEntry:prepare.obj
+ 0001:00000daa       ?ScEntry@@YGXPAU_PEB@@@Z   00401daa f   ScEntry:prepare.obj
+ 0002:00000000       ??_C@_0BF@EKFKPNAI@RtlInitUnicodeString@ 00402000     ScEntry:prepare.obj
+ 0002:00000018       ??_C@_1BI@NEOFKCPM@?$AAp?$AAr?$AAe?$AAp?$AAa?$AAr?$AAe?$AA?4?$AAd?$AAl?$AAl@ 00402018     ScEntry:prepare.obj
+ 0002:00000030       ??_C@_0L@HOFGLFDL@LdrLoadDll@ 00402030     ScEntry:prepare.obj
+ 0002:0000003c       ??_C@_0BH@GKPJJDBO@LdrGetProcedureAddress@ 0040203c     ScEntry:prepare.obj
+ 0002:00000054       ??_C@_0N@FIGJGHFN@LdrUnloadDll@ 00402054     ScEntry:prepare.obj
+ 0002:00000064       ??_C@_0BD@JDDPIELM@RtlExitUserProcess@ 00402064     ScEntry:prepare.obj
+ 0003:00000000       ___@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUdrmDCUivovzhvUxvigoltlmKxwBUhgwzucOlyq@4B2008FD98C1DD4 00403000     stdafx.obj
+ 0003:00000004       ___@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUdrmDCUivovzhvUhxvmgibUhgwzucOlyq@4B2008FD98C1DD4 00403004     ScEntry:stdafx.obj
+
+ entry point at        0001:00000daa
+
+ Static symbols
+
+ 0002:ffffe000       .idata$6                   00400000     ntdllp:ntdll.dll
+ 0001:00000005       common_imp_call            00401005 f   x86.obj
+ 0001:00000117       advapi32                   00401117 f   x86.obj
+ 0001:000002bb       crypt32                    004012bb f   x86.obj
+ 0001:000003e7       kernel32                   004013e7 f   x86.obj
+ 0001:00000433       user32                     00401433 f   x86.obj
+ 0001:000004fb       ncrypt                     004014fb f   x86.obj
+ 0001:000006c3       ntdllp                     004016c3 f   x86.obj
+ 0001:000006d0       $$000000                   004016d0     ntdllp:alloca16.obj

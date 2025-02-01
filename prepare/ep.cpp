@@ -138,61 +138,265 @@ NTSTATUS SaveToFile(_In_ PCWSTR lpFileName, _In_ const void* lpBuffer, _In_ ULON
 	return status;
 }
 
-NTSTATUS ProcessName(PCSTR name, PCSTR* ppcsz, PULONG plen, PINT pn)
+struct IMP_HELP
 {
-	PCSTR pcsz = name;
+	PVOID _M_hmod;
+	PIMAGE_IMPORT_DESCRIPTOR _M_piid;
 
-	for (;;)
+	void** _M_pFunction = 0;
+	PIMAGE_THUNK_DATA _M_pThunk = 0;
+
+	ULONG _M_n;
+
+	char _M_buf[32];
+
+	PCSTR GetName(ULONG rva);
+
+	BOOL Init(PVOID hmod);
+
+	NTSTATUS ProcessMAP(
+		PCWSTR pszImp,
+		PSTR pcsz,
+		ULONG iSection,
+		ULONG ofs,
+		ULONG_PTR Va,
+		ULONG s);
+
+	NTSTATUS ProcessMAP(
+		PCWSTR pszImp,
+		PCWSTR pszMap,
+		ULONG iSection,
+		ULONG ofs,
+		ULONG_PTR Va,
+		ULONG s);
+
+	PCSTR GetName(ULONG rva, DWORD FirstThunk, void** pFunction, PIMAGE_THUNK_DATA pThunk);
+};
+
+BOOL IMP_HELP::Init(PVOID hmod)
+{
+	ULONG s;
+	if (PIMAGE_IMPORT_DESCRIPTOR piid = (PIMAGE_IMPORT_DESCRIPTOR)RtlImageDirectoryEntryToData(
+		hmod, TRUE, IMAGE_DIRECTORY_ENTRY_IMPORT, &s))
 	{
-		switch (*pcsz++)
+		if (s /= sizeof(IMAGE_IMPORT_DESCRIPTOR))
 		{
-		case ':':
-			return STATUS_BAD_DATA;
+			_M_n = s, _M_piid = piid, _M_hmod = hmod;
 
-		case ' ':
-			*plen = RtlPointerToOffset(name, pcsz - 1);
-			*ppcsz = pcsz;
-			return STATUS_SUCCESS;
+			return TRUE;
+		}
+	}
 
+	return FALSE;
+}
+
+PCSTR IMP_HELP::GetName(ULONG rva, DWORD FirstThunk, void** pFunction, PIMAGE_THUNK_DATA pThunk)
+{
+	while (void* Function = *pFunction++)
+	{
+		IMAGE_THUNK_DATA Thunk = *pThunk++;
+
+		if (rva == FirstThunk)
+		{
+			_M_pFunction = pFunction;
+			_M_pThunk = pThunk;
+
+			if (IMAGE_SNAP_BY_ORDINAL(Thunk.u1.Ordinal))
+			{
+				if (0 < sprintf_s(_M_buf, _countof(_M_buf), "#%u", (ULONG)IMAGE_ORDINAL(Thunk.u1.Ordinal)))
+				{
+					return _M_buf;
+				}
+
+				return 0;
+			}
+
+			return (PCSTR)reinterpret_cast<PIMAGE_IMPORT_BY_NAME>(
+				RtlOffsetToPointer(_M_hmod, Thunk.u1.AddressOfData))->Name;
+		}
+
+		FirstThunk += sizeof(PVOID);
+	}
+
+	_M_pFunction = 0;
+	_M_pThunk = 0;
+	return 0;
+}
+
+PCSTR GetNameFormat(PCSTR str, PCSTR name, ULONG* pn)
+{
+	*pn = 0;
+	if (strcmp(name, str))
+	{
+#ifdef _X86_
+		BOOL f = FALSE;
+		switch (*name++)
+		{
 		case '@':
-			if (!pn)
+			f = TRUE;
+		case '_':
+			if (PCSTR pc = strchr(name, '@'))
 			{
-				return STATUS_BAD_DATA;
+				if (!memcmp(name, str, pc - name))
+				{
+					ULONG n = strtoul(pc + 1, const_cast<PSTR*>(&pc), 10);
+					if (!*pc && !(n & 3))
+					{
+						*pn = n;
+						// __fastcall : __stdcall
+						return f ? "createFuncF %hs, %hs, %u\r\n" : "createFuncS %hs, %hs, %u\r\n";
+					}
+				}
 			}
-			*plen = RtlPointerToOffset(name, pcsz - 1);
-
-			ULONG n = strtoul(pcsz, const_cast<char**>(&pcsz), 10);
-			if (' ' != *pcsz || (n & 3))
+			else if (!strcmp(name, str))
 			{
-				return STATUS_BAD_DATA;
+				// __cdecl
+				return "createFuncC %hs, %hs\r\n";
 			}
-			*pn = n;
-			*ppcsz = pcsz;
-			return STATUS_SUCCESS;
+			break;
+		}
+#endif
 
+		return 0;
+	}
+
+	// name == str
+	return "createFunc %hs, %hs\r\n";
+}
+
+PCSTR IMP_HELP::GetName(ULONG rva)
+{
+	PVOID hmod = _M_hmod;
+	ULONG n = _M_n;
+	PIMAGE_IMPORT_DESCRIPTOR piid = _M_piid;
+
+	if (void** pFunction = _M_pFunction)
+	{
+		if (PCSTR name = GetName(rva, RtlPointerToOffset(hmod, pFunction), pFunction, _M_pThunk))
+		{
+			return name;
+		}
+	}
+
+	do
+	{
+		DWORD Name = piid->Name;
+
+		if (!Name)
+		{
+			return 0;
+		}
+
+		if (DWORD FirstThunk = piid->FirstThunk)
+		{
+			if (rva < FirstThunk)
+			{
+				continue;
+			}
+
+			if (DWORD OriginalFirstThunk = piid->OriginalFirstThunk)
+			{
+				if (PCSTR name = GetName(rva, FirstThunk,
+					(void**)RtlOffsetToPointer(hmod, FirstThunk),
+					(PIMAGE_THUNK_DATA)RtlOffsetToPointer(hmod, OriginalFirstThunk)))
+				{
+					return name;
+				}
+			}
+		}
+
+	} while (piid++, --n);
+
+	return 0;
+}
+
+void IatTest(HMODULE hmod)
+{
+	ULONG s;
+	if (void** ppv = (void**)RtlImageDirectoryEntryToData(hmod, TRUE, IMAGE_DIRECTORY_ENTRY_IAT, &s))
+	{
+		if (ULONG n = s / sizeof(PVOID))
+		{
+			if (PIMAGE_IMPORT_DESCRIPTOR piid = (PIMAGE_IMPORT_DESCRIPTOR)RtlImageDirectoryEntryToData(
+				hmod, TRUE, IMAGE_DIRECTORY_ENTRY_IMPORT, &s))
+			{
+				if (s /= sizeof(IMAGE_IMPORT_DESCRIPTOR))
+				{
+					do
+					{
+						DWORD Name = piid->Name;
+
+						if (!Name)
+						{
+							break;
+						}
+
+						if (DWORD FirstThunk = piid->FirstThunk)
+						{
+							if (DWORD OriginalFirstThunk = piid->OriginalFirstThunk)
+							{
+								void** pFunction = (void**)RtlOffsetToPointer(hmod, FirstThunk);
+								PIMAGE_THUNK_DATA pThunk = (PIMAGE_THUNK_DATA)RtlOffsetToPointer(hmod, OriginalFirstThunk);
+
+								if (ppv++ != pFunction)
+								{
+									//__debugbreak();
+								}
+
+								while (void* Function = *pFunction++)
+								{
+									IMAGE_THUNK_DATA Thunk = *pThunk++;
+
+									char sz[32];
+									PCSTR name;
+
+									if (IMAGE_SNAP_BY_ORDINAL(Thunk.u1.Ordinal))
+									{
+										sprintf_s(sz, _countof(sz), "#%u", (ULONG)IMAGE_ORDINAL(Thunk.u1.Ordinal));
+										name = sz;
+									}
+									else
+									{
+										name = (PCSTR)reinterpret_cast<PIMAGE_IMPORT_BY_NAME>(
+											RtlOffsetToPointer(hmod, Thunk.u1.AddressOfData))->Name;
+									}
+
+									DbgPrint("%08x %hs\r\n", RtlPointerToOffset(hmod, pFunction - 1), name);
+								}
+
+								DbgPrint("%08x %hs NULL_THUNK_DATA\r\n", RtlPointerToOffset(hmod, pFunction - 1), RtlOffsetToPointer(hmod, Name));
+							}
+						}
+
+
+					} while (piid++, --s);
+
+				}
+			}
 		}
 	}
 }
 
-PCSTR SkipSpace(PCSTR pcsz)
+NTSTATUS IMP_HELP::ProcessMAP(
+	PCWSTR pszImp,
+	PSTR pcsz,
+	ULONG iSection,
+	ULONG ofs,
+	ULONG_PTR Va,
+	ULONG s)
 {
-	while (' ' == *pcsz) ++pcsz;
-
-	return pcsz;
-}
-
-NTSTATUS ProcessMAP(PCWSTR pszImp, PCSTR pcsz, ULONG iSection, ULONG ofs, ULONG_PTR Va, ULONG s)
-{
-	PSTR buf = const_cast<PSTR>(pcsz), psz = buf;
+	PSTR buf = pcsz, psz = buf;
 
 	ULONG64 u;
 	BOOL f = FALSE;
 	ULONG_PTR ImageBase = 0;
 __0:
 
-	PCSTR pcszLine = pcsz;
+	PSTR pcszLine = pcsz;
 
 	static const char plai[] = " Preferred load address is ";
+
+	//while (!IsDebuggerPresent()) Sleep(1000); __debugbreak();
 
 	if (!f && !memcmp(pcsz, plai, _countof(plai) - 1))
 	{
@@ -253,7 +457,7 @@ __0:
 	}
 	else
 	{
-		i = strtoul(pcsz + 1, const_cast<char**>(&pcsz), 16);
+		i = strtoul(pcsz + 1, &pcsz, 16);
 
 		if ('H' != *pcsz || s != i)
 		{
@@ -307,34 +511,17 @@ __space:
 
 	case '\\':
 		INT k = -1;
-		PCSTR name;
-		ULONG cch, cchDLL, cchLib;
-		char a;
-		PCSTR fmt;
 
-		if (0 > (status = ProcessName(name = pcsz, &pcsz, &cch,
-#ifndef _WIN64
-			__imp_ ? &k :
-#endif // !_WIN64
-			0)))
-		{
-			return status;
-		}
+		PCSTR name = pcsz;
 
-		if (0 > k)
+		while (' ' < *pcsz) pcsz++;
+
+		*pcsz++ = 0;
+
+		if (!strcmp(name, "__chkstk") || !strcmp(name, "__alloca_probe"))
 		{
-			a =
-#ifndef _WIN64
-				'C';
-#else
-				' ';
-#endif // !_WIN64
-			fmt = "createFunc%c %.*s, %.*s\r\n";
-		}
-		else
-		{
-			a = ' ';
-			fmt = "createFunc%c %.*s, %.*s, %u\r\n";
+			DbgPrint("!!!! %hs\\%hs imported !!!!!\r\n", "__chkstk", "__alloca_probe");
+			return STATUS_BAD_DATA;
 		}
 
 		u = _strtoui64(pcsz, const_cast<char**>(&pcsz), 16);
@@ -354,6 +541,7 @@ __space:
 		case 0:
 			return STATUS_BAD_DATA;
 		case ':':
+			*pcsz++ = 0;
 			goto __01;
 		default:
 			if (!pszLib)
@@ -366,9 +554,7 @@ __space:
 		}
 	__01:
 
-		cchLib = RtlPointerToOffset(pszLib, pcsz);
-
-		PCSTR pszDLL = ++pcsz;
+		PCSTR pszDLL = pcsz;
 
 	__02:
 		switch (*pcsz++)
@@ -379,7 +565,7 @@ __space:
 		default:
 			goto __02;
 		case '\r':
-			cchDLL = RtlPointerToOffset(pszDLL, pcsz - 1);
+			pcsz[-1] = 0;
 			break;
 		}
 
@@ -394,25 +580,34 @@ __space:
 		{
 			__imp_ = FALSE;
 
-#ifndef _WIN64
-			// assume only __cdecl/__stdcall import. no __fastcall, begin with @
-			if ('_' != *name++) return STATUS_BAD_DATA;
-			--cch;
-#endif // !_WIN64
-
-			k = sprintf_s(psz, cb, fmt, a, cchLib, pszLib, cch, name, k);
+			if (PCSTR str = GetName((ULONG)(u - ImageBase)))
+			{
+				ULONG np;
+				if (PCSTR fmt = GetNameFormat(str, name, &np))
+				{
+					k = sprintf_s(psz, cb, fmt, pszLib, str, np);
+				}
+				else
+				{
+					k = sprintf_s(psz, cb, "createFunc? %hs, %hs, '%hs'\r\n", pszLib, name, str);
+				}
+			}
+			else
+			{
+				return STATUS_BAD_DATA;
+			}
 		}
 		else
 		{
-			if (9 == cchDLL && !_strnicmp(pszDLL, "ntdll.dll", 9))
+			if (!_stricmp(pszDLL, "ntdll.dll"))
 			{
-				cchDLL = 0;
+				pszDLL = "";
 			}
 
-			k = sprintf_s(psz, cb, "\r\nHMOD %.*s, <%.*s>\r\n\r\n", cchLib, pszLib, cchDLL, pszDLL);
+			k = sprintf_s(psz, cb, "\r\nHMOD %hs, <%hs>\r\n\r\n", pszLib, pszDLL);
 		}
 
-		if (0 > k)
+		if (0 >= k)
 		{
 			return STATUS_INTERNAL_ERROR;
 		}
@@ -429,7 +624,13 @@ __space:
 	}
 }
 
-NTSTATUS ProcessMAP(PCWSTR pszImp, PCWSTR pszMap, ULONG iSection, ULONG ofs, ULONG_PTR Va, ULONG s)
+NTSTATUS IMP_HELP::ProcessMAP(
+	PCWSTR pszImp,
+	PCWSTR pszMap,
+	ULONG iSection,
+	ULONG ofs,
+	ULONG_PTR Va,
+	ULONG s)
 {
 	PBYTE pb;
 	ULONG cb;
@@ -440,8 +641,8 @@ NTSTATUS ProcessMAP(PCWSTR pszImp, PCWSTR pszMap, ULONG iSection, ULONG ofs, ULO
 
 	if (0 <= status)
 	{
-		pb[cb] = 0;
-		status = ProcessMAP(pszImp, (PCSTR)pb, iSection, ofs, Va, s);
+		pb[cb - 1] = 0;
+		status = ProcessMAP(pszImp, (PSTR)pb, iSection, ofs, Va, s);
 		delete[] pb;
 	}
 
@@ -450,7 +651,7 @@ NTSTATUS ProcessMAP(PCWSTR pszImp, PCWSTR pszMap, ULONG iSection, ULONG ofs, ULO
 
 NTSTATUS ProcessIAT(PCWSTR pszImp, PCWSTR pszMap, ULONG_PTR pvShellEnd)
 {
-	if (HMODULE hmod = GetModuleHandleW(0))
+	if (PVOID hmod = GetModuleHandleW(0))
 	{
 		ULONG s;
 
@@ -487,13 +688,17 @@ NTSTATUS ProcessIAT(PCWSTR pszImp, PCWSTR pszMap, ULONG_PTR pvShellEnd)
 						{
 							if (Ofs + s <= pish->Misc.VirtualSize)
 							{
-								return ProcessMAP(pszImp, pszMap, iSection, (ULONG)Ofs, Rva, s);
+								IMP_HELP imh;
+								if (imh.Init(hmod))
+								{
+									return imh.ProcessMAP(pszImp, pszMap, iSection, (ULONG)Ofs, Rva, s);
+								}
 							}
 
 							break;
 						}
 					} while (pish++, --NumberOfSections);
-				}
+				}		
 			}
 
 			return STATUS_INTERNAL_ERROR;
@@ -502,6 +707,11 @@ NTSTATUS ProcessIAT(PCWSTR pszImp, PCWSTR pszMap, ULONG_PTR pvShellEnd)
 		if (pv = RtlImageDirectoryEntryToData(hmod, TRUE, IMAGE_DIRECTORY_ENTRY_BASERELOC, &s))
 		{
 			pvShellEnd -= (ULONG_PTR)hmod;
+
+#ifdef _X86_
+			BOOL bFirst = TRUE;
+			PVOID pvTarget = 0;
+#endif // _X86_
 
 			do
 			{
@@ -528,6 +738,7 @@ NTSTATUS ProcessIAT(PCWSTR pszImp, PCWSTR pszMap, ULONG_PTR pvShellEnd)
 				}
 
 				SizeOfBlock >>= 1;
+
 				do
 				{
 					if (pu->type)
@@ -536,9 +747,80 @@ NTSTATUS ProcessIAT(PCWSTR pszImp, PCWSTR pszMap, ULONG_PTR pvShellEnd)
 
 						if (VirtualAddress + pu->ofs < pvShellEnd)
 						{
-							DbgPrint("######## !! Exist Relocs (%08x) !! ########\r\n", VirtualAddress + pu->ofs);
+							ULONG rva = VirtualAddress + pu->ofs;
+							union {
+								PVOID prv;
+								PBYTE prb;
+								PULONG pru;
+							};
+							prv = RtlOffsetToPointer(hmod, rva);
 
-							return STATUS_ILLEGAL_DLL_RELOCATION;
+#ifdef _X86_
+
+							if (IMAGE_REL_BASED_HIGHLOW == pu->type)
+							{
+								ULONG Target = *pru - (ULONG)hmod;
+								DbgPrint("!! Exist Relocs: %08x -> %08x\r\n", rva, Target);
+
+								// while (!IsDebuggerPresent()) Sleep(1000); __debugbreak();
+								if (pvShellEnd <= Target)
+								{
+									DbgPrint("reloc to %08x beyond shell end (%08x)\r\n", Target, pvShellEnd);
+									return STATUS_ILLEGAL_DLL_RELOCATION;
+								}
+
+								if (bFirst)
+								{
+									bFirst = FALSE;
+									if (Target + 8 != rva)
+									{
+										DbgPrint("_Target(%p) + 8 != rva(%x)\r\n", Target, rva);
+										return STATUS_ILLEGAL_DLL_RELOCATION;
+									}
+									
+									pvTarget = RtlOffsetToPointer(hmod, Target);
+
+									DbgPrint("__Address: %p\r\n", pvTarget);
+								}
+								else
+								{
+									CHAR msg[0x80];
+									ULONG cch = _countof(msg);
+									if (CryptBinaryToStringA((PBYTE)*pru, 16, CRYPT_STRING_HEXASCII, msg, &cch))
+									{
+										DbgPrint(msg);
+									}
+#if 0
+									// mov ecx,offset x
+									if (0xb9 != prb[-1])
+									{
+										return STATUS_ILLEGAL_DLL_RELOCATION;
+									}
+									++pru;
+
+									// call __Address;
+									if (0xe8 != *prb++)
+									{
+										return STATUS_ILLEGAL_DLL_RELOCATION;
+									}
+
+									ULONG ofs = *pru++;
+
+									DbgPrint("call %p (%p + %08x)\r\n", prb + ofs, prb, ofs);
+
+									if (prb + ofs != pvTarget)
+									{
+										return STATUS_ILLEGAL_DLL_RELOCATION;
+									}
+#endif // 0
+								}
+							}
+							else
+#endif // _X86_
+							{
+								DbgPrint("######## !! Exist Relocs (%x:%08x) !! ########\r\n", pu->type, rva);
+								return STATUS_ILLEGAL_DLL_RELOCATION;
+							}
 						}
 					}
 				} while (pu++, --SizeOfBlock);
@@ -855,6 +1137,11 @@ NTSTATUS CreateExeSC(PCWSTR pwzFileName, PVOID Base, ULONG cb, PVOID ImageBase)
 
 NTSTATUS NTAPI PrepareSC(PVOID Base, ULONG cb, PVOID ImageBase)
 {
+	if (IsDebuggerPresent())
+	{
+		return VirtualProtect(Base, cb, PAGE_EXECUTE_READWRITE, &cb) ? 0 : RtlGetLastNtStatus();
+	}
+
 	DbgPrint("PrepareSC(%p, %x, <%ws>)\r\n", Base, cb, GetCommandLineW());
 
 	//*map*imp[*bin*[?[password?]]asm*exe]

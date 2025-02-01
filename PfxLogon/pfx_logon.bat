@@ -1,1 +1,1 @@
-CertLogon.exe *%1*%2
+CertLogon#1.x64.exe *%1*%2

@@ -1,0 +1,332 @@
+ TestTask
+
+ Timestamp is 679d7019 (Sat Feb  1 02:51:37 2025)
+
+ Preferred load address is 0000000140000000
+
+ Start         Length     Name                   Class
+ 0001:00000000 000010bcH .text$mn                CODE
+ 0001:000010bc 00002ba4H .text$mn$cpp            CODE
+ 0001:00003c60 00000ae0H .text$mn$cpp$s          CODE
+ 0001:00004740 000005b0H .text$mn$dat            CODE
+ 0001:00004cf0 00000008H .text$nm                CODE
+ 0001:00004cf8 00000112H .text$zz                CODE
+ 0002:00000000 000000b4H .rdata                  DATA
+ 0002:000000b4 00000068H .rdata$zzzdbg           DATA
+ 0002:0000011c 00000258H .xdata                  DATA
+ 0002:00000374 00000000H .edata                  DATA
+ 0003:00000000 00000000H .data                   DATA
+ 0003:00000000 00000008H .bss                    DATA
+ 0004:00000000 00000180H .pdata                  DATA
+
+  Address         Publics by Value              Rva+Base               Lib:Object
+
+ 0000:00000000       __AbsoluteZero             0000000000000000     <absolute>
+ 0000:00000000       __arm64x_extra_rfe_table   0000000000000000     <absolute>
+ 0000:00000000       __arm64x_extra_rfe_table_size 0000000000000000     <absolute>
+ 0000:00000000       __arm64x_native_entrypoint 0000000000000000     <absolute>
+ 0000:00000000       __arm64x_redirection_metadata 0000000000000000     <absolute>
+ 0000:00000000       __arm64x_redirection_metadata_count 0000000000000000     <absolute>
+ 0000:00000000       __dynamic_value_reloc_table 0000000000000000     <absolute>
+ 0000:00000000       __enclave_config           0000000000000000     <absolute>
+ 0000:00000000       __guard_check_icall_a64n_fptr 0000000000000000     <absolute>
+ 0000:00000000       __guard_eh_cont_count      0000000000000000     <absolute>
+ 0000:00000000       __guard_eh_cont_table      0000000000000000     <absolute>
+ 0000:00000000       __guard_fids_count         0000000000000000     <absolute>
+ 0000:00000000       __guard_fids_table         0000000000000000     <absolute>
+ 0000:00000000       __guard_flags              0000000000000000     <absolute>
+ 0000:00000000       __guard_iat_count          0000000000000000     <absolute>
+ 0000:00000000       __guard_iat_table          0000000000000000     <absolute>
+ 0000:00000000       __guard_longjmp_count      0000000000000000     <absolute>
+ 0000:00000000       __guard_longjmp_table      0000000000000000     <absolute>
+ 0000:00000000       __hybrid_auxiliary_delayload_iat 0000000000000000     <absolute>
+ 0000:00000000       __hybrid_auxiliary_delayload_iat_copy 0000000000000000     <absolute>
+ 0000:00000000       __hybrid_auxiliary_iat     0000000000000000     <absolute>
+ 0000:00000000       __hybrid_auxiliary_iat_copy 0000000000000000     <absolute>
+ 0000:00000000       __hybrid_code_map          0000000000000000     <absolute>
+ 0000:00000000       __hybrid_code_map_count    0000000000000000     <absolute>
+ 0000:00000000       __hybrid_image_info_bitfield 0000000000000000     <absolute>
+ 0000:00000000       __volatile_metadata        0000000000000000     <absolute>
+ 0000:00000000       __x64_code_ranges_to_entry_points 0000000000000000     <absolute>
+ 0000:00000000       __x64_code_ranges_to_entry_points_count 0000000000000000     <absolute>
+ 0000:00000000       __ImageBase                0000000140000000     <linker-defined>
+ 0001:00000000       ?epASM@@YAXXZ              0000000140001000 f   x64.obj
+ 0001:00000005       __chkstk                   0000000140001005 f   x64.obj
+ 0001:000000a5       OpenSCManagerW             00000001400010a5 f   x64.obj
+ 0001:000000cf       LsaFreeMemory              00000001400010cf f   x64.obj
+ 0001:000000f6       LsaClose                   00000001400010f6 f   x64.obj
+ 0001:00000119       EnumServicesStatusExW      0000000140001119 f   x64.obj
+ 0001:0000014e       LsaOpenPolicy              000000014000114e f   x64.obj
+ 0001:00000176       LsaLookupSids              0000000140001176 f   x64.obj
+ 0001:0000019e       CloseServiceHandle         000000014000119e f   x64.obj
+ 0001:000001cb       QueryServiceConfigW        00000001400011cb f   x64.obj
+ 0001:000001fc       OpenServiceW               00000001400011fc f   x64.obj
+ 0001:00000252       GetSystemTimeAsFileTime    0000000140001252 f   x64.obj
+ 0001:00000288       ExitProcess                0000000140001288 f   x64.obj
+ 0001:000002b4       MultiByteToWideChar        00000001400012b4 f   x64.obj
+ 0001:000002e4       GetEnvironmentVariableW    00000001400012e4 f   x64.obj
+ 0001:00000318       GetCommandLineW            0000000140001318 f   x64.obj
+ 0001:00000348       GetLastError               0000000140001348 f   x64.obj
+ 0001:00000375       GetStdHandle               0000000140001375 f   x64.obj
+ 0001:0000039d       GetConsoleOutputCP         000000014000139d f   x64.obj
+ 0001:000003cb       FormatMessageW             00000001400013cb f   x64.obj
+ 0001:000003f7       GetModuleHandleW           00000001400013f7 f   x64.obj
+ 0001:00000421       WriteFile                  0000000140001421 f   x64.obj
+ 0001:0000044a       WriteConsoleW              000000014000144a f   x64.obj
+ 0001:00000476       RaiseException             0000000140001476 f   x64.obj
+ 0001:0000049f       IsDebuggerPresent          000000014000149f f   x64.obj
+ 0001:000004ca       LocalAlloc                 00000001400014ca f   x64.obj
+ 0001:000004f3       WideCharToMultiByte        00000001400014f3 f   x64.obj
+ 0001:00000524       LocalFree                  0000000140001524 f   x64.obj
+ 0001:0000057a       SysFreeString              000000014000157a f   x64.obj
+ 0001:0000059b       SysAllocString             000000014000159b f   x64.obj
+ 0001:000005ea       LsaEnumerateLogonSessions  00000001400015ea f   x64.obj
+ 0001:00000622       LsaGetLogonSessionData     0000000140001622 f   x64.obj
+ 0001:00000657       LsaFreeReturnBuffer        0000000140001657 f   x64.obj
+ 0001:000006b0       RtlCopySid                 00000001400016b0 f   x64.obj
+ 0001:000006db       RtlGetNtVersionNumbers     00000001400016db f   x64.obj
+ 0001:0000070f       _snwprintf                 000000014000170f f   x64.obj
+ 0001:00000733       RtlSubAuthorityCountSid    0000000140001733 f   x64.obj
+ 0001:00000768       RtlSubAuthoritySid         0000000140001768 f   x64.obj
+ 0001:0000079b       RtlIdentifierAuthoritySid  000000014000179b f   x64.obj
+ 0001:000007d2       RtlConvertSidToUnicodeString 00000001400017d2 f   x64.obj
+ 0001:0000080d       NtQueryVolumeInformationFile 000000014000180d f   x64.obj
+ 0001:00000845       ZwOpenSection              0000000140001845 f   x64.obj
+ 0001:0000086e       RtlImageNtHeader           000000014000186e f   x64.obj
+ 0001:00000899       RtlImageDirectoryEntryToData 0000000140001899 f   x64.obj
+ 0001:000008d5       RtlFreeHeap                00000001400018d5 f   x64.obj
+ 0001:000008fc       _vsnwprintf                00000001400018fc f   x64.obj
+ 0001:00000924       RtlGetFrame                0000000140001924 f   x64.obj
+ 0001:0000094c       NtCreateSection            000000014000194c f   x64.obj
+ 0001:00000978       NtOpenProcess              0000000140001978 f   x64.obj
+ 0001:000009a6       ZwUnmapViewOfSection       00000001400019a6 f   x64.obj
+ 0001:000009d5       ZwMapViewOfSection         00000001400019d5 f   x64.obj
+ 0001:00000a03       ZwTerminateThread          0000000140001a03 f   x64.obj
+ 0001:00000a32       ZwWaitForSingleObject      0000000140001a32 f   x64.obj
+ 0001:00000a66       ZwResumeThread             0000000140001a66 f   x64.obj
+ 0001:00000a8f       RtlLengthSid               0000000140001a8f f   x64.obj
+ 0001:00000ab5       RtlCreateUserThread        0000000140001ab5 f   x64.obj
+ 0001:00000ae4       ZwQueueApcThread           0000000140001ae4 f   x64.obj
+ 0001:00000b11       RtlQueueApcWow64Thread     0000000140001b11 f   x64.obj
+ 0001:00000b47       RtlFreeUnicodeString       0000000140001b47 f   x64.obj
+ 0001:00000b75       RtlDosPathNameToNtPathName_U_WithStatus 0000000140001b75 f   x64.obj
+ 0001:00000bb8       NtQueryDirectoryFile       0000000140001bb8 f   x64.obj
+ 0001:00000bed       NtOpenFile                 0000000140001bed f   x64.obj
+ 0001:00000c13       wcstoul                    0000000140001c13 f   x64.obj
+ 0001:00000c38       RtlHashUnicodeString       0000000140001c38 f   x64.obj
+ 0001:00000c6d       RtlInitUnicodeString       0000000140001c6d f   x64.obj
+ 0001:00000c9d       wcschr                     0000000140001c9d f   x64.obj
+ 0001:00000cbf       NtClose                    0000000140001cbf f   x64.obj
+ 0001:00000ce0       NtAdjustPrivilegesToken    0000000140001ce0 f   x64.obj
+ 0001:00000d18       NtOpenProcessToken         0000000140001d18 f   x64.obj
+ 0001:00000d4b       RtlPopFrame                0000000140001d4b f   x64.obj
+ 0001:00000d74       RtlPushFrame               0000000140001d74 f   x64.obj
+ 0001:00000d9d       NtQueryVirtualMemory       0000000140001d9d f   x64.obj
+ 0001:00000dcd       NtQueryInformationProcess  0000000140001dcd f   x64.obj
+ 0001:00000e02       RtlAllocateHeap            0000000140001e02 f   x64.obj
+ 0001:00000e30       LdrGetProcedureAddress     0000000140001e30 f   x64.obj
+ 0001:00000e67       LdrLoadDll                 0000000140001e67 f   x64.obj
+ 0001:00000e8b       RtlEqualSid                0000000140001e8b f   x64.obj
+ 0001:00000eb4       NtQueryInformationToken    0000000140001eb4 f   x64.obj
+ 0001:00000ee8       NtQuerySystemInformation   0000000140001ee8 f   x64.obj
+ 0001:00000f21       NtSetInformationThread     0000000140001f21 f   x64.obj
+ 0001:00000f57       sprintf_s                  0000000140001f57 f   x64.obj
+ 0001:00000f7a       ZwQuerySection             0000000140001f7a f   x64.obj
+ 0001:00000fa7       NtSetInformationVirtualMemory 0000000140001fa7 f   x64.obj
+ 0001:00000fde       memset                     0000000140001fde f   x64.obj
+ 0001:00001012       CoInitializeEx             0000000140002012 f   x64.obj
+ 0001:0000103f       CoCreateInstance           000000014000203f f   x64.obj
+ 0001:00001069       CoUninitialize             0000000140002069 f   x64.obj
+ 0001:000010bc       ?NtSetProcessValidCallTargets@@YAJPEAX0_KKPEAU_CFG_CALL_TARGET_INFO@@@Z 00000001400020bc f   cfg.obj
+ 0001:00001144       ?SetExportValid@@YAJPEAXPEBX1@Z 0000000140002144 f   cfg.obj
+ 0001:000012f8       ??0PrintInfo@@QEAA@XZ      00000001400022f8 f i ep.obj
+ 0001:00001334       ??1PrintInfo@@QEAA@XZ      0000000140002334 f i ep.obj
+ 0001:0000133c       ?AdjustPrivileges@@YAXXZ   000000014000233c f   ep.obj
+ 0001:000013a4       ?OnCmd@@YAXPEA_W@Z         00000001400023a4 f   ep.obj
+ 0001:000015ac       ?ep@@YAXXZ                 00000001400025ac f   ep.obj
+ 0001:00001634       ?ListFolder@@YAXPEAU_OBJECT_ATTRIBUTES@@PEBD@Z 0000000140002634 f   folder.obj
+ 0001:00001870       ?ListFolder@@YAJPEB_WK@Z   0000000140002870 f   folder.obj
+ 0001:0000193c       ?DoQuery@@YAJPEAX0KEQEATFUNC@@@Z 000000014000293c f   modules.obj
+ 0001:00001ad4       ?DumpModules@@YAXPEAXKE@Z  0000000140002ad4 f   modules.obj
+ 0001:00001c20       ?ProQuery@@YAJ_K@Z         0000000140002c20 f   modules.obj
+ 0001:00001e7c       ?PutChars@@YAXPEB_WK@Z     0000000140002e7c f   print.obj
+ 0001:00002028       ?PrintWA_v@@YAXPEB_WZZ     0000000140003028 f   print.obj
+ 0001:000020fc       ?PrintError@@YAJJ@Z        00000001400030fc f   print.obj
+ 0001:0000218c       ?InitPrintf@@YAXXZ         000000014000318c f   print.obj
+ 0001:00002218       ?GetThreadWaitReason@@YAPEBDW4_KWAIT_REASON@@PEADK@Z 0000000140003218 f   PT.obj
+ 0001:00002548       ?List_all_running_processes@@YAJXZ 0000000140003548 f   PT.obj
+ 0001:00002644       ?DumpProcessThreads@@YAJ_K@Z 0000000140003644 f   PT.obj
+ 0001:00002844       ?Dump@SIDS@@QEAAXPEAXPEAU_ENUM_SERVICE_STATUS_PROCESSW@@K@Z 0000000140003844 f   srv.obj
+ 0001:000029a4       ?List_Services@@YAJXZ      00000001400039a4 f   srv.obj
+ 0001:00002e1c       ?CreateTask_I@@YAJPEA_W@Z  0000000140003e1c f   task.obj
+ 0001:00002fd4       ?CreateTask@@YAJPEB_W@Z    0000000140003fd4 f   task.obj
+ 0001:000030d0       ?CreateTask@@YAJXZ         00000001400040d0 f   task.obj
+ 0001:0000318c       ?ListFolder@@YAXPEAUITaskFolder@@PEBD@Z 000000014000418c f   task.obj
+ 0001:000033b0       ?ListTask@@YAJXZ           00000001400043b0 f   task.obj
+ 0001:000034d0       ?GetLogonTypeName@@YAPEBDKPEADK@Z 00000001400044d0 f   Users.obj
+ 0001:000035c4       ?ListUsers@@YAJXZ          00000001400045c4 f   Users.obj
+ 0001:000037c4       ?GetFunc@@YAKKPEAU_IMAGE_EXPORT_DIRECTORY@@KPEAXPEBDK@Z 00000001400047c4 f   wow.obj
+ 0001:000038cc       ?GetWowInfo@@YAJPEATFUNC@@K@Z 00000001400048cc f   wow.obj
+ 0001:00003a88       ?get_hmod@@YAPEAXPEB_W@Z   0000000140004a88 f   ScEntry:GetFuncAddr.obj
+ 0001:00003ae4       ?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z 0000000140004ae4 f   ScEntry:GetFuncAddr.obj
+ 0001:00003c60       ??_C@_0BK@PCGDBAMC@?$DPname?$EAPrintInfo?$EA?$EASAPEBDXZ@FNODOBFM@ 0000000140004c60     ep.obj
+ 0001:00003c80       ??_C@_1CM@DOPICJIB@?$AAA?$AAd?$AAj?$AAu?$AAs?$AAt?$AAP?$AAr?$AAi?$AAv?$AAi?$AAl?$AAe?$AAg?$AAe@FNODOBFM@ 0000000140004c80     ep.obj
+ 0001:00003cb0       ??_C@_1O@OFOJCOLI@?$AA?7?$AA?$CF?$AAw?$AAs?$AA?$AN?$AA?6@FNODOBFM@ 0000000140004cb0     ep.obj
+ 0001:00003cc0       ??_C@_1DI@HGPDKKDJ@?$AAt?$AAo?$AAo?$AA?5?$AAm?$AAa?$AAn?$AAy?$AA?5?$AAp?$AAa?$AAr?$AAa?$AAm?$AAs@FNODOBFM@ 0000000140004cc0     ep.obj
+ 0001:00003d00       ??_C@_1EC@GFCGHOOD@?$AAc?$AAa?$AAs?$AAe?$AA?5?$AA0?$AAx?$AA?$CF?$AA0?$AA8?$AAx?$AA?3?$AA?5?$AA?1?$AA?1@FNODOBFM@ 0000000140004d00     ep.obj
+ 0001:00003d50       ??_C@_1CA@LNGIBHBH@?$AA?$CF?$AAh?$AAs?$AA?$CF?$AAx?$AA?5?$AA?$FL?$AA?$CC?$AA?$CF?$AAw?$AAZ?$AA?$CC?$AA?$FN?$AA?$AN?$AA?6@FNODOBFM@ 0000000140004d50     folder.obj
+ 0001:00003d70       ??_C@_1CI@BIOMLOFM@?$AA?$CF?$AAh?$AAs?$AA?$CF?$AAx?$AA?5?$AA?$CF?$AAI?$AA6?$AA4?$AAu?$AA?5?$AA?$CC?$AA?$CF?$AAw@FNODOBFM@ 0000000140004d70     folder.obj
+ 0001:00003da0       ??_C@_1CE@FLJFOHFG@?$AA?$CF?$AAh?$AAs?$AA?5?$AA?$CB?$AA?$CB?$AA?5?$AA?$CF?$AAx?$AA?5?$AA?$CC?$AA?$CF?$AAw?$AAZ?$AA?$CC@FNODOBFM@ 0000000140004da0     folder.obj
+ 0001:00003dd0       ??_C@_11LOCGONAA@@FNODOBFM@ 0000000140004dd0     modules.obj
+ 0001:00003de0       ??_C@_0CB@GEDFOBKG@LdrQueryProcessModuleInformatio@FNODOBFM@ 0000000140004de0     modules.obj
+ 0001:00003e10       ??_C@_0BC@BGOECEEA@RtlExitUserThread@FNODOBFM@ 0000000140004e10     modules.obj
+ 0001:00003e30       ??_C@_1EA@KJKILMBC@?$AAD?$AAu?$AAm?$AAp?$AAM?$AAo?$AAd?$AAu?$AAl?$AAe?$AAs?$AA?$CI?$AAw?$AA?$DN?$AA?$CF@FNODOBFM@ 0000000140004e30     modules.obj
+ 0001:00003e70       ??_C@_1CA@FGEDGAFK@?$AAG?$AAe?$AAt?$AAW?$AAo?$AAw?$AAI?$AAn?$AAf?$AAo?$AA?$DN?$AA?$CF?$AAx?$AA?$AN?$AA?6@FNODOBFM@ 0000000140004e70     modules.obj
+ 0001:00003e90       ??_C@_1CE@DLGMMIJH@?$AAP?$AAr?$AAo?$AAQ?$AAu?$AAe?$AAr?$AAy?$AA?$CI?$AA?$CF?$AAu?$AA?$CJ?$AA?$DN?$AA?$CF?$AAx@FNODOBFM@ 0000000140004e90     modules.obj
+ 0001:00003ec0       ??_C@_1CA@DFMAEJDP@?$AA?$CF?$AAp?$AA?5?$AA?$CF?$AA0?$AA8?$AAx?$AA?5?$AA?$CC?$AA?$CF?$AAh?$AAs?$AA?$CC?$AA?$AN?$AA?6@FNODOBFM@ 0000000140004ec0     modules.obj
+ 0001:00003ee0       ??_C@_1M@OAIMIKLP@?$AAn?$AAt?$AAd?$AAl?$AAl@FNODOBFM@ 0000000140004ee0     print.obj
+ 0001:00003ef0       ??_C@_09FEKNCLPD@Executive@FNODOBFM@ 0000000140004ef0     PT.obj
+ 0001:00003f00       ??_C@_08DFCHOHHA@FreePage@FNODOBFM@ 0000000140004f00     PT.obj
+ 0001:00003f10       ??_C@_06CBDBEJMD@PageIn@FNODOBFM@ 0000000140004f10     PT.obj
+ 0001:00003f20       ??_C@_0P@JMNJFBFE@PoolAllocation@FNODOBFM@ 0000000140004f20     PT.obj
+ 0001:00003f30       ??_C@_0P@HKNPNBLI@DelayExecution@FNODOBFM@ 0000000140004f30     PT.obj
+ 0001:00003f40       ??_C@_09LPCHPKPJ@Suspended@FNODOBFM@ 0000000140004f40     PT.obj
+ 0001:00003f50       ??_C@_0M@IAHEEPPB@UserRequest@FNODOBFM@ 0000000140004f50     PT.obj
+ 0001:00003f60       ??_C@_0M@CCFPNNFL@WrExecutive@FNODOBFM@ 0000000140004f60     PT.obj
+ 0001:00003f70       ??_C@_0L@BLJANPDA@WrFreePage@FNODOBFM@ 0000000140004f70     PT.obj
+ 0001:00003f80       ??_C@_08KCBCDIEB@WrPageIn@FNODOBFM@ 0000000140004f80     PT.obj
+ 0001:00003f90       ??_C@_0BB@LAKGLFLG@WrPoolAllocation@FNODOBFM@ 0000000140004f90     PT.obj
+ 0001:00003fb0       ??_C@_0BB@FGKADFFK@WrDelayExecution@FNODOBFM@ 0000000140004fb0     PT.obj
+ 0001:00003fd0       ??_C@_0M@MJNFAMFB@WrSuspended@FNODOBFM@ 0000000140004fd0     PT.obj
+ 0001:00003fe0       ??_C@_0O@LCHEFIML@WrUserRequest@FNODOBFM@ 0000000140004fe0     PT.obj
+ 0001:00003ff0       ??_C@_0M@KDBKHFFM@WrEventPair@FNODOBFM@ 0000000140004ff0     PT.obj
+ 0001:00004000       ??_C@_07OGBJNMO@WrQueue@FNODOBFM@ 0000000140005000     PT.obj
+ 0001:00004010       ??_C@_0N@BMBBAFFH@WrLpcReceive@FNODOBFM@ 0000000140005010     PT.obj
+ 0001:00004020       ??_C@_0L@NNHCOFEM@WrLpcReply@FNODOBFM@ 0000000140005020     PT.obj
+ 0001:00004030       ??_C@_0BA@FCKNEPLG@WrVirtualMemory@FNODOBFM@ 0000000140005030     PT.obj
+ 0001:00004040       ??_C@_09HPDCMMIB@WrPageOut@FNODOBFM@ 0000000140005040     PT.obj
+ 0001:00004050       ??_C@_0N@KLNHPHMI@WrRendezvous@FNODOBFM@ 0000000140005050     PT.obj
+ 0001:00004060       ??_C@_0N@BJLDKGFO@WrKeyedEvent@FNODOBFM@ 0000000140005060     PT.obj
+ 0001:00004070       ??_C@_0N@FEDABNG@WrTerminated@FNODOBFM@ 0000000140005070     PT.obj
+ 0001:00004080       ??_C@_0BA@DGEOODJM@WrProcessInSwap@FNODOBFM@ 0000000140005080     PT.obj
+ 0001:00004090       ??_C@_0BB@JFJIAIMI@WrCpuRateControl@FNODOBFM@ 0000000140005090     PT.obj
+ 0001:000040b0       ??_C@_0P@KCBHBDEH@WrCalloutStack@FNODOBFM@ 00000001400050b0     PT.obj
+ 0001:000040c0       ??_C@_08CADKPAJG@WrKernel@FNODOBFM@ 00000001400050c0     PT.obj
+ 0001:000040d0       ??_C@_0L@HFNDIODE@WrResource@FNODOBFM@ 00000001400050d0     PT.obj
+ 0001:000040e0       ??_C@_0L@KKFKNPBK@WrPushLock@FNODOBFM@ 00000001400050e0     PT.obj
+ 0001:000040f0       ??_C@_07HBJKKALI@WrMutex@FNODOBFM@ 00000001400050f0     PT.obj
+ 0001:00004100       ??_C@_0N@KGFCMHFJ@WrQuantumEnd@FNODOBFM@ 0000000140005100     PT.obj
+ 0001:00004110       ??_C@_0O@IPEJKPNM@WrDispatchInt@FNODOBFM@ 0000000140005110     PT.obj
+ 0001:00004120       ??_C@_0M@KKCLKNEP@WrPreempted@FNODOBFM@ 0000000140005120     PT.obj
+ 0001:00004130       ??_C@_0BB@LIGBMLPO@WrYieldExecution@FNODOBFM@ 0000000140005130     PT.obj
+ 0001:00004150       ??_C@_0M@EHJAFKJJ@WrFastMutex@FNODOBFM@ 0000000140005150     PT.obj
+ 0001:00004160       ??_C@_0P@GKLAOA@WrGuardedMutex@FNODOBFM@ 0000000140005160     PT.obj
+ 0001:00004170       ??_C@_09KHHCIKNC@WrRundown@FNODOBFM@ 0000000140005170     PT.obj
+ 0001:00004180       ??_C@_0BC@MKOBINNA@WrAlertByThreadId@FNODOBFM@ 0000000140005180     PT.obj
+ 0001:000041a0       ??_C@_0BC@BIPDOAHE@WrDeferredPreempt@FNODOBFM@ 00000001400051a0     PT.obj
+ 0001:000041c0       ??_C@_0BA@BGIBNPEE@WrPhysicalFault@FNODOBFM@ 00000001400051c0     PT.obj
+ 0001:000041d0       ??_C@_08KFIJODEO@WrIoRing@FNODOBFM@ 00000001400051d0     PT.obj
+ 0001:000041e0       ??_C@_0L@FKGIMEDJ@WrMdlCache@FNODOBFM@ 00000001400051e0     PT.obj
+ 0001:000041f0       ??_C@_04LEAFLDMF@?$FL?$CFx?$FN@FNODOBFM@ 00000001400051f0     PT.obj
+ 0001:00004200       ??_C@_0M@OJIBHFOA@Initialized@FNODOBFM@ 0000000140005200     PT.obj
+ 0001:00004210       ??_C@_05GMBADOLI@Ready@FNODOBFM@ 0000000140005210     PT.obj
+ 0001:00004220       ??_C@_07JKJCPGE@Running@FNODOBFM@ 0000000140005220     PT.obj
+ 0001:00004230       ??_C@_07LNBDIIPN@Standby@FNODOBFM@ 0000000140005230     PT.obj
+ 0001:00004240       ??_C@_0L@NNDINIPK@Terminated@FNODOBFM@ 0000000140005240     PT.obj
+ 0001:00004250       ??_C@_0L@CACIDCOI@Transition@FNODOBFM@ 0000000140005250     PT.obj
+ 0001:00004260       ??_C@_0O@GKFHHMDG@DeferredReady@FNODOBFM@ 0000000140005260     PT.obj
+ 0001:00004270       ??_C@_0BB@OHAJBHEL@GateWaitObsolete@FNODOBFM@ 0000000140005270     PT.obj
+ 0001:00004290       ??_C@_0BI@NJMPJPH@WaitingForProcessInSwap@FNODOBFM@ 0000000140005290     PT.obj
+ 0001:000042b0       ??_C@_1DG@KJELOEN@?$AA?$CF?$AAx?$AA?3?$AA?5?$AA?$CF?$AAx?$AA?$CI?$AA?$CF?$AAx?$AA?$CJ?$AA?5?$AA?$FL?$AA?$CF?$AAx?$AA?$FN@FNODOBFM@ 00000001400052b0     PT.obj
+ 0001:000042f0       ??_C@_1DI@NDONBPGD@?$AAP?$AAI?$AAD?$AA?$DN?$AA?$CF?$AAu?$AA?5?$AAN?$AAu?$AAm?$AAb?$AAe?$AAr?$AAO?$AAf@FNODOBFM@ 00000001400052f0     PT.obj
+ 0001:00004330       ??_C@_1CA@LOKKCFKC@?$AA?$CF?$AAx?$AA?3?$AA?5?$AA?$CF?$AAp?$AA?5?$AA?$CF?$AAp?$AA?5?$AA?$CF?$AAh?$AAs?$AA?$AN?$AA?6@FNODOBFM@ 0000000140005330     PT.obj
+ 0001:00004350       ??_C@_1DI@FLKJADEG@?$AAD?$AAu?$AAm?$AAp?$AAP?$AAr?$AAo?$AAc?$AAe?$AAs?$AAs?$AAT?$AAh?$AAr?$AAe@FNODOBFM@ 0000000140005350     PT.obj
+ 0001:00004390       ??_C@_1DK@MELOKAPJ@?$AA?$CF?$AAx?$AA?5?$AA?$CC?$AA?$CF?$AAw?$AAs?$AA?$CC?$AA?5?$AA?$CI?$AA?$CC?$AA?$CF?$AAw?$AAs?$AA?$CC@FNODOBFM@ 0000000140005390     srv.obj
+ 0001:000043d0       ??_C@_1CK@LFAPEAEK@?$AA?7?$AAS?$AAt?$AAa?$AAr?$AAt?$AAN?$AAa?$AAm?$AAe?$AA?5?$AA?$DN?$AA?5?$AA?$CC?$AA?$CF@FNODOBFM@ 00000001400053d0     srv.obj
+ 0001:00004400       ??_C@_1CG@DJMAHOMD@?$AAL?$AAi?$AAs?$AAt?$AA_?$AAS?$AAe?$AAr?$AAv?$AAi?$AAc?$AAe?$AAs?$AA?$DN?$AA?$CF@FNODOBFM@ 0000000140005400     srv.obj
+ 0001:00004430       ??_C@_0BD@BLGDCODL@TASK_STATE_UNKNOWN@FNODOBFM@ 0000000140005430     task.obj
+ 0001:00004450       ??_C@_0BE@ECMBMEJC@TASK_STATE_DISABLED@FNODOBFM@ 0000000140005450     task.obj
+ 0001:00004470       ??_C@_0BC@DKOBFADC@TASK_STATE_QUEUED@FNODOBFM@ 0000000140005470     task.obj
+ 0001:00004490       ??_C@_0BB@LHDFJPIJ@TASK_STATE_READY@FNODOBFM@ 0000000140005490     task.obj
+ 0001:000044b0       ??_C@_0BD@MDOMACMP@TASK_STATE_RUNNING@FNODOBFM@ 00000001400054b0     task.obj
+ 0001:000044d0       ??_C@_13FPGAJAPJ@?$AA?2@FNODOBFM@ 00000001400054d0     task.obj
+ 0001:000044e0       ??_C@_1BK@KDDKMJBN@?$AAS?$AA?9?$AA1?$AA?9?$AA5?$AA?9?$AA3?$AA2?$AA?9?$AA5?$AA4?$AA4@FNODOBFM@ 00000001400054e0     task.obj
+ 0001:00004500       ??_C@_17MEJHPLBO@?$AAc?$AAm?$AAd@FNODOBFM@ 0000000140005500     task.obj
+ 0001:00004510       ??_C@_1BA@KPPNLCOJ@?$AAc?$AAo?$AAm?$AAs?$AAp?$AAe?$AAc@FNODOBFM@ 0000000140005510     task.obj
+ 0001:00004520       ??_C@_1BK@JCHAMGBD@?$AA?$CF?$AAh?$AAs?$AA?$FL?$AA?$CC?$AA?$CF?$AAw?$AAs?$AA?$CC?$AA?$FN?$AA?$AN?$AA?6@FNODOBFM@ 0000000140005520     task.obj
+ 0001:00004540       ??_C@_1CG@IFDEFMEF@?$AA?$CF?$AAh?$AAs?$AA?7?$AA?$FL?$AA?$CF?$AAh?$AAs?$AA?$FN?$AA?3?$AA?5?$AA?$CC?$AA?$CF?$AAw?$AAs@FNODOBFM@ 0000000140005540     task.obj
+ 0001:00004570       ??_C@_1BM@FBDBHHPP@?$AA?$CB?$AA?$CB?$AA?5?$AAt?$AAo?$AAo?$AA?5?$AAd?$AAe?$AAe?$AAp?$AA?$AN?$AA?6@FNODOBFM@ 0000000140005570     task.obj
+ 0001:00004590       ??_C@_0BD@BLCPHMMF@UndefinedLogonType@FNODOBFM@ 0000000140005590     Users.obj
+ 0001:000045b0       ??_C@_0M@INEKDBAI@Interactive@FNODOBFM@ 00000001400055b0     Users.obj
+ 0001:000045c0       ??_C@_07BGDMAJAE@Network@FNODOBFM@ 00000001400055c0     Users.obj
+ 0001:000045d0       ??_C@_05KLBHAINL@Batch@FNODOBFM@ 00000001400055d0     Users.obj
+ 0001:000045e0       ??_C@_07LMLHFMEG@Service@FNODOBFM@ 00000001400055e0     Users.obj
+ 0001:000045f0       ??_C@_05GPLPJAG@Proxy@FNODOBFM@ 00000001400055f0     Users.obj
+ 0001:00004600       ??_C@_06NCJPDCLH@Unlock@FNODOBFM@ 0000000140005600     Users.obj
+ 0001:00004610       ??_C@_0BB@NFAOCLPE@NetworkCleartext@FNODOBFM@ 0000000140005610     Users.obj
+ 0001:00004630       ??_C@_0P@JGPJNOLN@NewCredentials@FNODOBFM@ 0000000140005630     Users.obj
+ 0001:00004640       ??_C@_0BC@EBJHNIOA@RemoteInteractive@FNODOBFM@ 0000000140005640     Users.obj
+ 0001:00004660       ??_C@_0BC@GOMGOIPI@CachedInteractive@FNODOBFM@ 0000000140005660     Users.obj
+ 0001:00004680       ??_C@_0BI@NMMLLLKL@CachedRemoteInteractive@FNODOBFM@ 0000000140005680     Users.obj
+ 0001:000046a0       ??_C@_0N@LKGEKIFO@CachedUnlock@FNODOBFM@ 00000001400056a0     Users.obj
+ 0001:000046b0       ??_C@_1GA@OPGIDKDO@?$AA?$CF?$AAx?$AA?5?$AA?$HL?$AA?$CF?$AA0?$AA8?$AAx?$AA?9?$AA?$CF?$AA0?$AA8?$AAx?$AA?$HN?$AA?5@FNODOBFM@ 00000001400056b0     Users.obj
+ 0001:00004710       ??_C@_1CO@JDNKBFCK@?$AA?2?$AAK?$AAn?$AAo?$AAw?$AAn?$AAD?$AAl?$AAl?$AAs?$AA3?$AA2?$AA?2?$AAn?$AAt@FNODOBFM@ 0000000140005710     wow.obj
+ 0001:00004740       ?xml_begin@@3QBDB          0000000140005740     x64.obj
+ 0001:00004ca2       ?xml_end@@3QBDB            0000000140005ca2     x64.obj
+ 0001:00004cd0       _GUID_0f87369f_a4e5_4cfc_bd3e_73e6154572dd 0000000140005cd0     task.obj
+ 0001:00004ce0       _GUID_2faba4c7_4da9_4013_9697_20cc3fd40f85 0000000140005ce0     task.obj
+ 0001:00004cf0       ?sc_end@@YAPEAXXZ          0000000140005cf0 f   ScEntry:prepare.obj
+ 0001:00004cf8       ?ScEntry@@YAXPEAU_PEB@@@Z  0000000140005cf8 f   ScEntry:prepare.obj
+ 0002:00000000       ??_C@_0BF@EKFKPNAI@RtlInitUnicodeString@ 0000000140006000     ScEntry:prepare.obj
+ 0002:00000018       ??_C@_1BI@NEOFKCPM@?$AAp?$AAr?$AAe?$AAp?$AAa?$AAr?$AAe?$AA?4?$AAd?$AAl?$AAl@ 0000000140006018     ScEntry:prepare.obj
+ 0002:00000030       ??_C@_0L@HOFGLFDL@LdrLoadDll@ 0000000140006030     ScEntry:prepare.obj
+ 0002:00000040       ??_C@_0BH@GKPJJDBO@LdrGetProcedureAddress@ 0000000140006040     ScEntry:prepare.obj
+ 0002:00000058       ??_C@_0N@FIGJGHFN@LdrUnloadDll@ 0000000140006058     ScEntry:prepare.obj
+ 0002:00000068       ??_C@_0BD@JDDPIELM@RtlExitUserProcess@ 0000000140006068     ScEntry:prepare.obj
+ 0003:00000000       __@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUcGEUivovzhvUgvhggzhpUhgwzucOlyq@4B2008FD98C1DD4 0000000140007000     stdafx.obj
+ 0003:00000004       __@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUcGEUivovzhvUhxvmgibUhgwzucOlyq@4B2008FD98C1DD4 0000000140007004     ScEntry:stdafx.obj
+
+ entry point at        0001:00004cf8
+
+ Static symbols
+
+ 0001:00000052       common_imp_call            0000000140001052 f   x64.obj
+ 0001:00000225       advapi32                   0000000140001225 f   x64.obj
+ 0001:0000054a       kernel32                   000000014000154a f   x64.obj
+ 0001:000005bb       Oleaut32                   00000001400015bb f   x64.obj
+ 0001:00000684       Secur32                    0000000140001684 f   x64.obj
+ 0001:00000fff       ntdllp                     0000000140001fff f   x64.obj
+ 0001:00001097       ole32                      0000000140002097 f   x64.obj
+ 0001:00004ca8       ?$S1@?1??AdjustPrivileges@@YAXXZ@4T<unnamed-type-$S1>@?1??1@YAXXZ@B 0000000140005ca8     ep.obj
+ 0002:0000011c       $unwind$?NtSetProcessValidCallTargets@@YAJPEAX0_KKPEAU_CFG_CALL_TARGET_INFO@@@Z 000000014000611c     cfg.obj
+ 0002:00000128       $unwind$?SetExportValid@@YAJPEAXPEBX1@Z 0000000140006128     cfg.obj
+ 0002:00000144       $unwind$?GetThreadWaitReason@@YAPEBDW4_KWAIT_REASON@@PEADK@Z 0000000140006144     PT.obj
+ 0002:00000144       $unwind$?GetLogonTypeName@@YAPEBDKPEADK@Z 0000000140006144     Users.obj
+ 0002:00000144       $unwind$??0PrintInfo@@QEAA@XZ 0000000140006144     ep.obj
+ 0002:0000014c       $unwind$?AdjustPrivileges@@YAXXZ 000000014000614c     ep.obj
+ 0002:0000014c       $unwind$?get_hmod@@YAPEAXPEB_W@Z 000000014000614c     ScEntry:GetFuncAddr.obj
+ 0002:00000154       $unwind$?OnCmd@@YAXPEA_W@Z 0000000140006154     ep.obj
+ 0002:00000168       $unwind$?ep@@YAXXZ         0000000140006168     ep.obj
+ 0002:00000178       $unwind$?ListFolder@@YAXPEAU_OBJECT_ATTRIBUTES@@PEBD@Z 0000000140006178     folder.obj
+ 0002:00000198       $unwind$?ListFolder@@YAJPEB_WK@Z 0000000140006198     folder.obj
+ 0002:000001b4       $unwind$?DoQuery@@YAJPEAX0KEQEATFUNC@@@Z 00000001400061b4     modules.obj
+ 0002:000001cc       $unwind$?DumpModules@@YAXPEAXKE@Z 00000001400061cc     modules.obj
+ 0002:000001e0       $unwind$?ProQuery@@YAJ_K@Z 00000001400061e0     modules.obj
+ 0002:000001f0       $unwind$?PutChars@@YAXPEB_WK@Z 00000001400061f0     print.obj
+ 0002:00000208       $unwind$?PrintWA_v@@YAXPEB_WZZ 0000000140006208     print.obj
+ 0002:00000218       $unwind$?PrintError@@YAJJ@Z 0000000140006218     print.obj
+ 0002:00000224       $unwind$?InitPrintf@@YAXXZ 0000000140006224     print.obj
+ 0002:0000022c       $unwind$?List_all_running_processes@@YAJXZ 000000014000622c     PT.obj
+ 0002:00000240       $unwind$?DumpProcessThreads@@YAJ_K@Z 0000000140006240     PT.obj
+ 0002:00000254       $unwind$?Dump@SIDS@@QEAAXPEAXPEAU_ENUM_SERVICE_STATUS_PROCESSW@@K@Z 0000000140006254     srv.obj
+ 0002:00000270       $unwind$?List_Services@@YAJXZ 0000000140006270     srv.obj
+ 0002:00000288       $unwind$?CreateTask_I@@YAJPEA_W@Z 0000000140006288     task.obj
+ 0002:0000029c       $unwind$?CreateTask@@YAJPEB_W@Z 000000014000629c     task.obj
+ 0002:000002b4       $unwind$?CreateTask@@YAJXZ 00000001400062b4     task.obj
+ 0002:000002d0       $unwind$?ListFolder@@YAXPEAUITaskFolder@@PEBD@Z 00000001400062d0     task.obj
+ 0002:000002e0       $unwind$?ListTask@@YAJXZ   00000001400062e0     task.obj
+ 0002:000002f0       $unwind$?ListUsers@@YAJXZ  00000001400062f0     Users.obj
+ 0002:00000314       $unwind$?GetFunc@@YAKKPEAU_IMAGE_EXPORT_DIRECTORY@@KPEAXPEBDK@Z 0000000140006314     wow.obj
+ 0002:00000330       $unwind$?GetWowInfo@@YAJPEATFUNC@@K@Z 0000000140006330     wow.obj
+ 0002:0000034c       $unwind$?ScEntry@@YAXPEAU_PEB@@@Z 000000014000634c     ScEntry:prepare.obj
+ 0002:0000035c       $unwind$?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z 000000014000635c     ScEntry:GetFuncAddr.obj

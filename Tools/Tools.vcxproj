@@ -51,7 +51,6 @@
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
       <EntryPointSymbol Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">?ScEntry@@YGXPAU_PEB@@@Z</EntryPointSymbol>
       <EntryPointSymbol Condition="'$(Configuration)|$(Platform)'=='Release|x64'">?ScEntry@@YAXPEAU_PEB@@@Z</EntryPointSymbol>
@@ -87,20 +86,12 @@
     <ClCompile Include="wow.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="imp.asm" />
     <CustomBuild Include="x64.asm">
       <FileType>Document</FileType>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ml64 /c /Cp %(Identity)</Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).obj</Outputs>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </CustomBuild>
-    <CustomBuild Include="x86.asm">
-      <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">ml /c /Cp %(Identity)</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename).obj</Outputs>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </CustomBuild>
-    <None Include="imp86.asm" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="task.xml">

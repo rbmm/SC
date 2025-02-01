@@ -3,13 +3,13 @@
 ; void __cdecl ep(struct _PEB *,unsigned char *,unsigned long)
 extern ?ep@@YAXPEAU_PEB@@PEAEK@Z : PROC
 
-; void __cdecl epASM(struct _PEB *)
-?epASM@@YAXPEAU_PEB@@@Z proc
-	jmp ?ep@@YAXPEAU_PEB@@PEAEK@Z
-?epASM@@YAXPEAU_PEB@@@Z endp
+; void epASM()
+?epASM@@YAXXZ proc
+  jmp ?ep@@YAXPEAU_PEB@@PEAEK@Z
+?epASM@@YAXXZ endp
 
-include <..\scentry\nobase64.inc>
+include <..\scentry\nobase.x64.inc>
 
-include <imp.asm>
+include <imp.x64.asm>
 
 end

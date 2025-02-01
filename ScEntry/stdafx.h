@@ -1,4 +1,6 @@
 #pragma code_seg(".text$mn$cpp")
+#pragma const_seg(".text$mn$dat")
+
 #define DECLSPEC_IMPORT
 
 #define DECLSPEC_DEPRECATED_DDK
@@ -65,3 +67,50 @@ typedef GUID* PGUID;
 #include "phnt.h"
 
 #pragma warning(default : 4392)
+
+#include "mini_yvals.h"
+
+#define _makeachar(x) #@x
+#define makeachar(x) _makeachar(x)
+#define _makewchar(x) L## #@x
+#define makewchar(x) _makewchar(x)
+#define echo(x) x
+#define label(x) echo(x)##__LINE__
+#define showmacro(x) __pragma(message(__FILE__ _CRT_STRINGIZE((__LINE__): \nmacro\t)#x" expand to\n" _CRT_STRINGIZE(x)))
+
+#define RTL_CONSTANT_STRINGA(s) { sizeof( s ) - sizeof( (s)[0] ), sizeof( s ), const_cast<PSTR>(s) }
+#define RTL_CONSTANT_STRINGW_(s) { sizeof( s ) - sizeof( (s)[0] ), sizeof( s ), const_cast<PWSTR>(s) }
+#define RTL_CONSTANT_STRINGW(s) RTL_CONSTANT_STRINGW_(echo(L)echo(s))
+
+#define STATIC_UNICODE_STRING(name, str) \
+static const WCHAR label(__)[] = echo(L)str;\
+static const UNICODE_STRING name = RTL_CONSTANT_STRINGW_(label(__))
+
+#define STATIC_ANSI_STRING(name, str) \
+static const CHAR label(__)[] = str;\
+static const ANSI_STRING name = RTL_CONSTANT_STRINGA(label(__))
+
+#define STATIC_ASTRING(name, str) static const CHAR name[] = str
+#define STATIC_WSTRING(name, str) static const WCHAR name[] = echo(L)str
+
+#define STATIC_UNICODE_STRING_(name) STATIC_UNICODE_STRING(name, #name)
+#define STATIC_WSTRING_(name) STATIC_WSTRING(name, #name)
+#define STATIC_ANSI_STRING_(name) STATIC_ANSI_STRING(name, #name)
+#define STATIC_ASTRING_(name) STATIC_ASTRING(name, #name)
+
+#define STATIC_OBJECT_ATTRIBUTES(oa, name)\
+	STATIC_UNICODE_STRING(label(m), name);\
+	static OBJECT_ATTRIBUTES oa = { sizeof(oa), 0, const_cast<PUNICODE_STRING>(&label(m)), OBJ_CASE_INSENSITIVE }
+
+#define STATIC_OBJECT_ATTRIBUTES_EX(oa, name, a, sd, sqs)\
+	STATIC_UNICODE_STRING(label(m), name);\
+	static OBJECT_ATTRIBUTES oa = { sizeof(oa), 0, const_cast<PUNICODE_STRING>(&label(m)), a, sd, sqs }
+
+
+#define BEGIN_PRIVILEGES(name, n) static const union { TOKEN_PRIVILEGES name;\
+struct { ULONG PrivilegeCount; LUID_AND_ATTRIBUTES Privileges[n];} label(_) = { n, {
+
+#define LAA(se) {{se}, SE_PRIVILEGE_ENABLED }
+#define LAA_D(se) {{se} }
+
+#define END_PRIVILEGES }};};

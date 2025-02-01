@@ -1,0 +1,118 @@
+ ScLfm
+
+ Timestamp is 679e8b0e (Sat Feb  1 22:58:54 2025)
+
+ Preferred load address is 00400000
+
+ Start         Length     Name                   Class
+ 0001:00000000 00000614H .text$mn                CODE
+ 0001:00000614 00000a8cH .text$mn$cpp            CODE
+ 0001:000010a0 00000046H .text$mn$cpp$s          CODE
+ 0001:000010e6 00000006H .text$nm                CODE
+ 0001:000010ec 000000daH .text$zz                CODE
+ 0002:00000000 000000b0H .rdata                  DATA
+ 0002:000000b0 00000000H .edata                  DATA
+ 0002:000000b0 00000064H .rdata$zzzdbg           DATA
+ 0003:00000000 00000000H .data                   DATA
+ 0003:00000000 00000008H .bss                    DATA
+
+  Address         Publics by Value              Rva+Base       Lib:Object
+
+ 0000:00000000       ___AbsoluteZero            00000000     <absolute>
+ 0000:00000000       ___arm64x_extra_rfe_table  00000000     <absolute>
+ 0000:00000000       ___arm64x_extra_rfe_table_size 00000000     <absolute>
+ 0000:00000000       ___arm64x_native_entrypoint 00000000     <absolute>
+ 0000:00000000       ___arm64x_redirection_metadata 00000000     <absolute>
+ 0000:00000000       ___arm64x_redirection_metadata_count 00000000     <absolute>
+ 0000:00000000       ___dynamic_value_reloc_table 00000000     <absolute>
+ 0000:00000000       ___enclave_config          00000000     <absolute>
+ 0000:00000000       ___guard_check_icall_a64n_fptr 00000000     <absolute>
+ 0000:00000000       ___guard_eh_cont_count     00000000     <absolute>
+ 0000:00000000       ___guard_eh_cont_table     00000000     <absolute>
+ 0000:00000000       ___guard_fids_count        00000000     <absolute>
+ 0000:00000000       ___guard_fids_table        00000000     <absolute>
+ 0000:00000000       ___guard_flags             00000000     <absolute>
+ 0000:00000000       ___guard_iat_count         00000000     <absolute>
+ 0000:00000000       ___guard_iat_table         00000000     <absolute>
+ 0000:00000000       ___guard_longjmp_count     00000000     <absolute>
+ 0000:00000000       ___guard_longjmp_table     00000000     <absolute>
+ 0000:00000000       ___hybrid_auxiliary_delayload_iat 00000000     <absolute>
+ 0000:00000000       ___hybrid_auxiliary_delayload_iat_copy 00000000     <absolute>
+ 0000:00000000       ___hybrid_auxiliary_iat    00000000     <absolute>
+ 0000:00000000       ___hybrid_auxiliary_iat_copy 00000000     <absolute>
+ 0000:00000000       ___hybrid_code_map         00000000     <absolute>
+ 0000:00000000       ___hybrid_code_map_count   00000000     <absolute>
+ 0000:00000000       ___hybrid_image_info_bitfield 00000000     <absolute>
+ 0000:00000000       ___volatile_metadata       00000000     <absolute>
+ 0000:00000000       ___x64_code_ranges_to_entry_points 00000000     <absolute>
+ 0000:00000000       ___x64_code_ranges_to_entry_points_count 00000000     <absolute>
+ 0000:00000000       ___ImageBase               00400000     <linker-defined>
+ 0001:00000000       ?epASM@@YGXXZ              00401000 f   x86.obj
+ 0001:00000030       ?__Address@@YIPAXPBX@Z     00401030 f   x86.obj
+ 0001:00000043       __alloca_probe             00401043 f   x86.obj
+ 0001:00000043       __chkstk                   00401043 f   x86.obj
+ 0001:0000006e       ?retFromMapViewOfSectionAddr@@YGPAXXZ 0040106e f   x86.obj
+ 0001:0000007e       _ZwMapViewOfSection@40     0040107e f   x86.obj
+ 0001:000000aa       _ZwUnmapViewOfSection@8    004010aa f   x86.obj
+ 0001:000000d6       _RtlDosPathNameToNtPathName_U_WithStatus@16 004010d6 f   x86.obj
+ 0001:00000116       _NtOpenFile@24             00401116 f   x86.obj
+ 0001:0000013a       _RtlFreeUnicodeString@4    0040113a f   x86.obj
+ 0001:00000166       _RtlGetCurrentPeb@0        00401166 f   x86.obj
+ 0001:0000018e       _RtlAllocateHeap@12        0040118e f   x86.obj
+ 0001:000001b6       _RtlInitUnicodeString@8    004011b6 f   x86.obj
+ 0001:000001e2       _NtQueryDirectoryFile@44   004011e2 f   x86.obj
+ 0001:0000020e       _LdrGetDllHandle@16        0040120e f   x86.obj
+ 0001:00000236       _NtCreateSection@28        00401236 f   x86.obj
+ 0001:0000025e       _NtClose@4                 0040125e f   x86.obj
+ 0001:0000027e       _RtlAppendUnicodeStringToString@8 0040127e f   x86.obj
+ 0001:000002b6       _RtlFreeHeap@12            004012b6 f   x86.obj
+ 0001:000002da       _RtlPushFrame@4            004012da f   x86.obj
+ 0001:000002fe       _RtlPopFrame@4             004012fe f   x86.obj
+ 0001:00000322       _RtlGetFrame@0             00401322 f   x86.obj
+ 0001:00000346       _ZwProtectVirtualMemory@20 00401346 f   x86.obj
+ 0001:00000376       _RtlEqualUnicodeString@12  00401376 f   x86.obj
+ 0001:000003a2       _RtlSetProtectedPolicy@12  004013a2 f   x86.obj
+ 0001:000003ce       _RtlAddVectoredExceptionHandler@8 004013ce f   x86.obj
+ 0001:00000406       _ZwSetContextThread@8      00401406 f   x86.obj
+ 0001:00000432       _LdrLoadDll@16             00401432 f   x86.obj
+ 0001:00000456       _LdrUnloadDll@4            00401456 f   x86.obj
+ 0001:0000047a       _RtlRemoveVectoredExceptionHandler@4 0040147a f   x86.obj
+ 0001:000004b2       _LdrAddRefDll@8            004014b2 f   x86.obj
+ 0001:000004d6       _RtlImageNtHeaderEx@20     004014d6 f   x86.obj
+ 0001:00000502       _RtlWow64EnableFsRedirection@4 00401502 f   x86.obj
+ 0001:00000536       _LdrEnumerateLoadedModules@12 00401536 f   x86.obj
+ 0001:00000566       _RtlAppendUnicodeToString@8 00401566 f   x86.obj
+ 0001:00000596       _memcpy                    00401596 f   x86.obj
+ 0001:000005b6       _LdrGetProcedureAddress@16 004015b6 f   x86.obj
+ 0001:000005e6       _memset                    004015e6 f   x86.obj
+ 0001:00000614       ?IsImageOk@@YGEKPAX@Z      00401614 f   ep.obj
+ 0001:00000722       ?FindNoCfgDll@@YGJKPAU_UNICODE_STRING@@@Z 00401722 f   ep.obj
+ 0001:00000914       ?get@IMAGE_Ctx@@SGPAU1@XZ  00401914 f i ep.obj
+ 0001:00000968       ?OverwriteSection@@YGJPAX0PAU_IMAGE_NT_HEADERS@@@Z 00401968 f   ep.obj
+ 0001:00000afa       ?retFromMapViewOfSection@@YIJJ@Z 00401afa f   ep.obj
+ 0001:00000b54       ?MyVexHandler@@YGJPAU_EXCEPTION_POINTERS@@@Z 00401b54 f   ep.obj
+ 0001:00000bf0       ?LoadLibraryFromMem@@YGJPAPAXPAXPAU_IMAGE_NT_HEADERS@@PBU_UNICODE_STRING@@@Z 00401bf0 f   ep.obj
+ 0001:00000d8c       ?CheckModule@@YGXPAU_LDR_DATA_TABLE_ENTRY@@PAUDSC@@PAE@Z 00401d8c f   ep.obj
+ 0001:00000dbe       ?LoadLibraryFromMem@@YGJPAXKPAPAX@Z 00401dbe f   ep.obj
+ 0001:00000ebb       ?get_hmod@@YIPAXPB_W@Z     00401ebb f   ScEntry:GetFuncAddr.obj
+ 0001:00000f05       ?GetFuncAddressEx@@YIPAXPAU_IMAGE_DOS_HEADER@@PBD@Z 00401f05 f   ScEntry:GetFuncAddr.obj
+ 0001:000010a0       ??_C@_1M@HNNPBALB@?$AA?$CK?$AA?4?$AAd?$AAl?$AAl@FNODOBFM@ 004020a0     ep.obj
+ 0001:000010b0       ??_C@_0BD@PPCCBCGB@ZwMapViewOfSection@FNODOBFM@ 004020b0     ep.obj
+ 0001:000010d0       ??_C@_1BG@NCCDOFIB@?$AA?2?$AAs?$AAy?$AAs?$AAt?$AAe?$AAm?$AA3?$AA2?$AA?2@FNODOBFM@ 004020d0     ep.obj
+ 0001:000010e6       ?sc_end@@YGPAXXZ           004020e6 f   ScEntry:prepare.obj
+ 0001:000010ec       ?ScEntry@@YGXPAU_PEB@@@Z   004020ec f   ScEntry:prepare.obj
+ 0002:00000000       ??_C@_0BF@EKFKPNAI@RtlInitUnicodeString@ 00403000     ScEntry:prepare.obj
+ 0002:00000018       ??_C@_1BI@NEOFKCPM@?$AAp?$AAr?$AAe?$AAp?$AAa?$AAr?$AAe?$AA?4?$AAd?$AAl?$AAl@ 00403018     ScEntry:prepare.obj
+ 0002:00000030       ??_C@_0L@HOFGLFDL@LdrLoadDll@ 00403030     ScEntry:prepare.obj
+ 0002:0000003c       ??_C@_0BH@GKPJJDBO@LdrGetProcedureAddress@ 0040303c     ScEntry:prepare.obj
+ 0002:00000054       ??_C@_0N@FIGJGHFN@LdrUnloadDll@ 00403054     ScEntry:prepare.obj
+ 0002:00000064       ??_C@_0BD@JDDPIELM@RtlExitUserProcess@ 00403064     ScEntry:prepare.obj
+ 0003:00000000       ___@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUdrmDCUivovzhvUhxounUhgwzucOlyq@4B2008FD98C1DD4 00404000     stdafx.obj
+ 0003:00000004       ___@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUdrmDCUivovzhvUhxvmgibUhgwzucOlyq@4B2008FD98C1DD4 00404004     ScEntry:stdafx.obj
+
+ entry point at        0001:000010ec
+
+ Static symbols
+
+ 0001:00000005       common_imp_call            00401005 f   x86.obj
+ 0001:00000607       ntdllp                     00401607 f   x86.obj

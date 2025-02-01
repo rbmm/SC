@@ -1,23 +1,24 @@
  Seci
 
- Timestamp is 673675d9 (Fri Nov 15 00:12:41 2024)
+ Timestamp is 679de3ad (Sat Feb  1 11:04:45 2025)
 
  Preferred load address is 0000000140000000
 
  Start         Length     Name                   Class
- 0001:00000000 00000224H .text$mn                CODE
- 0001:00000224 0000034cH .text$mn$cpp            CODE
- 0001:00000570 00000018H .text$mn$cpp$s          CODE
- 0001:00000588 00000008H .text$nm                CODE
- 0001:00000590 00000115H .text$zz                CODE
+ 0001:00000000 00000264H .text$mn                CODE
+ 0001:00000264 0000037cH .text$mn$cpp            CODE
+ 0001:000005e0 00000018H .text$mn$cpp$s          CODE
+ 0001:000005f8 00000008H .text$nm                CODE
+ 0001:00000600 00000112H .text$zz                CODE
  0002:00000000 00000000H .idata$5                DATA
- 0002:00000000 0000007cH .rdata                  DATA
- 0002:0000007c 0000004cH .xdata                  DATA
- 0002:000000c4 00000000H .edata                  DATA
- 0002:000000c4 00000000H .idata$2                DATA
- 0002:000000c4 00000000H .idata$3                DATA
- 0002:000000c8 00000000H .idata$4                DATA
- 0002:000000c8 00000000H .idata$6                DATA
+ 0002:00000000 000000b4H .rdata                  DATA
+ 0002:000000b4 00000064H .rdata$zzzdbg           DATA
+ 0002:00000118 00000048H .xdata                  DATA
+ 0002:0000015c 00000000H .edata                  DATA
+ 0002:0000015c 00000000H .idata$2                DATA
+ 0002:0000015c 00000000H .idata$3                DATA
+ 0002:00000160 00000000H .idata$4                DATA
+ 0002:00000160 00000000H .idata$6                DATA
  0003:00000000 00000000H .data                   DATA
  0003:00000000 00000008H .bss                    DATA
  0004:00000000 00000030H .pdata                  DATA
@@ -53,22 +54,22 @@
  0000:00000000       __x64_code_ranges_to_entry_points 0000000000000000     <absolute>
  0000:00000000       __x64_code_ranges_to_entry_points_count 0000000000000000     <absolute>
  0000:00000000       __ImageBase                0000000140000000     <linker-defined>
- 0001:00000000       ?epASM@@YAXPEAU_PEB@@@Z    0000000140001000 f   x64.obj
- 0001:00000005       ?MySeciAllocateAndSetCallFlagsAddr@@YAPEAXXZ 0000000140001005 f   x64.obj
- 0001:00000064       VirtualProtect             0000000140001064 f   x64.obj
- 0001:0000008f       LoadLibraryW               000000014000108f f   x64.obj
- 0001:000000e2       SeciAllocateAndSetCallFlags 00000001400010e2 f   x64.obj
- 0001:00000148       RtlImageDirectoryEntryToData 0000000140001148 f   x64.obj
- 0001:00000185       RtlInitUnicodeString       0000000140001185 f   x64.obj
- 0001:000001b5       LdrLoadDll                 00000001400011b5 f   x64.obj
- 0001:000001db       LdrGetProcedureAddress     00000001400011db f   x64.obj
- 0001:00000224       ?MySeciAllocateAndSetCallFlags@@YAJKPEAH@Z 0000000140001224 f   ep.obj
- 0001:0000023c       ?OnApc@@YAXKKPEAX@Z        000000014000123c f   ep.obj
- 0001:000003c4       ?get_hmod@@YAPEAXPEB_W@Z   00000001400013c4 f   ScEntry:GetFuncAddr.obj
- 0001:00000420       ?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z 0000000140001420 f   ScEntry:GetFuncAddr.obj
- 0001:00000570       ??_C@_1BI@LOPIEHPM@?$AAU?$AAS?$AAE?$AAR?$AAM?$AAG?$AAR?$AA?4?$AAD?$AAL?$AAL@FNODOBFM@ 0000000140001570     ep.obj
- 0001:00000588       ?sc_end@@YAPEAXXZ          0000000140001588 f   ScEntry:prepare.obj
- 0001:00000590       ?ScEntry@@YAXPEAU_PEB@@@Z  0000000140001590 f   ScEntry:prepare.obj
+ 0001:00000000       ?epASM@@YAXXZ              0000000140001000 f   x64.obj
+ 0001:00000005       __chkstk                   0000000140001005 f   x64.obj
+ 0001:000000a5       VirtualProtect             00000001400010a5 f   x64.obj
+ 0001:000000cf       LoadLibraryW               00000001400010cf f   x64.obj
+ 0001:00000122       SeciAllocateAndSetCallFlags 0000000140001122 f   x64.obj
+ 0001:00000188       RtlImageDirectoryEntryToData 0000000140001188 f   x64.obj
+ 0001:000001c5       RtlInitUnicodeString       00000001400011c5 f   x64.obj
+ 0001:000001f5       LdrLoadDll                 00000001400011f5 f   x64.obj
+ 0001:0000021b       LdrGetProcedureAddress     000000014000121b f   x64.obj
+ 0001:00000264       ?MySeciAllocateAndSetCallFlags@@YAJKPEAH@Z 0000000140001264 f   ep.obj
+ 0001:0000027c       ?OnApc@@YAXKKPEAX@Z        000000014000127c f   ep.obj
+ 0001:00000404       ?get_hmod@@YAPEAXPEB_W@Z   0000000140001404 f   ScEntry:GetFuncAddr.obj
+ 0001:00000460       ?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z 0000000140001460 f   ScEntry:GetFuncAddr.obj
+ 0001:000005e0       ??_C@_1BI@LOPIEHPM@?$AAU?$AAS?$AAE?$AAR?$AAM?$AAG?$AAR?$AA?4?$AAD?$AAL?$AAL@FNODOBFM@ 00000001400015e0     ep.obj
+ 0001:000005f8       ?sc_end@@YAPEAXXZ          00000001400015f8 f   ScEntry:prepare.obj
+ 0001:00000600       ?ScEntry@@YAXPEAU_PEB@@@Z  0000000140001600 f   ScEntry:prepare.obj
  0002:00000000       ??_C@_0BF@EKFKPNAI@RtlInitUnicodeString@ 0000000140002000     ScEntry:prepare.obj
  0002:00000018       ??_C@_1BI@NEOFKCPM@?$AAp?$AAr?$AAe?$AAp?$AAa?$AAr?$AAe?$AA?4?$AAd?$AAl?$AAl@ 0000000140002018     ScEntry:prepare.obj
  0002:00000030       ??_C@_0L@HOFGLFDL@LdrLoadDll@ 0000000140002030     ScEntry:prepare.obj
@@ -78,16 +79,18 @@
  0003:00000000       __@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUcGEUivovzhvUhvxrUhgwzucOlyq@4B2008FD98C1DD4 0000000140003000     stdafx.obj
  0003:00000004       __@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUcGEUivovzhvUhxvmgibUhgwzucOlyq@4B2008FD98C1DD4 0000000140003004     ScEntry:stdafx.obj
 
- entry point at        0001:00000590
+ entry point at        0001:00000600
 
  Static symbols
 
+ 0000:ffffb000       .debug$S                   0000000140000000     ntdllp:ntdll.dll
+ 0000:ffffb000       .debug$S                   0000000140000000     ntdllp:ntdll.dll
  0002:ffffe000       .idata$6                   0000000140000000     ntdllp:ntdll.dll
- 0001:0000000d       common_imp_call            000000014000100d f   x64.obj
- 0001:000000b5       kernel32                   00000001400010b5 f   x64.obj
- 0001:0000011c       secur32                    000000014000111c f   x64.obj
- 0001:0000020f       ntdllp                     000000014000120f f   x64.obj
- 0002:0000007c       $unwind$?OnApc@@YAXKKPEAX@Z 000000014000207c     ep.obj
- 0002:00000090       $unwind$?ScEntry@@YAXPEAU_PEB@@@Z 0000000140002090     ScEntry:prepare.obj
- 0002:000000a0       $unwind$?get_hmod@@YAPEAXPEB_W@Z 00000001400020a0     ScEntry:GetFuncAddr.obj
- 0002:000000a8       $unwind$?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z 00000001400020a8     ScEntry:GetFuncAddr.obj
+ 0001:00000052       common_imp_call            0000000140001052 f   x64.obj
+ 0001:000000f5       kernel32                   00000001400010f5 f   x64.obj
+ 0001:0000015c       secur32                    000000014000115c f   x64.obj
+ 0001:0000024f       ntdllp                     000000014000124f f   x64.obj
+ 0002:00000118       $unwind$?OnApc@@YAXKKPEAX@Z 0000000140002118     ep.obj
+ 0002:0000012c       $unwind$?ScEntry@@YAXPEAU_PEB@@@Z 000000014000212c     ScEntry:prepare.obj
+ 0002:0000013c       $unwind$?get_hmod@@YAPEAXPEB_W@Z 000000014000213c     ScEntry:GetFuncAddr.obj
+ 0002:00000144       $unwind$?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z 0000000140002144     ScEntry:GetFuncAddr.obj

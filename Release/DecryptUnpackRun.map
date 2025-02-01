@@ -1,0 +1,101 @@
+ DecryptUnpackRun
+
+ Timestamp is 679d2d07 (Fri Jan 31 22:05:27 2025)
+
+ Preferred load address is 00400000
+
+ Start         Length     Name                   Class
+ 0001:00000000 000003b8H .text$mn                CODE
+ 0001:000003b8 000004c8H .text$mn$cpp            CODE
+ 0001:00000880 0000001eH .text$mn$cpp$s          CODE
+ 0001:0000089e 00000006H .text$nm                CODE
+ 0001:000008a4 000000daH .text$zz                CODE
+ 0002:00000000 00000077H .rdata                  DATA
+ 0002:00000077 00000000H .edata                  DATA
+ 0003:00000000 00000000H .data                   DATA
+ 0003:00000000 00000008H .bss                    DATA
+
+  Address         Publics by Value              Rva+Base       Lib:Object
+
+ 0000:00000000       ___AbsoluteZero            00000000     <absolute>
+ 0000:00000000       ___arm64x_extra_rfe_table  00000000     <absolute>
+ 0000:00000000       ___arm64x_extra_rfe_table_size 00000000     <absolute>
+ 0000:00000000       ___arm64x_native_entrypoint 00000000     <absolute>
+ 0000:00000000       ___arm64x_redirection_metadata 00000000     <absolute>
+ 0000:00000000       ___arm64x_redirection_metadata_count 00000000     <absolute>
+ 0000:00000000       ___dynamic_value_reloc_table 00000000     <absolute>
+ 0000:00000000       ___enclave_config          00000000     <absolute>
+ 0000:00000000       ___guard_check_icall_a64n_fptr 00000000     <absolute>
+ 0000:00000000       ___guard_eh_cont_count     00000000     <absolute>
+ 0000:00000000       ___guard_eh_cont_table     00000000     <absolute>
+ 0000:00000000       ___guard_fids_count        00000000     <absolute>
+ 0000:00000000       ___guard_fids_table        00000000     <absolute>
+ 0000:00000000       ___guard_flags             00000000     <absolute>
+ 0000:00000000       ___guard_iat_count         00000000     <absolute>
+ 0000:00000000       ___guard_iat_table         00000000     <absolute>
+ 0000:00000000       ___guard_longjmp_count     00000000     <absolute>
+ 0000:00000000       ___guard_longjmp_table     00000000     <absolute>
+ 0000:00000000       ___hybrid_auxiliary_delayload_iat 00000000     <absolute>
+ 0000:00000000       ___hybrid_auxiliary_delayload_iat_copy 00000000     <absolute>
+ 0000:00000000       ___hybrid_auxiliary_iat    00000000     <absolute>
+ 0000:00000000       ___hybrid_auxiliary_iat_copy 00000000     <absolute>
+ 0000:00000000       ___hybrid_code_map         00000000     <absolute>
+ 0000:00000000       ___hybrid_code_map_count   00000000     <absolute>
+ 0000:00000000       ___hybrid_image_info_bitfield 00000000     <absolute>
+ 0000:00000000       ___volatile_metadata       00000000     <absolute>
+ 0000:00000000       ___x64_code_ranges_to_entry_points 00000000     <absolute>
+ 0000:00000000       ___x64_code_ranges_to_entry_points_count 00000000     <absolute>
+ 0000:00000000       ___ImageBase               00400000     <linker-defined>
+ 0001:00000000       ?epASM@@YGXXZ              00401000 f   x86.obj
+ 0001:00000030       ?__Address@@YIPAXPBX@Z     00401030 f   x86.obj
+ 0001:00000043       __alloca_probe             00401043 f   x86.obj
+ 0001:00000043       __chkstk                   00401043 f   x86.obj
+ 0001:00000072       _CryptHashCertificate2@28  00401072 f   x86.obj
+ 0001:000000c6       _CreateDecompressor@12     004010c6 f   x86.obj
+ 0001:000000e2       _Decompress@24             004010e2 f   x86.obj
+ 0001:000000fe       _CloseDecompressor@4       004010fe f   x86.obj
+ 0001:00000142       _VirtualAlloc@16           00401142 f   x86.obj
+ 0001:00000166       _GetLastError@0            00401166 f   x86.obj
+ 0001:0000018a       _ExitProcess@4             0040118a f   x86.obj
+ 0001:000001ae       _VirtualFree@12            004011ae f   x86.obj
+ 0001:000001fa       _BCryptCloseAlgorithmProvider@8 004011fa f   x86.obj
+ 0001:0000022e       _BCryptGenerateSymmetricKey@28 0040122e f   x86.obj
+ 0001:00000262       _BCryptOpenAlgorithmProvider@16 00401262 f   x86.obj
+ 0001:00000296       _BCryptDecrypt@40          00401296 f   x86.obj
+ 0001:000002de       _RtlInitUnicodeString@8    004012de f   x86.obj
+ 0001:0000030a       _LdrLoadDll@16             0040130a f   x86.obj
+ 0001:0000032e       _LdrGetProcedureAddress@16 0040132e f   x86.obj
+ 0001:0000035e       _RtlAllocateHeap@12        0040135e f   x86.obj
+ 0001:00000386       _RtlFreeHeap@12            00401386 f   x86.obj
+ 0001:000003b8       ?UnEscape@@YGHPA_W@Z       004013b8 f   ep.obj
+ 0001:00000406       ?CreateAesKey@@YGJPAPAXPAEK@Z 00401406 f   ep.obj
+ 0001:00000456       ?Unzip@@YGJPBXKPAPAXPAK@Z  00401456 f   ep.obj
+ 0001:00000528       ?ep@@YGXPAU_PEB@@PAEK@Z    00401528 f   ep.obj
+ 0001:0000066c       ?get_hmod@@YIPAXPB_W@Z     0040166c f   ScEntry:GetFuncAddr.obj
+ 0001:000006b6       ?GetFuncAddressEx@@YIPAXPAU_IMAGE_DOS_HEADER@@PBD@Z 004016b6 f   ScEntry:GetFuncAddr.obj
+ 0001:0000084b       ??_U@YAPAXI@Z              0040184b f   ScEntry:stdafx.obj
+ 0001:00000860       ??_V@YAXPAX@Z              00401860 f   ScEntry:stdafx.obj
+ 0001:00000880       ??_C@_17PJMHNJHG@?$AAA?$AAE?$AAS@FNODOBFM@ 00401880     ep.obj
+ 0001:00000890       ??_C@_1O@HECGKAIN@?$AAS?$AAH?$AAA?$AA2?$AA5?$AA6@FNODOBFM@ 00401890     ep.obj
+ 0001:0000089e       ?sc_end@@YGPAXXZ           0040189e f   ScEntry:prepare.obj
+ 0001:000008a4       ?ScEntry@@YGXPAU_PEB@@@Z   004018a4 f   ScEntry:prepare.obj
+ 0002:00000000       ??_C@_0BF@EKFKPNAI@RtlInitUnicodeString@ 00402000     ScEntry:prepare.obj
+ 0002:00000018       ??_C@_1BI@NEOFKCPM@?$AAp?$AAr?$AAe?$AAp?$AAa?$AAr?$AAe?$AA?4?$AAd?$AAl?$AAl@ 00402018     ScEntry:prepare.obj
+ 0002:00000030       ??_C@_0L@HOFGLFDL@LdrLoadDll@ 00402030     ScEntry:prepare.obj
+ 0002:0000003c       ??_C@_0BH@GKPJJDBO@LdrGetProcedureAddress@ 0040203c     ScEntry:prepare.obj
+ 0002:00000054       ??_C@_0N@FIGJGHFN@LdrUnloadDll@ 00402054     ScEntry:prepare.obj
+ 0002:00000064       ??_C@_0BD@JDDPIELM@RtlExitUserProcess@ 00402064     ScEntry:prepare.obj
+ 0003:00000000       ___@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUdrmDCUivovzhvUwvxibkgfmkzxpifmUhgwzucOlyq@4B2008FD98C1DD4 00403000     stdafx.obj
+ 0003:00000004       ___@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUdrmDCUivovzhvUhxvmgibUhgwzucOlyq@4B2008FD98C1DD4 00403004     ScEntry:stdafx.obj
+
+ entry point at        0001:000008a4
+
+ Static symbols
+
+ 0001:00000005       common_imp_call            00401005 f   x86.obj
+ 0001:0000009f       crypt32                    0040109f f   x86.obj
+ 0001:0000011b       cabinet                    0040111b f   x86.obj
+ 0001:000001d3       kernel32                   004011d3 f   x86.obj
+ 0001:000002bb       bcrypt                     004012bb f   x86.obj
+ 0001:000003ab       ntdllp                     004013ab f   x86.obj
+ 0001:00000666       ??0<unnamed-type-$S1>@?BG@??ep@@YGXPAU_PEB@@PAEK@Z@QAE@XZ 00401666 f   ep.obj

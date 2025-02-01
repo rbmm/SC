@@ -26,6 +26,17 @@ PVOID __fastcall get_hmod(PCWSTR pwz)
 	return GetNtBase();
 }
 
+ULONG StrToInt(PCSTR psz)
+{
+	ULONG i = 0;
+	while (ULONG c = *psz++)
+	{
+		if ((c -= '0') > 9) return 0;
+		i = 10 * i + c;
+	}
+	return i;
+}
+
 PVOID __fastcall GetFuncAddressEx(PIMAGE_DOS_HEADER pidh, PCSTR ProcedureName)
 {
 	CPP_FUNCTION;
@@ -35,20 +46,18 @@ PVOID __fastcall GetFuncAddressEx(PIMAGE_DOS_HEADER pidh, PCSTR ProcedureName)
 	PIMAGE_EXPORT_DIRECTORY pied = (PIMAGE_EXPORT_DIRECTORY)RtlOffsetToPointer(pidh, 
 		pinth->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_EXPORT].VirtualAddress);
 
-	PDWORD AddressOfNames = (PDWORD)RtlOffsetToPointer(pidh, pied->AddressOfNames);
-	PDWORD AddressOfFunctions = (PDWORD)RtlOffsetToPointer(pidh, pied->AddressOfFunctions);
-	PWORD AddressOfNameOrdinals = (PWORD)RtlOffsetToPointer(pidh, pied->AddressOfNameOrdinals);
 
 	DWORD a = 0, b = pied->NumberOfNames, o;
 
 	if (b) 
 	{
-		do
+		if ('#' == *ProcedureName)
 		{
-			int i = strcmp(ProcedureName, RtlOffsetToPointer(pidh, AddressOfNames[o = (a + b) >> 1]));
-			if (!i)
+			o = StrToInt(ProcedureName + 1);
+			if ((o -= pied->Base) < pied->NumberOfFunctions)
 			{
-				PVOID pv = RtlOffsetToPointer(pidh, AddressOfFunctions[AddressOfNameOrdinals[o]]);
+			__index:
+				PVOID pv = RtlOffsetToPointer(pidh, ((PDWORD)RtlOffsetToPointer(pidh, pied->AddressOfFunctions))[o]);
 
 				if ((ULONG_PTR)pv - (ULONG_PTR)pied < pinth->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_EXPORT].Size)
 				{
@@ -57,6 +66,21 @@ PVOID __fastcall GetFuncAddressEx(PIMAGE_DOS_HEADER pidh, PCSTR ProcedureName)
 				}
 
 				return pv;
+			}
+
+			__debugbreak();
+			return 0;
+		}
+
+		PDWORD AddressOfNames = (PDWORD)RtlOffsetToPointer(pidh, pied->AddressOfNames);
+
+		do
+		{
+			int i = strcmp(ProcedureName, RtlOffsetToPointer(pidh, AddressOfNames[o = (a + b) >> 1]));
+			if (!i)
+			{
+				o = ((PWORD)RtlOffsetToPointer(pidh, pied->AddressOfNameOrdinals))[o];
+				goto __index;
 			}
 
 			if (0 > i) b = o; else a = o + 1;
