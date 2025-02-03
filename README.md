@@ -487,7 +487,7 @@ compare the interface signatures:
 NTSTATUS NTAPI InjectDLL(_In_ HANDLE hProcess, _In_ const void* pvData, _In_ ULONG cbData);
 ```
 
-и 
+and
 
 ```
 NTSTATUS NTAPI InjectACG(
