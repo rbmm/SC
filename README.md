@@ -152,7 +152,7 @@ and then ScEntry will unload prepare.dll and if we are under debugger, will call
 ```
 if (peb->BeingDebugged)
 {
-epASM();
+	epASM();
 }
 ```
 
@@ -181,12 +181,14 @@ otherwise the command line format for post build:
 "$(TargetPath)" *map*imp*[bin]*[asm]*[exe]
 ```
 
+```
 **$(TargetPath)** - we run our own exe for post build, ScEntry loads prepare.dll and calls PrepareSC
 **map** - path to map file - mandatory parameter := $(OutDir)$(ProjectName).map
 **imp** - path to imp file - mandatory parameter := imp.$(PlatformTarget).asm
 **bin** - name of file where to save shellcode in binary form - optional parameter, can be empty
 **asm** - name of file where to save shellcode as asm code - i.e DQ sequense (and possible DD, DW, DB in the end)
 **exe** - name of exe file where we insert shellcode. such exe will not contain any imports or relocs - the only section ".text" containing shellcode and nothing else
+```
 
 **exe** makes sense only if our shellcode does not accept direct parameters (`void ep()`) (but can of course use the process command line)
 it is convenient for testing/demonstrating shellcode. usually `exe := $(ProjectName).$(PlatformTarget).exe`
@@ -301,7 +303,7 @@ project [hello](hello)
 
 `?#.pass?word##?` means that the shellcode in `$(ProjectName).$(PlatformTarget).asm` is encrypted with `*pass?word#` (escaped to `#.pass?word##` ) password, after compression
 
-we include it in [ESC] project - this is pure asm shellcode, which does not contain ScEntry CRT and post build - just build shell from generic
+we include it in [ESC](ESC) project - this is pure asm shellcode, which does not contain ScEntry CRT and post build - just build shell from generic
 `<../DecryptUnpackRun/DecryptUnpackRun.$(PlatformTarget).asm>` and `<../hello/hello.$(PlatformTarget).asm>`
 accepted command line is `*#.pass?word##*` - run `$(PlatformTarget)\[x64\]Release\esc.bat` - result must be the same as run direct `hello/hello.$(PlatformTarget).exe` (unencrypted shellcode)
 
