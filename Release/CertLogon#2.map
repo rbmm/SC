@@ -1,24 +1,23 @@
  CertLogon#2
 
- Timestamp is 67a030c6 (Mon Feb  3 04:58:14 2025)
+ Timestamp is 67a0c384 (Mon Feb  3 15:24:20 2025)
 
  Preferred load address is 00400000
 
  Start         Length     Name                   Class
  0001:00000000 0000097cH .text$mn                CODE
- 0001:0000097c 00000b10H .text$mn$cpp            CODE
- 0001:0000148c 00000084H .text$mn$cpp$r          CODE
- 0001:00001510 00000234H .text$mn$cpp$s          CODE
- 0001:00001744 00000006H .text$nm                CODE
- 0001:0000174a 000000daH .text$zz                CODE
+ 0001:0000097c 00000b14H .text$mn$cpp            CODE
+ 0001:00001490 00000234H .text$mn$cpp$s          CODE
+ 0001:000016c4 00000006H .text$nm                CODE
+ 0001:000016ca 000000daH .text$zz                CODE
  0002:00000000 00000000H .idata$5                DATA
- 0002:00000000 00000038H .rdata                  DATA
- 0002:00000038 00000000H .edata                  DATA
- 0002:00000038 00000068H .rdata$zzzdbg           DATA
- 0002:000000a0 00000000H .idata$2                DATA
- 0002:000000a0 00000000H .idata$3                DATA
- 0002:000000a0 00000000H .idata$4                DATA
- 0002:000000a0 00000000H .idata$6                DATA
+ 0002:00000000 000000b0H .rdata                  DATA
+ 0002:000000b0 00000000H .edata                  DATA
+ 0002:000000b0 00000068H .rdata$zzzdbg           DATA
+ 0002:00000118 00000000H .idata$2                DATA
+ 0002:00000118 00000000H .idata$3                DATA
+ 0002:00000118 00000000H .idata$4                DATA
+ 0002:00000118 00000000H .idata$6                DATA
  0003:00000000 00000000H .data                   DATA
  0003:00000000 00000008H .bss                    DATA
 
@@ -118,34 +117,34 @@
  0001:00001292       ??$HR@H@@YGHAAJH@Z         00402292 f i ep.obj
  0001:000012ac       ?get_hmod@@YIPAXPB_W@Z     004022ac f   ScEntry:GetFuncAddr.obj
  0001:000012f6       ?GetFuncAddressEx@@YIPAXPAU_IMAGE_DOS_HEADER@@PBD@Z 004022f6 f   ScEntry:GetFuncAddr.obj
- 0001:0000148c       ??_C@_0BF@EKFKPNAI@RtlInitUnicodeString@FNODOBFM@ 0040248c     ScEntry:prepare.obj
- 0001:000014a4       ??_C@_1BI@NEOFKCPM@?$AAp?$AAr?$AAe?$AAp?$AAa?$AAr?$AAe?$AA?4?$AAd?$AAl?$AAl@FNODOBFM@ 004024a4     ScEntry:prepare.obj
- 0001:000014bc       ??_C@_0L@HOFGLFDL@LdrLoadDll@FNODOBFM@ 004024bc     ScEntry:prepare.obj
- 0001:000014c8       ??_C@_0BH@GKPJJDBO@LdrGetProcedureAddress@FNODOBFM@ 004024c8     ScEntry:prepare.obj
- 0001:000014e0       ??_C@_0N@FIGJGHFN@LdrUnloadDll@FNODOBFM@ 004024e0     ScEntry:prepare.obj
- 0001:000014f0       ??_C@_0BD@JDDPIELM@RtlExitUserProcess@FNODOBFM@ 004024f0     ScEntry:prepare.obj
- 0001:00001510       ??_C@_08DEIMIBAF@Kerberos@FNODOBFM@ 00402510     ep.obj
- 0001:00001520       ??_C@_08GBLIGBPF@Winlogon@FNODOBFM@ 00402520     ep.obj
- 0001:00001530       ??_C@_07ENBNJNMO@1234567@FNODOBFM@ 00402530     ep.obj
- 0001:00001540       ??_C@_1HI@EEGLMGDM@?$AA?$CF?$AAw?$AAs?$AA?$CF?$AAc?$AA?$CF?$AAw?$AAs?$AA?$CF?$AAc?$AA?$CF?$AAw?$AAs?$AA?$CF?$AAc@FNODOBFM@ 00402540     ep.obj
- 0001:000015c0       ??_C@_1BE@PFDIDPLD@?$AA?2?$AA?2?$AA?4?$AA?2?$AA?$CF?$AAs?$AA?2?$AA?$CF?$AAs@FNODOBFM@ 004025c0     ep.obj
- 0001:000015e0       ??_C@_0BI@MPLNOBGC@1?42?4840?4113549?41?412?41?43@FNODOBFM@ 004025e0     ep.obj
- 0001:00001600       ??_C@_1CC@BDCMACAP@?$AAP?$AAK?$AAC?$AAS?$AA8?$AA_?$AAP?$AAR?$AAI?$AAV?$AAA?$AAT?$AAE?$AAK?$AAE@FNODOBFM@ 00402600     ep.obj
- 0001:00001630       ??_C@_1FA@OAAKELHB@?$AAM?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt?$AA?5?$AAS?$AAo?$AAf?$AAt?$AAw@FNODOBFM@ 00402630     ep.obj
- 0001:00001680       ??_C@_1DA@HMDKMDKC@?$AAS?$AAm?$AAa?$AAr?$AAt?$AAC?$AAa?$AAr?$AAd?$AAK?$AAe?$AAy?$AAC?$AAe?$AAr@FNODOBFM@ 00402680     ep.obj
- 0001:000016b0       ??_C@_1O@HECGKAIN@?$AAS?$AAH?$AAA?$AA2?$AA5?$AA6@FNODOBFM@ 004026b0     ep.obj
- 0001:000016c0       ??_C@_1M@OAIMIKLP@?$AAn?$AAt?$AAd?$AAl?$AAl@FNODOBFM@ 004026c0     ep.obj
- 0001:000016d0       ??_C@_1O@KLFLKFOB@?$AAR?$AAe?$AAa?$AAd?$AAe?$AAr@FNODOBFM@ 004026d0     ep.obj
- 0001:000016e0       ??_C@_1BE@FDKEOJEO@?$AAC?$AAo?$AAn?$AAt?$AAa?$AAi?$AAn?$AAe?$AAr@FNODOBFM@ 004026e0     ep.obj
- 0001:00001700       ??_C@_13BBDEGPLJ@?$AA?$CK@FNODOBFM@ 00402700     ep.obj
- 0001:00001710       ??_C@_1CA@DGNKCCOJ@?$AAC?$AAe?$AAr?$AAi?$AAf?$AAi?$AAc?$AAa?$AAt?$AAe?$AAL?$AAo?$AAg?$AAo?$AAn@FNODOBFM@ 00402710     ep.obj
- 0001:00001730       ??_C@_1BE@KDLLNMG@?$AAP?$AAF?$AAX?$AA?5?$AAL?$AAo?$AAg?$AAo?$AAn@FNODOBFM@ 00402730     ep.obj
- 0001:00001744       ?sc_end@@YGPAXXZ           00402744 f   ScEntry:prepare.obj
- 0001:0000174a       ?ScEntry@@YGXPAU_PEB@@@Z   0040274a f   ScEntry:prepare.obj
+ 0001:00001490       ??_C@_08DEIMIBAF@Kerberos@FNODOBFM@ 00402490     ep.obj
+ 0001:000014a0       ??_C@_08GBLIGBPF@Winlogon@FNODOBFM@ 004024a0     ep.obj
+ 0001:000014b0       ??_C@_07ENBNJNMO@1234567@FNODOBFM@ 004024b0     ep.obj
+ 0001:000014c0       ??_C@_1HI@EEGLMGDM@?$AA?$CF?$AAw?$AAs?$AA?$CF?$AAc?$AA?$CF?$AAw?$AAs?$AA?$CF?$AAc?$AA?$CF?$AAw?$AAs?$AA?$CF?$AAc@FNODOBFM@ 004024c0     ep.obj
+ 0001:00001540       ??_C@_1BE@PFDIDPLD@?$AA?2?$AA?2?$AA?4?$AA?2?$AA?$CF?$AAs?$AA?2?$AA?$CF?$AAs@FNODOBFM@ 00402540     ep.obj
+ 0001:00001560       ??_C@_0BI@MPLNOBGC@1?42?4840?4113549?41?412?41?43@FNODOBFM@ 00402560     ep.obj
+ 0001:00001580       ??_C@_1CC@BDCMACAP@?$AAP?$AAK?$AAC?$AAS?$AA8?$AA_?$AAP?$AAR?$AAI?$AAV?$AAA?$AAT?$AAE?$AAK?$AAE@FNODOBFM@ 00402580     ep.obj
+ 0001:000015b0       ??_C@_1FA@OAAKELHB@?$AAM?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt?$AA?5?$AAS?$AAo?$AAf?$AAt?$AAw@FNODOBFM@ 004025b0     ep.obj
+ 0001:00001600       ??_C@_1DA@HMDKMDKC@?$AAS?$AAm?$AAa?$AAr?$AAt?$AAC?$AAa?$AAr?$AAd?$AAK?$AAe?$AAy?$AAC?$AAe?$AAr@FNODOBFM@ 00402600     ep.obj
+ 0001:00001630       ??_C@_1O@HECGKAIN@?$AAS?$AAH?$AAA?$AA2?$AA5?$AA6@FNODOBFM@ 00402630     ep.obj
+ 0001:00001640       ??_C@_1M@OAIMIKLP@?$AAn?$AAt?$AAd?$AAl?$AAl@FNODOBFM@ 00402640     ep.obj
+ 0001:00001650       ??_C@_1O@KLFLKFOB@?$AAR?$AAe?$AAa?$AAd?$AAe?$AAr@FNODOBFM@ 00402650     ep.obj
+ 0001:00001660       ??_C@_1BE@FDKEOJEO@?$AAC?$AAo?$AAn?$AAt?$AAa?$AAi?$AAn?$AAe?$AAr@FNODOBFM@ 00402660     ep.obj
+ 0001:00001680       ??_C@_13BBDEGPLJ@?$AA?$CK@FNODOBFM@ 00402680     ep.obj
+ 0001:00001690       ??_C@_1CA@DGNKCCOJ@?$AAC?$AAe?$AAr?$AAi?$AAf?$AAi?$AAc?$AAa?$AAt?$AAe?$AAL?$AAo?$AAg?$AAo?$AAn@FNODOBFM@ 00402690     ep.obj
+ 0001:000016b0       ??_C@_1BE@KDLLNMG@?$AAP?$AAF?$AAX?$AA?5?$AAL?$AAo?$AAg?$AAo?$AAn@FNODOBFM@ 004026b0     ep.obj
+ 0001:000016c4       ?sc_end@@YGPAXXZ           004026c4 f   ScEntry:prepare.obj
+ 0001:000016ca       ?ScEntry@@YGXPAU_PEB@@@Z   004026ca f   ScEntry:prepare.obj
+ 0002:00000000       ??_C@_0BF@EKFKPNAI@RtlInitUnicodeString@ 00403000     ScEntry:prepare.obj
+ 0002:00000018       ??_C@_1BI@NEOFKCPM@?$AAp?$AAr?$AAe?$AAp?$AAa?$AAr?$AAe?$AA?4?$AAd?$AAl?$AAl@ 00403018     ScEntry:prepare.obj
+ 0002:00000030       ??_C@_0L@HOFGLFDL@LdrLoadDll@ 00403030     ScEntry:prepare.obj
+ 0002:0000003c       ??_C@_0BH@GKPJJDBO@LdrGetProcedureAddress@ 0040303c     ScEntry:prepare.obj
+ 0002:00000054       ??_C@_0N@FIGJGHFN@LdrUnloadDll@ 00403054     ScEntry:prepare.obj
+ 0002:00000064       ??_C@_0BD@JDDPIELM@RtlExitUserProcess@ 00403064     ScEntry:prepare.obj
  0003:00000000       ___@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUdrmDCUivovzhvUxvigoltlmKxwCUhgwzucOlyq@4B2008FD98C1DD4 00404000     stdafx.obj
  0003:00000004       ___@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUdrmDCUivovzhvUhxvmgibUhgwzucOlyq@4B2008FD98C1DD4 00404004     ScEntry:stdafx.obj
 
- entry point at        0001:0000174a
+ entry point at        0001:000016ca
 
  Static symbols
 

@@ -1,19 +1,18 @@
  DownloadAndRun-x86
 
- Timestamp is 67a030da (Mon Feb  3 04:58:34 2025)
+ Timestamp is 67a0c3a9 (Mon Feb  3 15:24:57 2025)
 
  Preferred load address is 00400000
 
  Start         Length     Name                   Class
  0001:00000000 0000188eH .text$mn                CODE
  0001:0000188e 00000c72H .text$mn$cpp            CODE
- 0001:00002500 00000080H .text$mn$cpp$r          CODE
- 0001:00002580 0000014cH .text$mn$cpp$s          CODE
- 0001:000026cc 00000006H .text$nm                CODE
- 0001:000026d2 000000daH .text$zz                CODE
- 0002:00000000 00000038H .rdata                  DATA
- 0002:00000038 00000000H .edata                  DATA
- 0002:00000038 00000070H .rdata$zzzdbg           DATA
+ 0001:00002500 0000014cH .text$mn$cpp$s          CODE
+ 0001:0000264c 00000006H .text$nm                CODE
+ 0001:00002652 000000daH .text$zz                CODE
+ 0002:00000000 000000b0H .rdata                  DATA
+ 0002:000000b0 00000000H .edata                  DATA
+ 0002:000000b0 00000070H .rdata$zzzdbg           DATA
  0003:00000000 00000000H .data                   DATA
  0003:00000000 00000008H .bss                    DATA
 
@@ -105,25 +104,25 @@
  0001:00002309       ?get_hmod@@YIPAXPB_W@Z     00403309 f   ScEntry:GetFuncAddr.obj
  0001:00002353       ?GetFuncAddressEx@@YIPAXPAU_IMAGE_DOS_HEADER@@PBD@Z 00403353 f   ScEntry:GetFuncAddr.obj
  0001:000024e8       ??_V@YAXPAX@Z              004034e8 f   ScEntry:stdafx.obj
- 0001:00002500       ??_C@_0BF@EKFKPNAI@RtlInitUnicodeString@FNODOBFM@ 00403500     ScEntry:prepare.obj
- 0001:00002518       ??_C@_1BI@NEOFKCPM@?$AAp?$AAr?$AAe?$AAp?$AAa?$AAr?$AAe?$AA?4?$AAd?$AAl?$AAl@FNODOBFM@ 00403518     ScEntry:prepare.obj
- 0001:00002530       ??_C@_0L@HOFGLFDL@LdrLoadDll@FNODOBFM@ 00403530     ScEntry:prepare.obj
- 0001:0000253c       ??_C@_0BH@GKPJJDBO@LdrGetProcedureAddress@FNODOBFM@ 0040353c     ScEntry:prepare.obj
- 0001:00002554       ??_C@_0N@FIGJGHFN@LdrUnloadDll@FNODOBFM@ 00403554     ScEntry:prepare.obj
- 0001:00002564       ??_C@_0BD@JDDPIELM@RtlExitUserProcess@FNODOBFM@ 00403564     ScEntry:prepare.obj
- 0001:00002580       ??_C@_1BM@ENECIFHC@?$AA?2?$AAe?$AAx?$AAp?$AAl?$AAo?$AAr?$AAe?$AAr?$AA?4?$AAe?$AAx?$AAe@FNODOBFM@ 00403580     ep.obj
- 0001:000025a0       ??_C@_1EM@FHFNBODF@?$AA?1?$AA?$HO?$AAs?$AAg?$AAt?$AAa?$AAt?$AAh?$AAa?$AAm?$AA?1?$AAp?$AAu?$AAt?$AAt@FNODOBFM@ 004035a0     ep.obj
- 0001:000025f0       ??_C@_1BK@DEAAAFKK@?$AAt?$AAh?$AAe?$AA?4?$AAe?$AAa?$AAr?$AAt?$AAh?$AA?4?$AAl?$AAi@FNODOBFM@ 004035f0     ep.obj
- 0001:00002610       ??_C@_1EM@CKOJHMCM@?$AA?1?$AA?$HO?$AAs?$AAg?$AAt?$AAa?$AAt?$AAh?$AAa?$AAm?$AA?1?$AAp?$AAu?$AAt?$AAt@FNODOBFM@ 00403610     ep.obj
- 0001:00002660       ??_C@_1CK@GMBENNHD@?$AA?2?$AAs?$AAy?$AAs?$AAt?$AAe?$AAm?$AAr?$AAo?$AAo?$AAt?$AA?2?$AAs?$AAy?$AAs@FNODOBFM@ 00403660     NoCfg.obj
- 0001:00002690       ??_C@_1CK@JEHFHMMG@?$AA?2?$AAs?$AAy?$AAs?$AAt?$AAe?$AAm?$AAr?$AAo?$AAo?$AAt?$AA?2?$AAs?$AAy?$AAs@FNODOBFM@ 00403690     NoCfg.obj
- 0001:000026c0       ??_C@_1M@HNNPBALB@?$AA?$CK?$AA?4?$AAd?$AAl?$AAl@FNODOBFM@ 004036c0     NoCfg.obj
- 0001:000026cc       ?sc_end@@YGPAXXZ           004036cc f   ScEntry:prepare.obj
- 0001:000026d2       ?ScEntry@@YGXPAU_PEB@@@Z   004036d2 f   ScEntry:prepare.obj
+ 0001:00002500       ??_C@_1BM@ENECIFHC@?$AA?2?$AAe?$AAx?$AAp?$AAl?$AAo?$AAr?$AAe?$AAr?$AA?4?$AAe?$AAx?$AAe@FNODOBFM@ 00403500     ep.obj
+ 0001:00002520       ??_C@_1EM@FHFNBODF@?$AA?1?$AA?$HO?$AAs?$AAg?$AAt?$AAa?$AAt?$AAh?$AAa?$AAm?$AA?1?$AAp?$AAu?$AAt?$AAt@FNODOBFM@ 00403520     ep.obj
+ 0001:00002570       ??_C@_1BK@DEAAAFKK@?$AAt?$AAh?$AAe?$AA?4?$AAe?$AAa?$AAr?$AAt?$AAh?$AA?4?$AAl?$AAi@FNODOBFM@ 00403570     ep.obj
+ 0001:00002590       ??_C@_1EM@CKOJHMCM@?$AA?1?$AA?$HO?$AAs?$AAg?$AAt?$AAa?$AAt?$AAh?$AAa?$AAm?$AA?1?$AAp?$AAu?$AAt?$AAt@FNODOBFM@ 00403590     ep.obj
+ 0001:000025e0       ??_C@_1CK@GMBENNHD@?$AA?2?$AAs?$AAy?$AAs?$AAt?$AAe?$AAm?$AAr?$AAo?$AAo?$AAt?$AA?2?$AAs?$AAy?$AAs@FNODOBFM@ 004035e0     NoCfg.obj
+ 0001:00002610       ??_C@_1CK@JEHFHMMG@?$AA?2?$AAs?$AAy?$AAs?$AAt?$AAe?$AAm?$AAr?$AAo?$AAo?$AAt?$AA?2?$AAs?$AAy?$AAs@FNODOBFM@ 00403610     NoCfg.obj
+ 0001:00002640       ??_C@_1M@HNNPBALB@?$AA?$CK?$AA?4?$AAd?$AAl?$AAl@FNODOBFM@ 00403640     NoCfg.obj
+ 0001:0000264c       ?sc_end@@YGPAXXZ           0040364c f   ScEntry:prepare.obj
+ 0001:00002652       ?ScEntry@@YGXPAU_PEB@@@Z   00403652 f   ScEntry:prepare.obj
+ 0002:00000000       ??_C@_0BF@EKFKPNAI@RtlInitUnicodeString@ 00404000     ScEntry:prepare.obj
+ 0002:00000018       ??_C@_1BI@NEOFKCPM@?$AAp?$AAr?$AAe?$AAp?$AAa?$AAr?$AAe?$AA?4?$AAd?$AAl?$AAl@ 00404018     ScEntry:prepare.obj
+ 0002:00000030       ??_C@_0L@HOFGLFDL@LdrLoadDll@ 00404030     ScEntry:prepare.obj
+ 0002:0000003c       ??_C@_0BH@GKPJJDBO@LdrGetProcedureAddress@ 0040403c     ScEntry:prepare.obj
+ 0002:00000054       ??_C@_0N@FIGJGHFN@LdrUnloadDll@ 00404054     ScEntry:prepare.obj
+ 0002:00000064       ??_C@_0BD@JDDPIELM@RtlExitUserProcess@ 00404064     ScEntry:prepare.obj
  0003:00000000       ___@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUdrmDCUivovzhvUwldmolzwzmwifmRcIGUhgwzucOlyq@4B2008FD98C1DD4 00405000     stdafx.obj
  0003:00000004       ___@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUdrmDCUivovzhvUhxvmgibUhgwzucOlyq@4B2008FD98C1DD4 00405004     ScEntry:stdafx.obj
 
- entry point at        0001:000026d2
+ entry point at        0001:00002652
 
  Static symbols
 

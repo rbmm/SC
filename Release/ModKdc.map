@@ -1,24 +1,23 @@
  ModKdc
 
- Timestamp is 67a03300 (Mon Feb  3 05:07:44 2025)
+ Timestamp is 67a0c3fa (Mon Feb  3 15:26:18 2025)
 
  Preferred load address is 00400000
 
  Start         Length     Name                   Class
  0001:00000000 00000128H .text$mn                CODE
- 0001:00000128 00000224H .text$mn$cpp            CODE
- 0001:0000034c 00000084H .text$mn$cpp$r          CODE
- 0001:000003d0 00000016H .text$mn$cpp$s          CODE
- 0001:000003e6 00000006H .text$nm                CODE
- 0001:000003ec 000000daH .text$zz                CODE
+ 0001:00000128 00000228H .text$mn$cpp            CODE
+ 0001:00000350 00000016H .text$mn$cpp$s          CODE
+ 0001:00000366 00000006H .text$nm                CODE
+ 0001:0000036c 000000daH .text$zz                CODE
  0002:00000000 00000000H .idata$5                DATA
- 0002:00000000 00000038H .rdata                  DATA
- 0002:00000038 00000000H .edata                  DATA
- 0002:00000038 00000064H .rdata$zzzdbg           DATA
- 0002:0000009c 00000000H .idata$2                DATA
- 0002:0000009c 00000000H .idata$3                DATA
- 0002:0000009c 00000000H .idata$4                DATA
- 0002:0000009c 00000000H .idata$6                DATA
+ 0002:00000000 000000b0H .rdata                  DATA
+ 0002:000000b0 00000000H .edata                  DATA
+ 0002:000000b0 00000064H .rdata$zzzdbg           DATA
+ 0002:00000114 00000000H .idata$2                DATA
+ 0002:00000114 00000000H .idata$3                DATA
+ 0002:00000114 00000000H .idata$4                DATA
+ 0002:00000114 00000000H .idata$6                DATA
  0003:00000000 00000000H .data                   DATA
  0003:00000000 00000008H .bss                    DATA
 
@@ -64,19 +63,19 @@
  0001:00000128       ?OnApc@@YGXKKPAX@Z         00401128 f   ep.obj
  0001:0000016d       ?get_hmod@@YIPAXPB_W@Z     0040116d f   ScEntry:GetFuncAddr.obj
  0001:000001b7       ?GetFuncAddressEx@@YIPAXPAU_IMAGE_DOS_HEADER@@PBD@Z 004011b7 f   ScEntry:GetFuncAddr.obj
- 0001:0000034c       ??_C@_0BF@EKFKPNAI@RtlInitUnicodeString@FNODOBFM@ 0040134c     ScEntry:prepare.obj
- 0001:00000364       ??_C@_1BI@NEOFKCPM@?$AAp?$AAr?$AAe?$AAp?$AAa?$AAr?$AAe?$AA?4?$AAd?$AAl?$AAl@FNODOBFM@ 00401364     ScEntry:prepare.obj
- 0001:0000037c       ??_C@_0L@HOFGLFDL@LdrLoadDll@FNODOBFM@ 0040137c     ScEntry:prepare.obj
- 0001:00000388       ??_C@_0BH@GKPJJDBO@LdrGetProcedureAddress@FNODOBFM@ 00401388     ScEntry:prepare.obj
- 0001:000003a0       ??_C@_0N@FIGJGHFN@LdrUnloadDll@FNODOBFM@ 004013a0     ScEntry:prepare.obj
- 0001:000003b0       ??_C@_0BD@JDDPIELM@RtlExitUserProcess@FNODOBFM@ 004013b0     ScEntry:prepare.obj
- 0001:000003d0       ??_C@_1BG@EJKECBHF@?$AAk?$AAd?$AAc?$AAs?$AAv?$AAc?$AA?4?$AAd?$AAl?$AAl@FNODOBFM@ 004013d0     ep.obj
- 0001:000003e6       ?sc_end@@YGPAXXZ           004013e6 f   ScEntry:prepare.obj
- 0001:000003ec       ?ScEntry@@YGXPAU_PEB@@@Z   004013ec f   ScEntry:prepare.obj
+ 0001:00000350       ??_C@_1BG@EJKECBHF@?$AAk?$AAd?$AAc?$AAs?$AAv?$AAc?$AA?4?$AAd?$AAl?$AAl@FNODOBFM@ 00401350     ep.obj
+ 0001:00000366       ?sc_end@@YGPAXXZ           00401366 f   ScEntry:prepare.obj
+ 0001:0000036c       ?ScEntry@@YGXPAU_PEB@@@Z   0040136c f   ScEntry:prepare.obj
+ 0002:00000000       ??_C@_0BF@EKFKPNAI@RtlInitUnicodeString@ 00402000     ScEntry:prepare.obj
+ 0002:00000018       ??_C@_1BI@NEOFKCPM@?$AAp?$AAr?$AAe?$AAp?$AAa?$AAr?$AAe?$AA?4?$AAd?$AAl?$AAl@ 00402018     ScEntry:prepare.obj
+ 0002:00000030       ??_C@_0L@HOFGLFDL@LdrLoadDll@ 00402030     ScEntry:prepare.obj
+ 0002:0000003c       ??_C@_0BH@GKPJJDBO@LdrGetProcedureAddress@ 0040203c     ScEntry:prepare.obj
+ 0002:00000054       ??_C@_0N@FIGJGHFN@LdrUnloadDll@ 00402054     ScEntry:prepare.obj
+ 0002:00000064       ??_C@_0BD@JDDPIELM@RtlExitUserProcess@ 00402064     ScEntry:prepare.obj
  0003:00000000       ___@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUdrmDCUivovzhvUnlwpwxUhgwzucOlyq@4B2008FD98C1DD4 00403000     stdafx.obj
  0003:00000004       ___@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUdrmDCUivovzhvUhxvmgibUhgwzucOlyq@4B2008FD98C1DD4 00403004     ScEntry:stdafx.obj
 
- entry point at        0001:000003ec
+ entry point at        0001:0000036c
 
  Static symbols
 

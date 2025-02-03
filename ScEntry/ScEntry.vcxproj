@@ -35,9 +35,6 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup>
-    <LinkIncremental>false</LinkIncremental>
-  </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
@@ -45,15 +42,8 @@
       <Optimization>MaxSpeed</Optimization>
       <AdditionalIncludeDirectories>$(SolutionDir)..\pnth</AdditionalIncludeDirectories>
       <BufferSecurityCheck>false</BufferSecurityCheck>
+      <PreprocessorDefinitions>_NO_CONST_SEG_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
-    <Link>
-      <SubSystem>Windows</SubSystem>
-      <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <OptimizeReferences>true</OptimizeReferences>
-      <EnableUAC>false</EnableUAC>
-      <EntryPointSymbol>ep</EntryPointSymbol>
-      <AdditionalOptions>/EMITPOGOPHASEINFO /EMITVOLATILEMETADATA:NO %(AdditionalOptions)</AdditionalOptions>
-    </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />

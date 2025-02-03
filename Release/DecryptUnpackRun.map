@@ -1,19 +1,18 @@
  DecryptUnpackRun
 
- Timestamp is 67a0330b (Mon Feb  3 05:07:55 2025)
+ Timestamp is 67a0c38b (Mon Feb  3 15:24:27 2025)
 
  Preferred load address is 00400000
 
  Start         Length     Name                   Class
  0001:00000000 000003b8H .text$mn                CODE
- 0001:000003b8 000004bcH .text$mn$cpp            CODE
- 0001:00000874 0000007cH .text$mn$cpp$r          CODE
- 0001:000008f0 0000001eH .text$mn$cpp$s          CODE
- 0001:0000090e 00000006H .text$nm                CODE
- 0001:00000914 000000daH .text$zz                CODE
- 0002:00000000 00000038H .rdata                  DATA
- 0002:00000038 00000000H .edata                  DATA
- 0002:00000038 0000006cH .rdata$zzzdbg           DATA
+ 0001:000003b8 000004c8H .text$mn$cpp            CODE
+ 0001:00000880 0000001eH .text$mn$cpp$s          CODE
+ 0001:0000089e 00000006H .text$nm                CODE
+ 0001:000008a4 000000daH .text$zz                CODE
+ 0002:00000000 000000b0H .rdata                  DATA
+ 0002:000000b0 00000000H .edata                  DATA
+ 0002:000000b0 0000006cH .rdata$zzzdbg           DATA
  0003:00000000 00000000H .data                   DATA
  0003:00000000 00000008H .bss                    DATA
 
@@ -77,20 +76,20 @@
  0001:000006b2       ?GetFuncAddressEx@@YIPAXPAU_IMAGE_DOS_HEADER@@PBD@Z 004016b2 f   ScEntry:GetFuncAddr.obj
  0001:00000847       ??_U@YAPAXI@Z              00401847 f   ScEntry:stdafx.obj
  0001:0000085c       ??_V@YAXPAX@Z              0040185c f   ScEntry:stdafx.obj
- 0001:00000874       ??_C@_0BF@EKFKPNAI@RtlInitUnicodeString@FNODOBFM@ 00401874     ScEntry:prepare.obj
- 0001:0000088c       ??_C@_1BI@NEOFKCPM@?$AAp?$AAr?$AAe?$AAp?$AAa?$AAr?$AAe?$AA?4?$AAd?$AAl?$AAl@FNODOBFM@ 0040188c     ScEntry:prepare.obj
- 0001:000008a4       ??_C@_0L@HOFGLFDL@LdrLoadDll@FNODOBFM@ 004018a4     ScEntry:prepare.obj
- 0001:000008b0       ??_C@_0BH@GKPJJDBO@LdrGetProcedureAddress@FNODOBFM@ 004018b0     ScEntry:prepare.obj
- 0001:000008c8       ??_C@_0N@FIGJGHFN@LdrUnloadDll@FNODOBFM@ 004018c8     ScEntry:prepare.obj
- 0001:000008d8       ??_C@_0BD@JDDPIELM@RtlExitUserProcess@FNODOBFM@ 004018d8     ScEntry:prepare.obj
- 0001:000008f0       ??_C@_17PJMHNJHG@?$AAA?$AAE?$AAS@FNODOBFM@ 004018f0     ep.obj
- 0001:00000900       ??_C@_1O@HECGKAIN@?$AAS?$AAH?$AAA?$AA2?$AA5?$AA6@FNODOBFM@ 00401900     ep.obj
- 0001:0000090e       ?sc_end@@YGPAXXZ           0040190e f   ScEntry:prepare.obj
- 0001:00000914       ?ScEntry@@YGXPAU_PEB@@@Z   00401914 f   ScEntry:prepare.obj
+ 0001:00000880       ??_C@_17PJMHNJHG@?$AAA?$AAE?$AAS@FNODOBFM@ 00401880     ep.obj
+ 0001:00000890       ??_C@_1O@HECGKAIN@?$AAS?$AAH?$AAA?$AA2?$AA5?$AA6@FNODOBFM@ 00401890     ep.obj
+ 0001:0000089e       ?sc_end@@YGPAXXZ           0040189e f   ScEntry:prepare.obj
+ 0001:000008a4       ?ScEntry@@YGXPAU_PEB@@@Z   004018a4 f   ScEntry:prepare.obj
+ 0002:00000000       ??_C@_0BF@EKFKPNAI@RtlInitUnicodeString@ 00402000     ScEntry:prepare.obj
+ 0002:00000018       ??_C@_1BI@NEOFKCPM@?$AAp?$AAr?$AAe?$AAp?$AAa?$AAr?$AAe?$AA?4?$AAd?$AAl?$AAl@ 00402018     ScEntry:prepare.obj
+ 0002:00000030       ??_C@_0L@HOFGLFDL@LdrLoadDll@ 00402030     ScEntry:prepare.obj
+ 0002:0000003c       ??_C@_0BH@GKPJJDBO@LdrGetProcedureAddress@ 0040203c     ScEntry:prepare.obj
+ 0002:00000054       ??_C@_0N@FIGJGHFN@LdrUnloadDll@ 00402054     ScEntry:prepare.obj
+ 0002:00000064       ??_C@_0BD@JDDPIELM@RtlExitUserProcess@ 00402064     ScEntry:prepare.obj
  0003:00000000       ___@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUdrmDCUivovzhvUwvxibkgfmkzxpifmUhgwzucOlyq@4B2008FD98C1DD4 00403000     stdafx.obj
  0003:00000004       ___@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUdrmDCUivovzhvUhxvmgibUhgwzucOlyq@4B2008FD98C1DD4 00403004     ScEntry:stdafx.obj
 
- entry point at        0001:00000914
+ entry point at        0001:000008a4
 
  Static symbols
 

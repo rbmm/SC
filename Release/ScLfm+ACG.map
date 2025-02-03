@@ -1,19 +1,19 @@
  ScLfm+ACG
 
- Timestamp is 67a03146 (Mon Feb  3 05:00:22 2025)
+ Timestamp is 67a0c404 (Mon Feb  3 15:26:28 2025)
 
  Preferred load address is 00400000
 
  Start         Length     Name                   Class
  0001:00000000 000006bcH .text$mn                CODE
  0001:000006bc 00000c3cH .text$mn$cpp            CODE
- 0001:000012f8 00000088H .text$mn$cpp$r          CODE
- 0001:00001380 00000046H .text$mn$cpp$s          CODE
- 0001:000013c6 00000006H .text$nm                CODE
- 0001:000013cc 000000daH .text$zz                CODE
- 0002:00000000 00000038H .rdata                  DATA
- 0002:00000038 00000000H .edata                  DATA
- 0002:00000038 00000068H .rdata$zzzdbg           DATA
+ 0001:000012f8 00000018H .text$mn$cpp$r          CODE
+ 0001:00001310 00000046H .text$mn$cpp$s          CODE
+ 0001:00001356 00000006H .text$nm                CODE
+ 0001:0000135c 000000daH .text$zz                CODE
+ 0002:00000000 000000b0H .rdata                  DATA
+ 0002:000000b0 00000000H .edata                  DATA
+ 0002:000000b0 00000068H .rdata$zzzdbg           DATA
  0003:00000000 00000000H .data                   DATA
  0003:00000000 00000008H .bss                    DATA
 
@@ -103,21 +103,21 @@
  0001:00001116       ?get_hmod@@YIPAXPB_W@Z     00402116 f   ScEntry:GetFuncAddr.obj
  0001:00001160       ?GetFuncAddressEx@@YIPAXPAU_IMAGE_DOS_HEADER@@PBD@Z 00402160 f   ScEntry:GetFuncAddr.obj
  0001:000012f8       __GUID_1fc98bca_1ba9_4397_93f9_349ead41e057 004022f8     ep.obj
- 0001:00001308       ??_C@_0BF@EKFKPNAI@RtlInitUnicodeString@FNODOBFM@ 00402308     ScEntry:prepare.obj
- 0001:00001320       ??_C@_1BI@NEOFKCPM@?$AAp?$AAr?$AAe?$AAp?$AAa?$AAr?$AAe?$AA?4?$AAd?$AAl?$AAl@FNODOBFM@ 00402320     ScEntry:prepare.obj
- 0001:00001338       ??_C@_0L@HOFGLFDL@LdrLoadDll@FNODOBFM@ 00402338     ScEntry:prepare.obj
- 0001:00001344       ??_C@_0BH@GKPJJDBO@LdrGetProcedureAddress@FNODOBFM@ 00402344     ScEntry:prepare.obj
- 0001:0000135c       ??_C@_0N@FIGJGHFN@LdrUnloadDll@FNODOBFM@ 0040235c     ScEntry:prepare.obj
- 0001:0000136c       ??_C@_0BD@JDDPIELM@RtlExitUserProcess@FNODOBFM@ 0040236c     ScEntry:prepare.obj
- 0001:00001380       ??_C@_1M@HNNPBALB@?$AA?$CK?$AA?4?$AAd?$AAl?$AAl@FNODOBFM@ 00402380     ep.obj
- 0001:00001390       ??_C@_0BD@PPCCBCGB@ZwMapViewOfSection@FNODOBFM@ 00402390     ep.obj
- 0001:000013b0       ??_C@_1BG@NCCDOFIB@?$AA?2?$AAs?$AAy?$AAs?$AAt?$AAe?$AAm?$AA3?$AA2?$AA?2@FNODOBFM@ 004023b0     ep.obj
- 0001:000013c6       ?sc_end@@YGPAXXZ           004023c6 f   ScEntry:prepare.obj
- 0001:000013cc       ?ScEntry@@YGXPAU_PEB@@@Z   004023cc f   ScEntry:prepare.obj
+ 0001:00001310       ??_C@_1M@HNNPBALB@?$AA?$CK?$AA?4?$AAd?$AAl?$AAl@FNODOBFM@ 00402310     ep.obj
+ 0001:00001320       ??_C@_0BD@PPCCBCGB@ZwMapViewOfSection@FNODOBFM@ 00402320     ep.obj
+ 0001:00001340       ??_C@_1BG@NCCDOFIB@?$AA?2?$AAs?$AAy?$AAs?$AAt?$AAe?$AAm?$AA3?$AA2?$AA?2@FNODOBFM@ 00402340     ep.obj
+ 0001:00001356       ?sc_end@@YGPAXXZ           00402356 f   ScEntry:prepare.obj
+ 0001:0000135c       ?ScEntry@@YGXPAU_PEB@@@Z   0040235c f   ScEntry:prepare.obj
+ 0002:00000000       ??_C@_0BF@EKFKPNAI@RtlInitUnicodeString@ 00403000     ScEntry:prepare.obj
+ 0002:00000018       ??_C@_1BI@NEOFKCPM@?$AAp?$AAr?$AAe?$AAp?$AAa?$AAr?$AAe?$AA?4?$AAd?$AAl?$AAl@ 00403018     ScEntry:prepare.obj
+ 0002:00000030       ??_C@_0L@HOFGLFDL@LdrLoadDll@ 00403030     ScEntry:prepare.obj
+ 0002:0000003c       ??_C@_0BH@GKPJJDBO@LdrGetProcedureAddress@ 0040303c     ScEntry:prepare.obj
+ 0002:00000054       ??_C@_0N@FIGJGHFN@LdrUnloadDll@ 00403054     ScEntry:prepare.obj
+ 0002:00000064       ??_C@_0BD@JDDPIELM@RtlExitUserProcess@ 00403064     ScEntry:prepare.obj
  0003:00000000       ___@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUdrmDCUivovzhvUhxounQzxtUhgwzucOlyq@4B2008FD98C1DD4 00404000     stdafx.obj
  0003:00000004       ___@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUdrmDCUivovzhvUhxvmgibUhgwzucOlyq@4B2008FD98C1DD4 00404004     ScEntry:stdafx.obj
 
- entry point at        0001:000013cc
+ entry point at        0001:0000135c
 
  Static symbols
 

@@ -1,19 +1,19 @@
  ScLfm
 
- Timestamp is 67a03102 (Mon Feb  3 04:59:14 2025)
+ Timestamp is 67a0c400 (Mon Feb  3 15:26:24 2025)
 
  Preferred load address is 00400000
 
  Start         Length     Name                   Class
  0001:00000000 00000610H .text$mn                CODE
  0001:00000610 00000a78H .text$mn$cpp            CODE
- 0001:00001088 00000088H .text$mn$cpp$r          CODE
- 0001:00001110 00000046H .text$mn$cpp$s          CODE
- 0001:00001156 00000006H .text$nm                CODE
- 0001:0000115c 000000daH .text$zz                CODE
- 0002:00000000 00000038H .rdata                  DATA
- 0002:00000038 00000000H .edata                  DATA
- 0002:00000038 00000064H .rdata$zzzdbg           DATA
+ 0001:00001088 00000018H .text$mn$cpp$r          CODE
+ 0001:000010a0 00000046H .text$mn$cpp$s          CODE
+ 0001:000010e6 00000006H .text$nm                CODE
+ 0001:000010ec 000000daH .text$zz                CODE
+ 0002:00000000 000000b0H .rdata                  DATA
+ 0002:000000b0 00000000H .edata                  DATA
+ 0002:000000b0 00000064H .rdata$zzzdbg           DATA
  0003:00000000 00000000H .data                   DATA
  0003:00000000 00000008H .bss                    DATA
 
@@ -98,21 +98,21 @@
  0001:00000ea9       ?get_hmod@@YIPAXPB_W@Z     00401ea9 f   ScEntry:GetFuncAddr.obj
  0001:00000ef3       ?GetFuncAddressEx@@YIPAXPAU_IMAGE_DOS_HEADER@@PBD@Z 00401ef3 f   ScEntry:GetFuncAddr.obj
  0001:00001088       __GUID_1fc98bca_1ba9_4397_93f9_349ead41e057 00402088     ep.obj
- 0001:00001098       ??_C@_0BF@EKFKPNAI@RtlInitUnicodeString@FNODOBFM@ 00402098     ScEntry:prepare.obj
- 0001:000010b0       ??_C@_1BI@NEOFKCPM@?$AAp?$AAr?$AAe?$AAp?$AAa?$AAr?$AAe?$AA?4?$AAd?$AAl?$AAl@FNODOBFM@ 004020b0     ScEntry:prepare.obj
- 0001:000010c8       ??_C@_0L@HOFGLFDL@LdrLoadDll@FNODOBFM@ 004020c8     ScEntry:prepare.obj
- 0001:000010d4       ??_C@_0BH@GKPJJDBO@LdrGetProcedureAddress@FNODOBFM@ 004020d4     ScEntry:prepare.obj
- 0001:000010ec       ??_C@_0N@FIGJGHFN@LdrUnloadDll@FNODOBFM@ 004020ec     ScEntry:prepare.obj
- 0001:000010fc       ??_C@_0BD@JDDPIELM@RtlExitUserProcess@FNODOBFM@ 004020fc     ScEntry:prepare.obj
- 0001:00001110       ??_C@_1M@HNNPBALB@?$AA?$CK?$AA?4?$AAd?$AAl?$AAl@FNODOBFM@ 00402110     ep.obj
- 0001:00001120       ??_C@_0BD@PPCCBCGB@ZwMapViewOfSection@FNODOBFM@ 00402120     ep.obj
- 0001:00001140       ??_C@_1BG@NCCDOFIB@?$AA?2?$AAs?$AAy?$AAs?$AAt?$AAe?$AAm?$AA3?$AA2?$AA?2@FNODOBFM@ 00402140     ep.obj
- 0001:00001156       ?sc_end@@YGPAXXZ           00402156 f   ScEntry:prepare.obj
- 0001:0000115c       ?ScEntry@@YGXPAU_PEB@@@Z   0040215c f   ScEntry:prepare.obj
+ 0001:000010a0       ??_C@_1M@HNNPBALB@?$AA?$CK?$AA?4?$AAd?$AAl?$AAl@FNODOBFM@ 004020a0     ep.obj
+ 0001:000010b0       ??_C@_0BD@PPCCBCGB@ZwMapViewOfSection@FNODOBFM@ 004020b0     ep.obj
+ 0001:000010d0       ??_C@_1BG@NCCDOFIB@?$AA?2?$AAs?$AAy?$AAs?$AAt?$AAe?$AAm?$AA3?$AA2?$AA?2@FNODOBFM@ 004020d0     ep.obj
+ 0001:000010e6       ?sc_end@@YGPAXXZ           004020e6 f   ScEntry:prepare.obj
+ 0001:000010ec       ?ScEntry@@YGXPAU_PEB@@@Z   004020ec f   ScEntry:prepare.obj
+ 0002:00000000       ??_C@_0BF@EKFKPNAI@RtlInitUnicodeString@ 00403000     ScEntry:prepare.obj
+ 0002:00000018       ??_C@_1BI@NEOFKCPM@?$AAp?$AAr?$AAe?$AAp?$AAa?$AAr?$AAe?$AA?4?$AAd?$AAl?$AAl@ 00403018     ScEntry:prepare.obj
+ 0002:00000030       ??_C@_0L@HOFGLFDL@LdrLoadDll@ 00403030     ScEntry:prepare.obj
+ 0002:0000003c       ??_C@_0BH@GKPJJDBO@LdrGetProcedureAddress@ 0040303c     ScEntry:prepare.obj
+ 0002:00000054       ??_C@_0N@FIGJGHFN@LdrUnloadDll@ 00403054     ScEntry:prepare.obj
+ 0002:00000064       ??_C@_0BD@JDDPIELM@RtlExitUserProcess@ 00403064     ScEntry:prepare.obj
  0003:00000000       ___@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUdrmDCUivovzhvUhxounUhgwzucOlyq@4B2008FD98C1DD4 00404000     stdafx.obj
  0003:00000004       ___@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUdrmDCUivovzhvUhxvmgibUhgwzucOlyq@4B2008FD98C1DD4 00404004     ScEntry:stdafx.obj
 
- entry point at        0001:0000115c
+ entry point at        0001:000010ec
 
  Static symbols
 
