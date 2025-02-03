@@ -61,15 +61,11 @@
     <CustomBuild Include="x64.asm">
       <Filter>Source Files</Filter>
     </CustomBuild>
+    <CustomBuild Include="task.xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="imp.x64.asm">
       <Filter>Source Files</Filter>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Xml Include="task.xml">
-      <Filter>Source Files</Filter>
-    </Xml>
   </ItemGroup>
 </Project>

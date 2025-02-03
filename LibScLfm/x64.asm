@@ -1,4 +1,4 @@
-sc SEGMENT READ WRITE EXECUTE 'CODE'
+shellcode SEGMENT READ WRITE EXECUTE ALIAS(".shlcode") 'CODE'
 
 	ALIGN 16
 ; long __cdecl LoadLibraryFromMem(void *,unsigned __int64,void **)
@@ -9,6 +9,6 @@ INCLUDE <../ScLfm/ScLfm.x64.asm>
 LoadLibraryFromMem ENDP
 ?LoadLibraryFromMem@@YAJPEAX_KPEAPEAX@Z ENDP
 
-sc ENDS
+shellcode ENDS
 
 end

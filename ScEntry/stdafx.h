@@ -1,5 +1,5 @@
 #pragma code_seg(".text$mn$cpp")
-#pragma const_seg(".text$mn$dat")
+#pragma const_seg(".text$mn$cpp$r")
 
 #define DECLSPEC_IMPORT
 

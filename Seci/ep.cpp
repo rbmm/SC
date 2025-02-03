@@ -18,8 +18,6 @@ HRESULT
 WINAPI
 MySeciAllocateAndSetCallFlags(_In_ ULONG dwFlags, _Out_ PBOOL FreeCallContext)
 {
-	CPP_FUNCTION;
-
 	if (dwFlags &= ~0x80)
 	{
 		return SeciAllocateAndSetCallFlags(dwFlags, FreeCallContext);
@@ -98,7 +96,7 @@ void NTAPI OnApc(_In_ ULONG rvaINT, _In_ ULONG rvaIAT, _In_ PVOID hmod)
 										ULONG op;
 										if (VirtualProtect(ppv, sizeof(void*), PAGE_READWRITE, &op))
 										{
-											*ppv = _Y(&MySeciAllocateAndSetCallFlags);
+											*ppv = _Y(MySeciAllocateAndSetCallFlags);
 											if (PAGE_READWRITE != op) VirtualProtect(ppv, sizeof(void*), op, &op);
 										}
 										return;

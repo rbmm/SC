@@ -1,6 +1,6 @@
  CertLogon#1
 
- Timestamp is 679d4b12 (Sat Feb  1 00:13:38 2025)
+ Timestamp is 67a02e44 (Mon Feb  3 04:47:32 2025)
 
  Preferred load address is 0000000140000000
 
@@ -11,13 +11,14 @@
  0001:00000f44 00000008H .text$nm                CODE
  0001:00000f4c 00000112H .text$zz                CODE
  0002:00000000 00000000H .idata$5                DATA
- 0002:00000000 0000007cH .rdata                  DATA
- 0002:0000007c 00000094H .xdata                  DATA
- 0002:00000110 00000000H .edata                  DATA
- 0002:00000110 00000000H .idata$2                DATA
- 0002:00000110 00000000H .idata$3                DATA
- 0002:00000110 00000000H .idata$4                DATA
- 0002:00000110 00000000H .idata$6                DATA
+ 0002:00000000 000000b4H .rdata                  DATA
+ 0002:000000b4 0000006cH .rdata$zzzdbg           DATA
+ 0002:00000120 00000098H .xdata                  DATA
+ 0002:000001b4 00000000H .edata                  DATA
+ 0002:000001b4 00000000H .idata$2                DATA
+ 0002:000001b4 00000000H .idata$3                DATA
+ 0002:000001b8 00000000H .idata$4                DATA
+ 0002:000001b8 00000000H .idata$6                DATA
  0003:00000000 00000000H .data                   DATA
  0003:00000000 00000008H .bss                    DATA
  0004:00000000 00000060H .pdata                  DATA
@@ -115,6 +116,8 @@
 
  Static symbols
 
+ 0000:ffffa000       .debug$S                   0000000140000000     ntdllp:ntdll.dll
+ 0000:ffffa000       .debug$S                   0000000140000000     ntdllp:ntdll.dll
  0002:ffffd000       .idata$6                   0000000140000000     ntdllp:ntdll.dll
  0001:00000052       common_imp_call            0000000140001052 f   x64.obj
  0001:0000015f       advapi32                   000000014000115f f   x64.obj
@@ -123,11 +126,11 @@
  0001:000004dc       user32                     00000001400014dc f   x64.obj
  0001:000005c2       ncrypt                     00000001400015c2 f   x64.obj
  0001:000007b7       ntdllp                     00000001400017b7 f   x64.obj
- 0002:0000007c       $unwind$?NameFromCert@@YAJPEBU_CERT_CONTEXT@@PEAPEA_WPEA_K@Z 000000014000307c     ep.obj
- 0002:00000098       $unwind$?PFXImport@@YAJPEB_W0PEAPEA_WPEA_K@Z 0000000140003098     ep.obj
- 0002:000000b4       $unwind$?DemoLogon@@YAJPEA_W0@Z 00000001400030b4     ep.obj
- 0002:000000bc       $unwind$?ShowErrorBox@@YAHPEAUHWND__@@JPEB_W@Z 00000001400030bc     ep.obj
- 0002:000000cc       $unwind$?ep@@YAXXZ         00000001400030cc     ep.obj
- 0002:000000e0       $unwind$?ScEntry@@YAXPEAU_PEB@@@Z 00000001400030e0     ScEntry:prepare.obj
- 0002:000000f0       $unwind$?get_hmod@@YAPEAXPEB_W@Z 00000001400030f0     ScEntry:GetFuncAddr.obj
- 0002:000000f8       $unwind$?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z 00000001400030f8     ScEntry:GetFuncAddr.obj
+ 0002:00000120       $unwind$?NameFromCert@@YAJPEBU_CERT_CONTEXT@@PEAPEA_WPEA_K@Z 0000000140003120     ep.obj
+ 0002:0000013c       $unwind$?PFXImport@@YAJPEB_W0PEAPEA_WPEA_K@Z 000000014000313c     ep.obj
+ 0002:00000158       $unwind$?DemoLogon@@YAJPEA_W0@Z 0000000140003158     ep.obj
+ 0002:00000160       $unwind$?ShowErrorBox@@YAHPEAUHWND__@@JPEB_W@Z 0000000140003160     ep.obj
+ 0002:00000170       $unwind$?ep@@YAXXZ         0000000140003170     ep.obj
+ 0002:00000184       $unwind$?ScEntry@@YAXPEAU_PEB@@@Z 0000000140003184     ScEntry:prepare.obj
+ 0002:00000194       $unwind$?get_hmod@@YAPEAXPEB_W@Z 0000000140003194     ScEntry:GetFuncAddr.obj
+ 0002:0000019c       $unwind$?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z 000000014000319c     ScEntry:GetFuncAddr.obj

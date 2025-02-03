@@ -14,11 +14,11 @@ include <imp.x64.asm>
 
 public ?xml_begin@@3QBDB, ?xml_end@@3QBDB
 
-_TEXT$dat SEGMENT
+_TEXT$cpp$r SEGMENT
 
-?xml_begin@@3QBDB:
+?xml_begin@@3QBDB LABEL BYTE
 include <tsk.asm>
-?xml_end@@3QBDB:
+?xml_end@@3QBDB LABEL BYTE
 
-_TEXT$dat ends
+_TEXT$cpp$r ends
 end

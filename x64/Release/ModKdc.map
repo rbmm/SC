@@ -1,6 +1,6 @@
  ModKdc
 
- Timestamp is 679d54f1 (Sat Feb  1 00:55:45 2025)
+ Timestamp is 67a02ea6 (Mon Feb  3 04:49:10 2025)
 
  Preferred load address is 0000000140000000
 
@@ -11,13 +11,14 @@
  0001:000003c8 00000008H .text$nm                CODE
  0001:000003d0 00000112H .text$zz                CODE
  0002:00000000 00000000H .idata$5                DATA
- 0002:00000000 0000007cH .rdata                  DATA
- 0002:0000007c 0000003cH .xdata                  DATA
- 0002:000000b8 00000000H .edata                  DATA
- 0002:000000b8 00000000H .idata$2                DATA
- 0002:000000b8 00000000H .idata$3                DATA
- 0002:000000b8 00000000H .idata$4                DATA
- 0002:000000b8 00000000H .idata$6                DATA
+ 0002:00000000 000000b4H .rdata                  DATA
+ 0002:000000b4 00000068H .rdata$zzzdbg           DATA
+ 0002:0000011c 0000003cH .xdata                  DATA
+ 0002:00000158 00000000H .edata                  DATA
+ 0002:00000158 00000000H .idata$2                DATA
+ 0002:00000158 00000000H .idata$3                DATA
+ 0002:00000158 00000000H .idata$4                DATA
+ 0002:00000158 00000000H .idata$6                DATA
  0003:00000000 00000000H .data                   DATA
  0003:00000000 00000008H .bss                    DATA
  0004:00000000 00000030H .pdata                  DATA
@@ -78,10 +79,12 @@
 
  Static symbols
 
+ 0000:ffffb000       .debug$S                   0000000140000000     ntdllp:ntdll.dll
+ 0000:ffffb000       .debug$S                   0000000140000000     ntdllp:ntdll.dll
  0002:ffffe000       .idata$6                   0000000140000000     ntdllp:ntdll.dll
  0001:00000052       common_imp_call            0000000140001052 f   x64.obj
  0001:0000015d       ntdllp                     000000014000115d f   x64.obj
- 0002:0000007c       $unwind$?OnApc@@YAXKKPEAX@Z 000000014000207c     ep.obj
- 0002:00000088       $unwind$?ScEntry@@YAXPEAU_PEB@@@Z 0000000140002088     ScEntry:prepare.obj
- 0002:00000098       $unwind$?get_hmod@@YAPEAXPEB_W@Z 0000000140002098     ScEntry:GetFuncAddr.obj
- 0002:000000a0       $unwind$?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z 00000001400020a0     ScEntry:GetFuncAddr.obj
+ 0002:0000011c       $unwind$?OnApc@@YAXKKPEAX@Z 000000014000211c     ep.obj
+ 0002:00000128       $unwind$?ScEntry@@YAXPEAU_PEB@@@Z 0000000140002128     ScEntry:prepare.obj
+ 0002:00000138       $unwind$?get_hmod@@YAPEAXPEB_W@Z 0000000140002138     ScEntry:GetFuncAddr.obj
+ 0002:00000140       $unwind$?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z 0000000140002140     ScEntry:GetFuncAddr.obj

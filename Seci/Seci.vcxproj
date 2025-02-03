@@ -57,23 +57,24 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="ep.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="imp.x64.asm" />
     <CustomBuild Include="x64.asm">
       <FileType>Document</FileType>
-      <Command Condition="'$(PlatformTarget)'=='x64'">ml64 /c /Cp %(Identity)</Command>
-      <Outputs Condition="'$(PlatformTarget)'=='x64'">%(Filename).obj</Outputs>
-      <ExcludedFromBuild Condition="'$(PlatformTarget)'=='x86'">true</ExcludedFromBuild>
+      <Command>ml64 /c /Cp %(Identity)</Command>
+      <Outputs>%(Filename).obj</Outputs>
+      <ExcludedFromBuild Condition="'$(PlatformTarget)'!='x64'">true</ExcludedFromBuild>
     </CustomBuild>
+    <CustomBuild Include="x86.asm">
+      <FileType>Document</FileType>
+      <Command>ml /c /Cp %(Identity)</Command>
+      <Outputs>%(Filename).obj</Outputs>
+      <ExcludedFromBuild Condition="'$(PlatformTarget)'!='x86'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <None Include="imp.x86.asm" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets">
-  </ImportGroup>
 </Project>

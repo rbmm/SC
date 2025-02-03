@@ -12,7 +12,6 @@ inline ULONG BOOL_TO_ERROR(BOOL f)
 
 //## -> #
 //#. -> *
-//#! -> ?
 //#: -> %
 
 BOOL UnEscape(_Inout_ PWSTR str)
@@ -27,9 +26,6 @@ BOOL UnEscape(_Inout_ PWSTR str)
 			{
 			case '.':
 				c = '*';
-				break;
-			case '!':
-				c = '?';
 				break;
 			case ':':
 				c = '%';

@@ -345,7 +345,7 @@ NTSTATUS __fastcall retFromMapViewOfSection(NTSTATUS status)
 	return status;
 }
 
-PVOID retFromMapViewOfSectionAddr()ASM_FUNCTION;
+NTSTATUS aretFromMapViewOfSection()ASM_FUNCTION;
 
 LONG NTAPI MyVexHandler(::PEXCEPTION_POINTERS ExceptionInfo)
 {
@@ -375,7 +375,7 @@ LONG NTAPI MyVexHandler(::PEXCEPTION_POINTERS ExceptionInfo)
 
 				ctx->_M_retAddr = ((void**)ContextRecord->SP)[0];
 
-				((void**)ContextRecord->SP)[0] = retFromMapViewOfSectionAddr();
+				((void**)ContextRecord->SP)[0] = _Y(aretFromMapViewOfSection);
 			}
 		}
 
@@ -393,14 +393,14 @@ NTSTATUS LoadLibraryFromMem(
 	_In_ PIMAGE_NT_HEADERS pinth,
 	_In_ PCUNICODE_STRING lpFileName)
 {
-	GUID RtlpAddVectoredHandler = { 0x1FC98BCA, 0x1BA9, 0x4397, { 0x93, 0xF9, 0x34, 0x9E, 0xAD, 0x41, 0xE0, 0x57 } };
+	struct __declspec(uuid("1FC98BCA-1BA9-4397-93F9-349EAD41E057")) RtlpAddVectoredHandler;
 
 	ULONG_PTR OldValue;
-	RtlSetProtectedPolicy(&RtlpAddVectoredHandler, 0, &OldValue);
+	RtlSetProtectedPolicy(&__uuidof(RtlpAddVectoredHandler), 0, &OldValue);
 
 	NTSTATUS status = STATUS_UNSUCCESSFUL;
 
-	if (PVOID VectoredHandlerHandle = RtlAddVectoredExceptionHandler(TRUE, _Y(&MyVexHandler)))
+	if (PVOID VectoredHandlerHandle = RtlAddVectoredExceptionHandler(TRUE, _Y(MyVexHandler)))
 	{
 		CONTEXT ctx = {};
 		ctx.ContextFlags = CONTEXT_DEBUG_REGISTERS;
@@ -435,7 +435,7 @@ NTSTATUS LoadLibraryFromMem(
 		RtlRemoveVectoredExceptionHandler(VectoredHandlerHandle);
 	}
 
-	if (OldValue) RtlSetProtectedPolicy(&RtlpAddVectoredHandler, OldValue, &OldValue);
+	if (OldValue) RtlSetProtectedPolicy(&__uuidof(RtlpAddVectoredHandler), OldValue, &OldValue);
 
 	return status;
 }
@@ -488,7 +488,7 @@ NTSTATUS NTAPI LoadLibraryFromMem(_In_ PVOID pvImage, _In_opt_ ULONG_PTR Size, _
 
 		DSC info { 0, pinth->FileHeader.TimeDateStamp };
 
-		if (0 <= LdrEnumerateLoadedModules(0, (PLDR_ENUM_CALLBACK)_Y(&CheckModule), &info))
+		if (0 <= LdrEnumerateLoadedModules(0, (PLDR_ENUM_CALLBACK)_Y(CheckModule), &info))
 		{
 			if (info.ImageBase)
 			{

@@ -17,15 +17,11 @@ include <../scentry/nobase.x86.inc>
 ; long __fastcall retFromMapViewOfSection(long)
 extern ?retFromMapViewOfSection@@YIJJ@Z : PROC
 
-; void *__stdcall retFromMapViewOfSectionAddr(void)
-?retFromMapViewOfSectionAddr@@YGPAXXZ proc
-	call @@1
+; long __stdcall aretFromMapViewOfSection(void)
+?aretFromMapViewOfSection@@YGJXZ proc
 	mov ecx,eax
 	call ?retFromMapViewOfSection@@YIJJ@Z
-@@1:
-	pop eax
-	ret
-?retFromMapViewOfSectionAddr@@YGPAXXZ endp
+?aretFromMapViewOfSection@@YGJXZ endp
 
 include <imp.x86.asm>
 

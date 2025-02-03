@@ -1,6 +1,6 @@
  CertLogon#2
 
- Timestamp is 679d4f52 (Sat Feb  1 00:31:46 2025)
+ Timestamp is 67a02e49 (Mon Feb  3 04:47:37 2025)
 
  Preferred load address is 0000000140000000
 
@@ -11,13 +11,14 @@
  0001:00001a84 00000008H .text$nm                CODE
  0001:00001a8c 00000112H .text$zz                CODE
  0002:00000000 00000000H .idata$5                DATA
- 0002:00000000 0000007cH .rdata                  DATA
- 0002:0000007c 000000e4H .xdata                  DATA
- 0002:0000015c 00000000H .edata                  DATA
- 0002:0000015c 00000000H .idata$2                DATA
- 0002:0000015c 00000000H .idata$3                DATA
- 0002:00000160 00000000H .idata$4                DATA
- 0002:00000160 00000000H .idata$6                DATA
+ 0002:00000000 000000b4H .rdata                  DATA
+ 0002:000000b4 0000006cH .rdata$zzzdbg           DATA
+ 0002:00000120 000000e0H .xdata                  DATA
+ 0002:00000200 00000000H .edata                  DATA
+ 0002:00000200 00000000H .idata$2                DATA
+ 0002:00000200 00000000H .idata$3                DATA
+ 0002:00000200 00000000H .idata$4                DATA
+ 0002:00000200 00000000H .idata$6                DATA
  0003:00000000 00000000H .data                   DATA
  0003:00000000 00000008H .bss                    DATA
  0004:00000000 00000084H .pdata                  DATA
@@ -143,6 +144,8 @@
 
  Static symbols
 
+ 0000:ffffa000       .debug$S                   0000000140000000     ntdllp:ntdll.dll
+ 0000:ffffa000       .debug$S                   0000000140000000     ntdllp:ntdll.dll
  0002:ffffd000       .idata$6                   0000000140000000     ntdllp:ntdll.dll
  0001:00000052       common_imp_call            0000000140001052 f   x64.obj
  0001:000000d8       advapi32                   00000001400010d8 f   x64.obj
@@ -152,14 +155,14 @@
  0001:0000054c       user32                     000000014000154c f   x64.obj
  0001:000007df       ncrypt                     00000001400017df f   x64.obj
  0001:00000a6f       ntdllp                     0000000140001a6f f   x64.obj
- 0002:0000007c       $unwind$?DoLogon@@YAJPEAPEAXPEAXK@Z 000000014000307c     ep.obj
- 0002:00000094       $unwind$?CerificateLogon@@YAJPEAPEAXPEB_W111@Z 0000000140003094     ep.obj
- 0002:000000b4       $unwind$?WritePfxToKey@@YAJPEB_W000@Z 00000001400030b4     ep.obj
- 0002:000000d0       $unwind$?GetPublickKey@@YAJ_KPEAPEAX@Z 00000001400030d0     ep.obj
- 0002:000000e8       $unwind$?TestKey@@YAJHPEB_W0@Z 00000001400030e8     ep.obj
- 0002:000000fc       $unwind$?ShowErrorBox@@YAHPEAUHWND__@@JPEB_W@Z 00000001400030fc     ep.obj
- 0002:00000110       $unwind$?ep@@YAXXZ         0000000140003110     ep.obj
- 0002:00000120       $unwind$??$HR@H@@YAHAEAJH@Z 0000000140003120     ep.obj
- 0002:0000012c       $unwind$?ScEntry@@YAXPEAU_PEB@@@Z 000000014000312c     ScEntry:prepare.obj
- 0002:0000013c       $unwind$?get_hmod@@YAPEAXPEB_W@Z 000000014000313c     ScEntry:GetFuncAddr.obj
- 0002:00000144       $unwind$?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z 0000000140003144     ScEntry:GetFuncAddr.obj
+ 0002:00000120       $unwind$?DoLogon@@YAJPEAPEAXPEAXK@Z 0000000140003120     ep.obj
+ 0002:00000138       $unwind$?CerificateLogon@@YAJPEAPEAXPEB_W111@Z 0000000140003138     ep.obj
+ 0002:00000158       $unwind$?WritePfxToKey@@YAJPEB_W000@Z 0000000140003158     ep.obj
+ 0002:00000174       $unwind$?GetPublickKey@@YAJ_KPEAPEAX@Z 0000000140003174     ep.obj
+ 0002:0000018c       $unwind$?TestKey@@YAJHPEB_W0@Z 000000014000318c     ep.obj
+ 0002:000001a0       $unwind$?ShowErrorBox@@YAHPEAUHWND__@@JPEB_W@Z 00000001400031a0     ep.obj
+ 0002:000001b4       $unwind$?ep@@YAXXZ         00000001400031b4     ep.obj
+ 0002:000001c4       $unwind$??$HR@H@@YAHAEAJH@Z 00000001400031c4     ep.obj
+ 0002:000001d0       $unwind$?ScEntry@@YAXPEAU_PEB@@@Z 00000001400031d0     ScEntry:prepare.obj
+ 0002:000001e0       $unwind$?get_hmod@@YAPEAXPEB_W@Z 00000001400031e0     ScEntry:GetFuncAddr.obj
+ 0002:000001e8       $unwind$?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z 00000001400031e8     ScEntry:GetFuncAddr.obj

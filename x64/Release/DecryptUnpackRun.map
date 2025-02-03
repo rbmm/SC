@@ -1,18 +1,19 @@
  DecryptUnpackRun
 
- Timestamp is 679d2cfc (Fri Jan 31 22:05:16 2025)
+ Timestamp is 67a02e5f (Mon Feb  3 04:47:59 2025)
 
  Preferred load address is 0000000140000000
 
  Start         Length     Name                   Class
  0001:00000000 00000454H .text$mn                CODE
- 0001:00000454 0000059cH .text$mn$cpp            CODE
- 0001:000009f0 00000020H .text$mn$cpp$s          CODE
- 0001:00000a10 00000008H .text$nm                CODE
- 0001:00000a18 00000112H .text$zz                CODE
- 0002:00000000 0000007cH .rdata                  DATA
- 0002:0000007c 00000074H .xdata                  DATA
- 0002:000000f0 00000000H .edata                  DATA
+ 0001:00000454 0000058cH .text$mn$cpp            CODE
+ 0001:000009e0 00000020H .text$mn$cpp$s          CODE
+ 0001:00000a00 00000008H .text$nm                CODE
+ 0001:00000a08 00000112H .text$zz                CODE
+ 0002:00000000 000000b4H .rdata                  DATA
+ 0002:000000b4 00000070H .rdata$zzzdbg           DATA
+ 0002:00000124 00000074H .xdata                  DATA
+ 0002:00000198 00000000H .edata                  DATA
  0003:00000000 00000000H .data                   DATA
  0003:00000000 00000008H .bss                    DATA
  0004:00000000 00000048H .pdata                  DATA
@@ -68,17 +69,17 @@
  0001:000003e7       RtlAllocateHeap            00000001400013e7 f   x64.obj
  0001:00000410       RtlFreeHeap                0000000140001410 f   x64.obj
  0001:00000454       ?UnEscape@@YAHPEA_W@Z      0000000140001454 f   ep.obj
- 0001:000004b4       ?CreateAesKey@@YAJPEAPEAXPEAEK@Z 00000001400014b4 f   ep.obj
- 0001:00000534       ?Unzip@@YAJPEBXKPEAPEAXPEAK@Z 0000000140001534 f   ep.obj
- 0001:0000064c       ?ep@@YAXPEAU_PEB@@PEAEK@Z  000000014000164c f   ep.obj
- 0001:000007d4       ?get_hmod@@YAPEAXPEB_W@Z   00000001400017d4 f   ScEntry:GetFuncAddr.obj
- 0001:00000830       ?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z 0000000140001830 f   ScEntry:GetFuncAddr.obj
- 0001:000009ac       ??_U@YAPEAX_K@Z            00000001400019ac f   ScEntry:stdafx.obj
- 0001:000009c8       ??_V@YAXPEAX@Z             00000001400019c8 f   ScEntry:stdafx.obj
- 0001:000009f0       ??_C@_17PJMHNJHG@?$AAA?$AAE?$AAS@FNODOBFM@ 00000001400019f0     ep.obj
- 0001:00000a00       ??_C@_1O@HECGKAIN@?$AAS?$AAH?$AAA?$AA2?$AA5?$AA6@FNODOBFM@ 0000000140001a00     ep.obj
- 0001:00000a10       ?sc_end@@YAPEAXXZ          0000000140001a10 f   ScEntry:prepare.obj
- 0001:00000a18       ?ScEntry@@YAXPEAU_PEB@@@Z  0000000140001a18 f   ScEntry:prepare.obj
+ 0001:000004a4       ?CreateAesKey@@YAJPEAPEAXPEAEK@Z 00000001400014a4 f   ep.obj
+ 0001:00000524       ?Unzip@@YAJPEBXKPEAPEAXPEAK@Z 0000000140001524 f   ep.obj
+ 0001:0000063c       ?ep@@YAXPEAU_PEB@@PEAEK@Z  000000014000163c f   ep.obj
+ 0001:000007c4       ?get_hmod@@YAPEAXPEB_W@Z   00000001400017c4 f   ScEntry:GetFuncAddr.obj
+ 0001:00000820       ?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z 0000000140001820 f   ScEntry:GetFuncAddr.obj
+ 0001:0000099c       ??_U@YAPEAX_K@Z            000000014000199c f   ScEntry:stdafx.obj
+ 0001:000009b8       ??_V@YAXPEAX@Z             00000001400019b8 f   ScEntry:stdafx.obj
+ 0001:000009e0       ??_C@_17PJMHNJHG@?$AAA?$AAE?$AAS@FNODOBFM@ 00000001400019e0     ep.obj
+ 0001:000009f0       ??_C@_1O@HECGKAIN@?$AAS?$AAH?$AAA?$AA2?$AA5?$AA6@FNODOBFM@ 00000001400019f0     ep.obj
+ 0001:00000a00       ?sc_end@@YAPEAXXZ          0000000140001a00 f   ScEntry:prepare.obj
+ 0001:00000a08       ?ScEntry@@YAXPEAU_PEB@@@Z  0000000140001a08 f   ScEntry:prepare.obj
  0002:00000000       ??_C@_0BF@EKFKPNAI@RtlInitUnicodeString@ 0000000140002000     ScEntry:prepare.obj
  0002:00000018       ??_C@_1BI@NEOFKCPM@?$AAp?$AAr?$AAe?$AAp?$AAa?$AAr?$AAe?$AA?4?$AAd?$AAl?$AAl@ 0000000140002018     ScEntry:prepare.obj
  0002:00000030       ??_C@_0L@HOFGLFDL@LdrLoadDll@ 0000000140002030     ScEntry:prepare.obj
@@ -88,7 +89,7 @@
  0003:00000000       __@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUcGEUivovzhvUwvxibkgfmkzxpifmUhgwzucOlyq@4B2008FD98C1DD4 0000000140003000     stdafx.obj
  0003:00000004       __@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUcGEUivovzhvUhxvmgibUhgwzucOlyq@4B2008FD98C1DD4 0000000140003004     ScEntry:stdafx.obj
 
- entry point at        0001:00000a18
+ entry point at        0001:00000a08
 
  Static symbols
 
@@ -98,10 +99,10 @@
  0001:00000234       kernel32                   0000000140001234 f   x64.obj
  0001:00000336       bcrypt                     0000000140001336 f   x64.obj
  0001:0000043c       ntdllp                     000000014000143c f   x64.obj
- 0001:000007cc       ??0<unnamed-type-$S1>@?BG@??ep@@YAXPEAU_PEB@@PEAEK@Z@QEAA@XZ 00000001400017cc f   ep.obj
- 0002:0000007c       $unwind$?CreateAesKey@@YAJPEAPEAXPEAEK@Z 000000014000207c     ep.obj
- 0002:00000090       $unwind$?Unzip@@YAJPEBXKPEAPEAXPEAK@Z 0000000140002090     ep.obj
- 0002:000000a8       $unwind$?ep@@YAXPEAU_PEB@@PEAEK@Z 00000001400020a8     ep.obj
- 0002:000000c0       $unwind$?ScEntry@@YAXPEAU_PEB@@@Z 00000001400020c0     ScEntry:prepare.obj
- 0002:000000d0       $unwind$?get_hmod@@YAPEAXPEB_W@Z 00000001400020d0     ScEntry:GetFuncAddr.obj
- 0002:000000d8       $unwind$?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z 00000001400020d8     ScEntry:GetFuncAddr.obj
+ 0001:000007bc       ??0<unnamed-type-$S1>@?BG@??ep@@YAXPEAU_PEB@@PEAEK@Z@QEAA@XZ 00000001400017bc f   ep.obj
+ 0002:00000124       $unwind$?CreateAesKey@@YAJPEAPEAXPEAEK@Z 0000000140002124     ep.obj
+ 0002:00000138       $unwind$?Unzip@@YAJPEBXKPEAPEAXPEAK@Z 0000000140002138     ep.obj
+ 0002:00000150       $unwind$?ep@@YAXPEAU_PEB@@PEAEK@Z 0000000140002150     ep.obj
+ 0002:00000168       $unwind$?ScEntry@@YAXPEAU_PEB@@@Z 0000000140002168     ScEntry:prepare.obj
+ 0002:00000178       $unwind$?get_hmod@@YAPEAXPEB_W@Z 0000000140002178     ScEntry:GetFuncAddr.obj
+ 0002:00000180       $unwind$?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z 0000000140002180     ScEntry:GetFuncAddr.obj

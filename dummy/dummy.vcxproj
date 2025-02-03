@@ -13,7 +13,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{5B6C5EAC-e4dc-6C89-23CD-97743DCE0F00}</ProjectGuid>
+    <ProjectGuid>{221A4AE1-27b3-9961-6DED-EFC8628F1F2F}</ProjectGuid>
     <RootNamespace>dummy</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <UserRootDir>$(SolutionDir)..\MSBuild\v4.0</UserRootDir>
@@ -56,30 +56,24 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="ep.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="imp.x86.asm" />
     <None Include="imp.x64.asm" />
     <CustomBuild Include="x64.asm">
       <FileType>Document</FileType>
-      <Command Condition="'$(PlatformTarget)'=='x64'">ml64 /c /Cp %(Identity)</Command>
-      <Outputs Condition="'$(PlatformTarget)'=='x64'">%(Filename).obj</Outputs>
-      <ExcludedFromBuild Condition="'$(PlatformTarget)'=='x86'">true</ExcludedFromBuild>
+      <Command>ml64 /c /Cp %(Identity)</Command>
+      <Outputs>%(Filename).obj</Outputs>
+      <ExcludedFromBuild Condition="'$(PlatformTarget)'!='x64'">true</ExcludedFromBuild>
     </CustomBuild>
     <CustomBuild Include="x86.asm">
       <FileType>Document</FileType>
-      <Command Condition="'$(PlatformTarget)'=='x86'">ml /c /Cp %(Identity)</Command>
-      <Outputs Condition="'$(PlatformTarget)'=='x86'">%(Filename).obj</Outputs>
-      <ExcludedFromBuild Condition="'$(PlatformTarget)'=='x64'">true</ExcludedFromBuild>
+      <Command>ml /c /Cp %(Identity)</Command>
+      <Outputs>%(Filename).obj</Outputs>
+      <ExcludedFromBuild Condition="'$(PlatformTarget)'!='x86'">true</ExcludedFromBuild>
     </CustomBuild>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets">
-  </ImportGroup>
 </Project>

@@ -45,7 +45,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <EnableUAC>false</EnableUAC>
       <EntryPointSymbol>ep</EntryPointSymbol>
-      <AdditionalDependencies>LibScLfm.lib;ole32.lib;comctl32.lib;cabinet.lib;gdi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>LibScLfm.lib;InjLfmACG.lib;ole32.lib;comctl32.lib;cabinet.lib;gdi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalOptions>/EMITPOGOPHASEINFO %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
@@ -54,35 +54,14 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="zip.h" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="lu.cpp" />
     <ClCompile Include="msgbox.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="util.cpp" />
-    <ClCompile Include="zip.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include=".rc2" />
-    <CustomBuild Include="x64.asm">
-      <FileType>Document</FileType>
-      <Command Condition="'$(PlatformTarget)'=='x64'">ml64 /c /Cp %(Identity)</Command>
-      <Outputs Condition="'$(PlatformTarget)'=='x64'">%(Filename).obj</Outputs>
-      <ExcludedFromBuild Condition="'$(PlatformTarget)'!='x64'">true</ExcludedFromBuild>
-    </CustomBuild>
-    <CustomBuild Include="x86.asm">
-      <FileType>Document</FileType>
-      <Command Condition="'$(PlatformTarget)'=='x86'">ml /c /Cp %(Identity)</Command>
-      <Outputs Condition="'$(PlatformTarget)'=='x86'">%(Filename).obj</Outputs>
-      <ExcludedFromBuild Condition="'$(PlatformTarget)'!='x86'">true</ExcludedFromBuild>
-    </CustomBuild>
-  </ItemGroup>
-  <ItemGroup>
     <ResourceCompile Include="Load.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets">
-  </ImportGroup>
 </Project>

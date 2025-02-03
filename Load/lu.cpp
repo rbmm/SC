@@ -2,11 +2,18 @@
 
 #include "resource.h"
 #include "msgbox.h"
+#include "../InjLfmACG/inject.h"
 
 #define PAGE_SIZE 0x1000
 #define PAGE_ALIGN(Va) ((PVOID)((ULONG_PTR)(Va) & ~(PAGE_SIZE - 1)))
 
-NTSTATUS NTAPI LoadLibraryFromMem(_In_ PVOID pvImage, _In_opt_ ULONG_PTR Size, _Out_opt_ void** ppv);
+NTSTATUS InjectToSelf(_In_ PCWSTR lpFileName, _Out_ PVOID* pImageBase);
+
+NTSTATUS InjectScACG(
+	_In_ HANDLE hProcess,
+	_In_ PCWSTR lpFileName,
+	_Out_ PVOID* pImageBase,
+	_Out_ PBOOL StatusFromRemote);
 
 HRESULT OnBrowse(_In_ HWND hwndDlg, _Out_ PWSTR* ppszFilePath)
 {
@@ -56,21 +63,6 @@ HRESULT OnBrowse(HWND hwndDlg, UINT nIDDlgItem)
 
 	return hr;
 }
-
-NTSTATUS SearchAndReadFile(
-	_In_ PCWSTR FileName, 
-	_Out_ void** BaseAddress, 
-	_Out_ PSIZE_T ViewSize,
-	_Out_ ULONG* pcbFile = 0,
-	_In_ LPCVOID CompressedData = 0,
-	_In_ SIZE_T CompressedDataSize = 0);
-
-NTSTATUS RemoteUnloadDll(_In_ HANDLE hProcess, _In_ PVOID RemoteBase);
-
-NTSTATUS InjectScACG(
-	_In_ HANDLE hProcess,
-	_In_ PCWSTR lpFileName,
-	_Out_ PVOID* pImageBase);
 
 CHAR GetWow(SYSTEM_EXTENDED_THREAD_INFORMATION Threads[], ULONG NumberOfThreads)
 {
@@ -150,19 +142,41 @@ void MakeProcessList(HWND hwnd)
 				ULONG NextEntryOffset = 0;
 
 				WCHAR sz[0x100];
+
+				struct PROCESS_MITIGATION {
+					PROCESS_MITIGATION_POLICY Policy;
+					union {
+						PROCESS_MITIGATION_DYNAMIC_CODE_POLICY dcp;
+					};
+				};
+
+				PROCESS_MITIGATION m = { ProcessDynamicCodePolicy };
+
 				do
 				{
 					pb += NextEntryOffset;
 
 					if (pspi->UniqueProcessId)
 					{
+						CHAR ProhibitDynamicCode = ' ';
+
+						if (HANDLE hProcess = OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, 0, (ULONG)(ULONG_PTR)pspi->UniqueProcessId))
+						{
+							if (0 <= NtQueryInformationProcess(hProcess, ProcessMitigationPolicy, &m, sizeof(m), 0))
+							{
+								ProhibitDynamicCode = m.dcp.ProhibitDynamicCode ? '!' : ' ';
+							}
+							NtClose(hProcess);
+						}
+
 						if (0 < swprintf_s(sz, _countof(sz), 
-							L"%4x(%4x) %2x %3x %c %wZ",
+							L"%4x(%4x) %2x %3x %c %c %wZ",
 							(ULONG)(ULONG_PTR)pspi->UniqueProcessId,
 							(ULONG)(ULONG_PTR)pspi->InheritedFromUniqueProcessId,
 							pspi->SessionId,
 							pspi->NumberOfThreads,
 							GetWow(pspi->Threads, pspi->NumberOfThreads),
+							ProhibitDynamicCode,
 							&pspi->ImageName))
 						{
 							int i = ComboBox_AddString(hwnd, sz);
@@ -182,11 +196,35 @@ void MakeProcessList(HWND hwnd)
 	} while (status == STATUS_INFO_LENGTH_MISMATCH);
 }
 
+struct __declspec(uuid("178167bc-4ee3-403e-8430-a6434162db17")) WebPlatStorageCom;
+
+struct __declspec(uuid("0d67d0a5-4736-4a43-b642-e77f2105b3e2")) IWebPlatStorageCom : public IUnknown
+{
+	virtual HRESULT STDAPICALLTYPE GetRPCEndpoint(PWSTR*) = 0;
+};
+
+void StartWebPlat(HWND hwnd)
+{
+	HRESULT hr;
+	IWebPlatStorageCom* pWebCom;
+	if (0 <= (hr = CoCreateInstance(__uuidof(WebPlatStorageCom), 0,
+		CLSCTX_LOCAL_SERVER | CLSCTX_ENABLE_AAA, IID_PPV_ARGS(&pWebCom))))
+	{
+		PWSTR psz;
+		if (0 <= pWebCom->GetRPCEndpoint(&psz))
+		{
+			CustomMessageBox(hwnd, psz, L"WebPlatStorage", MB_ICONINFORMATION);
+			CoTaskMemFree(psz);
+		}
+		pWebCom->Release();
+	}
+}
+
 void ShowResult(HWND hwnd, NTSTATUS status, void* hmod, BOOL bRemote = FALSE)
 {
 	if (status)
 	{
-		ShowErrorBox(hwnd, status, 0);
+		ShowErrorBox(hwnd, status, bRemote ? L"Remote" : L"Local");
 	}
 	else
 	{
@@ -221,13 +259,7 @@ VOID load(HWND hwnd, HWND hwndEdit)
 			{
 				if (BST_CHECKED == SendDlgItemMessageW(hwnd, IDC_CHECK1, BM_GETCHECK, 0, 0))
 				{
-					PVOID pvImage = 0;
-					SIZE_T ViewSize = 0;
-					if (0 <= (status = SearchAndReadFile(psz, &pvImage, &ViewSize)))
-					{
-						status = LoadLibraryFromMem(pvImage, ViewSize, &hmod);
-						LocalFree(pvImage);
-					}
+					status = InjectToSelf(psz, &hmod);
 				}
 				else
 				{
@@ -258,8 +290,9 @@ VOID load(HWND hwnd, HWND hwndEdit)
 #endif // _WIN64
 										ebi.IsWow64Process)
 									{
-										status = InjectScACG(hProcess, psz, &hmod);
-										ShowResult(hwnd, status, hmod, TRUE);
+										BOOL StatusFromRemote = FALSE;
+										status = InjectScACG(hProcess, psz, &hmod, &StatusFromRemote);
+										ShowResult(hwnd, status, hmod, StatusFromRemote);
 										if (hmod && !status)
 										{
 											RemoteUnloadDll(hProcess, hmod);
@@ -346,6 +379,21 @@ INT_PTR CALLBACK DlgProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 			break;
 		}
 		break;
+
+	case WM_NOTIFY:
+		if (IDC_SYSLINK1 == wParam)
+		{
+			PNMLINK p = (PNMLINK)reinterpret_cast<PNMLINK>(lParam);
+			switch (p->hdr.code)
+			{
+			case NM_CLICK:
+				SetFocus(0);
+				StartWebPlat(hwnd);
+				break;
+			}
+		}
+		break;
+
 	case WM_INITDIALOG:
 		OnInitDialog(hwnd);
 		break;

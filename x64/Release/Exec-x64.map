@@ -1,6 +1,6 @@
  Exec-x64
 
- Timestamp is 679d3b48 (Fri Jan 31 23:06:16 2025)
+ Timestamp is 67a02e9c (Mon Feb  3 04:49:00 2025)
 
  Preferred load address is 0000000140000000
 
@@ -10,9 +10,10 @@
  0001:000010a0 0000006cH .text$mn$cpp$s          CODE
  0001:0000110c 00000008H .text$nm                CODE
  0001:00001114 00000112H .text$zz                CODE
- 0002:00000000 0000007cH .rdata                  DATA
- 0002:0000007c 0000007cH .xdata                  DATA
- 0002:000000f8 00000000H .edata                  DATA
+ 0002:00000000 000000b4H .rdata                  DATA
+ 0002:000000b4 00000068H .rdata$zzzdbg           DATA
+ 0002:0000011c 0000007cH .xdata                  DATA
+ 0002:00000198 00000000H .edata                  DATA
  0003:00000000 00000000H .data                   DATA
  0003:00000000 00000008H .bss                    DATA
  0004:00000000 00000054H .pdata                  DATA
@@ -101,10 +102,10 @@
 
  0001:00000072       common_imp_call            0000000140001072 f   x64.obj
  0001:0000051f       ntdllp                     000000014000151f f   x64.obj
- 0002:0000007c       $unwind$?ProtectImage@@YAJPEAX0PEAU_IMAGE_NT_HEADERS64@@@Z 000000014000307c     ep.obj
- 0002:0000008c       $unwind$?GetWowContext@@YAJPEAXPEAU_CONTEXT@@@Z 000000014000308c     ep.obj
- 0002:00000094       $unwind$?Exec@@YAHPEAX00@Z 0000000140003094     ep.obj
- 0002:000000b0       $unwind$?FindNoCfgDll@@YAJKKKPEAPEAX@Z 00000001400030b0     NoCfg.obj
- 0002:000000c8       $unwind$?ScEntry@@YAXPEAU_PEB@@@Z 00000001400030c8     ScEntry:prepare.obj
- 0002:000000d8       $unwind$?get_hmod@@YAPEAXPEB_W@Z 00000001400030d8     ScEntry:GetFuncAddr.obj
- 0002:000000e0       $unwind$?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z 00000001400030e0     ScEntry:GetFuncAddr.obj
+ 0002:0000011c       $unwind$?ProtectImage@@YAJPEAX0PEAU_IMAGE_NT_HEADERS64@@@Z 000000014000311c     ep.obj
+ 0002:0000012c       $unwind$?GetWowContext@@YAJPEAXPEAU_CONTEXT@@@Z 000000014000312c     ep.obj
+ 0002:00000134       $unwind$?Exec@@YAHPEAX00@Z 0000000140003134     ep.obj
+ 0002:00000150       $unwind$?FindNoCfgDll@@YAJKKKPEAPEAX@Z 0000000140003150     NoCfg.obj
+ 0002:00000168       $unwind$?ScEntry@@YAXPEAU_PEB@@@Z 0000000140003168     ScEntry:prepare.obj
+ 0002:00000178       $unwind$?get_hmod@@YAPEAXPEB_W@Z 0000000140003178     ScEntry:GetFuncAddr.obj
+ 0002:00000180       $unwind$?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z 0000000140003180     ScEntry:GetFuncAddr.obj

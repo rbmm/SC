@@ -13,14 +13,11 @@ include <..\scentry\nobase.x64.inc>
 ; long __cdecl retFromMapViewOfSection(long)
 extern ?retFromMapViewOfSection@@YAJJ@Z : PROC
 
-; void *__cdecl retFromMapViewOfSectionAddr()
-?retFromMapViewOfSectionAddr@@YAPEAXXZ proc
-	lea rax,@@1
-	ret
-@@1:
+; long __cdecl aretFromMapViewOfSection(void)
+?aretFromMapViewOfSection@@YAJXZ proc
 	mov ecx,eax
 	call ?retFromMapViewOfSection@@YAJJ@Z
-?retFromMapViewOfSectionAddr@@YAPEAXXZ endp
+?aretFromMapViewOfSection@@YAJXZ endp
 
 include <imp.x64.asm>
 

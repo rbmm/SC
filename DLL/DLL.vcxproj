@@ -37,8 +37,7 @@
       <FunctionLevelLinking>false</FunctionLevelLinking>
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <Optimization>MaxSpeed</Optimization>
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)..\pnth</AdditionalIncludeDirectories>
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)..\pnth</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\pnth</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -54,20 +53,12 @@
   <ItemGroup>
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="FileName.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
     <ResourceCompile Include="DLL.rc" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include=".rc2" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets">
-  </ImportGroup>
 </Project>

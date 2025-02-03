@@ -71,7 +71,7 @@ void ComTest()
 		PWSTR pszFilePath = 0;
 		IFileOpenDialog* pFileOpen;
 
-		if (0 <= (hr = CoCreateInstance(__UUIDOF(FileOpenDialog), NULL, CLSCTX_ALL, IID_PPV_ARGS(&pFileOpen))))
+		if (0 <= (hr = CoCreateInstance(__uuidof(FileOpenDialog), NULL, CLSCTX_ALL, IID_PPV_ARGS(&pFileOpen))))
 		{
 			if (0 <= (hr = pFileOpen->SetOptions(FOS_PICKFOLDERS | FOS_NOVALIDATE | FOS_NOTESTFILECREATE | FOS_DONTADDTORECENT | FOS_FORCESHOWHIDDEN)) &&
 				0 <= (hr = pFileOpen->Show(0)))
@@ -93,6 +93,7 @@ void ComTest()
 				CoTaskMemFree(pszFilePath);
 			}
 		}
+
 		CoUninitialize();
 	}
 
@@ -118,7 +119,7 @@ void WINAPI ep()
 		MsgBox(MB_ICONWARNING, _YW(L"Marta"), _YW(L"table at %p"), pTable);
 	}
 
-	RtlDispatchAPC(_Y(&ApcTest), (ULONG_PTR)_Y(&ep), INVALID_HANDLE_VALUE);
+	RtlDispatchAPC(_Y(ApcTest), (ULONG_PTR)_Y(ep), INVALID_HANDLE_VALUE);
 
 	ExitProcess(0);
 }

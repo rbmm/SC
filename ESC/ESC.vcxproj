@@ -55,19 +55,16 @@
   <ItemGroup>
     <CustomBuild Include="x64.asm">
       <FileType>Document</FileType>
-      <Command Condition="'$(PlatformTarget)'=='x64'">ml64 /c /Cp %(Identity)</Command>
-      <Outputs Condition="'$(PlatformTarget)'=='x64'">%(Filename).obj</Outputs>
-      <ExcludedFromBuild Condition="'$(PlatformTarget)'=='x86'">true</ExcludedFromBuild>
+      <Command>ml64 /c /Cp %(Identity)</Command>
+      <Outputs>%(Filename).obj</Outputs>
+      <ExcludedFromBuild Condition="'$(PlatformTarget)'!='x64'">true</ExcludedFromBuild>
     </CustomBuild>
-  </ItemGroup>
-  <ItemGroup>
     <CustomBuild Include="x86.asm">
       <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">ml /c /Cp %(Identity)</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename).obj</Outputs>
+      <Command>ml /c /Cp %(Identity)</Command>
+      <Outputs>%(Filename).obj</Outputs>
+      <ExcludedFromBuild Condition="'$(PlatformTarget)'!='x86'">true</ExcludedFromBuild>
     </CustomBuild>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets">
-  </ImportGroup>
 </Project>

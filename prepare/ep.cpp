@@ -41,6 +41,35 @@ void PrintUTF8_v(PCSTR format, ...)
 
 #define DbgPrint PrintUTF8_v
 
+HRESULT PrintError(HRESULT dwError)
+{
+	LPCVOID lpSource = 0;
+	ULONG dwFlags = FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_IGNORE_INSERTS;
+
+	if ((dwError & FACILITY_NT_BIT) || (0 > dwError && HRESULT_FACILITY(dwError) == FACILITY_NULL))
+	{
+		dwError &= ~FACILITY_NT_BIT;
+	__nt:
+		dwFlags = FORMAT_MESSAGE_FROM_HMODULE | FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_IGNORE_INSERTS;
+
+		lpSource = GetModuleHandle(L"ntdll");
+	}
+
+	PSTR lpText;
+	if (ULONG cch = FormatMessageA(dwFlags, lpSource, dwError, 0, (PSTR)&lpText, 0, 0))
+	{
+		PrintUTF8(lpText, cch);
+		LocalFree(lpText);
+	}
+	else if (dwFlags & FORMAT_MESSAGE_FROM_SYSTEM)
+	{
+		goto __nt;
+	}
+
+	DbgPrint("0x%x (%d)\r\n", dwError, dwError);
+	return dwError;
+}
+
 NTSTATUS ReadFromFile(_In_ PCWSTR lpFileName,
 	_Out_ PBYTE* ppb,
 	_Out_ ULONG* pcb,
@@ -130,7 +159,6 @@ NTSTATUS SaveToFile(_In_ PCWSTR lpFileName, _In_ const void* lpBuffer, _In_ ULON
 		{
 			status = NtWriteFile(hFile, 0, 0, 0, &iosb, const_cast<void*>(lpBuffer), nNumberOfBytesToWrite, 0, 0);
 			NtClose(hFile);
-
 			DbgPrint("WriteFile(%x) = %x\r\n", nNumberOfBytesToWrite, status);
 		}
 	}
@@ -308,73 +336,6 @@ PCSTR IMP_HELP::GetName(ULONG rva)
 	} while (piid++, --n);
 
 	return 0;
-}
-
-void IatTest(HMODULE hmod)
-{
-	ULONG s;
-	if (void** ppv = (void**)RtlImageDirectoryEntryToData(hmod, TRUE, IMAGE_DIRECTORY_ENTRY_IAT, &s))
-	{
-		if (ULONG n = s / sizeof(PVOID))
-		{
-			if (PIMAGE_IMPORT_DESCRIPTOR piid = (PIMAGE_IMPORT_DESCRIPTOR)RtlImageDirectoryEntryToData(
-				hmod, TRUE, IMAGE_DIRECTORY_ENTRY_IMPORT, &s))
-			{
-				if (s /= sizeof(IMAGE_IMPORT_DESCRIPTOR))
-				{
-					do
-					{
-						DWORD Name = piid->Name;
-
-						if (!Name)
-						{
-							break;
-						}
-
-						if (DWORD FirstThunk = piid->FirstThunk)
-						{
-							if (DWORD OriginalFirstThunk = piid->OriginalFirstThunk)
-							{
-								void** pFunction = (void**)RtlOffsetToPointer(hmod, FirstThunk);
-								PIMAGE_THUNK_DATA pThunk = (PIMAGE_THUNK_DATA)RtlOffsetToPointer(hmod, OriginalFirstThunk);
-
-								if (ppv++ != pFunction)
-								{
-									//__debugbreak();
-								}
-
-								while (void* Function = *pFunction++)
-								{
-									IMAGE_THUNK_DATA Thunk = *pThunk++;
-
-									char sz[32];
-									PCSTR name;
-
-									if (IMAGE_SNAP_BY_ORDINAL(Thunk.u1.Ordinal))
-									{
-										sprintf_s(sz, _countof(sz), "#%u", (ULONG)IMAGE_ORDINAL(Thunk.u1.Ordinal));
-										name = sz;
-									}
-									else
-									{
-										name = (PCSTR)reinterpret_cast<PIMAGE_IMPORT_BY_NAME>(
-											RtlOffsetToPointer(hmod, Thunk.u1.AddressOfData))->Name;
-									}
-
-									DbgPrint("%08x %hs\r\n", RtlPointerToOffset(hmod, pFunction - 1), name);
-								}
-
-								DbgPrint("%08x %hs NULL_THUNK_DATA\r\n", RtlPointerToOffset(hmod, pFunction - 1), RtlOffsetToPointer(hmod, Name));
-							}
-						}
-
-
-					} while (piid++, --s);
-
-				}
-			}
-		}
-	}
 }
 
 NTSTATUS IMP_HELP::ProcessMAP(
@@ -788,7 +749,7 @@ NTSTATUS ProcessIAT(PCWSTR pszImp, PCWSTR pszMap, ULONG_PTR pvShellEnd)
 									ULONG cch = _countof(msg);
 									if (CryptBinaryToStringA((PBYTE)*pru, 16, CRYPT_STRING_HEXASCII, msg, &cch))
 									{
-										DbgPrint(msg);
+										DbgPrint("\t%hs\r\n", msg);
 									}
 #if 0
 									// mov ecx,offset x
@@ -918,7 +879,6 @@ inline ULONG BOOL_TO_ERROR(BOOL f)
 
 //## -> #
 //#. -> *
-//#! -> ?
 //#: -> %
 
 BOOL UnEscape(_Inout_ PWSTR str)
@@ -933,9 +893,6 @@ BOOL UnEscape(_Inout_ PWSTR str)
 			{
 			case '.':
 				c = '*';
-				break;
-			case '!':
-				c = '?';
 				break;
 			case ':':
 				c = '%';
@@ -970,7 +927,7 @@ NTSTATUS CreateAesKey(_Out_ BCRYPT_KEY_HANDLE* phKey, _In_ PBYTE secret, _In_ UL
 
 NTSTATUS CreateAsmSC(PCWSTR to, PVOID pv, ULONG cb)
 {
-	if (PWSTR psz = wcschr(to, '?'))
+	if (PWSTR psz = wcsrchr(to, '?'))
 	{
 		*psz++ = 0;
 
@@ -1199,9 +1156,9 @@ NTSTATUS NTAPI PrepareSC(PVOID Base, ULONG cb, PVOID ImageBase)
 				}
 			}
 
-			return status;
+			return PrintError(status);
 		}
 	}
 
-	return STATUS_INVALID_PARAMETER;
+	return PrintError(STATUS_INVALID_PARAMETER);
 }
