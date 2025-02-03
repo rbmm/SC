@@ -470,16 +470,16 @@ here we have a more complex code, but it also works in ACG processes
 in addition, [ScLfm+ACG](ScLfm%2BACG) has additional functionality compared to [ScLfm](ScLfm) - it can report the address to which the dll was loaded, or an error code if the download was unsuccessful
 
 how to use these 2 shellcode?
-for this we use 2 shell projects (InjLfm)[InjLfm] for [ScLfm](ScLfm) and [InjLfmACG](InjLfmACG) for [ScLfm+ACG](ScLfm%2BACG)
+for this we use 2 shell projects [InjLfm](InjLfm) for [ScLfm](ScLfm) and [InjLfmACG](InjLfmACG) for [ScLfm+ACG](ScLfm%2BACG)
 these are static libs, not a shellcode. similar to the [LibLfm](LibLfm) project but intended for loading dll into any process, not just into its own like [LibLfm](LibLfm)
 both of these projects include shellcode from [ScLfm](ScLfm) and [ScLfm+ACG](ScLfm%2BACG) respectively in the .const section
 shellcode is written into the target process, together with the dll image, and does the job.
 
-(InjLfm)[InjLfm] contains raw shellcode and [InjLfmACG](InjLfmACG) compressed (although we win a little in shellcode size, we have additional size for unpacking code)
+[InjLfm](InjLfm) contains raw shellcode and [InjLfmACG](InjLfmACG) compressed (although we win a little in shellcode size, we have additional size for unpacking code)
 
 in fact, to use compressed shellcode or raw - there is no difference. you can use all 4 combinations here. I used 2 different options solely for demonstration and comparison of work in both cases
 
-what is the fundamental difference between (InjLfm)[InjLfm] and [InjLfmACG](InjLfmACG) ?
+what is the fundamental difference between [InjLfm](InjLfm) and [InjLfmACG](InjLfmACG) ?
 
 compare the interface signatures:
 
@@ -506,7 +506,7 @@ InjectDLL - writes the shellcode to the target process and runs it. and returns 
 
 InjectACG - on the contrary, it reports all this information. and supports ACG mitigation. but on the other hand, there is a risk of freezing if the DLL loading process in the remote process freezes. even if it is not our fault. I encountered such a problem in webplatstorageserver which, due to an error during process termination, caused a deadlock in loader lock. the process did not exit and remained alive. loading a dll into such a process would hang even at the creation of the thread, since it could not enter the loader lock
 
-finally, [LibScLfm](LibScLfm) which I have already mentioned several times. it also contains shellcode from [ScLfm](ScLfm) like (InjLfm)[InjLfm]. but in the `.code` section and not in `.data`
+finally, [LibScLfm](LibScLfm) which I have already mentioned several times. it also contains shellcode from [ScLfm](ScLfm) like [InjLfm](InjLfm). but in the `.code` section and not in `.data`
 and is intended for in-place execution (and not copying it to executable memory first and run from it)
 the project itself has no meaning (unlike the others) and is intended to demonstrate the difference with [LibLfm](LibLfm) and the way to include shellcode for in-place execution (that is, executing it directly from the body of the exe/dll where it is included, without copying it to separate memory)
 
