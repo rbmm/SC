@@ -1,14 +1,17 @@
 write shell code framework
 
 --------------------------------------
+
 **Note !!** all projects from solution require [MSBuild](https://github.com/rbmm/MSBuild) and [pnth](https://github.com/rbmm/pnth)
-it not direct included to this repo because was on [one level up](https://github.com/rbmm/SC/blob/main/dummy/dummy.vcxproj#L19) :
+it not direct included to this repo because was on [one level up](dummy/dummy.vcxproj#L19) :
 ```
 <UserRootDir>$(SolutionDir)..\MSBuild\v4.0</UserRootDir>
  <AdditionalIncludeDirectories>$(SolutionDir)..\pnth</AdditionalIncludeDirectories>
 ```
+
 i use it as common files in different solutions and for not make multiple copy, i place it at `$(SolutionDir)..`
 so you need download it separate and place in parent directory of solution 
+
 --------------------------------------
 
 the idea is to write shellcode in c/c++ without using asm at all (unless some part of the project requires it, but this is not related to the shellcode itself)
@@ -16,12 +19,12 @@ and so that function calls and working with strings look like usual. so that the
 
 for comparison
 
-[LibLfm](https://github.com/rbmm/SC/blob/main/LibLfm/ep.cpp) - loads DLL from memory (static lib, not shellcode)
-[ScLfm](https://github.com/rbmm/SC/blob/main/ScLfm/ep.cpp) - same code converted to shellcode
+[LibLfm](LibLfm/ep.cpp) - loads DLL from memory (static lib, not shellcode)
+[ScLfm](ScLfm/ep.cpp) - same code converted to shellcode
 
 find the differences
 
-or [TestTask](https://github.com/rbmm/SC/blob/main/TestTask) - builds in shellcode ( [TestTask.x64.exe](https://github.com/rbmm/SC/blob/main/TestTask/TestTask.x64.exe) ) although it is not small code
+or [TestTask](TestTask) - builds in shellcode ( [TestTask.x64.exe](https://github.com/rbmm/SC/blob/main/TestTask/TestTask.x64.exe) ) although it is not small code
 
 1) **create a new project using the [NewScProj.exe](https://github.com/rbmm/SC/blob/main/NewScProj.exe) utility **
 
