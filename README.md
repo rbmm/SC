@@ -182,12 +182,12 @@ otherwise the command line format for post build:
 ```
 
 ```
-**$(TargetPath)** - we run our own exe for post build, ScEntry loads prepare.dll and calls PrepareSC
-**map** - path to map file - mandatory parameter := $(OutDir)$(ProjectName).map
-**imp** - path to imp file - mandatory parameter := imp.$(PlatformTarget).asm
-**bin** - name of file where to save shellcode in binary form - optional parameter, can be empty
-**asm** - name of file where to save shellcode as asm code - i.e DQ sequense (and possible DD, DW, DB in the end)
-**exe** - name of exe file where we insert shellcode. such exe will not contain any imports or relocs - the only section ".text" containing shellcode and nothing else
+$(TargetPath) - we run our own exe for post build, ScEntry loads prepare.dll and calls PrepareSC
+map - path to map file - mandatory parameter := $(OutDir)$(ProjectName).map
+imp - path to imp file - mandatory parameter := imp.$(PlatformTarget).asm
+bin - name of file where to save shellcode in binary form - optional parameter, can be empty
+asm - name of file where to save shellcode as asm code - i.e DQ sequense (and possible DD, DW, DB in the end)
+exe - name of exe file where we insert shellcode. such exe will not contain any imports or relocs - the only section ".text" containing shellcode and nothing else
 ```
 
 **exe** makes sense only if our shellcode does not accept direct parameters (`void ep()`) (but can of course use the process command line)
