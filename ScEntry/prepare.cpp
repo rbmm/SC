@@ -74,7 +74,6 @@ void WINAPI ScEntry(PEB* peb)
 			status = PrepareSC(epASM, RtlPointerToOffset(epASM, sc_end()), &__ImageBase);
 		}
 
-		pv = GetFuncAddressEx(pidh, "LdrUnloadDll");
 		RAC(LdrUnloadDll, hmod);
 	}
 
