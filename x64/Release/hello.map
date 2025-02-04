@@ -1,6 +1,6 @@
  hello
 
- Timestamp is 67a0c0a3 (Mon Feb  3 15:12:03 2025)
+ Timestamp is 67a2a5fb (Wed Feb  5 01:42:51 2025)
 
  Preferred load address is 0000000140000000
 
@@ -8,9 +8,9 @@
  0001:00000000 0000043cH .text$mn                CODE
  0001:0000043c 0000047cH .text$mn$cpp            CODE
  0001:000008b8 00000028H .text$mn$cpp$r          CODE
- 0001:000008e0 0000008cH .text$mn$cpp$s          CODE
- 0001:0000096c 00000008H .text$nm                CODE
- 0001:00000974 00000112H .text$zz                CODE
+ 0001:000008e0 00000090H .text$mn$cpp$s          CODE
+ 0001:00000970 00000008H .text$nm                CODE
+ 0001:00000978 000000ffH .text$zz                CODE
  0002:00000000 00000000H .idata$5                DATA
  0002:00000000 000000b4H .rdata                  DATA
  0002:000000b4 00000068H .rdata$zzzdbg           DATA
@@ -86,9 +86,9 @@
  0001:00000920       ??_C@_1M@BOLMKKCK@?$AAH?$AAe?$AAl?$AAl?$AAo@FNODOBFM@ 0000000140001920     ep.obj
  0001:00000930       ??_C@_17NCBHHMJ@?$AAC?$AAo?$AAm@FNODOBFM@ 0000000140001930     ep.obj
  0001:00000940       ??_C@_1BI@NOFJEJPO@?$AAt?$AAa?$AAb?$AAl?$AAe?$AA?5?$AAa?$AAt?$AA?5?$AA?$CF?$AAp@FNODOBFM@ 0000000140001940     ep.obj
- 0001:00000960       ??_C@_1M@OJJPKJJM@?$AAM?$AAa?$AAr?$AAt?$AAa@FNODOBFM@ 0000000140001960     ep.obj
- 0001:0000096c       ?sc_end@@YAPEAXXZ          000000014000196c f   ScEntry:prepare.obj
- 0001:00000974       ?ScEntry@@YAXPEAU_PEB@@@Z  0000000140001974 f   ScEntry:prepare.obj
+ 0001:00000960       ??_C@_1O@ONGICPAA@?$AAM?$AAa?$AAr?$AAt?$AAa?$AA?3@FNODOBFM@ 0000000140001960     ep.obj
+ 0001:00000970       ?sc_end@@YAPEAXXZ          0000000140001970 f   ScEntry:prepare.obj
+ 0001:00000978       ?ScEntry@@YAXPEAU_PEB@@@Z  0000000140001978 f   ScEntry:prepare.obj
  0002:00000000       ??_C@_0BF@EKFKPNAI@RtlInitUnicodeString@ 0000000140002000     ScEntry:prepare.obj
  0002:00000018       ??_C@_1BI@NEOFKCPM@?$AAp?$AAr?$AAe?$AAp?$AAa?$AAr?$AAe?$AA?4?$AAd?$AAl?$AAl@ 0000000140002018     ScEntry:prepare.obj
  0002:00000030       ??_C@_0L@HOFGLFDL@LdrLoadDll@ 0000000140002030     ScEntry:prepare.obj
@@ -98,7 +98,7 @@
  0003:00000000       __@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUcGEUivovzhvUsvoolUhgwzucOlyq@4B2008FD98C1DD4 0000000140003000     stdafx.obj
  0003:00000004       __@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUcGEUivovzhvUhxvmgibUhgwzucOlyq@4B2008FD98C1DD4 0000000140003004     ScEntry:stdafx.obj
 
- entry point at        0001:00000974
+ entry point at        0001:00000978
 
  Static symbols
 

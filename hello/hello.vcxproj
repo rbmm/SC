@@ -30,6 +30,12 @@
   <ImportGroup Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Label="LocalAppDataPlatform" />
   </ImportGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <PostBuildEventUseInBuild>true</PostBuildEventUseInBuild>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <PostBuildEventUseInBuild>true</PostBuildEventUseInBuild>
+  </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
@@ -51,7 +57,7 @@
       <AdditionalDependencies>ntdllp.lib;ScEntry.lib;kernel32.lib;user32.lib;dnsapi.lib;ntmarta.lib;ole32.lib</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>"$(TargetPath)" *$(OutDir)$(ProjectName).map*imp.$(PlatformTarget).asm**?#.pass?word##?$(ProjectName).$(PlatformTarget).asm*$(ProjectName).$(PlatformTarget).exe</Command>
+      <Command>"$(TargetPath)" *$(OutDir)$(ProjectName).map*$(PlatformTarget).obj*imp.$(PlatformTarget).asm**?#.pass?word##?$(ProjectName).$(PlatformTarget).asm*$(ProjectName).$(PlatformTarget).exe</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

@@ -133,12 +133,16 @@ NTSTATUS ReadFromFile(_In_ PCWSTR lpFileName,
 	return status;
 }
 
-NTSTATUS SaveToFile(_In_ PCWSTR lpFileName, _In_ const void* lpBuffer, _In_ ULONG nNumberOfBytesToWrite)
+NTSTATUS SaveToFile(
+	_In_ PCWSTR lpFileName,
+	_In_ const void* lpBuffer,
+	_In_ ULONG nNumberOfBytesToWrite,
+	_In_ BOOL MustBeEmpty = FALSE)
 {
 	UNICODE_STRING ObjectName;
 	NTSTATUS status = RtlDosPathNameToNtPathName_U_WithStatus(lpFileName, &ObjectName, 0, 0);
 
-	DbgPrint("DosPathNameToNt(\"%ws\") = %x\r\n", lpFileName, status);
+	DbgPrint("DosPathNameToNt(\"%ws\") = %x [%x]\r\n", lpFileName, status, MustBeEmpty);
 
 	if (0 <= status)
 	{
@@ -148,16 +152,31 @@ NTSTATUS SaveToFile(_In_ PCWSTR lpFileName, _In_ const void* lpBuffer, _In_ ULON
 
 		LARGE_INTEGER AllocationSize = { nNumberOfBytesToWrite };
 
+		if (MustBeEmpty)
+		{
+			if (0 <= (status = NtOpenFile(&hFile, FILE_READ_ATTRIBUTES, &oa, &iosb, FILE_SHARE_READ, 0)))
+			{
+				FILE_STANDARD_INFORMATION fsi;
+				if (0 <= (status = NtQueryInformationFile(hFile, &iosb, &fsi, sizeof(fsi), FileStandardInformation)))
+				{
+					MustBeEmpty = fsi.EndOfFile.QuadPart != 0;
+				}
+
+				NtClose(hFile);
+			}
+		}
+
 		status = NtCreateFile(&hFile, FILE_APPEND_DATA | SYNCHRONIZE, &oa, &iosb, &AllocationSize,
 			0, 0, FILE_OVERWRITE_IF, FILE_SYNCHRONOUS_IO_NONALERT | FILE_NON_DIRECTORY_FILE, 0, 0);
 
-		DbgPrint("CreateFile(\"%wZ\") = %x\r\n", &ObjectName, status);
+		DbgPrint("CreateFile(\"%wZ\") = %x [%x]\r\n", &ObjectName, status, MustBeEmpty);
 
 		RtlFreeUnicodeString(&ObjectName);
 
 		if (0 <= status)
 		{
-			status = NtWriteFile(hFile, 0, 0, 0, &iosb, const_cast<void*>(lpBuffer), nNumberOfBytesToWrite, 0, 0);
+			status = MustBeEmpty ? STATUS_DIRECTORY_NOT_EMPTY :
+				NtWriteFile(hFile, 0, 0, 0, &iosb, const_cast<void*>(lpBuffer), nNumberOfBytesToWrite, 0, 0);
 			NtClose(hFile);
 			DbgPrint("WriteFile(%x) = %x\r\n", nNumberOfBytesToWrite, status);
 		}
@@ -580,7 +599,7 @@ __space:
 			goto __loop;
 		}
 
-		status = SaveToFile(pszImp, buf, RtlPointerToOffset(buf, psz));
+		status = SaveToFile(pszImp, buf, RtlPointerToOffset(buf, psz), TRUE);
 		return 0 > status ? status : STATUS_MORE_PROCESSING_REQUIRED;
 	}
 }
@@ -610,178 +629,178 @@ NTSTATUS IMP_HELP::ProcessMAP(
 	return status;
 }
 
-NTSTATUS ProcessIAT(PCWSTR pszImp, PCWSTR pszMap, ULONG_PTR pvShellEnd)
+NTSTATUS ProcessIAT(PVOID hmod, PWSTR pczObj, PCWSTR pszImp, PCWSTR pszMap, ULONG_PTR pvShellEnd)
 {
-	if (PVOID hmod = GetModuleHandleW(0))
+	ULONG s;
+
+	union {
+		PVOID pv;
+		PBYTE pb;
+		PIMAGE_BASE_RELOCATION pibr;
+	};
+
+	if (pv = RtlImageDirectoryEntryToData(hmod, TRUE, IMAGE_DIRECTORY_ENTRY_IAT, &s))
 	{
-		ULONG s;
+		DbgPrint("IAT: %p [%x]\r\n", pv, s);
 
-		union {
-			PVOID pv;
-			PBYTE pb;
-			PIMAGE_BASE_RELOCATION pibr;
-		};
-
-		if (pv = RtlImageDirectoryEntryToData(hmod, TRUE, IMAGE_DIRECTORY_ENTRY_IAT, &s))
+		if (!s || (s & (sizeof(PVOID) - 1)))
 		{
-			DbgPrint("IAT: %p [%x]\r\n", pv, s);
-
-			if (!s || (s & (sizeof(PVOID) - 1)))
-			{
-				return STATUS_INTERNAL_ERROR;
-			}
-
-			if (PIMAGE_NT_HEADERS pinth = RtlImageNtHeader(hmod))
-			{
-				if (ULONG NumberOfSections = pinth->FileHeader.NumberOfSections)
-				{
-					ULONG_PTR Rva = (ULONG_PTR)pv - (ULONG_PTR)hmod;
-
-					ULONG iSection = 0;
-					PIMAGE_SECTION_HEADER pish = IMAGE_FIRST_SECTION(pinth);
-					do
-					{
-						++iSection;
-
-						ULONG_PTR Ofs = Rva - pish->VirtualAddress;
-
-						if (Ofs < pish->Misc.VirtualSize)
-						{
-							if (Ofs + s <= pish->Misc.VirtualSize)
-							{
-								IMP_HELP imh;
-								if (imh.Init(hmod))
-								{
-									return imh.ProcessMAP(pszImp, pszMap, iSection, (ULONG)Ofs, Rva, s);
-								}
-							}
-
-							break;
-						}
-					} while (pish++, --NumberOfSections);
-				}		
-			}
-
 			return STATUS_INTERNAL_ERROR;
 		}
 
-		if (pv = RtlImageDirectoryEntryToData(hmod, TRUE, IMAGE_DIRECTORY_ENTRY_BASERELOC, &s))
+		DbgPrint("Delete(\"%ws\")=%x\r\n", pczObj, DeleteFileW(pczObj) ? 0 : RtlGetLastNtStatus());
+
+		if (PIMAGE_NT_HEADERS pinth = RtlImageNtHeader(hmod))
 		{
-			pvShellEnd -= (ULONG_PTR)hmod;
+			if (ULONG NumberOfSections = pinth->FileHeader.NumberOfSections)
+			{
+				ULONG_PTR Rva = (ULONG_PTR)pv - (ULONG_PTR)hmod;
+
+				ULONG iSection = 0;
+				PIMAGE_SECTION_HEADER pish = IMAGE_FIRST_SECTION(pinth);
+				do
+				{
+					++iSection;
+
+					ULONG_PTR Ofs = Rva - pish->VirtualAddress;
+
+					if (Ofs < pish->Misc.VirtualSize)
+					{
+						if (Ofs + s <= pish->Misc.VirtualSize)
+						{
+							IMP_HELP imh;
+							if (imh.Init(hmod))
+							{
+								return imh.ProcessMAP(pszImp, pszMap, iSection, (ULONG)Ofs, Rva, s);
+							}
+						}
+
+						break;
+					}
+				} while (pish++, --NumberOfSections);
+			}
+		}
+
+		return STATUS_INTERNAL_ERROR;
+	}
+
+	if (pv = RtlImageDirectoryEntryToData(hmod, TRUE, IMAGE_DIRECTORY_ENTRY_BASERELOC, &s))
+	{
+		pvShellEnd -= (ULONG_PTR)hmod;
 
 #ifdef _X86_
-			BOOL bFirst = TRUE;
-			PVOID pvTarget = 0;
+		BOOL bFirst = TRUE;
+		PVOID pvTarget = 0;
 #endif // _X86_
+
+		do
+		{
+			ULONG SizeOfBlock = pibr->SizeOfBlock;
+
+			if (SizeOfBlock < sizeof(IMAGE_BASE_RELOCATION))
+			{
+				return STATUS_INVALID_IMAGE_FORMAT;
+			}
+
+			ULONG VirtualAddress = pibr->VirtualAddress;
+
+			struct TYPE_OFFSET
+			{
+				WORD ofs : 12;
+				WORD type : 4;
+			}*pu = (TYPE_OFFSET*)(pibr + 1);
+
+			pb += SizeOfBlock, s -= SizeOfBlock, SizeOfBlock -= sizeof(IMAGE_BASE_RELOCATION);
+
+			if (SizeOfBlock & (sizeof(WORD) - 1))
+			{
+				return STATUS_INVALID_IMAGE_FORMAT;
+			}
+
+			SizeOfBlock >>= 1;
 
 			do
 			{
-				ULONG SizeOfBlock = pibr->SizeOfBlock;
-
-				if (SizeOfBlock < sizeof(IMAGE_BASE_RELOCATION))
+				if (pu->type)
 				{
-					return STATUS_INVALID_IMAGE_FORMAT;
-				}
+					//DbgPrint("\t## %x %08x\r\n", pu->type, VirtualAddress + pu->ofs);
 
-				ULONG VirtualAddress = pibr->VirtualAddress;
-
-				struct TYPE_OFFSET
-				{
-					WORD ofs : 12;
-					WORD type : 4;
-				}*pu = (TYPE_OFFSET*)(pibr + 1);
-
-				pb += SizeOfBlock, s -= SizeOfBlock, SizeOfBlock -= sizeof(IMAGE_BASE_RELOCATION);
-
-				if (SizeOfBlock & (sizeof(WORD) - 1))
-				{
-					return STATUS_INVALID_IMAGE_FORMAT;
-				}
-
-				SizeOfBlock >>= 1;
-
-				do
-				{
-					if (pu->type)
+					if (VirtualAddress + pu->ofs < pvShellEnd)
 					{
-						//DbgPrint("\t## %x %08x\r\n", pu->type, VirtualAddress + pu->ofs);
-
-						if (VirtualAddress + pu->ofs < pvShellEnd)
-						{
-							ULONG rva = VirtualAddress + pu->ofs;
-							union {
-								PVOID prv;
-								PBYTE prb;
-								PULONG pru;
-							};
-							prv = RtlOffsetToPointer(hmod, rva);
+						ULONG rva = VirtualAddress + pu->ofs;
+						union {
+							PVOID prv;
+							PBYTE prb;
+							PULONG pru;
+						};
+						prv = RtlOffsetToPointer(hmod, rva);
 
 #ifdef _X86_
 
-							if (IMAGE_REL_BASED_HIGHLOW == pu->type)
-							{
-								ULONG Target = *pru - (ULONG)hmod;
-								DbgPrint("!! Exist Relocs: %08x -> %08x\r\n", rva, Target);
+						if (IMAGE_REL_BASED_HIGHLOW == pu->type)
+						{
+							ULONG Target = *pru - (ULONG)hmod;
+							DbgPrint("!! Exist Relocs: %08x -> %08x\r\n", rva, Target);
 
-								// while (!IsDebuggerPresent()) Sleep(1000); __debugbreak();
-								if (pvShellEnd <= Target)
+							// while (!IsDebuggerPresent()) Sleep(1000); __debugbreak();
+							if (pvShellEnd <= Target)
+							{
+								DbgPrint("reloc to %08x beyond shell end (%08x)\r\n", Target, pvShellEnd);
+								return STATUS_ILLEGAL_DLL_RELOCATION;
+							}
+
+							if (bFirst)
+							{
+								bFirst = FALSE;
+								if (Target + 8 != rva)
 								{
-									DbgPrint("reloc to %08x beyond shell end (%08x)\r\n", Target, pvShellEnd);
+									DbgPrint("_Target(%p) + 8 != rva(%x)\r\n", Target, rva);
 									return STATUS_ILLEGAL_DLL_RELOCATION;
 								}
 
-								if (bFirst)
-								{
-									bFirst = FALSE;
-									if (Target + 8 != rva)
-									{
-										DbgPrint("_Target(%p) + 8 != rva(%x)\r\n", Target, rva);
-										return STATUS_ILLEGAL_DLL_RELOCATION;
-									}
-									
-									pvTarget = RtlOffsetToPointer(hmod, Target);
+								pvTarget = RtlOffsetToPointer(hmod, Target);
 
-									DbgPrint("__Address: %p\r\n", pvTarget);
-								}
-								else
-								{
-									CHAR msg[0x80];
-									ULONG cch = _countof(msg);
-									if (CryptBinaryToStringA((PBYTE)*pru, 16, CRYPT_STRING_HEXASCII, msg, &cch))
-									{
-										DbgPrint("\t%hs\r\n", msg);
-									}
-#if 0
-									// mov ecx,offset x
-									if (0xb9 != prb[-1])
-									{
-										return STATUS_ILLEGAL_DLL_RELOCATION;
-									}
-									++pru;
-
-									// call __Address;
-									if (0xe8 != *prb++)
-									{
-										return STATUS_ILLEGAL_DLL_RELOCATION;
-									}
-
-									ULONG ofs = *pru++;
-
-									DbgPrint("call %p (%p + %08x)\r\n", prb + ofs, prb, ofs);
-
-									if (prb + ofs != pvTarget)
-									{
-										return STATUS_ILLEGAL_DLL_RELOCATION;
-									}
-#endif // 0
-								}
+								DbgPrint("__Address: %p\r\n", pvTarget);
 							}
 							else
-#endif // _X86_
 							{
-								DbgPrint("######## !! Exist Relocs (%x:%08x) !! ########\r\n", pu->type, rva);
-								return STATUS_ILLEGAL_DLL_RELOCATION;
+								CHAR msg[0x80];
+								ULONG cch = _countof(msg);
+								if (CryptBinaryToStringA((PBYTE)*pru, 16, CRYPT_STRING_HEXASCII, msg, &cch))
+								{
+									DbgPrint("\t%hs\r\n", msg);
+								}
+#if 0
+								// mov ecx,offset x
+								if (0xb9 != prb[-1])
+								{
+									return STATUS_ILLEGAL_DLL_RELOCATION;
+								}
+								++pru;
+
+								// call __Address;
+								if (0xe8 != *prb++)
+								{
+									return STATUS_ILLEGAL_DLL_RELOCATION;
+								}
+
+								ULONG ofs = *pru++;
+
+								DbgPrint("call %p (%p + %08x)\r\n", prb + ofs, prb, ofs);
+
+								if (prb + ofs != pvTarget)
+								{
+									return STATUS_ILLEGAL_DLL_RELOCATION;
+								}
+#endif // 0
 							}
+							}
+						else
+#endif // _X86_
+						{
+							DbgPrint("######## !! Exist Relocs (%x:%08x) !! ########\r\n", pu->type, rva);
+							return STATUS_ILLEGAL_DLL_RELOCATION;
+						}
 						}
 					}
 				} while (pu++, --SizeOfBlock);
@@ -789,12 +808,9 @@ NTSTATUS ProcessIAT(PCWSTR pszImp, PCWSTR pszMap, ULONG_PTR pvShellEnd)
 			} while (s);
 		}
 
-		DbgPrint("!! NO IMPORT, NO RELOCS. OK !!\r\n");
+	DbgPrint("!! NO IMPORT, NO RELOCS. OK !!\r\n");
 
-		return STATUS_SUCCESS;
-	}
-
-	return STATUS_INTERNAL_ERROR;
+	return STATUS_SUCCESS;
 }
 
 NTSTATUS I_CreateAsmSC(PCWSTR pwzFileName, const void* pcv, SIZE_T cb)
@@ -1101,7 +1117,7 @@ NTSTATUS NTAPI PrepareSC(PVOID Base, ULONG cb, PVOID ImageBase)
 
 	DbgPrint("PrepareSC(%p, %x, <%ws>)\r\n", Base, cb, GetCommandLineW());
 
-	//*map*imp[*bin*[?[password?]]asm*exe]
+	//*map*obj*imp*[bin]*[?password?asm][*exe]
 
 	if (PWSTR psz = wcschr(GetCommandLineW(), '*'))
 	{
@@ -1110,53 +1126,64 @@ NTSTATUS NTAPI PrepareSC(PVOID Base, ULONG cb, PVOID ImageBase)
 		if (psz = wcschr(psz, '*'))
 		{
 			*psz++ = 0;
-			PWSTR pczImp = psz, pczBin = 0, pczAsm = 0, pczExe = 0;
+
+			PWSTR pczObj = psz;
 
 			if (psz = wcschr(psz, '*'))
 			{
 				*psz++ = 0;
-				pczBin = psz;
+
+				PWSTR pczImp = psz, pczBin = 0, pczAsm = 0, pczExe = 0;
 
 				if (psz = wcschr(psz, '*'))
 				{
 					*psz++ = 0;
-					pczAsm = psz;
+
+					pczBin = psz;
 
 					if (psz = wcschr(psz, '*'))
 					{
 						*psz++ = 0;
-						pczExe = psz;
+
+						pczAsm = psz;
+
+						if (psz = wcschr(psz, '*'))
+						{
+							*psz++ = 0;
+
+							pczExe = psz;
+						}
 					}
 				}
-			}
 
-			NTSTATUS status = ProcessIAT(pczImp, pczMap, (ULONG_PTR)Base + cb);
-
-			if (0 <= status)
-			{
-				if (pczBin && *pczBin)
-				{
-					status = SaveToFile(pczBin, Base, cb);
-				}
+				NTSTATUS status = ProcessIAT(ImageBase, pczObj, pczImp, pczMap, (ULONG_PTR)Base + cb);
 
 				if (0 <= status)
 				{
-					if (pczAsm && *pczAsm)
+					if (pczBin && *pczBin)
 					{
-						status = '?' == *pczAsm ? CreateZipAsmSC(pczAsm + 1, Base, cb) : CreateAsmSC(pczAsm, Base, cb);
+						status = SaveToFile(pczBin, Base, cb);
 					}
 
 					if (0 <= status)
 					{
-						if (pczExe && *pczExe)
+						if (pczAsm && *pczAsm)
 						{
-							status = CreateExeSC(pczExe, Base, cb, ImageBase);
+							status = '?' == *pczAsm ? CreateZipAsmSC(pczAsm + 1, Base, cb) : CreateAsmSC(pczAsm, Base, cb);
+						}
+
+						if (0 <= status)
+						{
+							if (pczExe && *pczExe)
+							{
+								status = CreateExeSC(pczExe, Base, cb, ImageBase);
+							}
 						}
 					}
 				}
-			}
 
-			return PrintError(status);
+				return PrintError(status);
+			}
 		}
 	}
 

@@ -51,7 +51,7 @@
       <AdditionalDependencies>ntdllp.lib;ScEntry.lib;kernel32.lib;user32.lib</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>"$(TargetPath)" *$(OutDir)$(ProjectName).map*imp.$(PlatformTarget).asm**?zip.$(ProjectName).$(PlatformTarget).asm</Command>
+      <Command>"$(TargetPath)" *$(OutDir)$(ProjectName).map*$(PlatformTarget).obj*imp.$(PlatformTarget).asm**?zip.$(ProjectName).$(PlatformTarget).asm</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

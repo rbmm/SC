@@ -24,9 +24,9 @@ for comparison
 
 find the differences
 
-or [TestTask](TestTask) - builds in shellcode ( [TestTask.x64.exe](https://github.com/rbmm/SC/blob/main/TestTask/TestTask.x64.exe) ) although it is not small code
+or [TestTask](TestTask) - builds in shellcode ( [TestTask.x64.exe](TestTask/TestTask.x64.exe) ) although it is not small code
 
-1) **create a new project using the [NewScProj.exe](https://github.com/rbmm/SC/blob/main/NewScProj.exe) utility **
+1) **create a new project using the [NewScProj.exe](NewScProj.exe) utility **
 
 ```
 NewScProj.exe *[path\]project-name*vcp
@@ -35,13 +35,13 @@ for example, the command
 ```
 NewScProj.exe *dummy*vcp
 ```
-created a [dummy](https://github.com/rbmm/SC/blob/main/dummy) directory with several files
+created a [dummy](dummy) directory with several files
 
-[stdafx.cpp](https://github.com/rbmm/SC/blob/main/dummy/stdafx.cpp) / [stdafx.h](https://github.com/rbmm/SC/blob/main/dummy/stdafx.h) - standard precompile files
+[stdafx.cpp](dummy/stdafx.cpp) / [stdafx.h](dummy/stdafx.h) - standard precompile files
 
-[x64.asm](https://github.com/rbmm/SC/blob/main/dummy/x64.asm) / [x86.asm](https://github.com/rbmm/SC/blob/main/dummy/x86.asm) ( `$(PlatformTarget).asm` ) - contains shellcode entry point [`epASM()`](https://github.com/rbmm/SC/blob/main/dummy/x64.asm#L7) which calls [`void ep()`](https://github.com/rbmm/SC/blob/main/dummy/ep.cpp#L6) from c++ file
+[x64.asm](dummy/x64.asm) / [x86.asm](dummy/x86.asm) ( `$(PlatformTarget).asm` ) - contains shellcode entry point [`epASM()`](dummy/x64.asm#L7) which calls [`void ep()`](dummy/ep.cpp#L6) from c++ file
 
-[ep.cpp](https://github.com/rbmm/SC/blob/main/dummy/ep.cpp) - containing "user" entry point of shellcode - [`void ep()`](https://github.com/rbmm/SC/blob/main/dummy/ep.cpp#L6)
+[ep.cpp](dummy/ep.cpp) - containing "user" entry point of shellcode - [`void ep()`](dummy/ep.cpp#L6)
 
 [imp.x64.asm](dummy/imp.x64.asm) / [imp.x86.asm](dummy/imp.x86.asm) ( `imp.$(PlatformTarget).asm` ) - contains a list of imported functions for shellcode
 Initially these files are empty. We do not need to edit them manually. They will be created automatically on post build event
@@ -59,12 +59,35 @@ after our exe is built (a shellcode project is always an exe project) a post bui
 error MSB3073: The command "... ...:VCEnd" exited with code -1073741802.
 ```
 
-after that we should compile `$(PlatformTarget).asm` and press build again.
+after that we should press build again.
 this time the exe import table should be empty. and if the exe does not contain relocs in the shellcode section (for x86 there is a special case here) the final shellcode will be built
 
-that is, initially we need to do build 2 times always: build + compile `$(PlatformTarget).asm` + build
+that is, initially we need to do build 2 times always
 
-after `imp.$(PlatformTarget).asm` is built, the following builds (after changing the code) will work as usual - that is, you will need to press build 1 time instead of 2. unless we add new imported functions. in this case we need to erase all the contents of `imp.$(PlatformTarget).asm` (make the file size 0 instead of deleting it) and compile `$(PlatformTarget).asm`.
+after `imp.$(PlatformTarget).asm` is built, the following builds (after changing the code) will work as usual - that is, you will need to press build 1 time instead of 2. unless we add new imported functions. in this case we need to 3 time press buid:
+
+first time will be error
+
+```
+1>Indicates that the directory trying to be deleted is not empty.
+error MSB3073: :VCEnd" exited with code -1073741567.
+```
+
+second time error
+```
+1>{Still Busy}
+1>The specified I/O request packet (IRP) cannot be disposed of because the I/O operation is not complete.
+1>0xc0000016 (-1073741802)
+error MSB3073: :VCEnd" exited with code -1073741802.
+```
+
+and on 3-rd try
+
+```
+1>The operation completed successfully.
+1>0x0 (0)
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
+```
 
 `imp.$(PlatformTarget).asm` creates a structure in the exe similar to delayimport. and it works completely similar to how delayimport works. finds the address of the function when it is first called. and saves it. subsequent calls use the saved address. all this happens transparently for the application. we call the api as usual. moreover - we do not need to use any special macros in the source code, any special form of syntax. the function is called exactly the same as in the case of ordinary (not shell) code. nothing needs to be changed.
 if shellcode cannot find a function or a dll for it, it simply calls `__debugbreak()` any callbacks are not supported in this situation. not finding the function address is fatal (well, unless you install VEH and somehow handle such a situation in it)

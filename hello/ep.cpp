@@ -116,7 +116,7 @@ void WINAPI ep()
 
 	if (_ACC_MARTA_FUNCTIONS* pTable = GetMartaExtensionInterface())
 	{
-		MsgBox(MB_ICONWARNING, _YW(L"Marta"), _YW(L"table at %p"), pTable);
+		MsgBox(MB_ICONWARNING, _YW(L"Marta:"), _YW(L"table at %p"), pTable);
 	}
 
 	RtlDispatchAPC(_Y(ApcTest), (ULONG_PTR)_Y(ep), INVALID_HANDLE_VALUE);

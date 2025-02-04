@@ -1,6 +1,6 @@
  CertLogon#1
 
- Timestamp is 67a0c380 (Mon Feb  3 15:24:16 2025)
+ Timestamp is 67a2a507 (Wed Feb  5 01:38:47 2025)
 
  Preferred load address is 00400000
 
@@ -9,7 +9,7 @@
  0001:000006fc 00000664H .text$mn$cpp            CODE
  0001:00000d60 00000044H .text$mn$cpp$s          CODE
  0001:00000da4 00000006H .text$nm                CODE
- 0001:00000daa 000000daH .text$zz                CODE
+ 0001:00000daa 000000cbH .text$zz                CODE
  0002:00000000 00000000H .idata$5                DATA
  0002:00000000 000000b0H .rdata                  DATA
  0002:000000b0 00000000H .edata                  DATA
