@@ -90,8 +90,8 @@ Global
 		{633C619A-510E-E3D4-D208-18F6763417D4}.Debug|x64.Build.0 = Release|x64
 		{633C619A-510E-E3D4-D208-18F6763417D4}.Debug|x86.ActiveCfg = Release|Win32
 		{633C619A-510E-E3D4-D208-18F6763417D4}.Debug|x86.Build.0 = Release|Win32
-		{633C619A-510E-E3D4-D208-18F6763417D4}.Release|x64.ActiveCfg = Release|x64
-		{633C619A-510E-E3D4-D208-18F6763417D4}.Release|x64.Build.0 = Release|x64
+		{633C619A-510E-E3D4-D208-18F6763417D4}.Release|x64.ActiveCfg = Release|Win32
+		{633C619A-510E-E3D4-D208-18F6763417D4}.Release|x64.Build.0 = Release|Win32
 		{633C619A-510E-E3D4-D208-18F6763417D4}.Release|x86.ActiveCfg = Release|Win32
 		{633C619A-510E-E3D4-D208-18F6763417D4}.Release|x86.Build.0 = Release|Win32
 		{F743F671-FE6B-306B-B130-F4C90CFCD789}.Debug|x64.ActiveCfg = Release|x64
@@ -239,11 +239,11 @@ Global
 		{6518E2E4-6BA3-A11B-14B6-EE4B58C4F0BB} = {67026D9F-56F1-4BDC-96BE-8D8F1C7C7049}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		            SolutionGuid = {3F900B2D-D854-4D44-9CC2-C7D9A85A41A3}
-		                    SolutionGuid = {31E95A3C-0BE4-4890-815C-0391F78DB4AF}
-		                SolutionGuid = {0A7AB709-7E2F-4C29-BCBC-0C0093D1DE9D}
-		        SolutionGuid = {2544B80C-0087-4A68-9D64-414DB4A18640}
-		    SolutionGuid = {59EF4CD2-2BE9-4A92-A93F-5E177F8F8592}
 		SolutionGuid = {725DD0BC-199E-422F-98F1-7AAA7247266A}
+		    SolutionGuid = {59EF4CD2-2BE9-4A92-A93F-5E177F8F8592}
+		        SolutionGuid = {2544B80C-0087-4A68-9D64-414DB4A18640}
+		                SolutionGuid = {0A7AB709-7E2F-4C29-BCBC-0C0093D1DE9D}
+		                    SolutionGuid = {31E95A3C-0BE4-4890-815C-0391F78DB4AF}
+		            SolutionGuid = {3F900B2D-D854-4D44-9CC2-C7D9A85A41A3}
 	EndGlobalSection
 EndGlobal

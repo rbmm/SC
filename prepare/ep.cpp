@@ -365,6 +365,7 @@ NTSTATUS IMP_HELP::ProcessMAP(
 	ULONG_PTR Va,
 	ULONG s)
 {
+	PVOID hmod = _M_hmod;
 	PSTR buf = pcsz, psz = buf;
 
 	ULONG64 u;
@@ -375,8 +376,6 @@ __0:
 	PSTR pcszLine = pcsz;
 
 	static const char plai[] = " Preferred load address is ";
-
-	//while (!IsDebuggerPresent()) Sleep(1000); __debugbreak();
 
 	if (!f && !memcmp(pcsz, plai, _countof(plai) - 1))
 	{
@@ -439,6 +438,7 @@ __0:
 	{
 		i = strtoul(pcsz + 1, &pcsz, 16);
 
+		// <iSection>:<ofs> <s>H .idata$5                DATA
 		if ('H' != *pcsz || s != i)
 		{
 			return STATUS_BAD_DATA;
@@ -453,6 +453,8 @@ __0:
 	NTSTATUS status;
 
 __loop:
+	void** ppfn = (void**)RtlOffsetToPointer(hmod, Va - ImageBase);
+	void* pfn = *ppfn;
 
 	i = strtoul(pcsz, const_cast<char**>(&pcsz), 16);
 
@@ -465,7 +467,21 @@ __loop:
 
 	if (' ' != *pcsz || ofs != i)
 	{
-		return STATUS_BAD_DATA;
+		//while (!IsDebuggerPresent()) Sleep(1000); __debugbreak();
+		// zero end IAT
+		do
+		{
+			if (*ppfn++)
+			{
+				DbgPrint("##!! ofs(%p) != i(%p) !!##\r\n", ofs, i);
+				return STATUS_BAD_DATA;
+			}
+
+		} while (s -= sizeof(PVOID));
+
+	__ok:
+		status = SaveToFile(pszImp, buf, RtlPointerToOffset(buf, psz), TRUE);
+		return 0 > status ? status : STATUS_MORE_PROCESSING_REQUIRED;
 	}
 
 	ofs += sizeof(PVOID);
@@ -560,6 +576,12 @@ __space:
 		{
 			__imp_ = FALSE;
 
+			if (!pfn)
+			{
+				DbgPrint("##!! pfn !!## at %p\r\n", u);
+				return STATUS_BAD_DATA;
+			}
+
 			if (PCSTR str = GetName((ULONG)(u - ImageBase)))
 			{
 				ULONG np;
@@ -579,6 +601,12 @@ __space:
 		}
 		else
 		{
+			if (pfn)
+			{
+				DbgPrint("##!! pfn=%p !!## at %p\r\n", pfn, u);
+				return STATUS_BAD_DATA;
+			}
+
 			if (!_stricmp(pszDLL, "ntdll.dll"))
 			{
 				pszDLL = "";
@@ -599,8 +627,7 @@ __space:
 			goto __loop;
 		}
 
-		status = SaveToFile(pszImp, buf, RtlPointerToOffset(buf, psz), TRUE);
-		return 0 > status ? status : STATUS_MORE_PROCESSING_REQUIRED;
+		goto __ok;
 	}
 }
 

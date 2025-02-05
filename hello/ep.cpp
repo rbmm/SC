@@ -112,6 +112,8 @@ void WINAPI ep()
 {
 	CPP_FUNCTION;
 	
+	GetTickCount();
+
 	ComTest();
 
 	if (_ACC_MARTA_FUNCTIONS* pTable = GetMartaExtensionInterface())
