@@ -89,6 +89,12 @@ and on 3-rd try
 ========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
 ```
 
+why is that? exe should not have imports for successful assembly. but for it not to have imports, it should be described in `imp.$(PlatformTarget).asm`
+but we do not edit it ourselves and do not add new APIs there. accordingly, 1 build is needed to create `imp.$(PlatformTarget).asm` based on imports in exe
+
+and only on the next build we get the final file. if `imp.$(PlatformTarget).asm` was not empty at the time of the first build but we found a new/additional import in exe,
+then we must first delete `$(PlatformTarget).obj`, clear `imp.$(PlatformTarget).asm` and build again - to collect the current import in the exe itself (after all, we could not only add new APIs to the code but also delete some old ones. for example, replace use of the Fn function on FnEx)
+
 `imp.$(PlatformTarget).asm` creates a structure in the exe similar to delayimport. and it works completely similar to how delayimport works. finds the address of the function when it is first called. and saves it. subsequent calls use the saved address. all this happens transparently for the application. we call the api as usual. moreover - we do not need to use any special macros in the source code, any special form of syntax. the function is called exactly the same as in the case of ordinary (not shell) code. nothing needs to be changed.
 if shellcode cannot find a function or a dll for it, it simply calls `__debugbreak()` any callbacks are not supported in this situation. not finding the function address is fatal (well, unless you install VEH and somehow handle such a situation in it)
 
