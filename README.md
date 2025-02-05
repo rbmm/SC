@@ -207,12 +207,13 @@ if we are under the debugger - PrepareSC simply makes memory for shellcode ERW -
 otherwise the command line format for post build:
 
 ```
-"$(TargetPath)" *map*imp*[bin]*[asm]*[exe]
+"$(TargetPath)" *map*obj*imp*[bin]*[asm]*[exe]
 ```
 
 ```
 $(TargetPath) - we run our own exe for post build, ScEntry loads prepare.dll and calls PrepareSC
 map - path to map file - mandatory parameter := $(OutDir)$(ProjectName).map
+obj - object = $(PlatformTarget).obj - never must be changed
 imp - path to imp file - mandatory parameter := imp.$(PlatformTarget).asm
 bin - name of file where to save shellcode in binary form - optional parameter, can be empty
 asm - name of file where to save shellcode as asm code - i.e DQ sequense (and possible DD, DW, DB in the end)
