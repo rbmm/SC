@@ -5,6 +5,7 @@ extern ?ep@@YAXPEAU_PEB@@PEAEK@Z : PROC
 
 ; void epASM()
 ?epASM@@YAXXZ proc
+  call protect
   jmp ?ep@@YAXPEAU_PEB@@PEAEK@Z
 ?epASM@@YAXXZ endp
 

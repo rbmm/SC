@@ -35,6 +35,8 @@ void PutChars(PCWSTR pwz, ULONG cch)
 			RaiseException(DBG_PRINTEXCEPTION_WIDE_C, 0, _countof(params), params);
 		}
 
+		// while (!IsDebuggerPresent()) Sleep(1000); __debugbreak();
+
 		if (ppi->_G_hFile)
 		{
 			if (ppi->_G_bConsole)
@@ -119,7 +121,9 @@ void InitPrintf()
 	{
 		ppi->_G_CodePage = GetConsoleOutputCP();
 		ppi->_G_hFile = 0;
+		ppi->_G_bConsole = FALSE;
 
+		//while (!IsDebuggerPresent()) Sleep(1000); __debugbreak();
 		if (HANDLE hFile = GetStdHandle(STD_OUTPUT_HANDLE))
 		{
 			ppi->_G_hFile = hFile;

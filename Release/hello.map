@@ -1,16 +1,18 @@
  hello
 
- Timestamp is 67a2c605 (Wed Feb  5 03:59:33 2025)
+ Timestamp is 67a52616 (Thu Feb  6 23:13:58 2025)
 
  Preferred load address is 00400000
 
  Start         Length     Name                   Class
- 0001:00000000 0000040cH .text$mn                CODE
- 0001:0000040c 00000400H .text$mn$cpp            CODE
- 0001:0000080c 00000024H .text$mn$cpp$r          CODE
- 0001:00000830 0000008eH .text$mn$cpp$s          CODE
- 0001:000008be 00000006H .text$nm                CODE
- 0001:000008c4 000000cbH .text$zz                CODE
+ 0001:00000000 0000034cH .text$mn                CODE
+ 0001:0000034c 00000418H .text$mn$cpp            CODE
+ 0001:00000764 0000002cH .text$mn$cpp$r          CODE
+ 0001:00000790 00000870H .text$mn$cpp$s          CODE
+ 0001:00001000 000001f0H .text$mn$cpp$u          CODE
+ 0001:000011f0 00000000H .text$mn$cpp$v          CODE
+ 0001:000011f0 00000006H .text$nm                CODE
+ 0001:000011f6 000000d2H .text$zz                CODE
  0002:00000000 00000000H .idata$5                DATA
  0002:00000000 000000b0H .rdata                  DATA
  0002:000000b0 00000000H .edata                  DATA
@@ -54,65 +56,85 @@
  0000:00000000       ___x64_code_ranges_to_entry_points_count 00000000     <absolute>
  0000:00000000       ___ImageBase               00400000     <linker-defined>
  0001:00000000       ?epASM@@YGXXZ              00401000 f   x86.obj
- 0001:00000030       ?__Address@@YIPAXPBX@Z     00401030 f   x86.obj
- 0001:00000043       __alloca_probe             00401043 f   x86.obj
- 0001:00000043       __chkstk                   00401043 f   x86.obj
- 0001:00000072       @DnsMapRcodeToStatus@4     00401072 f   x86.obj
- 0001:0000009e       @DnsStatusString@4         0040109e f   x86.obj
- 0001:000000ea       _FormatMessageW@28         004010ea f   x86.obj
- 0001:00000112       _GetTickCount@0            00401112 f   x86.obj
- 0001:00000136       _ExitProcess@4             00401136 f   x86.obj
- 0001:00000182       ?GetMartaExtensionInterface@@YGPAU_ACC_MARTA_FUNCTIONS@@XZ 00401182 f   x86.obj
- 0001:000001de       _MessageBoxW@16            004011de f   x86.obj
- 0001:00000226       __vsnwprintf               00401226 f   x86.obj
- 0001:0000024a       _DbgPrint                  0040124a f   x86.obj
- 0001:0000026a       _RtlDispatchAPC@12         0040126a f   x86.obj
- 0001:00000286       _LdrGetProcedureAddress@16 00401286 f   x86.obj
- 0001:000002b6       _LdrLoadDll@16             004012b6 f   x86.obj
- 0001:000002da       _RtlInitUnicodeString@8    004012da f   x86.obj
- 0001:00000316       _CoCreateInstance@20       00401316 f   x86.obj
- 0001:0000033e       _CoInitializeEx@8          0040133e f   x86.obj
- 0001:00000366       _CoTaskMemFree@4           00401366 f   x86.obj
- 0001:0000038a       _CoUninitialize@0          0040138a f   x86.obj
- 0001:000003e0       __alloca_probe_16          004013e0 f   ntdllp:alloca16.obj
- 0001:000003f6       __alloca_probe_8           004013f6     ntdllp:alloca16.obj
- 0001:0000040c       ?MsgBox@@YAHIPB_W0ZZ       0040140c f   ep.obj
- 0001:0000045e       ?ApcTest@@YGXK@Z           0040145e f   ep.obj
- 0001:000004b6       ?ComTest@@YGXXZ            004014b6 f   ep.obj
- 0001:000005c8       ?ep@@YGXXZ                 004015c8 f   ep.obj
- 0001:0000062a       ?get_hmod@@YIPAXPB_W@Z     0040162a f   ScEntry:GetFuncAddr.obj
- 0001:00000674       ?GetFuncAddressEx@@YIPAXPAU_IMAGE_DOS_HEADER@@PBD@Z 00401674 f   ScEntry:GetFuncAddr.obj
- 0001:0000080c       __GUID_dc1c5a9c_e88a_4dde_a5a1_60f82a20aef7 0040180c     ep.obj
- 0001:0000081c       __GUID_d57c7288_d4ad_4768_be02_9d969532d960 0040181c     ep.obj
- 0001:00000830       ??_C@_0O@HELLMLPH@ApcTest?$CI?$CFp?$CJ?$AN?6@FNODOBFM@ 00401830     ep.obj
- 0001:00000840       ??_C@_1CC@NKINBMBG@?$AA?$CF?$AAh?$AAs?$AA?$AN?$AA?6?$AAe?$AAn?$AAt?$AAr?$AAy?$AA?5?$AAa?$AAt?$AA?5?$AA?$CF@FNODOBFM@ 00401840     ep.obj
- 0001:00000870       ??_C@_1M@BOLMKKCK@?$AAH?$AAe?$AAl?$AAl?$AAo@FNODOBFM@ 00401870     ep.obj
- 0001:00000880       ??_C@_17NCBHHMJ@?$AAC?$AAo?$AAm@FNODOBFM@ 00401880     ep.obj
- 0001:00000890       ??_C@_1BI@NOFJEJPO@?$AAt?$AAa?$AAb?$AAl?$AAe?$AA?5?$AAa?$AAt?$AA?5?$AA?$CF?$AAp@FNODOBFM@ 00401890     ep.obj
- 0001:000008b0       ??_C@_1O@ONGICPAA@?$AAM?$AAa?$AAr?$AAt?$AAa?$AA?3@FNODOBFM@ 004018b0     ep.obj
- 0001:000008be       ?sc_end@@YGPAXXZ           004018be f   ScEntry:prepare.obj
- 0001:000008c4       ?ScEntry@@YGXPAU_PEB@@@Z   004018c4 f   ScEntry:prepare.obj
- 0002:00000000       ??_C@_0BF@EKFKPNAI@RtlInitUnicodeString@ 00402000     ScEntry:prepare.obj
- 0002:00000018       ??_C@_1BI@NEOFKCPM@?$AAp?$AAr?$AAe?$AAp?$AAa?$AAr?$AAe?$AA?4?$AAd?$AAl?$AAl@ 00402018     ScEntry:prepare.obj
- 0002:00000030       ??_C@_0L@HOFGLFDL@LdrLoadDll@ 00402030     ScEntry:prepare.obj
- 0002:0000003c       ??_C@_0BH@GKPJJDBO@LdrGetProcedureAddress@ 0040203c     ScEntry:prepare.obj
- 0002:00000054       ??_C@_0N@FIGJGHFN@LdrUnloadDll@ 00402054     ScEntry:prepare.obj
- 0002:00000064       ??_C@_0BD@JDDPIELM@RtlExitUserProcess@ 00402064     ScEntry:prepare.obj
- 0003:00000000       ___@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUdrmDCUivovzhvUsvoolUhgwzucOlyq@4B2008FD98C1DD4 00403000     stdafx.obj
- 0003:00000004       ___@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUdrmDCUivovzhvUhxvmgibUhgwzucOlyq@4B2008FD98C1DD4 00403004     ScEntry:stdafx.obj
+ 0001:00000037       ?__Address@@YIPAXPBX@Z     00401037 f   x86.obj
+ 0001:0000004a       __alloca_probe             0040104a f   x86.obj
+ 0001:0000004a       __chkstk                   0040104a f   x86.obj
+ 0001:000000e2       @DnsMapRcodeToStatus@4     004010e2 f   x86.obj
+ 0001:00000103       @DnsStatusString@4         00401103 f   x86.obj
+ 0001:00000124       _FormatMessageW@28         00401124 f   x86.obj
+ 0001:00000145       _IsProcessCritical@8       00401145 f   x86.obj
+ 0001:00000166       _ExitProcess@4             00401166 f   x86.obj
+ 0001:00000187       ?GetMartaExtensionInterface@@YGPAU_ACC_MARTA_FUNCTIONS@@XZ 00401187 f   x86.obj
+ 0001:000001a8       _MessageBoxW@16            004011a8 f   x86.obj
+ 0001:000001c9       __vsnwprintf               004011c9 f   x86.obj
+ 0001:000001ea       _DbgPrint                  004011ea f   x86.obj
+ 0001:0000020b       _RtlDispatchAPC@12         0040120b f   x86.obj
+ 0001:0000022c       _LdrGetProcedureAddress@16 0040122c f   x86.obj
+ 0001:0000024d       _LdrLoadDll@16             0040124d f   x86.obj
+ 0001:0000026e       _RtlInitUnicodeString@8    0040126e f   x86.obj
+ 0001:0000028f       _CoCreateInstance@20       0040128f f   x86.obj
+ 0001:000002b0       _CoInitializeEx@8          004012b0 f   x86.obj
+ 0001:000002d1       _CoTaskMemFree@4           004012d1 f   x86.obj
+ 0001:000002f2       _CoUninitialize@0          004012f2 f   x86.obj
+ 0001:00000320       __alloca_probe_16          00401320 f   ntdllp:alloca16.obj
+ 0001:00000336       __alloca_probe_8           00401336     ntdllp:alloca16.obj
+ 0001:0000034c       ?MsgBox@@YAHIPB_W0ZZ       0040134c f   ep.obj
+ 0001:0000039e       ?ApcTest@@YGXK@Z           0040139e f   ep.obj
+ 0001:000003f6       ?ComTest@@YGXXZ            004013f6 f   ep.obj
+ 0001:00000508       ?ep@@YGXXZ                 00401508 f   ep.obj
+ 0001:00000572       ?GetNtBase@@YGPAXXZ        00401572 f   ScEntry:GetFuncAddr.obj
+ 0001:00000585       ?get_hmod@@YIPAXPB_W@Z     00401585 f   ScEntry:GetFuncAddr.obj
+ 0001:000005cf       ?GetFuncAddressEx@@YIPAXPAU_IMAGE_DOS_HEADER@@PBD@Z 004015cf f   ScEntry:GetFuncAddr.obj
+ 0001:00000764       __GUID_dc1c5a9c_e88a_4dde_a5a1_60f82a20aef7 00401764     ep.obj
+ 0001:00000774       __GUID_d57c7288_d4ad_4768_be02_9d969532d960 00401774     ep.obj
+ 0001:00000790       ??_C@_0O@HELLMLPH@ApcTest?$CI?$CFp?$CJ?$AN?6@FNODOBFM@ 00401790     ep.obj
+ 0001:000007a0       ??_C@_1CC@NKINBMBG@?$AA?$CF?$AAh?$AAs?$AA?$AN?$AA?6?$AAe?$AAn?$AAt?$AAr?$AAy?$AA?5?$AAa?$AAt?$AA?5?$AA?$CF@FNODOBFM@ 004017a0     ep.obj
+ 0001:000007d0       ??_C@_1M@BOLMKKCK@?$AAH?$AAe?$AAl?$AAl?$AAo@FNODOBFM@ 004017d0     ep.obj
+ 0001:000007e0       ??_C@_17NCBHHMJ@?$AAC?$AAo?$AAm@FNODOBFM@ 004017e0     ep.obj
+ 0001:000007f0       ??_C@_1BI@NOFJEJPO@?$AAt?$AAa?$AAb?$AAl?$AAe?$AA?5?$AAa?$AAt?$AA?5?$AA?$CF?$AAp@FNODOBFM@ 004017f0     ep.obj
+ 0001:00000810       ??_C@_1O@ONGICPAA@?$AAM?$AAa?$AAr?$AAt?$AAa?$AA?3@FNODOBFM@ 00401810     ep.obj
+ 0001:000011f0       ?sc_end@@YGPAXXZ           004021f0 f   ScEntry:prepare.obj
+ 0001:000011f6       ?ScEntry@@YGXPAU_PEB@@@Z   004021f6 f   ScEntry:prepare.obj
+ 0002:00000000       ??_C@_0BF@EKFKPNAI@RtlInitUnicodeString@ 00403000     ScEntry:prepare.obj
+ 0002:00000018       ??_C@_1BI@NEOFKCPM@?$AAp?$AAr?$AAe?$AAp?$AAa?$AAr?$AAe?$AA?4?$AAd?$AAl?$AAl@ 00403018     ScEntry:prepare.obj
+ 0002:00000030       ??_C@_0L@HOFGLFDL@LdrLoadDll@ 00403030     ScEntry:prepare.obj
+ 0002:0000003c       ??_C@_0BH@GKPJJDBO@LdrGetProcedureAddress@ 0040303c     ScEntry:prepare.obj
+ 0002:00000054       ??_C@_0N@FIGJGHFN@LdrUnloadDll@ 00403054     ScEntry:prepare.obj
+ 0002:00000064       ??_C@_0BD@JDDPIELM@RtlExitUserProcess@ 00403064     ScEntry:prepare.obj
+ 0003:00000000       ___@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUdrmDCUivovzhvUsvoolUhgwzucOlyq@4B2008FD98C1DD4 00404000     stdafx.obj
+ 0003:00000004       ___@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUdrmDCUivovzhvUhxvmgibUhgwzucOlyq@4B2008FD98C1DD4 00404004     ScEntry:stdafx.obj
 
- entry point at        0001:000008c4
+ entry point at        0001:000011f6
 
  Static symbols
 
- 0000:ffffb000       .debug$S                   00400000     ntdllp:ntdll.dll
- 0000:ffffb000       .debug$S                   00400000     ntdllp:ntdll.dll
- 0002:ffffe000       .idata$6                   00400000     ntdllp:ntdll.dll
- 0001:00000005       common_imp_call            00401005 f   x86.obj
- 0001:000000c7       dnsapi                     004010c7 f   x86.obj
- 0001:0000015b       kernel32                   0040115b f   x86.obj
- 0001:000001b7       ntmarta                    004011b7 f   x86.obj
- 0001:00000203       user32                     00401203 f   x86.obj
- 0001:00000307       ntdllp                     00401307 f   x86.obj
- 0001:000003b3       ole32                      004013b3 f   x86.obj
- 0001:000003e0       $$000000                   004013e0     ntdllp:alloca16.obj
+ 0000:ffffa000       .debug$S                   00400000     ntdllp:ntdll.dll
+ 0000:ffffa000       .debug$S                   00400000     ntdllp:ntdll.dll
+ 0002:ffffd000       .idata$6                   00400000     ntdllp:ntdll.dll
+ 0001:0000000a       common_imp_call            0040100a f   x86.obj
+ 0001:00000075       protect                    00401075 f   x86.obj
+ 0001:00000320       $$000000                   00401320     ntdllp:alloca16.obj
+ 0001:00001000       ?@DnsMapRcodeToStatus@4    00402000     x86.obj
+ 0001:00001000       @imp_begin@                00402000     x86.obj
+ 0001:00001018       ?@DnsStatusString@4        00402018     x86.obj
+ 0001:0000102c       @dnsapi                    0040202c     x86.obj
+ 0001:00001048       ?_FormatMessageW@28        00402048     x86.obj
+ 0001:0000105c       ?_IsProcessCritical@8      0040205c     x86.obj
+ 0001:00001074       ?_ExitProcess@4            00402074     x86.obj
+ 0001:00001084       @kernel32                  00402084     x86.obj
+ 0001:000010a4       ??GetMartaExtensionInterface@@YGPAU_ACC_MARTA_FUNCTIONS@@XZ 004020a4     x86.obj
+ 0001:000010c4       @ntmarta                   004020c4     x86.obj
+ 0001:000010e0       ?_MessageBoxW@16           004020e0     x86.obj
+ 0001:000010f0       @user32                    004020f0     x86.obj
+ 0001:0000110c       ?__vsnwprintf              0040210c     x86.obj
+ 0001:0000111c       ?_DbgPrint                 0040211c     x86.obj
+ 0001:0000112c       ?_RtlDispatchAPC@12        0040212c     x86.obj
+ 0001:00001134       ?_LdrGetProcedureAddress@16 00402134     x86.obj
+ 0001:00001150       ?_LdrLoadDll@16            00402150     x86.obj
+ 0001:00001160       ?_RtlInitUnicodeString@8   00402160     x86.obj
+ 0001:0000117c       @ntdllp                    0040217c     x86.obj
+ 0001:00001184       ?_CoCreateInstance@20      00402184     x86.obj
+ 0001:0000119c       ?_CoInitializeEx@8         0040219c     x86.obj
+ 0001:000011b0       ?_CoTaskMemFree@4          004021b0     x86.obj
+ 0001:000011c4       ?_CoUninitialize@0         004021c4     x86.obj
+ 0001:000011d8       @ole32                     004021d8     x86.obj

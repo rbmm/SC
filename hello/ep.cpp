@@ -112,7 +112,8 @@ void WINAPI ep()
 {
 	CPP_FUNCTION;
 	
-	GetTickCount();
+	BOOL b;
+	IsProcessCritical(NtCurrentProcess(), &b);
 
 	ComTest();
 

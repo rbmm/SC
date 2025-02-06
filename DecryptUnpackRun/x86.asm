@@ -9,7 +9,8 @@ extern ?ep@@YGXPAU_PEB@@PAEK@Z : PROC
 
 ; void __stdcall epASM()
 ?epASM@@YGXXZ proc
-	jmp ?ep@@YGXPAU_PEB@@PAEK@Z
+  call protect
+  jmp ?ep@@YGXPAU_PEB@@PAEK@Z
 ?epASM@@YGXXZ endp
 
 include <../scentry/nobase.x86.inc>

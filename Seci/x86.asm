@@ -9,6 +9,7 @@ extern ?OnApc@@YGXKKPAX@Z : PROC
 
 ; void __stdcall epASM()
 ?epASM@@YGXXZ proc
+  call protect
   jmp ?OnApc@@YGXKKPAX@Z
 ?epASM@@YGXXZ endp
 

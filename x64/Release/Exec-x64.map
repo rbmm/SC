@@ -1,15 +1,17 @@
  Exec-x64
 
- Timestamp is 67a0c1c8 (Mon Feb  3 15:16:56 2025)
+ Timestamp is 67a52368 (Thu Feb  6 23:02:32 2025)
 
  Preferred load address is 0000000140000000
 
  Start         Length     Name                   Class
- 0001:00000000 00000534H .text$mn                CODE
- 0001:00000534 00000b6cH .text$mn$cpp            CODE
- 0001:000010a0 0000006cH .text$mn$cpp$s          CODE
- 0001:0000110c 00000008H .text$nm                CODE
- 0001:00001114 00000112H .text$zz                CODE
+ 0001:00000000 00000318H .text$mn                CODE
+ 0001:00000318 00000b88H .text$mn$cpp            CODE
+ 0001:00000ea0 00000160H .text$mn$cpp$s          CODE
+ 0001:00001000 000002d0H .text$mn$cpp$u          CODE
+ 0001:000012d0 00000000H .text$mn$cpp$v          CODE
+ 0001:000012d0 00000008H .text$nm                CODE
+ 0001:000012d8 00000108H .text$zz                CODE
  0002:00000000 000000b4H .rdata                  DATA
  0002:000000b4 00000068H .rdata$zzzdbg           DATA
  0002:0000011c 0000007cH .xdata                  DATA
@@ -50,43 +52,44 @@
  0000:00000000       __x64_code_ranges_to_entry_points_count 0000000000000000     <absolute>
  0000:00000000       __ImageBase                0000000140000000     <linker-defined>
  0001:00000000       ?epASM@@YAXXZ              0000000140001000 f   x64.obj
- 0001:00000025       __chkstk                   0000000140001025 f   x64.obj
- 0001:000000c5       RtlImageNtHeader           00000001400010c5 f   x64.obj
- 0001:000000f1       RtlImageDirectoryEntryToData 00000001400010f1 f   x64.obj
- 0001:0000012d       LdrProcessRelocationBlock  000000014000112d f   x64.obj
- 0001:00000162       ZwProtectVirtualMemory     0000000140001162 f   x64.obj
- 0001:00000197       ZwQueryInformationThread   0000000140001197 f   x64.obj
- 0001:000001c9       ZwSetInformationThread     00000001400011c9 f   x64.obj
- 0001:000001ff       ZwGetContextThread         00000001400011ff f   x64.obj
- 0001:0000022b       ZwSetContextThread         000000014000122b f   x64.obj
- 0001:0000025b       ZwMapViewOfSection         000000014000125b f   x64.obj
- 0001:0000028b       NtQueryInformationProcess  000000014000128b f   x64.obj
- 0001:000002c2       ZwWriteVirtualMemory       00000001400012c2 f   x64.obj
- 0001:000002f5       ZwResumeThread             00000001400012f5 f   x64.obj
- 0001:0000031f       ZwUnmapViewOfSection       000000014000131f f   x64.obj
- 0001:0000034d       NtClose                    000000014000134d f   x64.obj
- 0001:00000370       RtlInitUnicodeString       0000000140001370 f   x64.obj
- 0001:000003a5       NtOpenFile                 00000001400013a5 f   x64.obj
- 0001:000003cb       NtQueryDirectoryFile       00000001400013cb f   x64.obj
- 0001:000003fd       NtCreateSection            00000001400013fd f   x64.obj
- 0001:00000428       memcpy                     0000000140001428 f   x64.obj
- 0001:0000044f       LdrLoadDll                 000000014000144f f   x64.obj
- 0001:00000473       LdrGetProcedureAddress     0000000140001473 f   x64.obj
- 0001:000004a7       RtlAllocateHeap            00000001400014a7 f   x64.obj
- 0001:000004d0       RtlFreeHeap                00000001400014d0 f   x64.obj
- 0001:000004fc       memset                     00000001400014fc f   x64.obj
- 0001:00000534       ?ProtectImage@@YAJPEAX0PEAU_IMAGE_NT_HEADERS64@@@Z 0000000140001534 f   ep.obj
- 0001:00000628       ?GetWowContext@@YAJPEAXPEAU_CONTEXT@@@Z 0000000140001628 f   ep.obj
- 0001:0000064c       ?SetWowContext@@YAJPEAXPEAU_CONTEXT@@@Z 000000014000164c f   ep.obj
- 0001:00000660       ?Exec@@YAHPEAX00@Z         0000000140001660 f   ep.obj
- 0001:00000aa0       ?FindNoCfgDll@@YAJKKKPEAPEAX@Z 0000000140001aa0 f   NoCfg.obj
- 0001:00000ebc       ?get_hmod@@YAPEAXPEB_W@Z   0000000140001ebc f   ScEntry:GetFuncAddr.obj
- 0001:00000f18       ?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z 0000000140001f18 f   ScEntry:GetFuncAddr.obj
- 0001:000010a0       ??_C@_1CK@GMBENNHD@?$AA?2?$AAs?$AAy?$AAs?$AAt?$AAe?$AAm?$AAr?$AAo?$AAo?$AAt?$AA?2?$AAs?$AAy?$AAs@FNODOBFM@ 00000001400020a0     NoCfg.obj
- 0001:000010d0       ??_C@_1CK@JEHFHMMG@?$AA?2?$AAs?$AAy?$AAs?$AAt?$AAe?$AAm?$AAr?$AAo?$AAo?$AAt?$AA?2?$AAs?$AAy?$AAs@FNODOBFM@ 00000001400020d0     NoCfg.obj
- 0001:00001100       ??_C@_1M@HNNPBALB@?$AA?$CK?$AA?4?$AAd?$AAl?$AAl@FNODOBFM@ 0000000140002100     NoCfg.obj
- 0001:0000110c       ?sc_end@@YAPEAXXZ          000000014000210c f   ScEntry:prepare.obj
- 0001:00001114       ?ScEntry@@YAXPEAU_PEB@@@Z  0000000140002114 f   ScEntry:prepare.obj
+ 0001:0000002a       __chkstk                   000000014000102a f   x64.obj
+ 0001:0000014e       RtlImageNtHeader           000000014000114e f   x64.obj
+ 0001:00000161       RtlImageDirectoryEntryToData 0000000140001161 f   x64.obj
+ 0001:00000174       LdrProcessRelocationBlock  0000000140001174 f   x64.obj
+ 0001:00000187       ZwProtectVirtualMemory     0000000140001187 f   x64.obj
+ 0001:0000019a       ZwQueryInformationThread   000000014000119a f   x64.obj
+ 0001:000001ad       ZwSetInformationThread     00000001400011ad f   x64.obj
+ 0001:000001c0       ZwGetContextThread         00000001400011c0 f   x64.obj
+ 0001:000001d3       ZwSetContextThread         00000001400011d3 f   x64.obj
+ 0001:000001e6       ZwMapViewOfSection         00000001400011e6 f   x64.obj
+ 0001:000001f9       NtQueryInformationProcess  00000001400011f9 f   x64.obj
+ 0001:0000020c       ZwWriteVirtualMemory       000000014000120c f   x64.obj
+ 0001:0000021f       ZwResumeThread             000000014000121f f   x64.obj
+ 0001:00000232       ZwUnmapViewOfSection       0000000140001232 f   x64.obj
+ 0001:00000245       NtClose                    0000000140001245 f   x64.obj
+ 0001:00000258       RtlInitUnicodeString       0000000140001258 f   x64.obj
+ 0001:0000026b       NtOpenFile                 000000014000126b f   x64.obj
+ 0001:0000027e       NtQueryDirectoryFile       000000014000127e f   x64.obj
+ 0001:00000291       NtCreateSection            0000000140001291 f   x64.obj
+ 0001:000002a4       memcpy                     00000001400012a4 f   x64.obj
+ 0001:000002b7       LdrLoadDll                 00000001400012b7 f   x64.obj
+ 0001:000002ca       LdrGetProcedureAddress     00000001400012ca f   x64.obj
+ 0001:000002dd       RtlAllocateHeap            00000001400012dd f   x64.obj
+ 0001:000002f0       RtlFreeHeap                00000001400012f0 f   x64.obj
+ 0001:00000303       memset                     0000000140001303 f   x64.obj
+ 0001:00000318       ?ProtectImage@@YAJPEAX0PEAU_IMAGE_NT_HEADERS64@@@Z 0000000140001318 f   ep.obj
+ 0001:0000040c       ?GetWowContext@@YAJPEAXPEAU_CONTEXT@@@Z 000000014000140c f   ep.obj
+ 0001:00000430       ?SetWowContext@@YAJPEAXPEAU_CONTEXT@@@Z 0000000140001430 f   ep.obj
+ 0001:00000444       ?Exec@@YAHPEAX00@Z         0000000140001444 f   ep.obj
+ 0001:00000884       ?FindNoCfgDll@@YAJKKKPEAPEAX@Z 0000000140001884 f   NoCfg.obj
+ 0001:00000ca0       ?GetNtBase@@YAPEAXXZ       0000000140001ca0 f   ScEntry:GetFuncAddr.obj
+ 0001:00000cbc       ?get_hmod@@YAPEAXPEB_W@Z   0000000140001cbc f   ScEntry:GetFuncAddr.obj
+ 0001:00000d18       ?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z 0000000140001d18 f   ScEntry:GetFuncAddr.obj
+ 0001:00000ea0       ??_C@_1CK@GMBENNHD@?$AA?2?$AAs?$AAy?$AAs?$AAt?$AAe?$AAm?$AAr?$AAo?$AAo?$AAt?$AA?2?$AAs?$AAy?$AAs@FNODOBFM@ 0000000140001ea0     NoCfg.obj
+ 0001:00000ed0       ??_C@_1CK@JEHFHMMG@?$AA?2?$AAs?$AAy?$AAs?$AAt?$AAe?$AAm?$AAr?$AAo?$AAo?$AAt?$AA?2?$AAs?$AAy?$AAs@FNODOBFM@ 0000000140001ed0     NoCfg.obj
+ 0001:00000f00       ??_C@_1M@HNNPBALB@?$AA?$CK?$AA?4?$AAd?$AAl?$AAl@FNODOBFM@ 0000000140001f00     NoCfg.obj
+ 0001:000012d0       ?sc_end@@YAPEAXXZ          00000001400022d0 f   ScEntry:prepare.obj
+ 0001:000012d8       ?ScEntry@@YAXPEAU_PEB@@@Z  00000001400022d8 f   ScEntry:prepare.obj
  0002:00000000       ??_C@_0BF@EKFKPNAI@RtlInitUnicodeString@ 0000000140003000     ScEntry:prepare.obj
  0002:00000018       ??_C@_1BI@NEOFKCPM@?$AAp?$AAr?$AAe?$AAp?$AAa?$AAr?$AAe?$AA?4?$AAd?$AAl?$AAl@ 0000000140003018     ScEntry:prepare.obj
  0002:00000030       ??_C@_0L@HOFGLFDL@LdrLoadDll@ 0000000140003030     ScEntry:prepare.obj
@@ -96,12 +99,38 @@
  0003:00000000       __@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUcGEUivovzhvUvcvxRcGEUhgwzucOlyq@4B2008FD98C1DD4 0000000140004000     stdafx.obj
  0003:00000004       __@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUcGEUivovzhvUhxvmgibUhgwzucOlyq@4B2008FD98C1DD4 0000000140004004     ScEntry:stdafx.obj
 
- entry point at        0001:00001114
+ entry point at        0001:000012d8
 
  Static symbols
 
- 0001:00000072       common_imp_call            0000000140001072 f   x64.obj
- 0001:0000051f       ntdllp                     000000014000151f f   x64.obj
+ 0001:00000077       common_imp_call            0000000140001077 f   x64.obj
+ 0001:000000ca       protect                    00000001400010ca f   x64.obj
+ 0001:00001000       ?RtlImageNtHeader          0000000140002000     x64.obj
+ 0001:00001000       @imp_begin@                0000000140002000     x64.obj
+ 0001:00001020       ?RtlImageDirectoryEntryToData 0000000140002020     x64.obj
+ 0001:00001048       ?LdrProcessRelocationBlock 0000000140002048     x64.obj
+ 0001:00001070       ?ZwProtectVirtualMemory    0000000140002070     x64.obj
+ 0001:00001090       ?ZwQueryInformationThread  0000000140002090     x64.obj
+ 0001:000010b8       ?ZwSetInformationThread    00000001400020b8     x64.obj
+ 0001:000010d8       ?ZwGetContextThread        00000001400020d8     x64.obj
+ 0001:000010f8       ?ZwSetContextThread        00000001400020f8     x64.obj
+ 0001:00001118       ?ZwMapViewOfSection        0000000140002118     x64.obj
+ 0001:00001138       ?NtQueryInformationProcess 0000000140002138     x64.obj
+ 0001:00001160       ?ZwWriteVirtualMemory      0000000140002160     x64.obj
+ 0001:00001180       ?ZwResumeThread            0000000140002180     x64.obj
+ 0001:00001198       ?ZwUnmapViewOfSection      0000000140002198     x64.obj
+ 0001:000011b8       ?NtClose                   00000001400021b8     x64.obj
+ 0001:000011c8       ?RtlInitUnicodeString      00000001400021c8     x64.obj
+ 0001:000011e8       ?NtOpenFile                00000001400021e8     x64.obj
+ 0001:00001200       ?NtQueryDirectoryFile      0000000140002200     x64.obj
+ 0001:00001220       ?NtCreateSection           0000000140002220     x64.obj
+ 0001:00001238       ?memcpy                    0000000140002238     x64.obj
+ 0001:00001248       ?LdrLoadDll                0000000140002248     x64.obj
+ 0001:00001260       ?LdrGetProcedureAddress    0000000140002260     x64.obj
+ 0001:00001280       ?RtlAllocateHeap           0000000140002280     x64.obj
+ 0001:00001298       ?RtlFreeHeap               0000000140002298     x64.obj
+ 0001:000012b0       ?memset                    00000001400022b0     x64.obj
+ 0001:000012c0       @ntdllp                    00000001400022c0     x64.obj
  0002:0000011c       $unwind$?ProtectImage@@YAJPEAX0PEAU_IMAGE_NT_HEADERS64@@@Z 000000014000311c     ep.obj
  0002:0000012c       $unwind$?GetWowContext@@YAJPEAXPEAU_CONTEXT@@@Z 000000014000312c     ep.obj
  0002:00000134       $unwind$?Exec@@YAHPEAX00@Z 0000000140003134     ep.obj

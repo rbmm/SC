@@ -9,7 +9,8 @@ extern ?LoadLibraryFromMem@@YGJPAXKPAPAX@Z : PROC
 
 ; void __stdcall epASM()
 ?epASM@@YGXXZ proc
-	jmp ?LoadLibraryFromMem@@YGJPAXKPAPAX@Z
+  call protect
+  jmp ?LoadLibraryFromMem@@YGJPAXKPAPAX@Z
 ?epASM@@YGXXZ endp
 
 include <../scentry/nobase.x86.inc>
@@ -19,8 +20,8 @@ extern ?retFromMapViewOfSection@@YIJJ@Z : PROC
 
 ; long __stdcall aretFromMapViewOfSection(void)
 ?aretFromMapViewOfSection@@YGJXZ proc
-	mov ecx,eax
-	call ?retFromMapViewOfSection@@YIJJ@Z
+  mov ecx,eax
+  call ?retFromMapViewOfSection@@YIJJ@Z
 ?aretFromMapViewOfSection@@YGJXZ endp
 
 include <imp.x86.asm>

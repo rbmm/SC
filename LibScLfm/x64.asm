@@ -1,4 +1,4 @@
-shellcode SEGMENT READ WRITE EXECUTE ALIAS(".shlcode") 'CODE'
+shellcode SEGMENT READ EXECUTE ALIAS(".shlcode") 'CODE'
 
 	ALIGN 16
 ; long __cdecl LoadLibraryFromMem(void *,unsigned __int64,void **)

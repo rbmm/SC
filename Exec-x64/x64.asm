@@ -15,7 +15,7 @@ extern ?Exec@@YAHPEAX00@Z : PROC
   mov edx,edx
   mov r8d,edi
   mov r9d,esi
-  
+  call protect
   call ?Exec@@YAHPEAX00@Z
 
   add rsp,28h

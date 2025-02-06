@@ -21,6 +21,9 @@
     <ClCompile Include="ep.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="zip.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -31,16 +34,8 @@
     <CustomBuild Include="x86.asm">
       <Filter>Source Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="x64.asm">
+    <CustomBuild Include="@.vcxproj">
       <Filter>Source Files</Filter>
     </CustomBuild>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imp.x64.asm">
-      <Filter>Source Files</Filter>
-    </None>
-    <None Include="imp.x86.asm">
-      <Filter>Source Files</Filter>
-    </None>
   </ItemGroup>
 </Project>

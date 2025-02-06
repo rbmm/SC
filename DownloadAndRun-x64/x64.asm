@@ -5,7 +5,8 @@ extern ?ep@@YAXXZ : PROC
 
 ; void epASM()
 ?epASM@@YAXXZ proc
-	jmp ?ep@@YAXXZ
+  call protect
+  jmp ?ep@@YAXXZ
 ?epASM@@YAXXZ endp
 
 include <..\scentry\nobase.x64.inc>
