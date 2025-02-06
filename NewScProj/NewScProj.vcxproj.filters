@@ -34,8 +34,6 @@
     <CustomBuild Include="x86.asm">
       <Filter>Source Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="@.vcxproj">
-      <Filter>Source Files</Filter>
-    </CustomBuild>
+    <CustomBuild Include="@.vcxproj" />
   </ItemGroup>
 </Project>
