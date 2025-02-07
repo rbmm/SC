@@ -127,6 +127,7 @@ extern ?ep@@YAXXZ : PROC
 
 ; void epASM()
 ?epASM@@YAXXZ proc
+  call protect
   jmp ?ep@@YAXXZ
 ?epASM@@YAXXZ endp
 ```
@@ -138,7 +139,8 @@ extern ?LoadLibraryFromMem@@YAJPEAX_KPEAPEAX@Z : PROC
 
 ; void epASM()
 ?epASM@@YAXXZ proc
-	jmp ?LoadLibraryFromMem@@YAJPEAX_KPEAPEAX@Z
+  call protect
+  jmp ?LoadLibraryFromMem@@YAJPEAX_KPEAPEAX@Z
 ?epASM@@YAXXZ endp
 ```
 
@@ -159,6 +161,10 @@ it will be executed only at the stage of shellcode assembly (post build step) an
 
 but the CRT part from the file [GetFuncAddr.cpp](ScEntry/GetFuncAddr.cpp) will be present - `GetFuncAddressEx`, `get_hmod`, `GetNtBase()` - used in runtime for import resolve and can be
 [called](ScLfm/ep.cpp#L407) separate too
+
+the `protect` function change protection of import table of the shellcode to PAGE_READWRITE, in case shellcode aligned to PAGE_SIZE ( 0x1000 ) (VirtualAlloc always return address aligned on PAGE_SIZE)
+if shellcode not aligned on this, memory of it must be ERW. if aligned - can be ER
+
 
 4) **post build step**
 
@@ -357,7 +363,7 @@ in [ScEntry\ep.cpp](ScEntry/prepare.cpp#L10) I use a special marker function
 
 void* sc_end()
 {
-return sc_end;
+  return sc_end;
 }
 ```
 
@@ -369,6 +375,8 @@ and the CRT entry point - `ScEntry(PEB* peb)` - in `#pragma code_seg(".text$zz")
 .text$mn$cpp            c/c++ code from ep.cpp and any other src files
 .text$mn$cpp$r          const data, can be __GUID_... when we use class/struct with __declspec(uuid("")) and __uuidof of this class
 .text$mn$cpp$s          strings ( ??_C@_...)
+.text$mn$cpp$u          import section. must be writable memory. if sc aligned on PAGE_SIZE `protect` auto set RW protection here.
+.text$mn$cpp$v		end of import
 /*---------------- end of shellcode (sc_end) ----------------*/
 .text$nm                void* sc_end()
 .text$zz                void WINAPI ScEntry(PEB* peb)
