@@ -60,9 +60,15 @@ name proc
 name endp
 endm
 
+IFDEF _ERW_
+	_ALIGN_ = 16
+ELSE
+	_ALIGN_ = 4096
+ENDIF
+
 HMOD macro name, str
 
-_TEXT$cpp$u SEGMENT ALIGN(4096)
+_TEXT$cpp$u SEGMENT ALIGN(_ALIGN_)
 	ALIGN 8
 @CatStr(@,name) LABEL BYTE
 	DQ 0
@@ -79,7 +85,7 @@ endm
 
 createFunc? macro hmod, name, string
 
-_TEXT$cpp$u SEGMENT ALIGN(4096)
+_TEXT$cpp$u SEGMENT ALIGN(_ALIGN_)
 	ALIGN 8
 @CatStr(?,name) LABEL BYTE
 	DQ 0
@@ -139,7 +145,9 @@ common_imp_call proc private
   jmp rax
 common_imp_call endp
 
-_TEXT$cpp$u SEGMENT ALIGN(4096)
+IFNDEF _ERW_
+
+_TEXT$cpp$u SEGMENT ALIGN(_ALIGN_)
 @imp_begin@ LABEL BYTE
 _TEXT$cpp$u ENDS
 
@@ -199,3 +207,5 @@ protect proc private
 	ret
 	
 protect endp
+
+ENDIF ; _ERW_

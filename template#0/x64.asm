@@ -1,7 +1,7 @@
 .code
 
-; 
-_ERW_ = 1
+; _ERW_ = 1
+
 ; void ep()
 extern ?ep@@YAXXZ : PROC
 
@@ -12,7 +12,8 @@ IFNDEF _ERW_
     call protect
 ENDIF
 
-  jmp ?ep@@YAXXZ
+    jmp ?ep@@YAXXZ
+
 ?epASM@@YAXXZ endp
 
 include <..\scentry\nobase.x64.inc>

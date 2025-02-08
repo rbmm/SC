@@ -7,9 +7,15 @@
 ; long __stdcall LoadLibraryFromMem(void *,unsigned long,void **)
 extern ?LoadLibraryFromMem@@YGJPAXKPAPAX@Z : PROC
 
+; _ERW_ = 1
+
 ; void __stdcall epASM()
 ?epASM@@YGXXZ proc
-  call protect
+
+IFNDEF _ERW_
+    call protect
+ENDIF
+
   jmp ?LoadLibraryFromMem@@YGJPAXKPAPAX@Z
 ?epASM@@YGXXZ endp
 

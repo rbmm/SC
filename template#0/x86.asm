@@ -4,10 +4,10 @@
 
 .code
 
+; _ERW_ = 1
+
 ; void __stdcall ep()
 extern ?ep@@YGXXZ : PROC
-
-; _ERW_ = 1
 
 ; void __stdcall epASM()
 ?epASM@@YGXXZ proc
@@ -16,8 +16,9 @@ IFNDEF _ERW_
     call protect
 ENDIF
 
-  jmp ?ep@@YGXXZ
+    jmp ?ep@@YGXXZ
 ?epASM@@YGXXZ endp
+
 
 include <../scentry/nobase.x86.inc>
 

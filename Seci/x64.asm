@@ -3,9 +3,15 @@
 ; void __cdecl OnApc(unsigned long,unsigned long,void *)
 extern ?OnApc@@YAXKKPEAX@Z : PROC
 
+; _ERW_ = 1
+
 ; void epASM()
 ?epASM@@YAXXZ proc
-  call protect
+
+IFNDEF _ERW_
+    call protect
+ENDIF
+
   jmp ?OnApc@@YAXKKPEAX@Z
 ?epASM@@YAXXZ endp
 

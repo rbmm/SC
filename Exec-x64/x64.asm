@@ -5,6 +5,8 @@ extern ?Exec@@YAHPEAX00@Z : PROC
 
 ; void __cdecl epASM(struct _PEB *)
 
+; _ERW_ = 1
+
 ?epASM@@YAXXZ proc
   mov rax,gs:[10h]
   xchg rsp,rax    ; set 64-bit stack
@@ -15,7 +17,11 @@ extern ?Exec@@YAHPEAX00@Z : PROC
   mov edx,edx
   mov r8d,edi
   mov r9d,esi
-  call protect
+
+IFNDEF _ERW_
+    call protect
+ENDIF
+
   call ?Exec@@YAHPEAX00@Z
 
   add rsp,28h

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Release|x64">
       <Configuration>Release</Configuration>
       <Platform>x64</Platform>
@@ -9,8 +13,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{681FB087-6d8a-2F13-C390-821D69E4C8D6}</ProjectGuid>
-    <RootNamespace>TestTask</RootNamespace>
+    <ProjectGuid>{6D74CB1A-bace-5658-69AF-B143EF7B8999}</ProjectGuid>
+    <RootNamespace>template#0</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <UserRootDir>$(SolutionDir)..\MSBuild\v4.0</UserRootDir>
   </PropertyGroup>
@@ -36,7 +40,7 @@
       <BufferSecurityCheck>false</BufferSecurityCheck>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableUAC>false</EnableUAC>
@@ -44,28 +48,19 @@
       <EntryPointSymbol Condition="'$(PlatformTarget)'=='x64'">?ScEntry@@YAXPEAU_PEB@@@Z</EntryPointSymbol>
       <AdditionalOptions>/EMITPOGOPHASEINFO /EMITVOLATILEMETADATA:NO %(AdditionalOptions)</AdditionalOptions>
       <GenerateMapFile>true</GenerateMapFile>
-      <AdditionalDependencies>ntdllp.lib;ScEntry.lib;kernel32.lib;advapi32.lib;ole32.lib;Secur32.lib;Oleaut32.lib</AdditionalDependencies>
+      <AdditionalDependencies>ntdllp.lib;ScEntry.lib;kernel32.lib;user32.lib</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>"$(TargetPath)" *$(OutDir)$(ProjectName).map*$(PlatformTarget).obj*imp.$(PlatformTarget).asm**$(ProjectName).$(PlatformTarget).asm*?$(ProjectName).$(PlatformTarget).exe</Command>
+      <Command>"$(TargetPath)" *$(OutDir)$(ProjectName).map*$(PlatformTarget).obj*imp.$(PlatformTarget).asm*$(ProjectName).$(PlatformTarget).bin*$(ProjectName).$(PlatformTarget).asm*?$(ProjectName).$(PlatformTarget).exe</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="print.h" />
     <ClInclude Include="stdafx.h" />
-    <ClCompile Include="cfg.cpp" />
     <ClCompile Include="ep.cpp" />
-    <ClCompile Include="folder.cpp" />
-    <ClCompile Include="modules.cpp" />
-    <ClCompile Include="print.cpp" />
-    <ClCompile Include="PT.cpp" />
-    <ClCompile Include="srv.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="task.cpp" />
-    <ClCompile Include="Users.cpp" />
-    <ClCompile Include="wow.cpp" />
+    <None Include="imp.x86.asm" />
     <None Include="imp.x64.asm" />
     <CustomBuild Include="x64.asm">
       <FileType>Document</FileType>
@@ -73,9 +68,11 @@
       <Outputs>%(Filename).obj</Outputs>
       <ExcludedFromBuild Condition="'$(PlatformTarget)'!='x64'">true</ExcludedFromBuild>
     </CustomBuild>
-    <CustomBuild Include="task.xml">
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"../NewScProj.exe" *tsk.asm*%(FullPath)*toasm*nowait</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">tsk.asm</Outputs>
+    <CustomBuild Include="x86.asm">
+      <FileType>Document</FileType>
+      <Command>ml /c /Cp %(Identity)</Command>
+      <Outputs>%(Filename).obj</Outputs>
+      <ExcludedFromBuild Condition="'$(PlatformTarget)'!='x86'">true</ExcludedFromBuild>
     </CustomBuild>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -3,9 +3,15 @@
 ; long __cdecl LoadLibraryFromMem(void *,unsigned __int64,void **)
 extern ?LoadLibraryFromMem@@YAJPEAX_KPEAPEAX@Z : PROC
 
+; _ERW_ = 1
+
 ; void epASM()
 ?epASM@@YAXXZ proc
-  call protect
+
+IFNDEF _ERW_
+    call protect
+ENDIF
+
   jmp ?LoadLibraryFromMem@@YAJPEAX_KPEAPEAX@Z
 ?epASM@@YAXXZ endp
 

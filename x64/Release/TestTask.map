@@ -1,6 +1,6 @@
  TestTask
 
- Timestamp is 67a61573 (Fri Feb  7 16:15:15 2025)
+ Timestamp is 67a7a85a (Sat Feb  8 20:54:18 2025)
 
  Preferred load address is 0000000140000000
 
@@ -12,7 +12,7 @@
  0001:00005000 00000a50H .text$mn$cpp$u          CODE
  0001:00005a50 00000000H .text$mn$cpp$v          CODE
  0001:00005a50 00000008H .text$nm                CODE
- 0001:00005a58 00000108H .text$zz                CODE
+ 0001:00005a58 000000ffH .text$zz                CODE
  0002:00000000 000000b4H .rdata                  DATA
  0002:000000b4 00000068H .rdata$zzzdbg           DATA
  0002:0000011c 00000258H .xdata                  DATA

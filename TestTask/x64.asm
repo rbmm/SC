@@ -3,9 +3,15 @@
 ; void ep()
 extern ?ep@@YAXXZ : PROC
 
+;_ERW_ = 1
+ 
 ; void epASM()
 ?epASM@@YAXXZ proc
-  call protect
+
+IFNDEF _ERW_
+    call protect
+ENDIF
+
   jmp ?ep@@YAXXZ
 ?epASM@@YAXXZ endp
 
