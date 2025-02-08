@@ -122,25 +122,38 @@ NTSTATUS NTAPI LoadLibraryFromMem(_In_ PVOID pvImage, _In_opt_ ULONG_PTR Size, _
 therefore we replace
 
 ```
+; _ERW_ = 1
+
 ; void ep()
 extern ?ep@@YAXXZ : PROC
 
 ; void epASM()
 ?epASM@@YAXXZ proc
-  call protect
-  jmp ?ep@@YAXXZ
+
+IFNDEF _ERW_
+    call protect
+ENDIF
+
+    jmp ?ep@@YAXXZ
+
 ?epASM@@YAXXZ endp
 ```
 to
 
 ```
+; _ERW_ = 1
+
 ; long __cdecl LoadLibraryFromMem(void *,unsigned __int64,void **)
 extern ?LoadLibraryFromMem@@YAJPEAX_KPEAPEAX@Z : PROC
 
 ; void epASM()
 ?epASM@@YAXXZ proc
-  call protect
-  jmp ?LoadLibraryFromMem@@YAJPEAX_KPEAPEAX@Z
+
+IFNDEF _ERW_
+    call protect
+ENDIF
+
+    jmp ?LoadLibraryFromMem@@YAJPEAX_KPEAPEAX@Z
 ?epASM@@YAXXZ endp
 ```
 
@@ -162,11 +175,13 @@ it will be executed only at the stage of shellcode assembly (post build step) an
 but the CRT part from the file [GetFuncAddr.cpp](ScEntry/GetFuncAddr.cpp) will be present - `GetFuncAddressEx`, `get_hmod`, `GetNtBase()` - used in runtime for import resolve and can be
 [called](ScLfm/ep.cpp#L407) separate too
 
-the `protect` function change protection of import table of the shellcode to PAGE_READWRITE, in case shellcode aligned to PAGE_SIZE ( 0x1000 ) (VirtualAlloc always return address aligned on PAGE_SIZE)
-if shellcode not aligned on this, memory of it must be ERW. if aligned - can be ER
 
+4) **memory protection** and `_ERW_ = 1` macro
 
-4) **post build step**
+import table of shellcode require to be writable memory. the `protect` function change protection of import table of the shellcode to PAGE_READWRITE, in case shellcode aligned to PAGE_SIZE ( 0x1000 ) (VirtualAlloc always return address aligned on PAGE_SIZE)
+if shellcode not aligned on PAGE_SIZE, memory of it must be ERW. if aligned - can be ER. use of protect can visible increment shellcode size, especially for small shellcode. if we ok to allocate/use ERW memory of shellcode, we can uncomment `_ERW_ = 1` macro in `$(PlatformTarget).asm`.
+
+5) **post build step**
 
 it always runs after successful exe build.
 `ScEntry` loads prepare.dll (see prepare project) and calls
@@ -208,7 +223,7 @@ that's why this project was created, so as not to write like this or similarly
 
 a separate prepare.dll - not shellcode but a regular dll. it can import any functions and is not limited by anything
 
-5) **PrepareSC / post build command line**
+6) **PrepareSC / post build command line**
 if we are under the debugger - PrepareSC simply makes memory for shellcode ERW - (`VirtualProtect(Base, cb, PAGE_EXECUTE_READWRITE, &cb)`) and exits.
 otherwise the command line format for post build:
 
@@ -227,7 +242,8 @@ exe - name of exe file where we insert shellcode. such exe will not contain any 
 ```
 
 **exe** makes sense only if our shellcode does not accept direct parameters (`void ep()`) (but can of course use the process command line)
-it is convenient for testing/demonstrating shellcode. usually `exe := $(ProjectName).$(PlatformTarget).exe`
+it is convenient for testing/demonstrating shellcode. usually `exe := [?]$(ProjectName).$(PlatformTarget).exe`
+if we want make code section of exe writable, need add `?` symbol before exe name
 
 `*` is used as a separator because it can't be in the file name
 
@@ -267,7 +283,7 @@ no bin and exe. `asm = $(ProjectName).$(PlatformTarget).asm`
 [LibScLfm](LibScLfm) project ( static library, not shellcode ) includes it in its `$(PlatformTarget).asm`
 
 ```
-shellcode SEGMENT READ WRITE EXECUTE ALIAS(".shlcode") 'CODE'
+shellcode SEGMENT READ EXECUTE ALIAS(".shlcode") 'CODE'
 
 ALIGN 16
 ; long __cdecl LoadLibraryFromMem(void *,unsigned __int64,void **)
@@ -345,7 +361,7 @@ accepted command line is `*#.pass?word##*` - run `$(PlatformTarget)\[x64\]Releas
 
 `$(ProjectName).$(PlatformTarget).exe` - path to put shellcode, packed in exe
 
-6) **code layout**
+7) **code layout**
 
 ml[64].exe ( MASM ) put code from `.code` or `_TEXT` segment to the ".text$mn" segment
 I use
@@ -376,7 +392,7 @@ and the CRT entry point - `ScEntry(PEB* peb)` - in `#pragma code_seg(".text$zz")
 .text$mn$cpp$r          const data, can be __GUID_... when we use class/struct with __declspec(uuid("")) and __uuidof of this class
 .text$mn$cpp$s          strings ( ??_C@_...)
 .text$mn$cpp$u          import section. must be writable memory. if sc aligned on PAGE_SIZE `protect` auto set RW protection here.
-.text$mn$cpp$v		end of import
+.text$mn$cpp$v		end of import. present only if _ERW_ not defined
 /*---------------- end of shellcode (sc_end) ----------------*/
 .text$nm                void* sc_end()
 .text$zz                void WINAPI ScEntry(PEB* peb)
@@ -388,7 +404,7 @@ status = PrepareSC(epASM, RtlPointerToOffset(epASM, sc_end()), &__ImageBase);
 ```
 ScEntry itself will not be included in the resulting shellcode
 
-7)** x86 problems **
+8)** x86 problems **
 on x86, when we take the address of the global string object ("...") or function, a relocation occurs (`IMAGE_REL_BASED_HIGHLOW`) since the address is encoded in absolute form (in x64, rip-address is used - offset from the current rip). This causes problems, since we cannot use string constants directly (function addresses as parameters, `__uuidof()`). To solve this problem, I use the function
 
 ```
@@ -431,9 +447,44 @@ definitely better than writing something like `char msg[] = {'m', 's', 'g', 0 };
 for x64, none of this is required. and if we don't need x86 code, we can write directly MessageBoxW(.. L"text", L"caption" ..), EnumWindows( MyEnumWindowsProc, 0) etc.
 but we shouldn't forget that this is due to using `/cbstring` and `#pragma const_seg(".text$mn$cpp$r")` . although to be honest it would be enough to just `#pragma const_seg(".text$mn$cpp$r")`. then the strings would also be placed in ".text$mn$cpp$r". but I prefer to use `/cbstring` too and place the strings in a separate segment ".text$mn$cpp$s"
 
-8) of course shellcode will have some limitations. for example we can't use classes with virtual functions, because vtable always generates relocations (it is possible of course to write some code to solve this problem too), and others.. in any case, to write this, a deep understanding is required - what and why we are doing. the ability to debug and solve problems
+anyway in x64 build must not be any relocs at all, or post build step return error. on x86 relocs can be. but will be fixed in runtime by using `__Adress` function. i can not detect are you correct pass absolute address (string or function address) to `__Adress`. but notify about all existing relocs on post build. as example:
 
-9) projects
+```
+1>!! Relocs: 000013b4 ( void ApcTest(unsigned long)+6 ) -> 000017b0 ( "ApcTest(%p).." )
+1>!! Relocs: 000013e1 ( void ApcTest(unsigned long)+51 ) -> 000017c0 ( L"%u:[%hs]..entry" )
+1>!! Relocs: 000013ed ( void ApcTest(unsigned long)+63 ) -> 000017f0 ( L"Hello" )
+1>!! Relocs: 00001429 ( void ComTest(void)+25 ) -> 00001800 ( L"Com" )
+1>!! Relocs: 00001436 ( void ComTest(void)+38 ) -> 000017a0 ( __GUID_d57c7288_d4ad_4768_be02_9d969532d960 )
+1>!! Relocs: 00001443 ( void ComTest(void)+51 ) -> 00001790 ( __GUID_dc1c5a9c_e88a_4dde_a5a1_60f82a20aef7 )
+1>!! Relocs: 00001542 ( void ep(void)+32 ) -> 00001810 ( L"table at %p" )
+1>!! Relocs: 0000154c ( void ep(void)+42 ) -> 00001830 ( L"Marta:" )
+1>!! Relocs: 00001565 ( void ep(void)+67 ) -> 00001522 ( void ep(void) )
+1>!! Relocs: 0000156f ( void ep(void)+77 ) -> 000013ae ( void ApcTest(unsigned long) )
+```
+
+or another example
+
+```
+1>!! Relocs: 000017b3 ( int Exec64(void *,wchar_t const *)+59 ) -> 000022a0 ( L"\explorer.exe" )
+1>!! Relocs: 000018fd ( void ep(void)+37 ) -> 000022c0 ( L"/~sgtatham/putt" )
+1>!! Relocs: 00001907 ( void ep(void)+47 ) -> 00002310 ( L"the.earth.li" )
+1>!! Relocs: 00001925 ( void ep(void)+77 ) -> 00002330 ( L"/~sgtatham/putt" )
+1>!! Relocs: 00001bd0 ( int Exec(void *,void *,_IMAGE_NT_HEADERS *,wchar_t const *)+278 ) -> 000022a0 ( L"\explorer.exe" )
+1>!! Relocs: 00001ea3 ( long FindNoCfgDll(void *,unsigned long,unsigned long,unsigned long,void * *)+7 ) -> 00002380 ( L"\systemroot\sys" )
+1>!! Relocs: 00001ea9 ( long FindNoCfgDll(void *,unsigned long,unsigned long,unsigned long,void * *)+13 ) -> 000023b0 ( L"\systemroot\sys" )
+1>!! Relocs: 00001f37 ( long FindNoCfgDll(void *,unsigned long,unsigned long,unsigned long,void * *)+155 ) -> 000023e0 ( L"*.dll" )
+```
+
+say line
+```
+Relocs: 00001907 ( void ep(void)+47 ) -> 00002310 ( L"the.earth.li" )
+```
+
+mean that you use `L"the.earth.li"` inside `void ep()` function, and this generate relocation. but if you use it as `_YW(L"the.earth.li")` this is ok. and if without `_YW` this is fatal error for shellcode. 
+
+9) of course shellcode will have some limitations. for example we can't use classes with virtual functions, because vtable always generates relocations (it is possible of course to write some code to solve this problem too), and others.. in any case, to write this, a deep understanding is required - what and why we are doing. the ability to debug and solve problems
+
+10) projects
 
 [hello](hello)
 
@@ -486,7 +537,7 @@ I needed to change the value of one variable in "kdcsvc.dll" from lsass.exe. to 
 [Seci](Seci/ep.cpp) - intercepting calls to `SeciAllocateAndSetCallFlags` from "USERMGR.DLL"
 as in the previous example, the shellcode will be called from APC and has a signature different from `void ep()`
 
-10) **Load DLL from memory**
+11) **Load DLL from memory**
 
 a number of projects are dedicated to this
 
