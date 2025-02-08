@@ -43,7 +43,7 @@
       <WarningLevel>Level4</WarningLevel>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <Optimization>MaxSpeed</Optimization>
-      <AdditionalIncludeDirectories >$(SolutionDir)..\pnth</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\pnth</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -51,17 +51,27 @@
       <OptimizeReferences>true</OptimizeReferences>
       <EnableUAC>false</EnableUAC>
       <AdditionalOptions>/EMITPOGOPHASEINFO /EMITVOLATILEMETADATA:NO %(AdditionalOptions)</AdditionalOptions>
-      <NoEntryPoint >true</NoEntryPoint>
-      <ModuleDefinitionFile >Source.def</ModuleDefinitionFile>
-      <AdditionalDependencies >BufferOverflow.lib;ucrt.lib;ntdllp.lib;kernel32.lib;cabinet.lib;bcrypt.lib;crypt32.lib</AdditionalDependencies>
+      <NoEntryPoint>true</NoEntryPoint>
+      <ModuleDefinitionFile>Source.def</ModuleDefinitionFile>
+      <AdditionalDependencies>BufferOverflow.lib;ucrt.lib;ntdllp.lib;kernel32.lib;cabinet.lib;bcrypt.lib;crypt32.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="undname.cpp" />
+    <ClInclude Include="file.h" />
+    <ClInclude Include="map.h" />
+    <ClInclude Include="map2.h" />
+    <ClInclude Include="print.h" />
     <ClInclude Include="stdafx.h" />
     <ClCompile Include="ep.cpp" />
+    <ClCompile Include="file.cpp" />
+    <ClCompile Include="map.cpp" />
+    <ClCompile Include="map2.cpp" />
+    <ClCompile Include="print.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClInclude Include="undname.h" />
     <None Include="Source.def" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
