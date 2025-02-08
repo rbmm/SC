@@ -26,7 +26,7 @@ find the differences
 
 or [TestTask](TestTask) - builds in shellcode ( [TestTask.x64.exe](TestTask/TestTask.x64.exe) ) although it is not small code
 
-1) **create a new project using the [NewScProj.exe](NewScProj.exe) utility **
+1) **create a new project using the [NewScProj.exe](NewScProj.exe) utility**
 
 ```
 NewScProj.exe *[path\]project-name*vcp
@@ -404,7 +404,8 @@ status = PrepareSC(epASM, RtlPointerToOffset(epASM, sc_end()), &__ImageBase);
 ```
 ScEntry itself will not be included in the resulting shellcode
 
-8)** x86 problems **
+8)**x86 problems**
+
 on x86, when we take the address of the global string object ("...") or function, a relocation occurs (`IMAGE_REL_BASED_HIGHLOW`) since the address is encoded in absolute form (in x64, rip-address is used - offset from the current rip). This causes problems, since we cannot use string constants directly (function addresses as parameters, `__uuidof()`). To solve this problem, I use the function
 
 ```
@@ -482,9 +483,12 @@ Relocs: 00001907 ( void ep(void)+47 ) -> 00002310 ( L"the.earth.li" )
 
 mean that you use `L"the.earth.li"` inside `void ep()` function, and this generate relocation. but if you use it as `_YW(L"the.earth.li")` this is ok. and if without `_YW` this is fatal error for shellcode. 
 
-9) of course shellcode will have some limitations. for example we can't use classes with virtual functions, because vtable always generates relocations (it is possible of course to write some code to solve this problem too), and others.. in any case, to write this, a deep understanding is required - what and why we are doing. the ability to debug and solve problems
+9) **limitations**
 
-10) projects
+of course shellcode will have some limitations. for example we can't use classes with virtual functions, because vtable always generates relocations (it is possible of course to write some code to solve this problem too), and others.. in any case, to write this, a deep understanding is required - what and why we are doing. the ability to debug and solve problems
+
+10) **projects**
+
 
 [hello](hello)
 
@@ -502,15 +506,10 @@ call x64:
   xchg edi,[esp+4]
   xchg esi,[esp+8]
   xchg ebp,[esp+12]
-  jmp @2
-  ALIGN 16
-@3:
-INCLUDE <../Exec-X64/Exec-x64.x64.asm>
-@2:
   push 33h
   call @1
   ;++++++++ x64 +++++++++
-  call @3
+  call x64sc
   retf
   ;-------- x64 ---------
 @1:
@@ -520,8 +519,16 @@ INCLUDE <../Exec-X64/Exec-x64.x64.asm>
   mov edi,[esp+4]
   mov esi,[esp+8]
   mov ebp,[esp+12]
-  ret 12
+  ret 4
 ?Exec64@@YIHPAX00@Z endp
+
+_TEXT$cpp$t SEGMENT ALIGN(4096) 'CODE'
+
+x64sc proc private
+INCLUDE <../Exec-X64/Exec-x64.x64.asm>
+x64sc endp
+
+_TEXT$cpp$t ENDS
 ```
 
 although there is nothing new and unknown here, I strove for the highest quality and most beautiful implementation. since the meaning is only in it, and not in the final result
