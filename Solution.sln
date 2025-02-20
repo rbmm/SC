@@ -53,6 +53,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LIB", "LIB", "{A325783E-C67
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NewScProj", "NewScProj\NewScProj.vcxproj", "{68C81E6E-EA30-65AF-2725-CF136FD0975C}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SFL", "SFL\SFL.vcxproj", "{C307B5B5-7042-933B-539C-C2CF002C5C0D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -230,6 +232,14 @@ Global
 		{68C81E6E-EA30-65AF-2725-CF136FD0975C}.Release|x64.Build.0 = Release|Win32
 		{68C81E6E-EA30-65AF-2725-CF136FD0975C}.Release|x86.ActiveCfg = Release|Win32
 		{68C81E6E-EA30-65AF-2725-CF136FD0975C}.Release|x86.Build.0 = Release|Win32
+		{C307B5B5-7042-933B-539C-C2CF002C5C0D}.Debug|x64.ActiveCfg = Release|x64
+		{C307B5B5-7042-933B-539C-C2CF002C5C0D}.Debug|x64.Build.0 = Release|x64
+		{C307B5B5-7042-933B-539C-C2CF002C5C0D}.Debug|x86.ActiveCfg = Release|Win32
+		{C307B5B5-7042-933B-539C-C2CF002C5C0D}.Debug|x86.Build.0 = Release|Win32
+		{C307B5B5-7042-933B-539C-C2CF002C5C0D}.Release|x64.ActiveCfg = Release|x64
+		{C307B5B5-7042-933B-539C-C2CF002C5C0D}.Release|x64.Build.0 = Release|x64
+		{C307B5B5-7042-933B-539C-C2CF002C5C0D}.Release|x86.ActiveCfg = Release|Win32
+		{C307B5B5-7042-933B-539C-C2CF002C5C0D}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -246,11 +256,11 @@ Global
 		{68C81E6E-EA30-65AF-2725-CF136FD0975C} = {2CF8ADFA-32DB-4437-A717-5A5AE8E930DB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		            SolutionGuid = {3F900B2D-D854-4D44-9CC2-C7D9A85A41A3}
-		                    SolutionGuid = {31E95A3C-0BE4-4890-815C-0391F78DB4AF}
-		                SolutionGuid = {0A7AB709-7E2F-4C29-BCBC-0C0093D1DE9D}
-		        SolutionGuid = {2544B80C-0087-4A68-9D64-414DB4A18640}
-		    SolutionGuid = {59EF4CD2-2BE9-4A92-A93F-5E177F8F8592}
 		SolutionGuid = {725DD0BC-199E-422F-98F1-7AAA7247266A}
+		    SolutionGuid = {59EF4CD2-2BE9-4A92-A93F-5E177F8F8592}
+		        SolutionGuid = {2544B80C-0087-4A68-9D64-414DB4A18640}
+		                SolutionGuid = {0A7AB709-7E2F-4C29-BCBC-0C0093D1DE9D}
+		                    SolutionGuid = {31E95A3C-0BE4-4890-815C-0391F78DB4AF}
+		            SolutionGuid = {3F900B2D-D854-4D44-9CC2-C7D9A85A41A3}
 	EndGlobalSection
 EndGlobal
