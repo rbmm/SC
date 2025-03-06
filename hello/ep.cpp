@@ -111,18 +111,25 @@ void ComTest()
 void WINAPI ep()
 {
 	CPP_FUNCTION;
-	
-	BOOL b;
-	IsProcessCritical(NtCurrentProcess(), &b);
 
-	ComTest();
-
-	if (_ACC_MARTA_FUNCTIONS* pTable = GetMartaExtensionInterface())
+	if (GetTickCount())
 	{
-		MsgBox(MB_ICONWARNING, _YW(L"Marta:"), _YW(L"table at %p"), pTable);
+		MessageBoxW(0, _YW(L"DEMO"), _YW(L"POC"), MB_ICONINFORMATION);
 	}
+	else
+	{
+		BOOL b;
+		IsProcessCritical(NtCurrentProcess(), &b);
 
-	RtlDispatchAPC(_Y(ApcTest), (ULONG_PTR)_Y(ep), INVALID_HANDLE_VALUE);
+		ComTest();
 
+		if (_ACC_MARTA_FUNCTIONS* pTable = GetMartaExtensionInterface())
+		{
+			MsgBox(MB_ICONWARNING, _YW(L"Marta:"), _YW(L"table at %p"), pTable);
+		}
+
+		RtlDispatchAPC(_Y(ApcTest), (ULONG_PTR)_Y(ep), INVALID_HANDLE_VALUE);
+	}
+	
 	ExitProcess(0);
 }

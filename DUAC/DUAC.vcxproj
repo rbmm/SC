@@ -11,10 +11,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <VCProjectVersion>16.0</VCProjectVersion>
+    <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{633C619A-510e-E3D4-D208-18F6763417D4}</ProjectGuid>
-    <RootNamespace>hello</RootNamespace>
+    <ProjectGuid>{AFE04499-f71a-CA7A-D978-895100682D0F}</ProjectGuid>
+    <RootNamespace>DUAC</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <UserRootDir>$(SolutionDir)..\MSBuild\v4.0</UserRootDir>
   </PropertyGroup>
@@ -30,12 +30,6 @@
   <ImportGroup Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <PostBuildEventUseInBuild>true</PostBuildEventUseInBuild>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <PostBuildEventUseInBuild>true</PostBuildEventUseInBuild>
-  </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
@@ -54,20 +48,20 @@
       <EntryPointSymbol Condition="'$(PlatformTarget)'=='x64'">?ScEntry@@YAXPEAU_PEB@@@Z</EntryPointSymbol>
       <AdditionalOptions>/EMITPOGOPHASEINFO /EMITVOLATILEMETADATA:NO %(AdditionalOptions)</AdditionalOptions>
       <GenerateMapFile>true</GenerateMapFile>
-      <AdditionalDependencies>ntdllp.lib;ScEntry.lib;kernel32.lib;user32.lib;dnsapi.lib;ntmarta.lib;ole32.lib</AdditionalDependencies>
+      <AdditionalDependencies>ntdllp.lib;ScEntry.lib;kernel32.lib;user32.lib;advapi32.lib</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>"$(TargetPath)" *$(OutDir)$(ProjectName).map*$(PlatformTarget).obj*imp.$(PlatformTarget).asm**?$(ProjectName).$(PlatformTarget).asm*?$(ProjectName).$(PlatformTarget).exe</Command>
+      <Command>"$(TargetPath)" *$(OutDir)$(ProjectName).map*$(PlatformTarget).obj*imp.$(PlatformTarget).asm**?$(ProjectName).$(PlatformTarget).asm</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="imp.x86.asm" />
-    <None Include="imp.x64.asm" />
     <ClInclude Include="stdafx.h" />
     <ClCompile Include="ep.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <None Include="imp.x86.asm" />
+    <None Include="imp.x64.asm" />
     <CustomBuild Include="x64.asm">
       <FileType>Document</FileType>
       <Command>ml64 /c /Cp %(Identity)</Command>
