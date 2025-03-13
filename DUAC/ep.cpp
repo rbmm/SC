@@ -17,10 +17,10 @@ NTSTATUS GetToken(_In_ PVOID buf, _In_ const TOKEN_PRIVILEGES* RequiredSet, _Out
 	ULONG NextEntryOffset = 0;
 
 	SECURITY_QUALITY_OF_SERVICE sqos = {
-	sizeof(sqos), SecurityImpersonation, SECURITY_DYNAMIC_TRACKING, FALSE
+		sizeof(sqos), SecurityImpersonation, SECURITY_DYNAMIC_TRACKING, FALSE
 	};
 
-	OBJECT_ATTRIBUTES oa_sqos = { sizeof(oa_sqos), 0, 0, 0, 0, const_cast<SECURITY_QUALITY_OF_SERVICE*>(&sqos) };
+	OBJECT_ATTRIBUTES oa_sqos = { sizeof(oa_sqos), 0, 0, 0, 0, (SECURITY_QUALITY_OF_SERVICE*) & sqos};
 
 	do
 	{
@@ -32,8 +32,7 @@ NTSTATUS GetToken(_In_ PVOID buf, _In_ const TOKEN_PRIVILEGES* RequiredSet, _Out
 
 		if (ClientId.UniqueProcess)
 		{
-			if (0 <= NtOpenProcess(&hProcess, PROCESS_QUERY_LIMITED_INFORMATION,
-				const_cast<POBJECT_ATTRIBUTES>(&oa_sqos), &ClientId))
+			if (0 <= NtOpenProcess(&hProcess, PROCESS_QUERY_LIMITED_INFORMATION, &oa_sqos, &ClientId))
 			{
 				status = NtOpenProcessToken(hProcess, TOKEN_DUPLICATE, &hToken);
 
