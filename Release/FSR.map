@@ -1,0 +1,172 @@
+ FSR
+
+ Timestamp is 67feb532 (Tue Apr 15 22:36:18 2025)
+
+ Preferred load address is 00400000
+
+ Start         Length     Name                   Class
+ 0001:00000000 000004ecH .text$mn                CODE
+ 0001:000004ec 000006e4H .text$mn$cpp            CODE
+ 0001:00000bd0 00000430H .text$mn$cpp$s          CODE
+ 0001:00001000 000002b0H .text$mn$cpp$u          CODE
+ 0001:000012b0 00000000H .text$mn$cpp$v          CODE
+ 0001:000012b0 00000006H .text$nm                CODE
+ 0001:000012b6 000000cbH .text$zz                CODE
+ 0002:00000000 00000000H .idata$5                DATA
+ 0002:00000000 000000b0H .rdata                  DATA
+ 0002:000000b0 00000000H .edata                  DATA
+ 0002:000000b0 00000060H .rdata$zzzdbg           DATA
+ 0002:00000110 00000000H .idata$2                DATA
+ 0002:00000110 00000000H .idata$3                DATA
+ 0002:00000110 00000000H .idata$4                DATA
+ 0002:00000110 00000000H .idata$6                DATA
+ 0003:00000000 00000000H .data                   DATA
+ 0003:00000000 00000008H .bss                    DATA
+
+  Address         Publics by Value              Rva+Base       Lib:Object
+
+ 0000:00000000       ___AbsoluteZero            00000000     <absolute>
+ 0000:00000000       ___arm64x_extra_rfe_table  00000000     <absolute>
+ 0000:00000000       ___arm64x_extra_rfe_table_size 00000000     <absolute>
+ 0000:00000000       ___arm64x_native_entrypoint 00000000     <absolute>
+ 0000:00000000       ___arm64x_redirection_metadata 00000000     <absolute>
+ 0000:00000000       ___arm64x_redirection_metadata_count 00000000     <absolute>
+ 0000:00000000       ___dynamic_value_reloc_table 00000000     <absolute>
+ 0000:00000000       ___enclave_config          00000000     <absolute>
+ 0000:00000000       ___guard_check_icall_a64n_fptr 00000000     <absolute>
+ 0000:00000000       ___guard_eh_cont_count     00000000     <absolute>
+ 0000:00000000       ___guard_eh_cont_table     00000000     <absolute>
+ 0000:00000000       ___guard_fids_count        00000000     <absolute>
+ 0000:00000000       ___guard_fids_table        00000000     <absolute>
+ 0000:00000000       ___guard_flags             00000000     <absolute>
+ 0000:00000000       ___guard_iat_count         00000000     <absolute>
+ 0000:00000000       ___guard_iat_table         00000000     <absolute>
+ 0000:00000000       ___guard_longjmp_count     00000000     <absolute>
+ 0000:00000000       ___guard_longjmp_table     00000000     <absolute>
+ 0000:00000000       ___hybrid_auxiliary_delayload_iat 00000000     <absolute>
+ 0000:00000000       ___hybrid_auxiliary_delayload_iat_copy 00000000     <absolute>
+ 0000:00000000       ___hybrid_auxiliary_iat    00000000     <absolute>
+ 0000:00000000       ___hybrid_auxiliary_iat_copy 00000000     <absolute>
+ 0000:00000000       ___hybrid_code_map         00000000     <absolute>
+ 0000:00000000       ___hybrid_code_map_count   00000000     <absolute>
+ 0000:00000000       ___hybrid_image_info_bitfield 00000000     <absolute>
+ 0000:00000000       ___volatile_metadata       00000000     <absolute>
+ 0000:00000000       ___x64_code_ranges_to_entry_points 00000000     <absolute>
+ 0000:00000000       ___x64_code_ranges_to_entry_points_count 00000000     <absolute>
+ 0000:00000000       ___ImageBase               00400000     <linker-defined>
+ 0001:00000000       ?epASM@@YGXXZ              00401000 f   x86.obj
+ 0001:00000037       ?__Address@@YIPAXPBX@Z     00401037 f   x86.obj
+ 0001:0000004a       __alloca_probe             0040104a f   x86.obj
+ 0001:0000004a       __chkstk                   0040104a f   x86.obj
+ 0001:000000e2       _LocalFree@4               004010e2 f   x86.obj
+ 0001:00000103       _GetStdHandle@4            00401103 f   x86.obj
+ 0001:00000124       _GetConsoleOutputCP@0      00401124 f   x86.obj
+ 0001:00000145       _WriteFile@20              00401145 f   x86.obj
+ 0001:00000166       _WriteConsoleW@20          00401166 f   x86.obj
+ 0001:00000187       _RaiseException@16         00401187 f   x86.obj
+ 0001:000001a8       _IsDebuggerPresent@0       004011a8 f   x86.obj
+ 0001:000001c9       _LocalAlloc@8              004011c9 f   x86.obj
+ 0001:000001ea       _WideCharToMultiByte@32    004011ea f   x86.obj
+ 0001:0000020b       _ExitProcess@4             0040120b f   x86.obj
+ 0001:0000022c       _GetCommandLineW@0         0040122c f   x86.obj
+ 0001:0000024d       _GetCurrentThreadId@0      0040124d f   x86.obj
+ 0001:0000026e       _EnumThreadWindows@12      0040126e f   x86.obj
+ 0001:0000028f       _RtlGetFrame@0             0040128f f   x86.obj
+ 0001:000002b0       _RtlPushFrame@4            004012b0 f   x86.obj
+ 0001:000002d1       _wcstoul                   004012d1 f   x86.obj
+ 0001:000002f2       _wcschr                    004012f2 f   x86.obj
+ 0001:00000313       _NtResumeThread@8          00401313 f   x86.obj
+ 0001:00000334       __vsnwprintf               00401334 f   x86.obj
+ 0001:00000355       _NtQueryInformationThread@20 00401355 f   x86.obj
+ 0001:00000376       _NtClose@4                 00401376 f   x86.obj
+ 0001:00000397       _NtGetNextThread@24        00401397 f   x86.obj
+ 0001:000003b8       _NtOpenProcess@16          004013b8 f   x86.obj
+ 0001:000003d9       _RtlAdjustPrivilege@16     004013d9 f   x86.obj
+ 0001:000003fa       _RtlPopFrame@4             004013fa f   x86.obj
+ 0001:0000041b       _NtQueryVolumeInformationFile@20 0040141b f   x86.obj
+ 0001:0000043c       _NtSuspendThread@8         0040143c f   x86.obj
+ 0001:0000045d       _RtlInitUnicodeString@8    0040145d f   x86.obj
+ 0001:0000047e       _LdrLoadDll@16             0040147e f   x86.obj
+ 0001:0000049f       _LdrGetProcedureAddress@16 0040149f f   x86.obj
+ 0001:000004c0       __alloca_probe_16          004014c0 f   ntdllp:alloca16.obj
+ 0001:000004d6       __alloca_probe_8           004014d6     ntdllp:alloca16.obj
+ 0001:000004ec       ??0PrintInfo@@QAE@XZ       004014ec f i ep.obj
+ 0001:00000510       ??1PrintInfo@@QAE@XZ       00401510 f i ep.obj
+ 0001:00000518       ?EnumThreadWndProc@@YGHPAUHWND__@@J@Z 00401518 f   ep.obj
+ 0001:00000524       ?SusNonGui@@YGXKH@Z        00401524 f   ep.obj
+ 0001:00000714       ?ep@@YGXXZ                 00401714 f   ep.obj
+ 0001:000007b4       ?PutChars@@YGXPB_WK@Z      004017b4 f   print.obj
+ 0001:000008e2       ?PrintWA_v@@YAXPB_WZZ      004018e2 f   print.obj
+ 0001:00000966       ?InitPrintf@@YGXXZ         00401966 f   print.obj
+ 0001:000009d0       ?GetNtBase@@YGPAXXZ        004019d0 f   ScEntry:GetFuncAddr.obj
+ 0001:000009e3       ?get_hmod@@YIPAXPB_W@Z     004019e3 f   ScEntry:GetFuncAddr.obj
+ 0001:00000a2d       ?GetFuncAddressEx@@YIPAXPAU_IMAGE_DOS_HEADER@@PBD@Z 00401a2d f   ScEntry:GetFuncAddr.obj
+ 0001:00000bd0       ??_C@_0BJ@FJDPLKNJ@?$DPname?$EAPrintInfo?$EA?$EASGPBDXZ@FNODOBFM@ 00401bd0     ep.obj
+ 0001:00000bf0       ??_C@_1BA@CHDFGDCJ@?$AAS?$AAu?$AAs?$AAp?$AAe?$AAn?$AAd@FNODOBFM@ 00401bf0     ep.obj
+ 0001:00000c00       ??_C@_1O@BJIMCIMK@?$AAR?$AAe?$AAs?$AAu?$AAm?$AAe@FNODOBFM@ 00401c00     ep.obj
+ 0001:00000c10       ??_C@_1BE@HANCFKAL@?$AAS?$AAu?$AAs?$AAN?$AAo?$AAn?$AAG?$AAu?$AAi@FNODOBFM@ 00401c10     ep.obj
+ 0001:00000c30       ??_C@_1BO@FOHJCLIP@?$AA?$CF?$AAw?$AAs?$AA?$CI?$AA?$CF?$AAx?$AA?0?$AA?5?$AA?$CF?$AAw?$AAs?$AA?$CJ?$AA?$AN?$AA?6@FNODOBFM@ 00401c30     ep.obj
+ 0001:00000c50       ??_C@_1CC@PPNMAHIA@?$AAO?$AAp?$AAe?$AAn?$AAP?$AAr?$AAo?$AAc?$AAe?$AAs?$AAs?$AA?$DN?$AA?$CF?$AAx?$AA?$AN@FNODOBFM@ 00401c50     ep.obj
+ 0001:00000c80       ??_C@_1DC@ELLGMAIF@?$AAS?$AAk?$AAi?$AAp?$AAp?$AAi?$AAn?$AAg?$AA?5?$AAG?$AAU?$AAI?$AA?5?$AAt?$AAh@FNODOBFM@ 00401c80     ep.obj
+ 0001:00000cc0       ??_C@_1CK@NANOILFL@?$AA?$CF?$AAw?$AAs?$AA?5?$AAt?$AAh?$AAr?$AAe?$AAa?$AAd?$AA?5?$AA?$CF?$AAx?$AA?5?$AA?$FL@FNODOBFM@ 00401cc0     ep.obj
+ 0001:00000cf0       ??_C@_1CC@LJNOLGPH@?$AAt?$AAh?$AAr?$AAe?$AAa?$AAd?$AA?5?$AA?$CF?$AAx?$AA?5?$AA?$DN?$AA?5?$AA?$CF?$AAx?$AA?$AN@FNODOBFM@ 00401cf0     ep.obj
+ 0001:00000d20       ??_C@_1CK@MKAKADBO@?$AAG?$AAe?$AAt?$AAN?$AAe?$AAx?$AAt?$AAT?$AAh?$AAr?$AAe?$AAa?$AAd?$AA?5?$AA?$DN@FNODOBFM@ 00401d20     ep.obj
+ 0001:00000d50       ??_C@_1MI@OOIMPKOD@?$AAI?$AAn?$AAv?$AAa?$AAl?$AAi?$AAd?$AA?5?$AAc?$AAo?$AAm?$AAm?$AAa?$AAn?$AAd@FNODOBFM@ 00401d50     ep.obj
+ 0001:000012b0       ?sc_end@@YGPAXXZ           004022b0 f   ScEntry:prepare.obj
+ 0001:000012b6       ?ScEntry@@YGXPAU_PEB@@@Z   004022b6 f   ScEntry:prepare.obj
+ 0002:00000000       ??_C@_0BF@EKFKPNAI@RtlInitUnicodeString@ 00403000     ScEntry:prepare.obj
+ 0002:00000018       ??_C@_1BI@NEOFKCPM@?$AAp?$AAr?$AAe?$AAp?$AAa?$AAr?$AAe?$AA?4?$AAd?$AAl?$AAl@ 00403018     ScEntry:prepare.obj
+ 0002:00000030       ??_C@_0L@HOFGLFDL@LdrLoadDll@ 00403030     ScEntry:prepare.obj
+ 0002:0000003c       ??_C@_0BH@GKPJJDBO@LdrGetProcedureAddress@ 0040303c     ScEntry:prepare.obj
+ 0002:00000054       ??_C@_0N@FIGJGHFN@LdrUnloadDll@ 00403054     ScEntry:prepare.obj
+ 0002:00000064       ??_C@_0BD@JDDPIELM@RtlExitUserProcess@ 00403064     ScEntry:prepare.obj
+ 0003:00000000       ___@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUdrmDCUivovzhvUuhiUhgwzucOlyq@4B2008FD98C1DD4 00404000     stdafx.obj
+ 0003:00000004       ___@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUdrmDCUivovzhvUhxvmgibUhgwzucOlyq@4B2008FD98C1DD4 00404004     ScEntry:stdafx.obj
+
+ entry point at        0001:000012b6
+
+ Static symbols
+
+ 0000:ffffa000       .debug$S                   00400000     kernel32:KERNEL32.dll
+ 0000:ffffa000       .debug$S                   00400000     kernel32:KERNEL32.dll
+ 0002:ffffd000       .idata$6                   00400000     kernel32:KERNEL32.dll
+ 0000:ffffa000       .debug$S                   00400000     ntdllp:ntdll.dll
+ 0000:ffffa000       .debug$S                   00400000     ntdllp:ntdll.dll
+ 0002:ffffd000       .idata$6                   00400000     ntdllp:ntdll.dll
+ 0001:0000000a       common_imp_call            0040100a f   x86.obj
+ 0001:00000075       protect                    00401075 f   x86.obj
+ 0001:000004c0       $$000000                   004014c0     ntdllp:alloca16.obj
+ 0001:00001000       ?_LocalFree@4              00402000     x86.obj
+ 0001:00001000       @imp_begin@                00402000     x86.obj
+ 0001:00001010       ?_GetStdHandle@4           00402010     x86.obj
+ 0001:00001024       ?_GetConsoleOutputCP@0     00402024     x86.obj
+ 0001:0000103c       ?_WriteFile@20             0040203c     x86.obj
+ 0001:0000104c       ?_WriteConsoleW@20         0040204c     x86.obj
+ 0001:00001060       ?_RaiseException@16        00402060     x86.obj
+ 0001:00001074       ?_IsDebuggerPresent@0      00402074     x86.obj
+ 0001:0000108c       ?_LocalAlloc@8             0040208c     x86.obj
+ 0001:0000109c       ?_WideCharToMultiByte@32   0040209c     x86.obj
+ 0001:000010b4       ?_ExitProcess@4            004020b4     x86.obj
+ 0001:000010c4       ?_GetCommandLineW@0        004020c4     x86.obj
+ 0001:000010d8       ?_GetCurrentThreadId@0     004020d8     x86.obj
+ 0001:000010f0       @kernel32                  004020f0     x86.obj
+ 0001:00001110       ?_EnumThreadWindows@12     00402110     x86.obj
+ 0001:00001128       @user32                    00402128     x86.obj
+ 0001:00001144       ?_RtlGetFrame@0            00402144     x86.obj
+ 0001:00001154       ?_RtlPushFrame@4           00402154     x86.obj
+ 0001:00001168       ?_wcstoul                  00402168     x86.obj
+ 0001:00001174       ?_wcschr                   00402174     x86.obj
+ 0001:00001180       ?_NtResumeThread@8         00402180     x86.obj
+ 0001:00001194       ?__vsnwprintf              00402194     x86.obj
+ 0001:000011a4       ?_NtQueryInformationThread@20 004021a4     x86.obj
+ 0001:000011c4       ?_NtClose@4                004021c4     x86.obj
+ 0001:000011d0       ?_NtGetNextThread@24       004021d0     x86.obj
+ 0001:000011e4       ?_NtOpenProcess@16         004021e4     x86.obj
+ 0001:000011f8       ?_RtlAdjustPrivilege@16    004021f8     x86.obj
+ 0001:00001210       ?_RtlPopFrame@4            00402210     x86.obj
+ 0001:00001220       ?_NtQueryVolumeInformationFile@20 00402220     x86.obj
+ 0001:00001244       ?_NtSuspendThread@8        00402244     x86.obj
+ 0001:00001258       ?_RtlInitUnicodeString@8   00402258     x86.obj
+ 0001:00001274       ?_LdrLoadDll@16            00402274     x86.obj
+ 0001:00001284       ?_LdrGetProcedureAddress@16 00402284     x86.obj
+ 0001:000012a0       @ntdllp                    004022a0     x86.obj
