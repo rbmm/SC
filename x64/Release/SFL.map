@@ -1,18 +1,18 @@
  SFL
 
- Timestamp is 67b7102a (Thu Feb 20 13:21:14 2025)
+ Timestamp is 682726c4 (Fri May 16 14:51:32 2025)
 
  Preferred load address is 0000000140000000
 
  Start         Length     Name                   Class
- 0001:00000000 00003368H .text$mn                CODE
- 0001:00003368 00000e68H .text$mn$cpp            CODE
- 0001:000041d0 00000010H .text$mn$cpp$r          CODE
- 0001:000041e0 00000e20H .text$mn$cpp$s          CODE
- 0001:00005000 00000530H .text$mn$cpp$u          CODE
- 0001:00005530 00000000H .text$mn$cpp$v          CODE
- 0001:00005530 00000008H .text$nm                CODE
- 0001:00005538 000000ffH .text$zz                CODE
+ 0001:00000000 00003354H .text$mn                CODE
+ 0001:00003354 00000e94H .text$mn$cpp            CODE
+ 0001:000041e8 00000018H .text$mn$cpp$r          CODE
+ 0001:00004200 00000e00H .text$mn$cpp$s          CODE
+ 0001:00005000 00000510H .text$mn$cpp$u          CODE
+ 0001:00005510 00000000H .text$mn$cpp$v          CODE
+ 0001:00005510 00000008H .text$nm                CODE
+ 0001:00005518 000000ffH .text$zz                CODE
  0002:00000000 000000b4H .rdata                  DATA
  0002:000000b4 00000064H .rdata$zzzdbg           DATA
  0002:00000118 00000104H .xdata                  DATA
@@ -71,57 +71,57 @@
  0001:0000023d       RtlGetFrame                000000014000123d f   x64.obj
  0001:00000250       ZwProtectVirtualMemory     0000000140001250 f   x64.obj
  0001:00000263       RtlEqualUnicodeString      0000000140001263 f   x64.obj
- 0001:00000276       RtlSetProtectedPolicy      0000000140001276 f   x64.obj
- 0001:00000289       RtlAddVectoredExceptionHandler 0000000140001289 f   x64.obj
- 0001:0000029c       RtlAppendUnicodeStringToString 000000014000129c f   x64.obj
- 0001:000002af       LdrLoadDll                 00000001400012af f   x64.obj
- 0001:000002c2       LdrUnloadDll               00000001400012c2 f   x64.obj
- 0001:000002d5       RtlRemoveVectoredExceptionHandler 00000001400012d5 f   x64.obj
- 0001:000002e8       LdrAddRefDll               00000001400012e8 f   x64.obj
- 0001:000002fb       RtlImageNtHeaderEx         00000001400012fb f   x64.obj
- 0001:0000030e       LdrEnumerateLoadedModules  000000014000130e f   x64.obj
- 0001:00000321       RtlAppendUnicodeToString   0000000140001321 f   x64.obj
- 0001:00000334       swprintf_s                 0000000140001334 f   x64.obj
- 0001:00000347       memset                     0000000140001347 f   x64.obj
- 0001:0000035a       NtClose                    000000014000135a f   x64.obj
- 0001:0000036d       NtCreateSection            000000014000136d f   x64.obj
- 0001:00000380       LdrGetDllHandle            0000000140001380 f   x64.obj
- 0001:00000393       NtQueryDirectoryFile       0000000140001393 f   x64.obj
- 0001:000003a6       RtlInitUnicodeString       00000001400013a6 f   x64.obj
- 0001:000003b9       RtlAllocateHeap            00000001400013b9 f   x64.obj
- 0001:000003cc       RtlGetCurrentPeb           00000001400013cc f   x64.obj
- 0001:000003df       NtOpenFile                 00000001400013df f   x64.obj
- 0001:000003f2       RtlFreeUnicodeString       00000001400013f2 f   x64.obj
- 0001:00000405       RtlDosPathNameToNtPathName_U_WithStatus 0000000140001405 f   x64.obj
- 0001:00000418       ZwUnmapViewOfSection       0000000140001418 f   x64.obj
- 0001:0000042b       ZwSetContextThread         000000014000142b f   x64.obj
- 0001:0000043e       ZwMapViewOfSection         000000014000143e f   x64.obj
- 0001:00000451       LdrGetProcedureAddress     0000000140001451 f   x64.obj
- 0001:00000464       memcpy                     0000000140001464 f   x64.obj
- 0001:00000477       strcmp                     0000000140001477 f   x64.obj
- 0001:00003368       ?IsImageOk@@YAEKPEAX@Z     0000000140004368 f   ep.obj
- 0001:000034b0       ?FindNoCfgDll@@YAJKPEAU_UNICODE_STRING@@@Z 00000001400044b0 f   ep.obj
- 0001:000036e0       ?OverwriteSection@@YAJPEAX0PEAU_IMAGE_NT_HEADERS64@@@Z 00000001400046e0 f   ep.obj
- 0001:00003898       ?retFromMapViewOfSection@@YAJJ@Z 0000000140004898 f   ep.obj
- 0001:0000395c       ?MyVexHandler@@YAJPEAU_EXCEPTION_POINTERS@@@Z 000000014000495c f   ep.obj
- 0001:00003a44       ?LoadLibraryFromMem@@YAJPEAPEAXPEAXPEAU_IMAGE_NT_HEADERS64@@PEBU_UNICODE_STRING@@@Z 0000000140004a44 f   ep.obj
- 0001:00003c08       ?CheckModule@@YAXPEAU_LDR_DATA_TABLE_ENTRY@@PEAUDSC@@PEAE@Z 0000000140004c08 f   ep.obj
- 0001:00003c54       ?LoadLibraryFromMem@@YAJPEAX_KPEAPEAX@Z 0000000140004c54 f   ep.obj
- 0001:00003d80       ?Unzip@@YAKPEBXKPEAPEAXPEAK@Z 0000000140004d80 f   ep.obj
- 0001:00003e78       ?ep@@YAXPEAXK@Z            0000000140004e78 f   ep.obj
- 0001:00003fd8       ?GetNtBase@@YAPEAXXZ       0000000140004fd8 f   ScEntry:GetFuncAddr.obj
- 0001:00003ff4       ?get_hmod@@YAPEAXPEB_W@Z   0000000140004ff4 f   ScEntry:GetFuncAddr.obj
- 0001:00004050       ?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z 0000000140005050 f   ScEntry:GetFuncAddr.obj
- 0001:000041d0       _GUID_1fc98bca_1ba9_4397_93f9_349ead41e057 00000001400051d0     ep.obj
- 0001:000041e0       ??_C@_1M@HNNPBALB@?$AA?$CK?$AA?4?$AAd?$AAl?$AAl@FNODOBFM@ 00000001400051e0     ep.obj
- 0001:000041f0       ??_C@_0BD@PPCCBCGB@ZwMapViewOfSection@FNODOBFM@ 00000001400051f0     ep.obj
- 0001:00004210       ??_C@_1BG@NCCDOFIB@?$AA?2?$AAs?$AAy?$AAs?$AAt?$AAe?$AAm?$AA3?$AA2?$AA?2@FNODOBFM@ 0000000140005210     ep.obj
- 0001:00004230       ??_C@_1BE@IAKICFED@?$AAL?$AAo?$AAa?$AAd?$AA?5?$AA?$DN?$AA?5?$AA?$CF?$AAx@FNODOBFM@ 0000000140005230     ep.obj
- 0001:00004250       ??_C@_1CC@CLMKANEA@?$AAD?$AAL?$AAL?$AA?5?$AAl?$AAo?$AAa?$AAd?$AAe?$AAd?$AA?5?$AAa?$AAt?$AA?5?$AA?$CF@FNODOBFM@ 0000000140005250     ep.obj
- 0001:00004280       ??_C@_1BE@OACLHPMG@?$AAL?$AAo?$AAa?$AAd?$AA?5?$AAO?$AAk?$AA?5?$AA?$CB@FNODOBFM@ 0000000140005280     ep.obj
- 0001:000042a0       ??_C@_1BG@BJACKGCI@?$AAU?$AAn?$AAz?$AAi?$AAp?$AA?5?$AA?$DN?$AA?5?$AA?$CF?$AAx@FNODOBFM@ 00000001400052a0     ep.obj
- 0001:00005530       ?sc_end@@YAPEAXXZ          0000000140006530 f   ScEntry:prepare.obj
- 0001:00005538       ?ScEntry@@YAXPEAU_PEB@@@Z  0000000140006538 f   ScEntry:prepare.obj
+ 0001:00000276       RtlAddVectoredExceptionHandler 0000000140001276 f   x64.obj
+ 0001:00000289       RtlAppendUnicodeStringToString 0000000140001289 f   x64.obj
+ 0001:0000029c       LdrLoadDll                 000000014000129c f   x64.obj
+ 0001:000002af       LdrUnloadDll               00000001400012af f   x64.obj
+ 0001:000002c2       RtlRemoveVectoredExceptionHandler 00000001400012c2 f   x64.obj
+ 0001:000002d5       LdrAddRefDll               00000001400012d5 f   x64.obj
+ 0001:000002e8       RtlImageNtHeaderEx         00000001400012e8 f   x64.obj
+ 0001:000002fb       LdrEnumerateLoadedModules  00000001400012fb f   x64.obj
+ 0001:0000030e       RtlAppendUnicodeToString   000000014000130e f   x64.obj
+ 0001:00000321       swprintf_s                 0000000140001321 f   x64.obj
+ 0001:00000334       memset                     0000000140001334 f   x64.obj
+ 0001:00000347       NtClose                    0000000140001347 f   x64.obj
+ 0001:0000035a       NtCreateSection            000000014000135a f   x64.obj
+ 0001:0000036d       LdrGetDllHandle            000000014000136d f   x64.obj
+ 0001:00000380       NtQueryDirectoryFile       0000000140001380 f   x64.obj
+ 0001:00000393       RtlInitUnicodeString       0000000140001393 f   x64.obj
+ 0001:000003a6       RtlAllocateHeap            00000001400013a6 f   x64.obj
+ 0001:000003b9       RtlGetCurrentPeb           00000001400013b9 f   x64.obj
+ 0001:000003cc       NtOpenFile                 00000001400013cc f   x64.obj
+ 0001:000003df       RtlFreeUnicodeString       00000001400013df f   x64.obj
+ 0001:000003f2       RtlDosPathNameToNtPathName_U_WithStatus 00000001400013f2 f   x64.obj
+ 0001:00000405       ZwUnmapViewOfSection       0000000140001405 f   x64.obj
+ 0001:00000418       ZwSetContextThread         0000000140001418 f   x64.obj
+ 0001:0000042b       ZwMapViewOfSection         000000014000142b f   x64.obj
+ 0001:0000043e       LdrGetProcedureAddress     000000014000143e f   x64.obj
+ 0001:00000451       memcpy                     0000000140001451 f   x64.obj
+ 0001:00000464       strcmp                     0000000140001464 f   x64.obj
+ 0001:00003354       ?IsImageOk@@YAEKPEAX@Z     0000000140004354 f   ep.obj
+ 0001:0000349c       ?FindNoCfgDll@@YAJKPEAU_UNICODE_STRING@@@Z 000000014000449c f   ep.obj
+ 0001:000036cc       ?OverwriteSection@@YAJPEAX0PEAU_IMAGE_NT_HEADERS64@@@Z 00000001400046cc f   ep.obj
+ 0001:00003884       ?retFromMapViewOfSection@@YAJJ@Z 0000000140004884 f   ep.obj
+ 0001:00003950       ?MyVexHandler@@YAJPEAU_EXCEPTION_POINTERS@@@Z 0000000140004950 f   ep.obj
+ 0001:00003a38       ?LoadLibraryFromMem@@YAJPEAPEAXPEAXPEAU_IMAGE_NT_HEADERS64@@PEBU_UNICODE_STRING@@@Z 0000000140004a38 f   ep.obj
+ 0001:00003c24       ?CheckModule@@YAXPEAU_LDR_DATA_TABLE_ENTRY@@PEAUDSC@@PEAE@Z 0000000140004c24 f   ep.obj
+ 0001:00003c70       ?LoadLibraryFromMem@@YAJPEAX_KPEAPEAX@Z 0000000140004c70 f   ep.obj
+ 0001:00003d9c       ?Unzip@@YAKPEBXKPEAPEAXPEAK@Z 0000000140004d9c f   ep.obj
+ 0001:00003e94       ?ep@@YAXPEAXK@Z            0000000140004e94 f   ep.obj
+ 0001:00003ff4       ?GetNtBase@@YAPEAXXZ       0000000140004ff4 f   ScEntry:GetFuncAddr.obj
+ 0001:00004010       ?get_hmod@@YAPEAXPEB_W@Z   0000000140005010 f   ScEntry:GetFuncAddr.obj
+ 0001:0000406c       ?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z 000000014000506c f   ScEntry:GetFuncAddr.obj
+ 0001:000041e8       _GUID_1fc98bca_1ba9_4397_93f9_349ead41e057 00000001400051e8     ep.obj
+ 0001:00004200       ??_C@_1M@HNNPBALB@?$AA?$CK?$AA?4?$AAd?$AAl?$AAl@FNODOBFM@ 0000000140005200     ep.obj
+ 0001:00004210       ??_C@_0BD@PPCCBCGB@ZwMapViewOfSection@FNODOBFM@ 0000000140005210     ep.obj
+ 0001:00004230       ??_C@_0BG@EDOIKHNH@RtlSetProtectedPolicy@FNODOBFM@ 0000000140005230     ep.obj
+ 0001:00004250       ??_C@_1BG@NCCDOFIB@?$AA?2?$AAs?$AAy?$AAs?$AAt?$AAe?$AAm?$AA3?$AA2?$AA?2@FNODOBFM@ 0000000140005250     ep.obj
+ 0001:00004270       ??_C@_1BE@IAKICFED@?$AAL?$AAo?$AAa?$AAd?$AA?5?$AA?$DN?$AA?5?$AA?$CF?$AAx@FNODOBFM@ 0000000140005270     ep.obj
+ 0001:00004290       ??_C@_1CC@CLMKANEA@?$AAD?$AAL?$AAL?$AA?5?$AAl?$AAo?$AAa?$AAd?$AAe?$AAd?$AA?5?$AAa?$AAt?$AA?5?$AA?$CF@FNODOBFM@ 0000000140005290     ep.obj
+ 0001:000042c0       ??_C@_1BE@OACLHPMG@?$AAL?$AAo?$AAa?$AAd?$AA?5?$AAO?$AAk?$AA?5?$AA?$CB@FNODOBFM@ 00000001400052c0     ep.obj
+ 0001:000042e0       ??_C@_1BG@BJACKGCI@?$AAU?$AAn?$AAz?$AAi?$AAp?$AA?5?$AA?$DN?$AA?5?$AA?$CF?$AAx@FNODOBFM@ 00000001400052e0     ep.obj
+ 0001:00005510       ?sc_end@@YAPEAXXZ          0000000140006510 f   ScEntry:prepare.obj
+ 0001:00005518       ?ScEntry@@YAXPEAU_PEB@@@Z  0000000140006518 f   ScEntry:prepare.obj
  0002:00000000       ??_C@_0BF@EKFKPNAI@RtlInitUnicodeString@ 0000000140007000     ScEntry:prepare.obj
  0002:00000018       ??_C@_1BI@NEOFKCPM@?$AAp?$AAr?$AAe?$AAp?$AAa?$AAr?$AAe?$AA?4?$AAd?$AAl?$AAl@ 0000000140007018     ScEntry:prepare.obj
  0002:00000030       ??_C@_0L@HOFGLFDL@LdrLoadDll@ 0000000140007030     ScEntry:prepare.obj
@@ -131,14 +131,14 @@
  0003:00000000       __@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUcGEUivovzhvUhuoUhgwzucOlyq@4B2008FD98C1DD4 0000000140008000     stdafx.obj
  0003:00000004       __@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUcGEUivovzhvUhxvmgibUhgwzucOlyq@4B2008FD98C1DD4 0000000140008004     ScEntry:stdafx.obj
 
- entry point at        0001:00005538
+ entry point at        0001:00005518
 
  Static symbols
 
  0001:00000068       common_imp_call            0000000140001068 f   x64.obj
  0001:000000bb       protect                    00000001400010bb f   x64.obj
- 0001:0000048a       code_begin                 000000014000148a     x64.obj
- 0001:00003366       code_end                   0000000140004366     x64.obj
+ 0001:00000477       code_begin                 0000000140001477     x64.obj
+ 0001:00003353       code_end                   0000000140004353     x64.obj
  0001:00005000       ?Decompress                0000000140006000     x64.obj
  0001:00005000       @imp_begin@                0000000140006000     x64.obj
  0001:00005010       ?CreateDecompressor        0000000140006010     x64.obj
@@ -159,35 +159,34 @@
  0001:00005188       ?RtlGetFrame               0000000140006188     x64.obj
  0001:000051a0       ?ZwProtectVirtualMemory    00000001400061a0     x64.obj
  0001:000051c0       ?RtlEqualUnicodeString     00000001400061c0     x64.obj
- 0001:000051e0       ?RtlSetProtectedPolicy     00000001400061e0     x64.obj
- 0001:00005200       ?RtlAddVectoredExceptionHandler 0000000140006200     x64.obj
- 0001:00005228       ?RtlAppendUnicodeStringToString 0000000140006228     x64.obj
- 0001:00005250       ?LdrLoadDll                0000000140006250     x64.obj
- 0001:00005268       ?LdrUnloadDll              0000000140006268     x64.obj
- 0001:00005280       ?RtlRemoveVectoredExceptionHandler 0000000140006280     x64.obj
- 0001:000052b0       ?LdrAddRefDll              00000001400062b0     x64.obj
- 0001:000052c8       ?RtlImageNtHeaderEx        00000001400062c8     x64.obj
- 0001:000052e8       ?LdrEnumerateLoadedModules 00000001400062e8     x64.obj
- 0001:00005310       ?RtlAppendUnicodeToString  0000000140006310     x64.obj
- 0001:00005338       ?swprintf_s                0000000140006338     x64.obj
- 0001:00005350       ?memset                    0000000140006350     x64.obj
- 0001:00005360       ?NtClose                   0000000140006360     x64.obj
- 0001:00005370       ?NtCreateSection           0000000140006370     x64.obj
- 0001:00005388       ?LdrGetDllHandle           0000000140006388     x64.obj
- 0001:000053a0       ?NtQueryDirectoryFile      00000001400063a0     x64.obj
- 0001:000053c0       ?RtlInitUnicodeString      00000001400063c0     x64.obj
- 0001:000053e0       ?RtlAllocateHeap           00000001400063e0     x64.obj
- 0001:000053f8       ?RtlGetCurrentPeb          00000001400063f8     x64.obj
- 0001:00005418       ?NtOpenFile                0000000140006418     x64.obj
- 0001:00005430       ?RtlFreeUnicodeString      0000000140006430     x64.obj
- 0001:00005450       ?RtlDosPathNameToNtPathName_U_WithStatus 0000000140006450     x64.obj
- 0001:00005480       ?ZwUnmapViewOfSection      0000000140006480     x64.obj
- 0001:000054a0       ?ZwSetContextThread        00000001400064a0     x64.obj
- 0001:000054c0       ?ZwMapViewOfSection        00000001400064c0     x64.obj
- 0001:000054e0       ?LdrGetProcedureAddress    00000001400064e0     x64.obj
- 0001:00005500       ?memcpy                    0000000140006500     x64.obj
- 0001:00005510       ?strcmp                    0000000140006510     x64.obj
- 0001:00005520       @ntdllp                    0000000140006520     x64.obj
+ 0001:000051e0       ?RtlAddVectoredExceptionHandler 00000001400061e0     x64.obj
+ 0001:00005208       ?RtlAppendUnicodeStringToString 0000000140006208     x64.obj
+ 0001:00005230       ?LdrLoadDll                0000000140006230     x64.obj
+ 0001:00005248       ?LdrUnloadDll              0000000140006248     x64.obj
+ 0001:00005260       ?RtlRemoveVectoredExceptionHandler 0000000140006260     x64.obj
+ 0001:00005290       ?LdrAddRefDll              0000000140006290     x64.obj
+ 0001:000052a8       ?RtlImageNtHeaderEx        00000001400062a8     x64.obj
+ 0001:000052c8       ?LdrEnumerateLoadedModules 00000001400062c8     x64.obj
+ 0001:000052f0       ?RtlAppendUnicodeToString  00000001400062f0     x64.obj
+ 0001:00005318       ?swprintf_s                0000000140006318     x64.obj
+ 0001:00005330       ?memset                    0000000140006330     x64.obj
+ 0001:00005340       ?NtClose                   0000000140006340     x64.obj
+ 0001:00005350       ?NtCreateSection           0000000140006350     x64.obj
+ 0001:00005368       ?LdrGetDllHandle           0000000140006368     x64.obj
+ 0001:00005380       ?NtQueryDirectoryFile      0000000140006380     x64.obj
+ 0001:000053a0       ?RtlInitUnicodeString      00000001400063a0     x64.obj
+ 0001:000053c0       ?RtlAllocateHeap           00000001400063c0     x64.obj
+ 0001:000053d8       ?RtlGetCurrentPeb          00000001400063d8     x64.obj
+ 0001:000053f8       ?NtOpenFile                00000001400063f8     x64.obj
+ 0001:00005410       ?RtlFreeUnicodeString      0000000140006410     x64.obj
+ 0001:00005430       ?RtlDosPathNameToNtPathName_U_WithStatus 0000000140006430     x64.obj
+ 0001:00005460       ?ZwUnmapViewOfSection      0000000140006460     x64.obj
+ 0001:00005480       ?ZwSetContextThread        0000000140006480     x64.obj
+ 0001:000054a0       ?ZwMapViewOfSection        00000001400064a0     x64.obj
+ 0001:000054c0       ?LdrGetProcedureAddress    00000001400064c0     x64.obj
+ 0001:000054e0       ?memcpy                    00000001400064e0     x64.obj
+ 0001:000054f0       ?strcmp                    00000001400064f0     x64.obj
+ 0001:00005500       @ntdllp                    0000000140006500     x64.obj
  0002:00000118       $unwind$?IsImageOk@@YAEKPEAX@Z 0000000140007118     ep.obj
  0002:00000124       $unwind$?FindNoCfgDll@@YAJKPEAU_UNICODE_STRING@@@Z 0000000140007124     ep.obj
  0002:00000140       $unwind$?OverwriteSection@@YAJPEAX0PEAU_IMAGE_NT_HEADERS64@@@Z 0000000140007140     ep.obj

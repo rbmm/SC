@@ -17,7 +17,6 @@ createFuncS ntdllp, RtlPopFrame, 4
 createFuncS ntdllp, RtlGetFrame, 0
 createFuncS ntdllp, ZwProtectVirtualMemory, 20
 createFuncS ntdllp, RtlEqualUnicodeString, 12
-createFuncS ntdllp, RtlSetProtectedPolicy, 12
 createFuncS ntdllp, RtlAddVectoredExceptionHandler, 8
 createFuncS ntdllp, ZwSetContextThread, 8
 createFuncS ntdllp, LdrLoadDll, 16
@@ -25,8 +24,8 @@ createFuncS ntdllp, LdrUnloadDll, 4
 createFuncS ntdllp, RtlRemoveVectoredExceptionHandler, 4
 createFuncS ntdllp, LdrAddRefDll, 8
 createFuncS ntdllp, RtlImageNtHeaderEx, 20
-createFuncS ntdllp, RtlWow64EnableFsRedirection, 4
 createFuncS ntdllp, LdrEnumerateLoadedModules, 12
+createFuncS ntdllp, RtlWow64EnableFsRedirection, 4
 createFuncS ntdllp, RtlAppendUnicodeToString, 8
 createFuncC ntdllp, memcpy
 createFuncS ntdllp, LdrGetProcedureAddress, 16

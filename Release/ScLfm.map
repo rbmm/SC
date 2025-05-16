@@ -1,18 +1,18 @@
  ScLfm
 
- Timestamp is 67a61441 (Fri Feb  7 16:10:09 2025)
+ Timestamp is 6827280b (Fri May 16 14:56:59 2025)
 
  Preferred load address is 00400000
 
  Start         Length     Name                   Class
- 0001:00000000 0000052aH .text$mn                CODE
- 0001:0000052a 00000a8eH .text$mn$cpp            CODE
- 0001:00000fb8 00000018H .text$mn$cpp$r          CODE
- 0001:00000fd0 00001030H .text$mn$cpp$s          CODE
- 0001:00002000 00000330H .text$mn$cpp$u          CODE
- 0001:00002330 00000000H .text$mn$cpp$v          CODE
- 0001:00002330 00000006H .text$nm                CODE
- 0001:00002336 000000d2H .text$zz                CODE
+ 0001:00000000 0000050aH .text$mn                CODE
+ 0001:0000050a 00000abeH .text$mn$cpp            CODE
+ 0001:00000fc8 00000018H .text$mn$cpp$r          CODE
+ 0001:00000fe0 00001020H .text$mn$cpp$s          CODE
+ 0001:00002000 00000320H .text$mn$cpp$u          CODE
+ 0001:00002320 00000000H .text$mn$cpp$v          CODE
+ 0001:00002320 00000006H .text$nm                CODE
+ 0001:00002326 000000cbH .text$zz                CODE
  0002:00000000 000000b0H .rdata                  DATA
  0002:000000b0 00000000H .edata                  DATA
  0002:000000b0 00000064H .rdata$zzzdbg           DATA
@@ -74,38 +74,38 @@
  0001:000002f9       _RtlGetFrame@0             004012f9 f   x86.obj
  0001:0000031a       _ZwProtectVirtualMemory@20 0040131a f   x86.obj
  0001:0000033b       _RtlEqualUnicodeString@12  0040133b f   x86.obj
- 0001:0000035c       _RtlSetProtectedPolicy@12  0040135c f   x86.obj
- 0001:0000037d       _RtlAddVectoredExceptionHandler@8 0040137d f   x86.obj
- 0001:0000039e       _ZwSetContextThread@8      0040139e f   x86.obj
- 0001:000003bf       _LdrLoadDll@16             004013bf f   x86.obj
- 0001:000003e0       _LdrUnloadDll@4            004013e0 f   x86.obj
- 0001:00000401       _RtlRemoveVectoredExceptionHandler@4 00401401 f   x86.obj
- 0001:00000422       _LdrAddRefDll@8            00401422 f   x86.obj
- 0001:00000443       _RtlImageNtHeaderEx@20     00401443 f   x86.obj
+ 0001:0000035c       _RtlAddVectoredExceptionHandler@8 0040135c f   x86.obj
+ 0001:0000037d       _ZwSetContextThread@8      0040137d f   x86.obj
+ 0001:0000039e       _LdrLoadDll@16             0040139e f   x86.obj
+ 0001:000003bf       _LdrUnloadDll@4            004013bf f   x86.obj
+ 0001:000003e0       _RtlRemoveVectoredExceptionHandler@4 004013e0 f   x86.obj
+ 0001:00000401       _LdrAddRefDll@8            00401401 f   x86.obj
+ 0001:00000422       _RtlImageNtHeaderEx@20     00401422 f   x86.obj
+ 0001:00000443       _LdrEnumerateLoadedModules@12 00401443 f   x86.obj
  0001:00000464       _RtlWow64EnableFsRedirection@4 00401464 f   x86.obj
- 0001:00000485       _LdrEnumerateLoadedModules@12 00401485 f   x86.obj
- 0001:000004a6       _RtlAppendUnicodeToString@8 004014a6 f   x86.obj
- 0001:000004c7       _memcpy                    004014c7 f   x86.obj
- 0001:000004e8       _LdrGetProcedureAddress@16 004014e8 f   x86.obj
- 0001:00000509       _memset                    00401509 f   x86.obj
- 0001:0000052a       ?IsImageOk@@YGEKPAX@Z      0040152a f   ep.obj
- 0001:00000638       ?FindNoCfgDll@@YGJKPAU_UNICODE_STRING@@@Z 00401638 f   ep.obj
- 0001:0000082a       ?get@IMAGE_Ctx@@SGPAU1@XZ  0040182a f i ep.obj
- 0001:0000087e       ?OverwriteSection@@YGJPAX0PAU_IMAGE_NT_HEADERS@@@Z 0040187e f   ep.obj
- 0001:00000a10       ?retFromMapViewOfSection@@YIJJ@Z 00401a10 f   ep.obj
- 0001:00000a6a       ?MyVexHandler@@YGJPAU_EXCEPTION_POINTERS@@@Z 00401a6a f   ep.obj
- 0001:00000b0e       ?LoadLibraryFromMem@@YGJPAPAXPAXPAU_IMAGE_NT_HEADERS@@PBU_UNICODE_STRING@@@Z 00401b0e f   ep.obj
- 0001:00000c94       ?CheckModule@@YGXPAU_LDR_DATA_TABLE_ENTRY@@PAUDSC@@PAE@Z 00401c94 f   ep.obj
- 0001:00000cc6       ?LoadLibraryFromMem@@YGJPAXKPAPAX@Z 00401cc6 f   ep.obj
- 0001:00000dc3       ?GetNtBase@@YGPAXXZ        00401dc3 f   ScEntry:GetFuncAddr.obj
- 0001:00000dd6       ?get_hmod@@YIPAXPB_W@Z     00401dd6 f   ScEntry:GetFuncAddr.obj
- 0001:00000e20       ?GetFuncAddressEx@@YIPAXPAU_IMAGE_DOS_HEADER@@PBD@Z 00401e20 f   ScEntry:GetFuncAddr.obj
- 0001:00000fb8       __GUID_1fc98bca_1ba9_4397_93f9_349ead41e057 00401fb8     ep.obj
- 0001:00000fd0       ??_C@_1M@HNNPBALB@?$AA?$CK?$AA?4?$AAd?$AAl?$AAl@FNODOBFM@ 00401fd0     ep.obj
- 0001:00000fe0       ??_C@_0BD@PPCCBCGB@ZwMapViewOfSection@FNODOBFM@ 00401fe0     ep.obj
- 0001:00001000       ??_C@_1BG@NCCDOFIB@?$AA?2?$AAs?$AAy?$AAs?$AAt?$AAe?$AAm?$AA3?$AA2?$AA?2@FNODOBFM@ 00402000     ep.obj
- 0001:00002330       ?sc_end@@YGPAXXZ           00403330 f   ScEntry:prepare.obj
- 0001:00002336       ?ScEntry@@YGXPAU_PEB@@@Z   00403336 f   ScEntry:prepare.obj
+ 0001:00000485       _RtlAppendUnicodeToString@8 00401485 f   x86.obj
+ 0001:000004a6       _memcpy                    004014a6 f   x86.obj
+ 0001:000004c7       _LdrGetProcedureAddress@16 004014c7 f   x86.obj
+ 0001:000004e8       _memset                    004014e8 f   x86.obj
+ 0001:0000050a       ?IsImageOk@@YGEKPAX@Z      0040150a f   ep.obj
+ 0001:00000618       ?FindNoCfgDll@@YGJKPAU_UNICODE_STRING@@@Z 00401618 f   ep.obj
+ 0001:0000080a       ?get@IMAGE_Ctx@@SGPAU1@XZ  0040180a f i ep.obj
+ 0001:0000085e       ?OverwriteSection@@YGJPAX0PAU_IMAGE_NT_HEADERS@@@Z 0040185e f   ep.obj
+ 0001:000009f0       ?retFromMapViewOfSection@@YIJJ@Z 004019f0 f   ep.obj
+ 0001:00000a4c       ?MyVexHandler@@YGJPAU_EXCEPTION_POINTERS@@@Z 00401a4c f   ep.obj
+ 0001:00000af0       ?LoadLibraryFromMem@@YGJPAPAXPAXPAU_IMAGE_NT_HEADERS@@PBU_UNICODE_STRING@@@Z 00401af0 f   ep.obj
+ 0001:00000ca6       ?CheckModule@@YGXPAU_LDR_DATA_TABLE_ENTRY@@PAUDSC@@PAE@Z 00401ca6 f   ep.obj
+ 0001:00000cd8       ?LoadLibraryFromMem@@YGJPAXKPAPAX@Z 00401cd8 f   ep.obj
+ 0001:00000dd5       ?GetNtBase@@YGPAXXZ        00401dd5 f   ScEntry:GetFuncAddr.obj
+ 0001:00000de8       ?get_hmod@@YIPAXPB_W@Z     00401de8 f   ScEntry:GetFuncAddr.obj
+ 0001:00000e32       ?GetFuncAddressEx@@YIPAXPAU_IMAGE_DOS_HEADER@@PBD@Z 00401e32 f   ScEntry:GetFuncAddr.obj
+ 0001:00000fc8       __GUID_1fc98bca_1ba9_4397_93f9_349ead41e057 00401fc8     ep.obj
+ 0001:00000fe0       ??_C@_1M@HNNPBALB@?$AA?$CK?$AA?4?$AAd?$AAl?$AAl@FNODOBFM@ 00401fe0     ep.obj
+ 0001:00000ff0       ??_C@_0BD@PPCCBCGB@ZwMapViewOfSection@FNODOBFM@ 00401ff0     ep.obj
+ 0001:00001010       ??_C@_0BG@EDOIKHNH@RtlSetProtectedPolicy@FNODOBFM@ 00402010     ep.obj
+ 0001:00001030       ??_C@_1BG@NCCDOFIB@?$AA?2?$AAs?$AAy?$AAs?$AAt?$AAe?$AAm?$AA3?$AA2?$AA?2@FNODOBFM@ 00402030     ep.obj
+ 0001:00002320       ?sc_end@@YGPAXXZ           00403320 f   ScEntry:prepare.obj
+ 0001:00002326       ?ScEntry@@YGXPAU_PEB@@@Z   00403326 f   ScEntry:prepare.obj
  0002:00000000       ??_C@_0BF@EKFKPNAI@RtlInitUnicodeString@ 00404000     ScEntry:prepare.obj
  0002:00000018       ??_C@_1BI@NEOFKCPM@?$AAp?$AAr?$AAe?$AAp?$AAa?$AAr?$AAe?$AA?4?$AAd?$AAl?$AAl@ 00404018     ScEntry:prepare.obj
  0002:00000030       ??_C@_0L@HOFGLFDL@LdrLoadDll@ 00404030     ScEntry:prepare.obj
@@ -115,7 +115,7 @@
  0003:00000000       ___@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUdrmDCUivovzhvUhxounUhgwzucOlyq@4B2008FD98C1DD4 00405000     stdafx.obj
  0003:00000004       ___@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUdrmDCUivovzhvUhxvmgibUhgwzucOlyq@4B2008FD98C1DD4 00405004     ScEntry:stdafx.obj
 
- entry point at        0001:00002336
+ entry point at        0001:00002326
 
  Static symbols
 
@@ -141,18 +141,17 @@
  0001:0000217c       ?_RtlGetFrame@0            0040317c     x86.obj
  0001:0000218c       ?_ZwProtectVirtualMemory@20 0040318c     x86.obj
  0001:000021a8       ?_RtlEqualUnicodeString@12 004031a8     x86.obj
- 0001:000021c4       ?_RtlSetProtectedPolicy@12 004031c4     x86.obj
- 0001:000021e0       ?_RtlAddVectoredExceptionHandler@8 004031e0     x86.obj
- 0001:00002204       ?_ZwSetContextThread@8     00403204     x86.obj
- 0001:0000221c       ?_LdrLoadDll@16            0040321c     x86.obj
- 0001:0000222c       ?_LdrUnloadDll@4           0040322c     x86.obj
- 0001:00002240       ?_RtlRemoveVectoredExceptionHandler@4 00403240     x86.obj
- 0001:00002268       ?_LdrAddRefDll@8           00403268     x86.obj
- 0001:0000227c       ?_RtlImageNtHeaderEx@20    0040327c     x86.obj
- 0001:00002294       ?_RtlWow64EnableFsRedirection@4 00403294     x86.obj
- 0001:000022b4       ?_LdrEnumerateLoadedModules@12 004032b4     x86.obj
- 0001:000022d4       ?_RtlAppendUnicodeToString@8 004032d4     x86.obj
- 0001:000022f4       ?_memcpy                   004032f4     x86.obj
- 0001:00002300       ?_LdrGetProcedureAddress@16 00403300     x86.obj
- 0001:0000231c       ?_memset                   0040331c     x86.obj
- 0001:00002328       @ntdllp                    00403328     x86.obj
+ 0001:000021c4       ?_RtlAddVectoredExceptionHandler@8 004031c4     x86.obj
+ 0001:000021e8       ?_ZwSetContextThread@8     004031e8     x86.obj
+ 0001:00002200       ?_LdrLoadDll@16            00403200     x86.obj
+ 0001:00002210       ?_LdrUnloadDll@4           00403210     x86.obj
+ 0001:00002224       ?_RtlRemoveVectoredExceptionHandler@4 00403224     x86.obj
+ 0001:0000224c       ?_LdrAddRefDll@8           0040324c     x86.obj
+ 0001:00002260       ?_RtlImageNtHeaderEx@20    00403260     x86.obj
+ 0001:00002278       ?_LdrEnumerateLoadedModules@12 00403278     x86.obj
+ 0001:00002298       ?_RtlWow64EnableFsRedirection@4 00403298     x86.obj
+ 0001:000022b8       ?_RtlAppendUnicodeToString@8 004032b8     x86.obj
+ 0001:000022d8       ?_memcpy                   004032d8     x86.obj
+ 0001:000022e4       ?_LdrGetProcedureAddress@16 004032e4     x86.obj
+ 0001:00002300       ?_memset                   00403300     x86.obj
+ 0001:0000230c       @ntdllp                    0040330c     x86.obj

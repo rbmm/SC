@@ -21,7 +21,6 @@ createFuncS ntdllp, RtlGetFrame, 0
 createFuncS ntdllp, RtlImageDirectoryEntryToData, 16
 createFuncS ntdllp, LdrProcessRelocationBlock, 16
 createFuncS ntdllp, RtlEqualUnicodeString, 12
-createFuncS ntdllp, RtlSetProtectedPolicy, 12
 createFuncS ntdllp, RtlAddVectoredExceptionHandler, 8
 createFuncS ntdllp, ZwSetContextThread, 8
 createFuncS ntdllp, LdrLoadDll, 16

@@ -23,7 +23,6 @@ createFunc ntdllp, RtlPopFrame
 createFunc ntdllp, RtlGetFrame
 createFunc ntdllp, ZwProtectVirtualMemory
 createFunc ntdllp, RtlEqualUnicodeString
-createFunc ntdllp, RtlSetProtectedPolicy
 createFunc ntdllp, RtlAddVectoredExceptionHandler
 createFunc ntdllp, RtlAppendUnicodeStringToString
 createFunc ntdllp, LdrLoadDll

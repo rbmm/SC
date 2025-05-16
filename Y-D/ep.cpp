@@ -42,6 +42,7 @@ LRESULT CALLBACK CBTProc(int nCode, WPARAM wParam, LPARAM lParam)
 		{
 			SetWindowSubclass((HWND)wParam, MyScp, 0, 0);
 			UnhookWindowsHookEx(_G_hhk);
+			_G_hhk = 0;
 		}
 	}
 
@@ -55,6 +56,13 @@ BOOLEAN WINAPI DllMain(HMODULE hmod, DWORD dwReason, PVOID)
 	case DLL_PROCESS_ATTACH:
 		DisableThreadLibraryCalls(hmod);
 		_G_hhk = SetWindowsHookExW(WH_CBT, CBTProc, hmod, GetCurrentThreadId());
+		break;
+	case DLL_PROCESS_DETACH:
+		if (_G_hhk)
+		{
+			UnhookWindowsHookEx(_G_hhk);
+			_G_hhk = 0;
+		}
 		break;
 	}
 

@@ -76,7 +76,7 @@ struct IMAGE_Ctx : public TEB_ACTIVE_FRAME
 	inline static const char FrameName[] = "{0A0659E5-2962-480a-9A6F-01A02C5C043B}";
 
 	PIMAGE_NT_HEADERS _M_pinth;
-	PVOID _M_retAddr = 0, _M_pvImage, *_M_pBaseAddress = 0;
+	PVOID _M_retAddr = 0, _M_pvImage, *_M_pBaseAddress = 0, _M_hmod = 0;
 	PCWSTR _M_lpFileName;
 	NTSTATUS _M_status = STATUS_UNSUCCESSFUL;
 
@@ -200,6 +200,10 @@ NTSTATUS __fastcall retFromMapViewOfSection(NTSTATUS status)
 				ZwUnmapViewOfSection(NtCurrentProcess(), BaseAddress);
 
 				*ctx->_M_pBaseAddress = 0;
+			}
+			else
+			{
+				ctx->_M_hmod = BaseAddress;
 			}
 		}
 
