@@ -38,7 +38,7 @@ LRESULT CALLBACK CBTProc(int nCode, WPARAM wParam, LPARAM lParam)
 		CBT_CREATEWND* pccw = reinterpret_cast<CBT_CREATEWND*>(lParam);
 
 		PCWSTR lpszClass = pccw->lpcs->lpszClass;
-		if (!IS_INTRESOURCE(lpszClass) && !_wcsicmp(WC_EDITW, lpszClass))
+		if (!IS_INTRESOURCE(lpszClass) && (!_wcsicmp(WC_EDITW, lpszClass) || !_wcsicmp(L"RichEditD2DPT", lpszClass)))
 		{
 			SetWindowSubclass((HWND)wParam, MyScp, 0, 0);
 			UnhookWindowsHookEx(_G_hhk);
