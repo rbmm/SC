@@ -112,11 +112,11 @@ void WINAPI ep()
 {
 	CPP_FUNCTION;
 
-	if (GetTickCount())
+	//if (!GetTickCount())
 	{
 		MessageBoxW(0, _YW(L"DEMO"), _YW(L"POC"), MB_ICONINFORMATION);
 	}
-	else
+	//else
 	{
 		BOOL b;
 		IsProcessCritical(NtCurrentProcess(), &b);
@@ -131,5 +131,5 @@ void WINAPI ep()
 		RtlDispatchAPC(_Y(ApcTest), (ULONG_PTR)_Y(ep), INVALID_HANDLE_VALUE);
 	}
 	
-	ExitProcess(0);
+	if (!GetTickCount()) ExitProcess(0);
 }

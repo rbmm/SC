@@ -481,7 +481,7 @@ HRESULT NewVcxProj(PCWSTR pszProjectName)
 	return E_FAIL;
 }
 
-NTSTATUS SaveAsAsm(PCWSTR pwzFileName, const void* pcv, SIZE_T cb)
+NTSTATUS I_SaveAsAsm(PCWSTR pwzFileName, const void* pcv, SIZE_T cb)
 {
 	NTSTATUS status;
 
@@ -548,12 +548,123 @@ NTSTATUS SaveAsAsm(PCWSTR pwzFileName, const void* pcv, SIZE_T cb)
 __exit:
 		delete[] buf;
 
-		DbgPrint("SaveAsAsm(%ws)=%x\r\n", pwzFileName, status);
+		printf(L"SaveAsAsm(%ws)=%x\r\n", pwzFileName, status);
 
 		return status;
 	}
 
 	return STATUS_NO_MEMORY;
+}
+
+//## -> #
+//#. -> *
+//#: -> %
+
+BOOL UnEscape(_Inout_ PWSTR str)
+{
+	PWSTR buf = str;
+	WCHAR c;
+	do
+	{
+		if ('#' == (c = *str++))
+		{
+			switch (c = *str++)
+			{
+			case '.':
+				c = '*';
+				break;
+			case ':':
+				c = '%';
+				break;
+			case '#':
+				break;
+			default:
+				return FALSE;
+			}
+		}
+
+		*buf++ = c;
+
+	} while (c);
+
+	return TRUE;
+}
+
+NTSTATUS CreateAesKey(_Out_ BCRYPT_KEY_HANDLE* phKey, _In_ PBYTE secret, _In_ ULONG cb)
+{
+	NTSTATUS status;
+	BCRYPT_ALG_HANDLE hAlgorithm;
+	if (0 <= (status = BCryptOpenAlgorithmProvider(&hAlgorithm, BCRYPT_AES_ALGORITHM, 0, 0)))
+	{
+		status = BCryptGenerateSymmetricKey(hAlgorithm, phKey, 0, 0, secret, cb, 0);
+
+		BCryptCloseAlgorithmProvider(hAlgorithm, 0);
+	}
+
+	return status;
+}
+
+NTSTATUS SaveAsAsm(PCWSTR pwzFileName, const void* pcv, SIZE_T cb)
+{
+	if (PWSTR psz = wcsrchr(pwzFileName, '?'))
+	{
+		*psz++ = 0;
+
+		//while (!IsDebuggerPresent()) Sleep(100); __debugbreak();
+		if (!UnEscape(const_cast<PWSTR>(pwzFileName)))
+		{
+			return STATUS_BAD_DATA;
+		}
+		printf(L"password: \"%ws\"\r\n", pwzFileName);
+
+		ULONG len = RtlPointerToOffset(pwzFileName, psz);
+		NTSTATUS status = RtlUnicodeToUTF8N((char*)pwzFileName, len, &len, pwzFileName, len);
+
+		if (0 > status)
+		{
+			return status;
+		}
+
+		BCRYPT_KEY_HANDLE hKey;
+		UCHAR secret[32];
+		ULONG s = sizeof(secret);
+		if (CryptHashCertificate2(BCRYPT_SHA256_ALGORITHM, 0, 0, (PBYTE)pwzFileName, len, secret, &s))
+		{
+			if (0 <= (status = CreateAesKey(&hKey, secret, s)))
+			{
+				PBYTE pb = 0;
+				s = 0;
+				while (0 <= (status = BCryptEncrypt(hKey, (PBYTE)pcv, cb, 0, 0, 0, pb, s, &s, BCRYPT_BLOCK_PADDING)))
+				{
+					if (pb)
+					{
+						printf(L"Encrypt: %x -> %x\r\n", cb, s);
+						status = I_SaveAsAsm(psz, pb, s);
+						break;
+					}
+
+					if (!(pb = new UCHAR[s]))
+					{
+						status = STATUS_NO_MEMORY;
+						break;
+					}
+				}
+
+				if (pb)
+				{
+					delete[] pb;
+				}
+
+				BCryptDestroyKey(hKey);
+			}
+
+			return status;
+		}
+
+		return GetLastError();
+	}
+
+	return I_SaveAsAsm(pwzFileName, pcv, cb);
 }
 
 NTSTATUS ZipAndSaveAsAsm(PCWSTR pwzFileName, const void* pv, SIZE_T cb)
@@ -704,6 +815,72 @@ NTSTATUS ToZipAsm(PCWSTR from, PCWSTR to, bool _text, bool bZip)
 	return status;
 }
 
+NTSTATUS SetPETime(PCWSTR lpFileName, PCWSTR time)
+{
+	printf(L"SetPETime(%ws, %ws)\r\n", lpFileName, time);
+	ULONG TimeDateStamp = wcstoul(time, const_cast<WCHAR**>(&time), 16);
+	if (!TimeDateStamp || *time)
+	{
+		return STATUS_INVALID_PARAMETER_2;
+	}
+	NtNameFromWin32 ObjectName;
+	OBJECT_ATTRIBUTES oa = { sizeof(oa), 0, &ObjectName, OBJ_CASE_INSENSITIVE };
+
+	NTSTATUS status = ObjectName.Set(lpFileName);
+	HANDLE hFile = 0;
+	IO_STATUS_BLOCK iosb;
+
+	if (0 > status)
+	{
+		printf(L"convert <%s> = %x\r\n", lpFileName, status);
+	}
+	else
+	{
+		status = NtOpenFile(&hFile, FILE_GENERIC_READ | FILE_WRITE_DATA, &oa, &iosb,
+			FILE_SHARE_VALID_FLAGS, FILE_SYNCHRONOUS_IO_NONALERT);
+
+		printf(L"OpenFile(%wZ) = %x\r\n", static_cast<PCUNICODE_STRING>(&ObjectName), status);
+	}
+
+	if (0 <= status)
+	{
+		union {
+			IMAGE_DOS_HEADER idh;
+			IMAGE_NT_HEADERS inh;
+		};
+
+		if (0 <= (status = NtReadFile(hFile, 0, 0, 0, &iosb, &idh, sizeof(idh), 0, 0)))
+		{
+			if (IMAGE_DOS_SIGNATURE == idh.e_magic)
+			{
+				LARGE_INTEGER bo = { (ULONG)idh.e_lfanew };
+				if (0 <= (status = NtReadFile(hFile, 0, 0, 0, &iosb, &inh, sizeof(inh), &bo, 0)))
+				{
+					if (IMAGE_NT_SIGNATURE == inh.Signature)
+					{
+						ULONG t = inh.FileHeader.TimeDateStamp;
+						inh.FileHeader.TimeDateStamp = TimeDateStamp;
+						status = NtWriteFile(hFile, 0, 0, 0, &iosb, &inh, sizeof(inh), &bo, 0);
+						printf(L"TimeDateStamp: %08X <- %08X =[%x]\r\n", t, TimeDateStamp, status);
+					}
+					else
+					{
+						status = STATUS_INVALID_IMAGE_FORMAT;
+					}
+				}
+			}
+			else
+			{
+				status = STATUS_INVALID_IMAGE_NOT_MZ;
+			}
+		}
+
+		NtClose(hFile);
+	}
+
+	return status;
+}
+
 void WINAPI ep(void*)
 {
 	InitConsole();
@@ -769,6 +946,14 @@ void WINAPI ep(void*)
 			{
 				exitcode = HRESULT_FROM_NT(NewVcxProj(argv[0]));
 				argc--, argv++;
+			}
+		}
+		else if (!wcscmp(lpsz, L"ts"))
+		{
+			if (1 < argc)
+			{
+				exitcode = SetPETime(argv[0], argv[1]);
+				argc -= 2, argv += 2;
 			}
 		}
 

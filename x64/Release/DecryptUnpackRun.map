@@ -1,17 +1,17 @@
  DecryptUnpackRun
 
- Timestamp is 67a50794 (Thu Feb  6 21:03:48 2025)
+ Timestamp is 684982ee (Wed Jun 11 16:21:50 2025)
 
  Preferred load address is 0000000140000000
 
  Start         Length     Name                   Class
- 0001:00000000 0000026cH .text$mn                CODE
- 0001:0000026c 000005a4H .text$mn$cpp            CODE
- 0001:00000810 000007f0H .text$mn$cpp$s          CODE
- 0001:00001000 00000260H .text$mn$cpp$u          CODE
- 0001:00001260 00000000H .text$mn$cpp$v          CODE
- 0001:00001260 00000008H .text$nm                CODE
- 0001:00001268 00000108H .text$zz                CODE
+ 0001:00000000 00000284H .text$mn                CODE
+ 0001:00000284 000005bcH .text$mn$cpp            CODE
+ 0001:00000840 000007c0H .text$mn$cpp$s          CODE
+ 0001:00001000 00000280H .text$mn$cpp$u          CODE
+ 0001:00001280 00000000H .text$mn$cpp$v          CODE
+ 0001:00001280 00000008H .text$nm                CODE
+ 0001:00001288 000000ffH .text$zz                CODE
  0002:00000000 000000b4H .rdata                  DATA
  0002:000000b4 00000070H .rdata$zzzdbg           DATA
  0002:00000124 00000074H .xdata                  DATA
@@ -53,36 +53,37 @@
  0000:00000000       __ImageBase                0000000140000000     <linker-defined>
  0001:00000000       ?epASM@@YAXXZ              0000000140001000 f   x64.obj
  0001:0000000a       __chkstk                   000000014000100a f   x64.obj
- 0001:00000126       CryptHashCertificate2      0000000140001126 f   x64.obj
- 0001:00000139       CreateDecompressor         0000000140001139 f   x64.obj
- 0001:0000014c       Decompress                 000000014000114c f   x64.obj
- 0001:0000015f       CloseDecompressor          000000014000115f f   x64.obj
- 0001:00000172       VirtualAlloc               0000000140001172 f   x64.obj
- 0001:00000185       GetLastError               0000000140001185 f   x64.obj
- 0001:00000198       ExitProcess                0000000140001198 f   x64.obj
- 0001:000001ab       VirtualFree                00000001400011ab f   x64.obj
- 0001:000001be       BCryptCloseAlgorithmProvider 00000001400011be f   x64.obj
- 0001:000001d1       BCryptGenerateSymmetricKey 00000001400011d1 f   x64.obj
- 0001:000001e4       BCryptOpenAlgorithmProvider 00000001400011e4 f   x64.obj
- 0001:000001f7       BCryptDecrypt              00000001400011f7 f   x64.obj
- 0001:0000020a       RtlInitUnicodeString       000000014000120a f   x64.obj
- 0001:0000021d       LdrLoadDll                 000000014000121d f   x64.obj
- 0001:00000230       LdrGetProcedureAddress     0000000140001230 f   x64.obj
- 0001:00000243       RtlAllocateHeap            0000000140001243 f   x64.obj
- 0001:00000256       RtlFreeHeap                0000000140001256 f   x64.obj
- 0001:0000026c       ?UnEscape@@YAHPEA_W@Z      000000014000126c f   ep.obj
- 0001:000002bc       ?CreateAesKey@@YAJPEAPEAXPEAEK@Z 00000001400012bc f   ep.obj
- 0001:0000033c       ?Unzip@@YAJPEBXKPEAPEAXPEAK@Z 000000014000133c f   ep.obj
- 0001:00000454       ?ep@@YAXPEAU_PEB@@PEAEK@Z  0000000140001454 f   ep.obj
- 0001:000005dc       ?GetNtBase@@YAPEAXXZ       00000001400015dc f   ScEntry:GetFuncAddr.obj
- 0001:000005f8       ?get_hmod@@YAPEAXPEB_W@Z   00000001400015f8 f   ScEntry:GetFuncAddr.obj
- 0001:00000654       ?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z 0000000140001654 f   ScEntry:GetFuncAddr.obj
- 0001:000007d0       ??_U@YAPEAX_K@Z            00000001400017d0 f   ScEntry:stdafx.obj
- 0001:000007ec       ??_V@YAXPEAX@Z             00000001400017ec f   ScEntry:stdafx.obj
- 0001:00000810       ??_C@_17PJMHNJHG@?$AAA?$AAE?$AAS@FNODOBFM@ 0000000140001810     ep.obj
- 0001:00000820       ??_C@_1O@HECGKAIN@?$AAS?$AAH?$AAA?$AA2?$AA5?$AA6@FNODOBFM@ 0000000140001820     ep.obj
- 0001:00001260       ?sc_end@@YAPEAXXZ          0000000140002260 f   ScEntry:prepare.obj
- 0001:00001268       ?ScEntry@@YAXPEAU_PEB@@@Z  0000000140002268 f   ScEntry:prepare.obj
+ 0001:0000012e       CryptHashCertificate2      000000014000112e f   x64.obj
+ 0001:00000141       CloseDecompressor          0000000140001141 f   x64.obj
+ 0001:00000154       Decompress                 0000000140001154 f   x64.obj
+ 0001:00000167       CreateDecompressor         0000000140001167 f   x64.obj
+ 0001:0000017a       ExitProcess                000000014000117a f   x64.obj
+ 0001:0000018d       GetLastError               000000014000118d f   x64.obj
+ 0001:000001a0       VirtualAlloc               00000001400011a0 f   x64.obj
+ 0001:000001b3       VirtualFree                00000001400011b3 f   x64.obj
+ 0001:000001c6       BCryptDecrypt              00000001400011c6 f   x64.obj
+ 0001:000001d9       BCryptCloseAlgorithmProvider 00000001400011d9 f   x64.obj
+ 0001:000001ec       BCryptGenerateSymmetricKey 00000001400011ec f   x64.obj
+ 0001:000001ff       BCryptOpenAlgorithmProvider 00000001400011ff f   x64.obj
+ 0001:00000212       RtlAllocateHeap            0000000140001212 f   x64.obj
+ 0001:00000225       RtlUnicodeToUTF8N          0000000140001225 f   x64.obj
+ 0001:00000238       RtlInitUnicodeString       0000000140001238 f   x64.obj
+ 0001:0000024b       LdrLoadDll                 000000014000124b f   x64.obj
+ 0001:0000025e       LdrGetProcedureAddress     000000014000125e f   x64.obj
+ 0001:00000271       RtlFreeHeap                0000000140001271 f   x64.obj
+ 0001:00000284       ?UnEscape@@YAHPEA_W@Z      0000000140001284 f   ep.obj
+ 0001:000002d4       ?CreateAesKey@@YAJPEAPEAXPEAEK@Z 00000001400012d4 f   ep.obj
+ 0001:00000354       ?Unzip@@YAJPEBXKPEAPEAXPEAK@Z 0000000140001354 f   ep.obj
+ 0001:0000046c       ?ep@@YAXPEAU_PEB@@PEAEK@Z  000000014000146c f   ep.obj
+ 0001:00000610       ?GetNtBase@@YAPEAXXZ       0000000140001610 f   ScEntry:GetFuncAddr.obj
+ 0001:0000062c       ?get_hmod@@YAPEAXPEB_W@Z   000000014000162c f   ScEntry:GetFuncAddr.obj
+ 0001:00000688       ?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z 0000000140001688 f   ScEntry:GetFuncAddr.obj
+ 0001:00000804       ??_U@YAPEAX_K@Z            0000000140001804 f   ScEntry:stdafx.obj
+ 0001:00000820       ??_V@YAXPEAX@Z             0000000140001820 f   ScEntry:stdafx.obj
+ 0001:00000840       ??_C@_17PJMHNJHG@?$AAA?$AAE?$AAS@FNODOBFM@ 0000000140001840     ep.obj
+ 0001:00000850       ??_C@_1O@HECGKAIN@?$AAS?$AAH?$AAA?$AA2?$AA5?$AA6@FNODOBFM@ 0000000140001850     ep.obj
+ 0001:00001280       ?sc_end@@YAPEAXXZ          0000000140002280 f   ScEntry:prepare.obj
+ 0001:00001288       ?ScEntry@@YAXPEAU_PEB@@@Z  0000000140002288 f   ScEntry:prepare.obj
  0002:00000000       ??_C@_0BF@EKFKPNAI@RtlInitUnicodeString@ 0000000140003000     ScEntry:prepare.obj
  0002:00000018       ??_C@_1BI@NEOFKCPM@?$AAp?$AAr?$AAe?$AAp?$AAa?$AAr?$AAe?$AA?4?$AAd?$AAl?$AAl@ 0000000140003018     ScEntry:prepare.obj
  0002:00000030       ??_C@_0L@HOFGLFDL@LdrLoadDll@ 0000000140003030     ScEntry:prepare.obj
@@ -92,36 +93,37 @@
  0003:00000000       __@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUcGEUivovzhvUwvxibkgfmkzxpifmUhgwzucOlyq@4B2008FD98C1DD4 0000000140004000     stdafx.obj
  0003:00000004       __@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUcGEUivovzhvUhxvmgibUhgwzucOlyq@4B2008FD98C1DD4 0000000140004004     ScEntry:stdafx.obj
 
- entry point at        0001:00001268
+ entry point at        0001:00001288
 
  Static symbols
 
  0001:00000057       common_imp_call            0000000140001057 f   x64.obj
  0001:000000aa       protect                    00000001400010aa f   x64.obj
- 0001:000005d4       ??0<unnamed-type-$S1>@?BG@??ep@@YAXPEAU_PEB@@PEAEK@Z@QEAA@XZ 00000001400015d4 f   ep.obj
+ 0001:00000608       ??0<unnamed-type-$S1>@?BG@??ep@@YAXPEAU_PEB@@PEAEK@Z@QEAA@XZ 0000000140001608 f   ep.obj
  0001:00001000       ?CryptHashCertificate2     0000000140002000     x64.obj
  0001:00001000       @imp_begin@                0000000140002000     x64.obj
  0001:00001020       @crypt32                   0000000140002020     x64.obj
- 0001:00001040       ?CreateDecompressor        0000000140002040     x64.obj
+ 0001:00001040       ?CloseDecompressor         0000000140002040     x64.obj
  0001:00001050       ?Decompress                0000000140002050     x64.obj
- 0001:00001060       ?CloseDecompressor         0000000140002060     x64.obj
+ 0001:00001060       ?CreateDecompressor        0000000140002060     x64.obj
  0001:00001070       @cabinet                   0000000140002070     x64.obj
- 0001:00001090       ?VirtualAlloc              0000000140002090     x64.obj
+ 0001:00001090       ?ExitProcess               0000000140002090     x64.obj
  0001:000010a8       ?GetLastError              00000001400020a8     x64.obj
- 0001:000010c0       ?ExitProcess               00000001400020c0     x64.obj
+ 0001:000010c0       ?VirtualAlloc              00000001400020c0     x64.obj
  0001:000010d8       ?VirtualFree               00000001400020d8     x64.obj
  0001:000010f0       @kernel32                  00000001400020f0     x64.obj
- 0001:00001118       ?BCryptCloseAlgorithmProvider 0000000140002118     x64.obj
- 0001:00001140       ?BCryptGenerateSymmetricKey 0000000140002140     x64.obj
- 0001:00001168       ?BCryptOpenAlgorithmProvider 0000000140002168     x64.obj
- 0001:00001190       ?BCryptDecrypt             0000000140002190     x64.obj
+ 0001:00001118       ?BCryptDecrypt             0000000140002118     x64.obj
+ 0001:00001130       ?BCryptCloseAlgorithmProvider 0000000140002130     x64.obj
+ 0001:00001158       ?BCryptGenerateSymmetricKey 0000000140002158     x64.obj
+ 0001:00001180       ?BCryptOpenAlgorithmProvider 0000000140002180     x64.obj
  0001:000011a8       @bcrypt                    00000001400021a8     x64.obj
- 0001:000011c8       ?RtlInitUnicodeString      00000001400021c8     x64.obj
- 0001:000011e8       ?LdrLoadDll                00000001400021e8     x64.obj
- 0001:00001200       ?LdrGetProcedureAddress    0000000140002200     x64.obj
- 0001:00001220       ?RtlAllocateHeap           0000000140002220     x64.obj
- 0001:00001238       ?RtlFreeHeap               0000000140002238     x64.obj
- 0001:00001250       @ntdllp                    0000000140002250     x64.obj
+ 0001:000011c8       ?RtlAllocateHeap           00000001400021c8     x64.obj
+ 0001:000011e0       ?RtlUnicodeToUTF8N         00000001400021e0     x64.obj
+ 0001:00001200       ?RtlInitUnicodeString      0000000140002200     x64.obj
+ 0001:00001220       ?LdrLoadDll                0000000140002220     x64.obj
+ 0001:00001238       ?LdrGetProcedureAddress    0000000140002238     x64.obj
+ 0001:00001258       ?RtlFreeHeap               0000000140002258     x64.obj
+ 0001:00001270       @ntdllp                    0000000140002270     x64.obj
  0002:00000124       $unwind$?CreateAesKey@@YAJPEAPEAXPEAEK@Z 0000000140003124     ep.obj
  0002:00000138       $unwind$?Unzip@@YAJPEBXKPEAPEAXPEAK@Z 0000000140003138     ep.obj
  0002:00000150       $unwind$?ep@@YAXPEAU_PEB@@PEAEK@Z 0000000140003150     ep.obj

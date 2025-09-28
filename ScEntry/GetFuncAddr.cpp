@@ -1,9 +1,10 @@
 #include "stdafx.h"
 
-#pragma intrinsic(strcmp, strlen)
-
 //#define _PRINT_CPP_NAMES_
 #include "asmfunc.h"
+
+unsigned long __cdecl istrlen(const char*)ASM_FUNCTION;
+char __cdecl istrcmp(const char*, const char*)ASM_FUNCTION;
 
 PVOID GetNtBase()
 {
@@ -61,7 +62,7 @@ PVOID __fastcall GetFuncAddressEx(PIMAGE_DOS_HEADER pidh, PCSTR ProcedureName)
 
 				if ((ULONG_PTR)pv - (ULONG_PTR)pied < pinth->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_EXPORT].Size)
 				{
-					ANSI_STRING as = { (USHORT)strlen(ProcedureName), as.Length, const_cast<PSTR>(ProcedureName) };
+					ANSI_STRING as = { (USHORT)istrlen(ProcedureName), as.Length, const_cast<PSTR>(ProcedureName) };
 					if (0 > LdrGetProcedureAddress((HMODULE)pidh, &as, 0, &pv)) return 0;
 				}
 
@@ -76,14 +77,14 @@ PVOID __fastcall GetFuncAddressEx(PIMAGE_DOS_HEADER pidh, PCSTR ProcedureName)
 
 		do
 		{
-			int i = strcmp(ProcedureName, RtlOffsetToPointer(pidh, AddressOfNames[o = (a + b) >> 1]));
+			__int8 i = istrcmp(ProcedureName, RtlOffsetToPointer(pidh, AddressOfNames[o = (a + b) >> 1]));
 			if (!i)
 			{
 				o = ((PWORD)RtlOffsetToPointer(pidh, pied->AddressOfNameOrdinals))[o];
 				goto __index;
 			}
 
-			if (0 > i) b = o; else a = o + 1;
+			0 > i ? b = o : a = o + 1;
 
 		} while (a < b);
 	}

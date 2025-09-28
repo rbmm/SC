@@ -355,14 +355,20 @@ NTSTATUS CreateAsmSC(PCWSTR to, PVOID pv, ULONG cb)
 		}
 		DbgPrint("password: \"%ws\"\r\n", to);
 
+		ULONG len = RtlPointerToOffset(to, psz);
+		NTSTATUS status = RtlUnicodeToUTF8N((char*)to, len, &len, to, len);
+
+		if (0 > status)
+		{
+			return status;
+		}
+
 		BCRYPT_KEY_HANDLE hKey;
 		UCHAR secret[32];
 		ULONG s = sizeof(secret);
-		if (CryptHashCertificate2(BCRYPT_SHA256_ALGORITHM, 0, 0, (PBYTE)to, RtlPointerToOffset(to, psz), secret, &s))
+		if (CryptHashCertificate2(BCRYPT_SHA256_ALGORITHM, 0, 0, (PBYTE)to, len, secret, &s))
 		{
-			NTSTATUS status = CreateAesKey(&hKey, secret, s);
-
-			if (0 <= status)
+			if (0 <= (status = CreateAesKey(&hKey, secret, s)))
 			{
 				PBYTE pb = 0;
 				s = 0;

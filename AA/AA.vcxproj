@@ -13,8 +13,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{F743F671-fe6b-306B-B130-F4C90CFCD789}</ProjectGuid>
-    <RootNamespace>ScLfm</RootNamespace>
+    <ProjectGuid>{82BC09FA-39a4-05EB-21E4-22222E092A9F}</ProjectGuid>
+    <RootNamespace>AA</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <UserRootDir>$(SolutionDir)..\MSBuild\v4.0</UserRootDir>
   </PropertyGroup>
@@ -48,10 +48,10 @@
       <EntryPointSymbol Condition="'$(PlatformTarget)'=='x64'">?ScEntry@@YAXPEAU_PEB@@@Z</EntryPointSymbol>
       <AdditionalOptions>/EMITPOGOPHASEINFO /EMITVOLATILEMETADATA:NO %(AdditionalOptions)</AdditionalOptions>
       <GenerateMapFile>true</GenerateMapFile>
-      <AdditionalDependencies>ntdllp.lib;ScEntry.lib;kernel32.lib;user32.lib</AdditionalDependencies>
+      <AdditionalDependencies>ntdllp.lib;ScEntry.lib;kernel32.lib;user32.lib;ole32.lib</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>"$(TargetPath)" *$(OutDir)$(ProjectName).map*$(PlatformTarget).obj*imp.$(PlatformTarget).asm**?zip.$(ProjectName).$(PlatformTarget).asm</Command>
+      <Command>"$(TargetPath)" *$(OutDir)$(ProjectName).map*$(PlatformTarget).obj*imp.$(PlatformTarget).asm*$(ProjectName).$(PlatformTarget).bin*$(ProjectName).$(PlatformTarget).asm*$(ProjectName).$(PlatformTarget).exe</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

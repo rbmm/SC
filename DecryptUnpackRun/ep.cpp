@@ -126,6 +126,8 @@ void WINAPI ep(PEB* peb, PBYTE pbIn, ULONG cb)
 
 					if (UnEscape(password))
 					{
+						RtlUnicodeToUTF8N((char*)password, len, &len, password, len);
+
 						BCRYPT_KEY_HANDLE hKey;
 						UCHAR secret[32];
 						ULONG s = sizeof(secret);

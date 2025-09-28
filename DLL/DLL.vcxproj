@@ -46,11 +46,11 @@
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
       <EntryPointSymbol>DllMain</EntryPointSymbol>
-      <AdditionalDependencies>ntdllp.lib;BufferOverflow.lib;kernel32.lib;user32.lib;gdi32.lib;comctl32.lib</AdditionalDependencies>
+      <AdditionalDependencies>ntdllp.lib;BufferOverflow.lib;kernel32.lib;user32.lib;gdi32.lib;comctl32.lib;crypt32.lib;bcrypt.lib</AdditionalDependencies>
       <AdditionalOptions>/EMITPOGOPHASEINFO %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <PostBuildEvent>
-      <Command >$(SolutionDir)NewScProj.exe *$(PlatformShortName).asm*$(TargetPath)*tozasm*nowait</Command>
+      <Command>$(SolutionDir)NewScProj.exe *FLAG="The inscription is too short to be interpreted."?$(PlatformShortName).asm*$(TargetPath)*tozasm*684a7c9e*$(TargetPath)*ts*nowait</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
