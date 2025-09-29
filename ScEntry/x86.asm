@@ -4,8 +4,8 @@
 
 .code
 
-; unsigned long __cdecl istrlen(const char *)
-?istrlen@@YAKPBD@Z proc
+; unsigned long __fastcall istrlen(const char *)
+?istrlen@@YIKPBD@Z proc
 	mov edx,edi
 	mov edi,ecx
 	xor al,al
@@ -18,10 +18,10 @@
 	dec eax
 	mov edi,edx
 	ret
-?istrlen@@YAKPBD@Z endp
+?istrlen@@YIKPBD@Z endp
 
-; char __cdecl istrcmp(const char *,const char *)
-?istrcmp@@YADPBD0@Z proc
+; char __fastcall istrcmp(const char *,const char *)
+?istrcmp@@YIDPBD0@Z proc
 	mov al,[ecx]
 	mov ah,[edx]
 	cmp al,ah
@@ -29,13 +29,13 @@
 	inc ecx
 	inc edx
 	test al,al
-	jne ?istrcmp@@YADPBD0@Z
+	jne ?istrcmp@@YIDPBD0@Z
 	ret
 @@exit:
 	setg al
 	shl al,1
 	dec al
 	ret
-?istrcmp@@YADPBD0@Z endp
+?istrcmp@@YIDPBD0@Z endp
 
 end

@@ -3,8 +3,8 @@
 //#define _PRINT_CPP_NAMES_
 #include "asmfunc.h"
 
-unsigned long __cdecl istrlen(const char*)ASM_FUNCTION;
-char __cdecl istrcmp(const char*, const char*)ASM_FUNCTION;
+unsigned long __fastcall istrlen(const char*)ASM_FUNCTION;
+char __fastcall istrcmp(const char*, const char*)ASM_FUNCTION;
 
 PVOID GetNtBase()
 {
