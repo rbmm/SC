@@ -1,18 +1,18 @@
  DownloadAndRun-x86
 
- Timestamp is 67d2d6a1 (Thu Mar 13 14:59:13 2025)
+ Timestamp is 68dae1ac (Mon Sep 29 22:44:44 2025)
 
  Preferred load address is 00400000
 
  Start         Length     Name                   Class
- 0001:00000000 00000616H .text$mn                CODE
- 0001:00000616 00000c8aH .text$mn$cpp            CODE
- 0001:000012a0 00000d60H .text$mn$cpp$s          CODE
+ 0001:00000000 0000064cH .text$mn                CODE
+ 0001:0000064c 00000c14H .text$mn$cpp            CODE
+ 0001:00001260 00000da0H .text$mn$cpp$s          CODE
  0001:00002000 00002000H .text$mn$cpp$t          CODE
  0001:00004000 000003e0H .text$mn$cpp$u          CODE
  0001:000043e0 00000000H .text$mn$cpp$v          CODE
  0001:000043e0 00000006H .text$nm                CODE
- 0001:000043e6 000000cbH .text$zz                CODE
+ 0001:000043e6 000000cdH .text$zz                CODE
  0002:00000000 000000b0H .rdata                  DATA
  0002:000000b0 00000000H .edata                  DATA
  0002:000000b0 00000070H .rdata$zzzdbg           DATA
@@ -94,27 +94,29 @@
  0001:000005a7       _RtlFreeHeap@12            004015a7 f   x86.obj
  0001:000005c8       _memset                    004015c8 f   x86.obj
  0001:000005e9       ?Exec64@@YIHPAX00@Z        004015e9 f   x86.obj
- 0001:00000616       ?Download@@YGHPB_W0PAPAXPAK@Z 00401616 f   ep.obj
- 0001:00000778       ?Exec64@@YIHPAXPB_W@Z      00401778 f   ep.obj
- 0001:0000085a       ?DownloadAndExec@@YGXPB_W0PAXH@Z 0040185a f   ep.obj
- 0001:000008d8       ?ep@@YGXXZ                 004018d8 f   ep.obj
- 0001:0000094c       ?CopyImage@@YGXPAX0PAU_IMAGE_NT_HEADERS@@K@Z 0040194c f   Exec.obj
- 0001:000009a8       ?Relocate@@YGXPAXJ@Z       004019a8 f   Exec.obj
- 0001:000009fc       ?ProtectImage@@YGJPAX0PAU_IMAGE_NT_HEADERS@@@Z 004019fc f   Exec.obj
- 0001:00000aba       ?Exec@@YGHPAX0PAU_IMAGE_NT_HEADERS@@PB_W@Z 00401aba f   Exec.obj
- 0001:00000d94       ?IsImageOk@@YGEKPAXKK@Z    00401d94 f   NoCfg.obj
- 0001:00000e9c       ?FindNoCfgDll@@YGJPAXKKKPAPAX@Z 00401e9c f   NoCfg.obj
- 0001:00001091       ?GetNtBase@@YGPAXXZ        00402091 f   ScEntry:GetFuncAddr.obj
- 0001:000010a4       ?get_hmod@@YIPAXPB_W@Z     004020a4 f   ScEntry:GetFuncAddr.obj
- 0001:000010ee       ?GetFuncAddressEx@@YIPAXPAU_IMAGE_DOS_HEADER@@PBD@Z 004020ee f   ScEntry:GetFuncAddr.obj
- 0001:00001283       ??_V@YAXPAX@Z              00402283 f   ScEntry:stdafx.obj
- 0001:000012a0       ??_C@_1BM@ENECIFHC@?$AA?2?$AAe?$AAx?$AAp?$AAl?$AAo?$AAr?$AAe?$AAr?$AA?4?$AAe?$AAx?$AAe@FNODOBFM@ 004022a0     ep.obj
- 0001:000012c0       ??_C@_1EM@FHFNBODF@?$AA?1?$AA?$HO?$AAs?$AAg?$AAt?$AAa?$AAt?$AAh?$AAa?$AAm?$AA?1?$AAp?$AAu?$AAt?$AAt@FNODOBFM@ 004022c0     ep.obj
- 0001:00001310       ??_C@_1BK@DEAAAFKK@?$AAt?$AAh?$AAe?$AA?4?$AAe?$AAa?$AAr?$AAt?$AAh?$AA?4?$AAl?$AAi@FNODOBFM@ 00402310     ep.obj
- 0001:00001330       ??_C@_1EM@CKOJHMCM@?$AA?1?$AA?$HO?$AAs?$AAg?$AAt?$AAa?$AAt?$AAh?$AAa?$AAm?$AA?1?$AAp?$AAu?$AAt?$AAt@FNODOBFM@ 00402330     ep.obj
- 0001:00001380       ??_C@_1CK@GMBENNHD@?$AA?2?$AAs?$AAy?$AAs?$AAt?$AAe?$AAm?$AAr?$AAo?$AAo?$AAt?$AA?2?$AAs?$AAy?$AAs@FNODOBFM@ 00402380     NoCfg.obj
- 0001:000013b0       ??_C@_1CK@JEHFHMMG@?$AA?2?$AAs?$AAy?$AAs?$AAt?$AAe?$AAm?$AAr?$AAo?$AAo?$AAt?$AA?2?$AAs?$AAy?$AAs@FNODOBFM@ 004023b0     NoCfg.obj
- 0001:000013e0       ??_C@_1M@HNNPBALB@?$AA?$CK?$AA?4?$AAd?$AAl?$AAl@FNODOBFM@ 004023e0     NoCfg.obj
+ 0001:00000620       ?istrlen@@YIKPBD@Z         00401620 f   ScEntry:x86.obj
+ 0001:00000635       ?istrcmp@@YIDPBD0@Z        00401635 f   ScEntry:x86.obj
+ 0001:0000064c       ?Download@@YGHPB_W0PAPAXPAK@Z 0040164c f   ep.obj
+ 0001:000007ae       ?Exec64@@YIHPAXPB_W@Z      004017ae f   ep.obj
+ 0001:00000890       ?DownloadAndExec@@YGXPB_W0PAXH@Z 00401890 f   ep.obj
+ 0001:0000090e       ?ep@@YGXXZ                 0040190e f   ep.obj
+ 0001:00000982       ?CopyImage@@YGXPAX0PAU_IMAGE_NT_HEADERS@@K@Z 00401982 f   Exec.obj
+ 0001:000009de       ?Relocate@@YGXPAXJ@Z       004019de f   Exec.obj
+ 0001:00000a32       ?ProtectImage@@YGJPAX0PAU_IMAGE_NT_HEADERS@@@Z 00401a32 f   Exec.obj
+ 0001:00000af0       ?Exec@@YGHPAX0PAU_IMAGE_NT_HEADERS@@PB_W@Z 00401af0 f   Exec.obj
+ 0001:00000dca       ?IsImageOk@@YGEKPAXKK@Z    00401dca f   NoCfg.obj
+ 0001:00000ed2       ?FindNoCfgDll@@YGJPAXKKKPAPAX@Z 00401ed2 f   NoCfg.obj
+ 0001:000010c7       ?GetNtBase@@YGPAXXZ        004020c7 f   ScEntry:GetFuncAddr.obj
+ 0001:000010da       ?get_hmod@@YIPAXPB_W@Z     004020da f   ScEntry:GetFuncAddr.obj
+ 0001:00001124       ?GetFuncAddressEx@@YIPAXPAU_IMAGE_DOS_HEADER@@PBD@Z 00402124 f   ScEntry:GetFuncAddr.obj
+ 0001:0000123e       ??_V@YAXPAX@Z              0040223e f   ScEntry:stdafx.obj
+ 0001:00001260       ??_C@_1BM@ENECIFHC@?$AA?2?$AAe?$AAx?$AAp?$AAl?$AAo?$AAr?$AAe?$AAr?$AA?4?$AAe?$AAx?$AAe@FNODOBFM@ 00402260     ep.obj
+ 0001:00001280       ??_C@_1EM@FHFNBODF@?$AA?1?$AA?$HO?$AAs?$AAg?$AAt?$AAa?$AAt?$AAh?$AAa?$AAm?$AA?1?$AAp?$AAu?$AAt?$AAt@FNODOBFM@ 00402280     ep.obj
+ 0001:000012d0       ??_C@_1BK@DEAAAFKK@?$AAt?$AAh?$AAe?$AA?4?$AAe?$AAa?$AAr?$AAt?$AAh?$AA?4?$AAl?$AAi@FNODOBFM@ 004022d0     ep.obj
+ 0001:000012f0       ??_C@_1EM@CKOJHMCM@?$AA?1?$AA?$HO?$AAs?$AAg?$AAt?$AAa?$AAt?$AAh?$AAa?$AAm?$AA?1?$AAp?$AAu?$AAt?$AAt@FNODOBFM@ 004022f0     ep.obj
+ 0001:00001340       ??_C@_1CK@GMBENNHD@?$AA?2?$AAs?$AAy?$AAs?$AAt?$AAe?$AAm?$AAr?$AAo?$AAo?$AAt?$AA?2?$AAs?$AAy?$AAs@FNODOBFM@ 00402340     NoCfg.obj
+ 0001:00001370       ??_C@_1CK@JEHFHMMG@?$AA?2?$AAs?$AAy?$AAs?$AAt?$AAe?$AAm?$AAr?$AAo?$AAo?$AAt?$AA?2?$AAs?$AAy?$AAs@FNODOBFM@ 00402370     NoCfg.obj
+ 0001:000013a0       ??_C@_1M@HNNPBALB@?$AA?$CK?$AA?4?$AAd?$AAl?$AAl@FNODOBFM@ 004023a0     NoCfg.obj
  0001:000043e0       ?sc_end@@YGPAXXZ           004053e0 f   ScEntry:prepare.obj
  0001:000043e6       ?ScEntry@@YGXPAU_PEB@@@Z   004053e6 f   ScEntry:prepare.obj
  0002:00000000       ??_C@_0BF@EKFKPNAI@RtlInitUnicodeString@ 00406000     ScEntry:prepare.obj
@@ -123,8 +125,8 @@
  0002:0000003c       ??_C@_0BH@GKPJJDBO@LdrGetProcedureAddress@ 0040603c     ScEntry:prepare.obj
  0002:00000054       ??_C@_0N@FIGJGHFN@LdrUnloadDll@ 00406054     ScEntry:prepare.obj
  0002:00000064       ??_C@_0BD@JDDPIELM@RtlExitUserProcess@ 00406064     ScEntry:prepare.obj
- 0003:00000000       ___@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUdrmDCUivovzhvUwldmolzwzmwifmRcIGUhgwzucOlyq@4B2008FD98C1DD4 00407000     stdafx.obj
- 0003:00000004       ___@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUdrmDCUivovzhvUhxvmgibUhgwzucOlyq@4B2008FD98C1DD4 00407004     ScEntry:stdafx.obj
+ 0003:00000000       ___@@_PchSym_@00@UfhvihUiynnUwlxfnvmghUtrgsfyUhxUgnkUdrmDCUivovzhvUwldmolzwzmwifmRcIGUhgwzucOlyq@4B2008FD98C1DD4 00407000     stdafx.obj
+ 0003:00000004       ___@@_PchSym_@00@UfhvihUiynnUwlxfnvmghUtrgsfyUhxUgnkUdrmDCUivovzhvUhxvmgibUhgwzucOlyq@4B2008FD98C1DD4 00407004     ScEntry:stdafx.obj
 
  entry point at        0001:000043e6
 
