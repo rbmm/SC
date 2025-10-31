@@ -243,6 +243,8 @@ struct IMAGE_Ctx : TEB_ACTIVE_FRAME, TEB_ACTIVE_FRAME_CONTEXT
 
 		return 0;
 	}
+
+	NTSTATUS AfterMap(NTSTATUS status);
 };
 
 NTSTATUS Protect(PVOID VirtualAddress, SIZE_T RegionSize, ULONG NewProtect)
@@ -309,41 +311,52 @@ NTSTATUS OverwriteSection(_In_ PVOID BaseAddress, _In_ PVOID pvImage, _In_ PIMAG
 	return STATUS_SUCCESS;
 }
 
+NTSTATUS IMAGE_Ctx::AfterMap(NTSTATUS status)
+{
+	if (0 <= status)
+	{
+		PVOID BaseAddress = *_M_pBaseAddress;
+
+		PIMAGE_NT_HEADERS pinth = _M_pinth;
+
+		if (0 <= (status = OverwriteSection(BaseAddress, _M_pvImage, pinth)))
+		{
+			if (BaseAddress != (PVOID)pinth->OptionalHeader.ImageBase)
+			{
+				status = STATUS_IMAGE_NOT_AT_BASE;
+			}
+		}
+
+		if (0 > status)
+		{
+			ZwUnmapViewOfSection(NtCurrentProcess(), BaseAddress);
+
+			*_M_pBaseAddress = 0;
+		}
+		else
+		{
+			_M_hmod = BaseAddress;
+		}
+	}
+
+	_M_status = status;
+
+	return status;
+}
+
 NTSTATUS __fastcall retFromMapViewOfSection(NTSTATUS status)
 {
 	CPP_FUNCTION;
 
 	if (IMAGE_Ctx* ctx = IMAGE_Ctx::get())
 	{
-		*(void**)_AddressOfReturnAddress() = ctx->_M_retAddr;
-
-		if (0 <= status)
+		if (PVOID retAddr = ctx->_M_retAddr)
 		{
-			PVOID BaseAddress = *ctx->_M_pBaseAddress;
-
-			PIMAGE_NT_HEADERS pinth = ctx->_M_pinth;
-
-			if (0 <= (status = OverwriteSection(BaseAddress, ctx->_M_pvImage, pinth)))
-			{
-				if (BaseAddress != (PVOID)pinth->OptionalHeader.ImageBase)
-				{
-					status = STATUS_IMAGE_NOT_AT_BASE;
-				}
-			}
-
-			if (0 > status)
-			{
-				ZwUnmapViewOfSection(NtCurrentProcess(), BaseAddress);
-
-				*ctx->_M_pBaseAddress = 0;
-			}
-			else
-			{
-				ctx->_M_hmod = BaseAddress;
-			}
+			ctx->_M_retAddr = 0;
+			*(void**)_AddressOfReturnAddress() = retAddr;
 		}
 
-		ctx->_M_status = status;
+		return ctx->AfterMap(status);
 	}
 
 	return status;
@@ -351,35 +364,77 @@ NTSTATUS __fastcall retFromMapViewOfSection(NTSTATUS status)
 
 NTSTATUS aretFromMapViewOfSection()ASM_FUNCTION;
 
+NTSTATUS
+GetProcessMitigationPolicy(
+	_In_ HANDLE hProcess,
+	_In_ PROCESS_MITIGATION_POLICY MitigationPolicy,
+	_Out_writes_bytes_(DWORD) PVOID lpBuffer
+)
+{
+	struct PROCESS_MITIGATION {
+		PROCESS_MITIGATION_POLICY Policy;
+		DWORD Flags;
+	};
+
+	PROCESS_MITIGATION m = { MitigationPolicy };
+	NTSTATUS status = NtQueryInformationProcess(hProcess, ProcessMitigationPolicy, &m, sizeof(m), 0);
+	if (0 <= status)
+	{
+		*(PULONG)lpBuffer = m.Flags;
+	}
+	return status;
+}
+
 LONG NTAPI MyVexHandler(::PEXCEPTION_POINTERS ExceptionInfo)
 {
 	::PEXCEPTION_RECORD ExceptionRecord = ExceptionInfo->ExceptionRecord;
 	::PCONTEXT ContextRecord = ExceptionInfo->ContextRecord;
 
-	if (ExceptionRecord->ExceptionCode == STATUS_SINGLE_STEP &&
-		ExceptionRecord->ExceptionAddress == (PVOID)ContextRecord->Dr3)
+	if (STATUS_SINGLE_STEP == ExceptionRecord->ExceptionCode)
 	{
 		if (IMAGE_Ctx* ctx = IMAGE_Ctx::get())
 		{
-			UNICODE_STRING ObjectName;
-			RtlInitUnicodeString(&ObjectName, (PCWSTR)reinterpret_cast<PNT_TIB>(NtCurrentTeb())->ArbitraryUserPointer);
-			if (RtlEqualUnicodeString(&ObjectName, ctx->_M_lpFileName, FALSE))
+			if (ExceptionRecord->ExceptionAddress == (PVOID)ContextRecord->Dr3)
 			{
-				ctx->_M_pBaseAddress =
+				UNICODE_STRING ObjectName;
+				RtlInitUnicodeString(&ObjectName, (PCWSTR)reinterpret_cast<PNT_TIB>(NtCurrentTeb())->ArbitraryUserPointer);
+				if (RtlEqualUnicodeString(&ObjectName, ctx->_M_lpFileName, FALSE))
+				{
+					ctx->_M_pBaseAddress =
 #ifdef _WIN64
-				(void**)ContextRecord->R8;
+					(void**)ContextRecord->R8;
 
 #define SP Rsp
 #else
 #define SP Esp
-				((void***)ContextRecord->Esp)[3];
+					((void***)ContextRecord->Esp)[3];
 #endif
 
-				* (PSIZE_T)((void**)ContextRecord->SP)[7] = ctx->_M_pinth->OptionalHeader.SizeOfImage;
+					* (PSIZE_T)((void**)ContextRecord->SP)[7] = ctx->_M_pinth->OptionalHeader.SizeOfImage;
 
-				ctx->_M_retAddr = ((void**)ContextRecord->SP)[0];
+					PVOID retAddr = ((void**)ContextRecord->SP)[0];
 
-				((void**)ContextRecord->SP)[0] = _Y(aretFromMapViewOfSection);
+					PROCESS_MITIGATION_USER_SHADOW_STACK_POLICY ussp{};
+
+					if (0 <= GetProcessMitigationPolicy(NtCurrentProcess(), ProcessUserShadowStackPolicy, &ussp) &&
+						ussp.SetContextIpValidation)
+					{
+						ContextRecord->Dr2 = (ULONG_PTR)retAddr;
+						ContextRecord->Dr7 = 0x450;
+					}
+					else
+					{
+						ctx->_M_retAddr = retAddr;
+
+						((void**)ContextRecord->SP)[0] = _Y(aretFromMapViewOfSection);
+					}
+				}
+			}
+			else if (ExceptionRecord->ExceptionAddress == (PVOID)ContextRecord->Dr2)
+			{
+				ContextRecord->Dr2 = 0;
+				ContextRecord->Dr7 = 0x440;
+				ContextRecord->Rax = ctx->AfterMap((ULONG)ContextRecord->Rax);
 			}
 		}
 
