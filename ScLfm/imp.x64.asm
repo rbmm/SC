@@ -16,6 +16,7 @@ createFunc ntdllp, RtlPushFrame
 createFunc ntdllp, RtlPopFrame
 createFunc ntdllp, RtlGetFrame
 createFunc ntdllp, ZwProtectVirtualMemory
+createFunc ntdllp, NtQueryInformationProcess
 createFunc ntdllp, RtlEqualUnicodeString
 createFunc ntdllp, RtlAddVectoredExceptionHandler
 createFunc ntdllp, ZwSetContextThread

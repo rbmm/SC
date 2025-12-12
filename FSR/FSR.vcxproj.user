@@ -4,4 +4,10 @@
     <LocalDebuggerCommandArguments>?*e88:0</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LocalDebuggerCommandArgumentsHistory>?*e88:0|</LocalDebuggerCommandArgumentsHistory>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LocalDebuggerCommandArgumentsHistory>?*e88:0|</LocalDebuggerCommandArgumentsHistory>
+  </PropertyGroup>
 </Project>

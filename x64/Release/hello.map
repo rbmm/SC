@@ -1,18 +1,18 @@
  hello
 
- Timestamp is 68cb19cc (Wed Sep 17 23:27:56 2025)
+ Timestamp is 693b572f (Fri Dec 12 01:43:43 2025)
 
  Preferred load address is 0000000140000000
 
  Start         Length     Name                   Class
- 0001:00000000 000001f8H .text$mn                CODE
- 0001:000001f8 000004a0H .text$mn$cpp            CODE
- 0001:00000698 00000028H .text$mn$cpp$r          CODE
- 0001:000006c0 000000b0H .text$mn$cpp$s          CODE
- 0001:00000770 00010000H .text$mn$cpp$t          CODE
- 0001:00010770 00000294H .text$mn$cpp$u          CODE
- 0001:00010a04 00000008H .text$nm                CODE
- 0001:00010a0c 00000102H .text$zz                CODE
+ 0001:00000000 00000238H .text$mn                CODE
+ 0001:00000238 00000490H .text$mn$cpp            CODE
+ 0001:000006c8 00000028H .text$mn$cpp$r          CODE
+ 0001:000006f0 000000b0H .text$mn$cpp$s          CODE
+ 0001:000007a0 00010000H .text$mn$cpp$t          CODE
+ 0001:000107a0 00000294H .text$mn$cpp$u          CODE
+ 0001:00010a34 00000008H .text$nm                CODE
+ 0001:00010a3c 00000102H .text$zz                CODE
  0002:00000000 00000000H .idata$5                DATA
  0002:00000000 000000b4H .rdata                  DATA
  0002:000000b4 00000068H .rdata$zzzdbg           DATA
@@ -77,23 +77,25 @@
  0001:000001bc       CoInitializeEx             00000001400011bc f   x64.obj
  0001:000001cf       CoTaskMemFree              00000001400011cf f   x64.obj
  0001:000001e2       CoUninitialize             00000001400011e2 f   x64.obj
- 0001:000001f8       ?MsgBox@@YAHIPEB_W0ZZ      00000001400011f8 f   ep.obj
- 0001:00000288       ?ApcTest@@YAX_K@Z          0000000140001288 f   ep.obj
- 0001:000002dc       ?ep@@YAXXZ                 00000001400012dc f   ep.obj
- 0001:000004c0       ?get_hmod@@YAPEAXPEB_W@Z   00000001400014c0 f   ScEntry:GetFuncAddr.obj
- 0001:0000051c       ?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z 000000014000151c f   ScEntry:GetFuncAddr.obj
- 0001:00000698       _GUID_dc1c5a9c_e88a_4dde_a5a1_60f82a20aef7 0000000140001698     ep.obj
- 0001:000006a8       _GUID_d57c7288_d4ad_4768_be02_9d969532d960 00000001400016a8     ep.obj
- 0001:000006c0       ??_C@_0O@HELLMLPH@ApcTest?$CI?$CFp?$CJ?$AN?6@FNODOBFM@ 00000001400016c0     ep.obj
- 0001:000006d0       ??_C@_1CC@NKINBMBG@?$AA?$CF?$AAh?$AAs?$AA?$AN?$AA?6?$AAe?$AAn?$AAt?$AAr?$AAy?$AA?5?$AAa?$AAt?$AA?5?$AA?$CF@FNODOBFM@ 00000001400016d0     ep.obj
- 0001:00000700       ??_C@_1M@BOLMKKCK@?$AAH?$AAe?$AAl?$AAl?$AAo@FNODOBFM@ 0000000140001700     ep.obj
- 0001:00000710       ??_C@_17NCBHHMJ@?$AAC?$AAo?$AAm@FNODOBFM@ 0000000140001710     ep.obj
- 0001:00000720       ??_C@_17LIFEJMDK@?$AAP?$AAO?$AAC@FNODOBFM@ 0000000140001720     ep.obj
- 0001:00000730       ??_C@_19JKOIKNAD@?$AAD?$AAE?$AAM?$AAO@FNODOBFM@ 0000000140001730     ep.obj
- 0001:00000740       ??_C@_1BI@NOFJEJPO@?$AAt?$AAa?$AAb?$AAl?$AAe?$AA?5?$AAa?$AAt?$AA?5?$AA?$CF?$AAp@FNODOBFM@ 0000000140001740     ep.obj
- 0001:00000760       ??_C@_1O@ONGICPAA@?$AAM?$AAa?$AAr?$AAt?$AAa?$AA?3@FNODOBFM@ 0000000140001760     ep.obj
- 0001:00010a04       ?sc_end@@YAPEAXXZ          0000000140011a04 f   ScEntry:prepare.obj
- 0001:00010a0c       ?ScEntry@@YAXPEAU_PEB@@@Z  0000000140011a0c f   ScEntry:prepare.obj
+ 0001:00000200       ?istrcmp@@YADPEBD0@Z       0000000140001200 f   ScEntry:x64.obj
+ 0001:0000021b       ?istrlen@@YAKPEBD@Z        000000014000121b f   ScEntry:x64.obj
+ 0001:00000238       ?MsgBox@@YAHIPEB_W0ZZ      0000000140001238 f   ep.obj
+ 0001:000002c8       ?ApcTest@@YAX_K@Z          00000001400012c8 f   ep.obj
+ 0001:0000031c       ?ep@@YAXXZ                 000000014000131c f   ep.obj
+ 0001:00000500       ?get_hmod@@YAPEAXPEB_W@Z   0000000140001500 f   ScEntry:GetFuncAddr.obj
+ 0001:0000055c       ?GetFuncAddressEx@@YAPEAXPEAU_IMAGE_DOS_HEADER@@PEBD@Z 000000014000155c f   ScEntry:GetFuncAddr.obj
+ 0001:000006c8       _GUID_dc1c5a9c_e88a_4dde_a5a1_60f82a20aef7 00000001400016c8     ep.obj
+ 0001:000006d8       _GUID_d57c7288_d4ad_4768_be02_9d969532d960 00000001400016d8     ep.obj
+ 0001:000006f0       ??_C@_0O@HELLMLPH@ApcTest?$CI?$CFp?$CJ?$AN?6@FNODOBFM@ 00000001400016f0     ep.obj
+ 0001:00000700       ??_C@_1CC@NKINBMBG@?$AA?$CF?$AAh?$AAs?$AA?$AN?$AA?6?$AAe?$AAn?$AAt?$AAr?$AAy?$AA?5?$AAa?$AAt?$AA?5?$AA?$CF@FNODOBFM@ 0000000140001700     ep.obj
+ 0001:00000730       ??_C@_1M@BOLMKKCK@?$AAH?$AAe?$AAl?$AAl?$AAo@FNODOBFM@ 0000000140001730     ep.obj
+ 0001:00000740       ??_C@_17NCBHHMJ@?$AAC?$AAo?$AAm@FNODOBFM@ 0000000140001740     ep.obj
+ 0001:00000750       ??_C@_17LIFEJMDK@?$AAP?$AAO?$AAC@FNODOBFM@ 0000000140001750     ep.obj
+ 0001:00000760       ??_C@_19JKOIKNAD@?$AAD?$AAE?$AAM?$AAO@FNODOBFM@ 0000000140001760     ep.obj
+ 0001:00000770       ??_C@_1BI@NOFJEJPO@?$AAt?$AAa?$AAb?$AAl?$AAe?$AA?5?$AAa?$AAt?$AA?5?$AA?$CF?$AAp@FNODOBFM@ 0000000140001770     ep.obj
+ 0001:00000790       ??_C@_1O@ONGICPAA@?$AAM?$AAa?$AAr?$AAt?$AAa?$AA?3@FNODOBFM@ 0000000140001790     ep.obj
+ 0001:00010a34       ?sc_end@@YAPEAXXZ          0000000140011a34 f   ScEntry:prepare.obj
+ 0001:00010a3c       ?ScEntry@@YAXPEAU_PEB@@@Z  0000000140011a3c f   ScEntry:prepare.obj
  0002:00000000       ??_C@_0BF@EKFKPNAI@RtlInitUnicodeString@ 0000000140012000     ScEntry:prepare.obj
  0002:00000018       ??_C@_1BI@NEOFKCPM@?$AAp?$AAr?$AAe?$AAp?$AAa?$AAr?$AAe?$AA?4?$AAd?$AAl?$AAl@ 0000000140012018     ScEntry:prepare.obj
  0002:00000030       ??_C@_0L@HOFGLFDL@LdrLoadDll@ 0000000140012030     ScEntry:prepare.obj
@@ -103,7 +105,7 @@
  0003:00000000       __@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUcGEUivovzhvUsvoolUhgwzucOlyq@4B2008FD98C1DD4 0000000140013000     stdafx.obj
  0003:00000004       __@@_PchSym_@00@UfhvihUsziibUwlxfnvmghUtrgsfyUhxUgnkUcGEUivovzhvUhxvmgibUhgwzucOlyq@4B2008FD98C1DD4 0000000140013004     ScEntry:stdafx.obj
 
- entry point at        0001:00010a0c
+ entry point at        0001:00010a3c
 
  Static symbols
 
@@ -111,30 +113,30 @@
  0000:fffeb000       .debug$S                   0000000140000000     ntdllp:ntdll.dll
  0002:fffee000       .idata$6                   0000000140000000     ntdllp:ntdll.dll
  0001:00000052       common_imp_call            0000000140001052 f   x64.obj
- 0001:00010770       ?DnsMapRcodeToStatus       0000000140011770     x64.obj
- 0001:00010790       ?DnsStatusString           0000000140011790     x64.obj
- 0001:000107a8       @dnsapi                    00000001400117a8     x64.obj
- 0001:000107c8       ?FormatMessageW            00000001400117c8     x64.obj
- 0001:000107e0       ?GetTickCount              00000001400117e0     x64.obj
- 0001:000107f8       ?IsProcessCritical         00000001400117f8     x64.obj
- 0001:00010818       ?ExitProcess               0000000140011818     x64.obj
- 0001:00010830       @kernel32                  0000000140011830     x64.obj
- 0001:00010858       ??GetMartaExtensionInterface@@YAPEAU_ACC_MARTA_FUNCTIONS@@XZ 0000000140011858     x64.obj
- 0001:00010880       @ntmarta                   0000000140011880     x64.obj
- 0001:000108a0       ?MessageBoxW               00000001400118a0     x64.obj
- 0001:000108b8       @user32                    00000001400118b8     x64.obj
- 0001:000108d8       ?_vsnwprintf               00000001400118d8     x64.obj
- 0001:000108f0       ?DbgPrint                  00000001400118f0     x64.obj
- 0001:00010908       ?RtlDispatchAPC            0000000140011908     x64.obj
- 0001:00010918       ?LdrGetProcedureAddress    0000000140011918     x64.obj
- 0001:00010938       ?LdrLoadDll                0000000140011938     x64.obj
- 0001:00010950       ?RtlInitUnicodeString      0000000140011950     x64.obj
- 0001:00010970       @ntdllp                    0000000140011970     x64.obj
- 0001:00010980       ?CoCreateInstance          0000000140011980     x64.obj
- 0001:000109a0       ?CoInitializeEx            00000001400119a0     x64.obj
- 0001:000109b8       ?CoTaskMemFree             00000001400119b8     x64.obj
- 0001:000109d0       ?CoUninitialize            00000001400119d0     x64.obj
- 0001:000109e8       @ole32                     00000001400119e8     x64.obj
+ 0001:000107a0       ?DnsMapRcodeToStatus       00000001400117a0     x64.obj
+ 0001:000107c0       ?DnsStatusString           00000001400117c0     x64.obj
+ 0001:000107d8       @dnsapi                    00000001400117d8     x64.obj
+ 0001:000107f8       ?FormatMessageW            00000001400117f8     x64.obj
+ 0001:00010810       ?GetTickCount              0000000140011810     x64.obj
+ 0001:00010828       ?IsProcessCritical         0000000140011828     x64.obj
+ 0001:00010848       ?ExitProcess               0000000140011848     x64.obj
+ 0001:00010860       @kernel32                  0000000140011860     x64.obj
+ 0001:00010888       ??GetMartaExtensionInterface@@YAPEAU_ACC_MARTA_FUNCTIONS@@XZ 0000000140011888     x64.obj
+ 0001:000108b0       @ntmarta                   00000001400118b0     x64.obj
+ 0001:000108d0       ?MessageBoxW               00000001400118d0     x64.obj
+ 0001:000108e8       @user32                    00000001400118e8     x64.obj
+ 0001:00010908       ?_vsnwprintf               0000000140011908     x64.obj
+ 0001:00010920       ?DbgPrint                  0000000140011920     x64.obj
+ 0001:00010938       ?RtlDispatchAPC            0000000140011938     x64.obj
+ 0001:00010948       ?LdrGetProcedureAddress    0000000140011948     x64.obj
+ 0001:00010968       ?LdrLoadDll                0000000140011968     x64.obj
+ 0001:00010980       ?RtlInitUnicodeString      0000000140011980     x64.obj
+ 0001:000109a0       @ntdllp                    00000001400119a0     x64.obj
+ 0001:000109b0       ?CoCreateInstance          00000001400119b0     x64.obj
+ 0001:000109d0       ?CoInitializeEx            00000001400119d0     x64.obj
+ 0001:000109e8       ?CoTaskMemFree             00000001400119e8     x64.obj
+ 0001:00010a00       ?CoUninitialize            0000000140011a00     x64.obj
+ 0001:00010a18       @ole32                     0000000140011a18     x64.obj
  0002:0000011c       $unwind$?MsgBox@@YAHIPEB_W0ZZ 000000014001211c     ep.obj
  0002:00000130       $unwind$?ApcTest@@YAX_K@Z  0000000140012130     ep.obj
  0002:00000130       $unwind$?get_hmod@@YAPEAXPEB_W@Z 0000000140012130     ScEntry:GetFuncAddr.obj
