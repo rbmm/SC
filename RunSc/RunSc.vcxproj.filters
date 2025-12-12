@@ -28,19 +28,13 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ResourceCompile Include="RunSc.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
     <CustomBuild Include="x86.asm">
       <Filter>Source Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="x64.asm">
-      <Filter>Source Files</Filter>
-    </CustomBuild>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imp.x64.asm">
-      <Filter>Source Files</Filter>
-    </None>
-    <None Include="imp.x86.asm">
-      <Filter>Source Files</Filter>
-    </None>
   </ItemGroup>
 </Project>

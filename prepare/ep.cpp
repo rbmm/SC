@@ -281,7 +281,7 @@ NTSTATUS I_CreateAsmSC(PCWSTR pwzFileName, const void* pcv, SIZE_T cb)
 __exit:
 		delete[] buf;
 
-		DbgPrint("CreateAsmSC(%ws)=%x\r\n", pwzFileName, status);
+		DbgPrint("CreateAsmSC(\"%ws\")=%x\r\n", pwzFileName, status);
 
 		return status;
 	}
@@ -513,7 +513,7 @@ NTSTATUS CreateExeSC(PCWSTR pwzFileName, PVOID Base, ULONG cb, PVOID ImageBase)
 
 		delete pe;
 
-		DbgPrint("CreateExeSC(%ws)=%x\r\n", pwzFileName, status);
+		DbgPrint("CreateExeSC(\"%ws\")=%x\r\n", pwzFileName, status);
 
 		return status;
 	}
@@ -581,6 +581,7 @@ NTSTATUS NTAPI PrepareSC(PVOID Base, ULONG cb, PVOID ImageBase)
 					if (pczBin && *pczBin)
 					{
 						status = SaveToFile(pczBin, Base, cb);
+						DbgPrint("CreateBin(\"%ws\" [%x])=%x\r\n", pczBin, cb, status);
 					}
 
 					if (0 <= status)

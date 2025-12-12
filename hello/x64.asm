@@ -1,6 +1,6 @@
 .code
-;
- _ERW_ = 1
+
+; _ERW_ = 1
 
 ; void ep()
 extern ?ep@@YAXXZ : PROC
@@ -17,14 +17,6 @@ ENDIF
 ?epASM@@YAXXZ endp
 
 include <..\scentry\nobase.x64.inc>
-
-_TEXT$cpp$t SEGMENT
-    DB 65536 DUP (0)
-_TEXT$cpp$t ENDS
-
-;_TEXT$cpp$u SEGMENT ALIGN(_ALIGN_)
-;@imp_begin@ LABEL BYTE
-;_TEXT$cpp$u ENDS
 
 include <imp.x64.asm>
 

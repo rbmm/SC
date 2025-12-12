@@ -131,5 +131,5 @@ void WINAPI ep()
 		RtlDispatchAPC(_Y(ApcTest), (ULONG_PTR)_Y(ep), INVALID_HANDLE_VALUE);
 	}
 	
-	if (!GetTickCount()) ExitProcess(0);
+	ExitProcess(0);
 }
